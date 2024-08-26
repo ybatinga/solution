@@ -1,167 +1,224 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package solution.model;
-
-import java.math.BigDecimal;
 
 /**
  *
  * @author ssd
  */
 public class registryModel {
-    
-    private Long id; 
-    private BigDecimal propertyRegistryNumber;
-    private String propertyRegistryId;
-    private String propertyTimestamp;
-    private String propertyAddress;
-    private BigDecimal propertySquareMeters;
-    private String propertyRegistryStatus;
-    private String ownerName;
-    private BigDecimal ownerId;
-    private String ownerWalletAddress;
-    private String buyerName;
-    private BigDecimal buyerId;
-    private String buyerWalletAddress;        
-    private String paymentTxId;           
-    private String paymentTimestamp;        
-    private BigDecimal paymentAmount;
-    private String paymentMultisigAddress;
 
-    public Long getId() {
+    private long id;
+    private PropertyInfo propertyInfo;
+    private OwnerInfo ownerInfo;
+    private BuyerInfo buyerInfo;
+    private SalePriceInfo salePriceInfo;
+    private PaymentInfo paymentInfo;
+
+    public long getID() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setID(long value) {
+        this.id = value;
     }
 
-    public BigDecimal getPropertyRegistryNumber() {
-        return propertyRegistryNumber;
+    public PropertyInfo getPropertyInfo() {
+        return propertyInfo;
     }
 
-    public void setPropertyRegistryNumber(BigDecimal propertyRegistryNumber) {
-        this.propertyRegistryNumber = propertyRegistryNumber;
+    public void setPropertyInfo(PropertyInfo value) {
+        this.propertyInfo = value;
     }
 
-    public String getPropertyRegistryId() {
-        return propertyRegistryId;
+    public OwnerInfo getOwnerInfo() {
+        return ownerInfo;
     }
 
-    public void setPropertyRegistryId(String propertyRegistryId) {
-        this.propertyRegistryId = propertyRegistryId;
+    public void setOwnerInfo(OwnerInfo value) {
+        this.ownerInfo = value;
     }
 
-    public String getPropertyTimestamp() {
-        return propertyTimestamp;
+    public BuyerInfo getBuyerInfo() {
+        return buyerInfo;
     }
 
-    public void setPropertyTimestamp(String propertyTimestamp) {
-        this.propertyTimestamp = propertyTimestamp;
+    public void setBuyerInfo(BuyerInfo value) {
+        this.buyerInfo = value;
     }
 
-    public String getPropertyAddress() {
-        return propertyAddress;
+    public SalePriceInfo getSalePriceInfo() {
+        return salePriceInfo;
     }
 
-    public void setPropertyAddress(String propertyAddress) {
-        this.propertyAddress = propertyAddress;
+    public void setSalePriceInfo(SalePriceInfo value) {
+        this.salePriceInfo = value;
     }
 
-    public BigDecimal getPropertySquareMeters() {
-        return propertySquareMeters;
+    public PaymentInfo getPaymentInfo() {
+        return paymentInfo;
     }
 
-    public void setPropertySquareMeters(BigDecimal propertySquareMeters) {
-        this.propertySquareMeters = propertySquareMeters;
+    public void setPaymentInfo(PaymentInfo value) {
+        this.paymentInfo = value;
     }
 
-    public String getPropertyRegistryStatus() {
-        return propertyRegistryStatus;
+    public class BuyerInfo {
+
+        private String id;
+        private String name;
+        private String buyerWalletAddress;
+
+        public String getID() {
+            return id;
+        }
+
+        public void setID(String value) {
+            this.id = value;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String value) {
+            this.name = value;
+        }
+
+        public String getBuyerWalletAddress() {
+            return buyerWalletAddress;
+        }
+
+        public void setBuyerWalletAddress(String value) {
+            this.buyerWalletAddress = value;
+        }
     }
 
-    public void setPropertyRegistryStatus(String propertyRegistryStatus) {
-        this.propertyRegistryStatus = propertyRegistryStatus;
+    public class OwnerInfo {
+
+        private String id;
+        private String name;
+        private String ownerWalletAddress;
+
+        public String getID() {
+            return id;
+        }
+
+        public void setID(String value) {
+            this.id = value;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String value) {
+            this.name = value;
+        }
+
+        public String getOwnerWalletAddress() {
+            return ownerWalletAddress;
+        }
+
+        public void setOwnerWalletAddress(String value) {
+            this.ownerWalletAddress = value;
+        }
     }
 
-    public String getOwnerName() {
-        return ownerName;
+    public class PaymentInfo {
+
+        private String txid;
+        private double paymentAmount;
+        private String timestamp;
+
+        public String getTxid() {
+            return txid;
+        }
+
+        public void setTxid(String value) {
+            this.txid = value;
+        }
+
+        public double getPaymentAmount() {
+            return paymentAmount;
+        }
+
+        public void setPaymentAmount(double value) {
+            this.paymentAmount = value;
+        }
+
+        public String getTimestamp() {
+            return timestamp;
+        }
+
+        public void setTimestamp(String value) {
+            this.timestamp = value;
+        }
     }
 
-    public void setOwnerName(String ownerName) {
-        this.ownerName = ownerName;
+    public class PropertyInfo {
+
+        private long regNum;
+        private String regID;
+        private String timestamp;
+        private String address;
+        private long areaSquareMeters;
+
+        public long getRegNum() {
+            return regNum;
+        }
+
+        public void setRegNum(long value) {
+            this.regNum = value;
+        }
+
+        public String getRegID() {
+            return regID;
+        }
+
+        public void setRegID(String value) {
+            this.regID = value;
+        }
+
+        public String getTimestamp() {
+            return timestamp;
+        }
+
+        public void setTimestamp(String value) {
+            this.timestamp = value;
+        }
+
+        public String getAddress() {
+            return address;
+        }
+
+        public void setAddress(String value) {
+            this.address = value;
+        }
+
+        public long getAreaSquareMeters() {
+            return areaSquareMeters;
+        }
+
+        public void setAreaSquareMeters(long value) {
+            this.areaSquareMeters = value;
+        }
     }
 
-    public BigDecimal getOwnerId() {
-        return ownerId;
+// SalePriceInfo.java
+    public class SalePriceInfo {
+
+        private double price;
+
+        public double getPrice() {
+            return price;
+        }
+
+        public void setPrice(double value) {
+            this.price = value;
+        }
     }
 
-    public void setOwnerId(BigDecimal ownerId) {
-        this.ownerId = ownerId;
-    }
-
-    public String getOwnerWalletAddress() {
-        return ownerWalletAddress;
-    }
-
-    public void setOwnerWalletAddress(String ownerWalletAddress) {
-        this.ownerWalletAddress = ownerWalletAddress;
-    }
-
-    public String getBuyerName() {
-        return buyerName;
-    }
-
-    public void setBuyerName(String buyerName) {
-        this.buyerName = buyerName;
-    }
-
-    public BigDecimal getBuyerId() {
-        return buyerId;
-    }
-
-    public void setBuyerId(BigDecimal buyerId) {
-        this.buyerId = buyerId;
-    }
-
-    public String getBuyerWalletAddress() {
-        return buyerWalletAddress;
-    }
-
-    public void setBuyerWalletAddress(String buyerWalletAddress) {
-        this.buyerWalletAddress = buyerWalletAddress;
-    }
-
-    public String getPaymentTxId() {
-        return paymentTxId;
-    }
-
-    public void setPaymentTxId(String paymentTxId) {
-        this.paymentTxId = paymentTxId;
-    }
-
-    public String getPaymentTimestamp() {
-        return paymentTimestamp;
-    }
-
-    public void setPaymentTimestamp(String paymentTimestamp) {
-        this.paymentTimestamp = paymentTimestamp;
-    }
-
-    public BigDecimal getPaymentAmount() {
-        return paymentAmount;
-    }
-
-    public void setPaymentAmount(BigDecimal paymentAmount) {
-        this.paymentAmount = paymentAmount;
-    }
-
-    public String getPaymentMultisigAddress() {
-        return paymentMultisigAddress;
-    }
-
-    public void setPaymentMultisigAddress(String paymentMultisigAddress) {
-        this.paymentMultisigAddress = paymentMultisigAddress;
-    }
-    
-    
-    
 }

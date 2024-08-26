@@ -67,7 +67,7 @@ public class TabbedPaneView extends JPanel {
                 "1. " + StringsService.register_new_property);
         tabbedPane.setMnemonicAt(0, KeyEvent.VK_1);
         
-        JComponent panel2 = registerNewProperty("Panel #2");
+        JComponent panel2 = registerContract("Panel #2");
         tabbedPane.addTab("2. " + StringsService.register_contract, null, panel2,
                 "2. " + StringsService.register_contract);
         tabbedPane.setMnemonicAt(1, KeyEvent.VK_2);

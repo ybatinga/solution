@@ -1,9 +1,15 @@
 - Bitcoin Core    
-    - load wallets:
+    - wallets loaded on startup (./bitcoin-cli -named loadwallet filename="ord_reg" load_on_startup=true
+):
+        - legacy_buyer
+        - legacy_owner
+        - ord_notary
+        - ord_reg
         
 
 
 Register New Property
+wallet: bcrt1pzqr0v96n0nqrn663evplsu69qpd9h76lheayxnu49tq5lauuvf8q08dutz
 {
   "commit": "e3fa77a4ed6e9a414febd124011984aa3eb65f534a860c19af8665e8b414220c",
   "commit_psbt": null,
@@ -20,3 +26,18 @@ Register New Property
 }
 
 Register Contract
+wallet: bcrt1pkxf9cghnpmegt2rnqhsfh4zt5fupjkcp2ldwexmc2596s5fg07msf4kkqk
+{
+  "commit": "eb03e66391073506e1d95d8e187e217e82b58a4b686c8804f8456bd37c49e21f",
+  "commit_psbt": null,
+  "inscriptions": [
+    {
+      "id": "192f06809103cc0ae9cb9531503b9a7fd6eef017dc073717345bf5ef622e27d5i0",
+      "location": "192f06809103cc0ae9cb9531503b9a7fd6eef017dc073717345bf5ef622e27d5:0:0"
+    }
+  ],
+  "parent": null,
+  "reveal": "192f06809103cc0ae9cb9531503b9a7fd6eef017dc073717345bf5ef622e27d5",
+  "reveal_psbt": null,
+  "total_fees": 938
+}

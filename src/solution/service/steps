@@ -1,0 +1,22 @@
+- Bitcoin Core    
+    - load wallets:
+        
+
+
+Register New Property
+{
+  "commit": "e3fa77a4ed6e9a414febd124011984aa3eb65f534a860c19af8665e8b414220c",
+  "commit_psbt": null,
+  "inscriptions": [
+    {
+      "id": "94d0528a4f0900025d1ae6ed50a695f9e6cb0c1abcf66e456a550c27e3875204i0",
+      "location": "94d0528a4f0900025d1ae6ed50a695f9e6cb0c1abcf66e456a550c27e3875204:0:0"
+    }
+  ],
+  "parent": null,
+  "reveal": "94d0528a4f0900025d1ae6ed50a695f9e6cb0c1abcf66e456a550c27e3875204",
+  "reveal_psbt": null,
+  "total_fees": 752
+}
+
+Register Contract

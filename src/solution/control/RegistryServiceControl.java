@@ -4,9 +4,11 @@
  */
 package solution.control;
 
+import com.google.gson.Gson;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import solution.model.OrdInscribedDataModel;
 
 /**
  *
@@ -20,10 +22,15 @@ public class RegistryServiceControl {
             //Process process = Runtime.getRuntime().exec("cmd /c dir"); //for Windows
 
             process.waitFor();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-            String line;
-            while ((line = reader.readLine()) != null) {
-                System.out.println(line);
-            }
+            
+            InputStreamReader reader =
+                    new InputStreamReader(process.getInputStream());
+            OrdInscribedDataModel ordInscribedDataModel = new Gson().fromJson(reader, OrdInscribedDataModel.class);
+            
+//            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            String line = new String();
+//            while ((line = reader.readLine()) != null) {
+//                System.out.println(line);
+//            }
     }
 }

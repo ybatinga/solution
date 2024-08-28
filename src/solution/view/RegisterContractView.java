@@ -13,6 +13,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import solution.control.RegistryServiceControl;
+import solution.model.OrdInscribedDataModel;
 
 /**
  *
@@ -22,11 +23,14 @@ public class RegisterContractView extends javax.swing.JPanel {
     static private final String newline = "\n";
     JFileChooser fc;
     JTextArea log;
+    OrdInscribedDataModel ordInscribedDataModel;
     /**
      * Creates new form RegisterProperty
      */
     public RegisterContractView() {
         initComponents();
+        contractIdTextField.setEditable(false);
+        contractIdTextField.setVisible(false);
     }
 
     /**
@@ -42,6 +46,8 @@ public class RegisterContractView extends javax.swing.JPanel {
         regNewPropLabel = new javax.swing.JLabel();
         regPropButton = new javax.swing.JButton();
         fileNameLabel = new javax.swing.JLabel();
+        contractIdTextField = new java.awt.TextField();
+        contractIdLabel = new javax.swing.JLabel();
 
         selectFileButton.setText("Select file");
         selectFileButton.addActionListener(new java.awt.event.ActionListener() {
@@ -62,6 +68,8 @@ public class RegisterContractView extends javax.swing.JPanel {
 
         fileNameLabel.setText("File name: ");
 
+        contractIdLabel.setText("Contract ID: ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -74,12 +82,16 @@ public class RegisterContractView extends javax.swing.JPanel {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(fileNameLabel)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(selectFileButton)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(selectFileButton)
+                                    .addComponent(contractIdLabel))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(regPropButton))
-                            .addComponent(fileNameLabel))
-                        .addGap(0, 153, Short.MAX_VALUE))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(contractIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(regPropButton))))
+                        .addGap(0, 149, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,7 +104,11 @@ public class RegisterContractView extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(selectFileButton)
                     .addComponent(regPropButton))
-                .addContainerGap(206, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(contractIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(contractIdLabel))
+                .addContainerGap(169, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -108,10 +124,14 @@ public class RegisterContractView extends javax.swing.JPanel {
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 File file = fc.getSelectedFile();
                 try {
-                    RegistryServiceControl.registerNewPropertyOrContract(file.getPath());
+                    ordInscribedDataModel = RegistryServiceControl.registerNewPropertyOrContract(file.getPath());
+                    contractIdTextField.setVisible(true);                    
+                    contractIdTextField.setText(ordInscribedDataModel.getInscriptions().get(0).getID());
                 } catch (IOException ex) {
+                    contractIdTextField.setText(ex.getMessage());
                     Logger.getLogger(RegisterContractView.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (InterruptedException ex) {
+                    contractIdTextField.setText(ex.getMessage());
                     Logger.getLogger(RegisterContractView.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 //This is where a real application would open the file.
@@ -131,6 +151,8 @@ public class RegisterContractView extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel contractIdLabel;
+    private java.awt.TextField contractIdTextField;
     private javax.swing.JLabel fileNameLabel;
     private javax.swing.JLabel regNewPropLabel;
     private javax.swing.JButton regPropButton;

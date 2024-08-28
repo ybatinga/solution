@@ -6,7 +6,7 @@ import java.math.BigDecimal;
  *
  * @author ssd
  */
-public class registryModel_ {
+public class RegistryModel_ {
     
     private Long id; 
     private BigDecimal propertyRegistryNumber;

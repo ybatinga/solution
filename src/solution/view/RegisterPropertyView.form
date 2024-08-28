@@ -31,7 +31,11 @@
                               <Component id="regPropButton" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="fileNameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="propertyIdLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="propertyIdLabel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="propertyIdTextField" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace min="0" pref="153" max="32767" attributes="0"/>
                   </Group>
@@ -52,8 +56,11 @@
                   <Component id="regPropButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="propertyIdLabel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="170" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="propertyIdLabel" min="-2" max="-2" attributes="0"/>
+                  <Component id="propertyIdTextField" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="169" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -89,6 +96,11 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Property ID: "/>
       </Properties>
+    </Component>
+    <Component class="java.awt.TextField" name="propertyIdTextField">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="propertyIdTextFieldActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

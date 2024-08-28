@@ -29,6 +29,8 @@ public class RegisterPropertyView extends javax.swing.JPanel {
      */
     public RegisterPropertyView() {
         initComponents();
+        propertyIdTextField.setEditable(false);
+        propertyIdTextField.setVisible(false);
     }
 
     /**
@@ -45,6 +47,7 @@ public class RegisterPropertyView extends javax.swing.JPanel {
         regPropButton = new javax.swing.JButton();
         fileNameLabel = new javax.swing.JLabel();
         propertyIdLabel = new javax.swing.JLabel();
+        propertyIdTextField = new java.awt.TextField();
 
         selectFileButton.setText("Select file");
         selectFileButton.addActionListener(new java.awt.event.ActionListener() {
@@ -61,6 +64,12 @@ public class RegisterPropertyView extends javax.swing.JPanel {
         fileNameLabel.setText("New Property: ");
 
         propertyIdLabel.setText("Property ID: ");
+
+        propertyIdTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                propertyIdTextFieldActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -79,7 +88,10 @@ public class RegisterPropertyView extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(regPropButton))
                             .addComponent(fileNameLabel)
-                            .addComponent(propertyIdLabel))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(propertyIdLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(propertyIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 153, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -94,8 +106,10 @@ public class RegisterPropertyView extends javax.swing.JPanel {
                     .addComponent(selectFileButton)
                     .addComponent(regPropButton))
                 .addGap(18, 18, 18)
-                .addComponent(propertyIdLabel)
-                .addContainerGap(170, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(propertyIdLabel)
+                    .addComponent(propertyIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(169, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -112,7 +126,9 @@ public class RegisterPropertyView extends javax.swing.JPanel {
                 File file = fc.getSelectedFile();
                 try {
                     ordInscribedDataModel = RegistryServiceControl.registerNewPropertyOrContract(file.getPath());
-                    propertyIdLabel.setText("Property ID: " + ordInscribedDataModel.getInscriptions().get(0).getID());
+                    propertyIdTextField.setVisible(true);                    
+                    propertyIdTextField.setText(ordInscribedDataModel.getInscriptions().get(0).getID());
+                    
                 } catch (IOException ex) {
                     propertyIdLabel.setText(ex.getMessage());
                     Logger.getLogger(RegisterPropertyView.class.getName()).log(Level.SEVERE, null, ex);
@@ -131,10 +147,15 @@ public class RegisterPropertyView extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_selectFileButtonActionPerformed
 
+    private void propertyIdTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_propertyIdTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_propertyIdTextFieldActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel fileNameLabel;
     private javax.swing.JLabel propertyIdLabel;
+    private java.awt.TextField propertyIdTextField;
     private javax.swing.JLabel regNewPropLabel;
     private javax.swing.JButton regPropButton;
     private javax.swing.JButton selectFileButton;

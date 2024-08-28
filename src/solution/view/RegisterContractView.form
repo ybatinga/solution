@@ -25,14 +25,20 @@
                   </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="selectFileButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="regPropButton" min="-2" max="-2" attributes="0"/>
-                          </Group>
                           <Component id="fileNameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="selectFileButton" min="-2" max="-2" attributes="0"/>
+                                  <Component id="contractIdLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="contractIdTextField" min="-2" max="-2" attributes="0"/>
+                                  <Component id="regPropButton" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
-                      <EmptySpace min="0" pref="153" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="149" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -50,7 +56,12 @@
                   <Component id="selectFileButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="regPropButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="206" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="contractIdTextField" min="-2" max="-2" attributes="0"/>
+                  <Component id="contractIdLabel" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="169" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -83,6 +94,13 @@
     <Component class="javax.swing.JLabel" name="fileNameLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="File name: "/>
+      </Properties>
+    </Component>
+    <Component class="java.awt.TextField" name="contractIdTextField">
+    </Component>
+    <Component class="javax.swing.JLabel" name="contractIdLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Contract ID: "/>
       </Properties>
     </Component>
   </SubComponents>

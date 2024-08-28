@@ -13,6 +13,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import solution.control.RegistryServiceControl;
+import solution.model.OrdInscribedDataModel;
 
 /**
  *
@@ -22,6 +23,7 @@ public class RegisterPropertyView extends javax.swing.JPanel {
     static private final String newline = "\n";
     JFileChooser fc;
     JTextArea log;
+    OrdInscribedDataModel ordInscribedDataModel;
     /**
      * Creates new form RegisterProperty
      */
@@ -42,6 +44,7 @@ public class RegisterPropertyView extends javax.swing.JPanel {
         regNewPropLabel = new javax.swing.JLabel();
         regPropButton = new javax.swing.JButton();
         fileNameLabel = new javax.swing.JLabel();
+        propertyIdLabel = new javax.swing.JLabel();
 
         selectFileButton.setText("Select file");
         selectFileButton.addActionListener(new java.awt.event.ActionListener() {
@@ -56,6 +59,8 @@ public class RegisterPropertyView extends javax.swing.JPanel {
         regPropButton.setText("Register property");
 
         fileNameLabel.setText("New Property: ");
+
+        propertyIdLabel.setText("Property ID: ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -73,7 +78,8 @@ public class RegisterPropertyView extends javax.swing.JPanel {
                                 .addComponent(selectFileButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(regPropButton))
-                            .addComponent(fileNameLabel))
+                            .addComponent(fileNameLabel)
+                            .addComponent(propertyIdLabel))
                         .addGap(0, 153, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -87,7 +93,9 @@ public class RegisterPropertyView extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(selectFileButton)
                     .addComponent(regPropButton))
-                .addContainerGap(206, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(propertyIdLabel)
+                .addContainerGap(170, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -103,10 +111,13 @@ public class RegisterPropertyView extends javax.swing.JPanel {
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 File file = fc.getSelectedFile();
                 try {
-                    RegistryServiceControl.registerNewPropertyOrContract(file.getPath());
+                    ordInscribedDataModel = RegistryServiceControl.registerNewPropertyOrContract(file.getPath());
+                    propertyIdLabel.setText("Property ID: " + ordInscribedDataModel.getInscriptions().get(0).getID());
                 } catch (IOException ex) {
+                    propertyIdLabel.setText(ex.getMessage());
                     Logger.getLogger(RegisterPropertyView.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (InterruptedException ex) {
+                    propertyIdLabel.setText(ex.getMessage());
                     Logger.getLogger(RegisterPropertyView.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 //This is where a real application would open the file.
@@ -123,6 +134,7 @@ public class RegisterPropertyView extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel fileNameLabel;
+    private javax.swing.JLabel propertyIdLabel;
     private javax.swing.JLabel regNewPropLabel;
     private javax.swing.JButton regPropButton;
     private javax.swing.JButton selectFileButton;

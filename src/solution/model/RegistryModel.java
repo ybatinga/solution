@@ -8,7 +8,7 @@ package solution.model;
  *
  * @author ssd
  */
-public class registryModel {
+public class RegistryModel {
 
     private long id;
     private PropertyInfo propertyInfo;

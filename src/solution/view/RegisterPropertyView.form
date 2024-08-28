@@ -31,6 +31,7 @@
                               <Component id="regPropButton" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="fileNameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="propertyIdLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="153" max="32767" attributes="0"/>
                   </Group>
@@ -50,7 +51,9 @@
                   <Component id="selectFileButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="regPropButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="206" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="propertyIdLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="170" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -80,6 +83,11 @@
     <Component class="javax.swing.JLabel" name="fileNameLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="New Property: "/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="propertyIdLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Property ID: "/>
       </Properties>
     </Component>
   </SubComponents>

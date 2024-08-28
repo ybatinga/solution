@@ -16,21 +16,22 @@ import solution.model.OrdInscribedDataModel;
  */
 public class RegistryServiceControl {
     
-    public static void registerNewPropertyOrContract(String filePath) throws IOException, InterruptedException {
+    public static OrdInscribedDataModel registerNewPropertyOrContract(String filePath) throws IOException, InterruptedException {
 
-        Process process = Runtime.getRuntime().exec("/usr/local/apps/ord-0.16.0/ord --chain regtest --bitcoin-rpc-password rpc --bitcoin-rpc-username rpc wallet inscribe --fee-rate 2 --file " + filePath); // for Linux
+        Process process = Runtime.getRuntime().exec("/usr/local/apps/ord-0.19.1/ord --chain regtest --bitcoin-rpc-password rpc --bitcoin-rpc-username rpc wallet inscribe --fee-rate 2 --file " + filePath); // for Linux
             //Process process = Runtime.getRuntime().exec("cmd /c dir"); //for Windows
 
-            process.waitFor();
-            
-            InputStreamReader reader =
-                    new InputStreamReader(process.getInputStream());
-            OrdInscribedDataModel ordInscribedDataModel = new Gson().fromJson(reader, OrdInscribedDataModel.class);
-            
+        process.waitFor();
+
+        InputStreamReader reader =
+                new InputStreamReader(process.getInputStream());
+        OrdInscribedDataModel ordInscribedDataModel = new Gson().fromJson(reader, OrdInscribedDataModel.class);
+
 //            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-            String line = new String();
+        String line = new String();
 //            while ((line = reader.readLine()) != null) {
 //                System.out.println(line);
 //            }
+        return ordInscribedDataModel;
     }
 }

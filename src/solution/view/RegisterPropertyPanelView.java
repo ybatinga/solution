@@ -29,7 +29,6 @@ public class RegisterPropertyPanelView extends javax.swing.JPanel {
      */
     public RegisterPropertyPanelView() {
         initComponents();
-        propertyIdTextField.setEditable(false);
         propertyIdTextField.setVisible(false);
     }
 
@@ -47,6 +46,8 @@ public class RegisterPropertyPanelView extends javax.swing.JPanel {
         propertyIdLabel = new javax.swing.JLabel();
         propertyIdTextField = new java.awt.TextField();
 
+        setDoubleBuffered(false);
+
         registerNewPropertyLabel.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         registerNewPropertyLabel.setText("Register New Property");
 
@@ -59,6 +60,7 @@ public class RegisterPropertyPanelView extends javax.swing.JPanel {
 
         propertyIdLabel.setText("Property ID: ");
 
+        propertyIdTextField.setEditable(false);
         propertyIdTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 propertyIdTextFieldActionPerformed(evt);
@@ -116,10 +118,8 @@ public class RegisterPropertyPanelView extends javax.swing.JPanel {
                 File file = fc.getSelectedFile();
                 try {
                     ordInscribedDataModel = RegistryServiceControl.registerNewPropertyOrContract(file.getPath());
-                    propertyIdTextField.setVisible(true);                    
-                    propertyIdTextField.isVisible();  
                     propertyIdTextField.setText(ordInscribedDataModel.getInscriptions().get(0).getID());
-                    
+                    propertyIdTextField.setVisible(true);                    
                 } catch (IOException ex) {
                     propertyIdLabel.setText(ex.getMessage());
                     Logger.getLogger(RegisterPropertyPanelView.class.getName()).log(Level.SEVERE, null, ex);

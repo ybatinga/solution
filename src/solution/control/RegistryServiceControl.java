@@ -40,18 +40,18 @@ public class RegistryServiceControl {
         OrdInscribedDataModel ordInscribedDataModel = new Gson().fromJson(reader, OrdInscribedDataModel.class);
         
         if(ordInscribedDataModel == null){
-            OrdInscribedDataModel ordInscribedDataModel1 = new OrdInscribedDataModel();
-            OrdInscribedDataModel.Inscription inscription = ordInscribedDataModel1.new Inscription();
+            OrdInscribedDataModel ordInscribedDataModelError = new OrdInscribedDataModel();
+            OrdInscribedDataModel.Inscription inscription = ordInscribedDataModelError.new Inscription();
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
-            inscription.setID(bufferedReader.lines().toString());
+            inscription.setID(bufferedReader.readLine());
+            ordInscribedDataModelError.getInscriptions().add(inscription);
            
-            //            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
-            
+//        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(process.getErrorStream()));    
 //        String line = new String();
-//            while ((line = reader.readLine()) != null) {
+//            while ((line = bufferedReader.readLine()) != null) {
 //                System.out.println(line);
 //            }
-            return ordInscribedDataModel1;
+            return ordInscribedDataModelError;
         }
             
         return ordInscribedDataModel;

@@ -29,7 +29,6 @@ public class RegisterContractPanelView extends javax.swing.JPanel {
      */
     public RegisterContractPanelView() {
         initComponents();
-        contractIdTextField.setEditable(false);
         contractIdTextField.setVisible(false);
     }
 
@@ -56,6 +55,8 @@ public class RegisterContractPanelView extends javax.swing.JPanel {
                 regContractButtonActionPerformed(evt);
             }
         });
+
+        contractIdTextField.setEditable(false);
 
         contractIdLabel.setText("Contract ID: ");
 
@@ -106,8 +107,8 @@ public class RegisterContractPanelView extends javax.swing.JPanel {
                 File file = fc.getSelectedFile();
                 try {
                     ordInscribedDataModel = RegistryServiceControl.registerNewPropertyOrContract(file.getPath());
-                    contractIdTextField.setVisible(true);                    
                     contractIdTextField.setText(ordInscribedDataModel.getInscriptions().get(0).getID());
+                    contractIdTextField.setVisible(true);   
                 } catch (IOException ex) {
                     contractIdTextField.setText(ex.getMessage());
                     Logger.getLogger(RegisterContractPanelView.class.getName()).log(Level.SEVERE, null, ex);

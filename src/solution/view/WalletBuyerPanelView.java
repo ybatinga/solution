@@ -6,6 +6,7 @@ package solution.view;
 
 import solution.control.RegistryServiceControl;
 import solution.model.GetAddressInfoModel;
+import solution.service.StringsService;
 
 /**
  *
@@ -24,7 +25,7 @@ public class WalletBuyerPanelView extends javax.swing.JPanel {
         walletPrivateKeyTextField.setVisible(false);
         walletPublicKeyTextField.setVisible(false);
         
-        getAddressInfoModel = RegistryServiceControl.getAddressInfo("legacy_buyer", "midFKFXtqdSN8pRTvdqyqRwx9DUnRgezR5");
+        getAddressInfoModel = RegistryServiceControl.getAddressInfo("legacy_buyer", StringsService.WALLET_ADDRESS_BUYER);
         if(getAddressInfoModel != null){
             walletAddressTextField.setText(getAddressInfoModel.getResult().getAddress());
             walletAddressTextField.setVisible(true);
@@ -32,7 +33,7 @@ public class WalletBuyerPanelView extends javax.swing.JPanel {
             walletPublicKeyTextField.setVisible(true);
         }
         
-        String privateKey = RegistryServiceControl.dumpPrivKey("legacy_buyer", "midFKFXtqdSN8pRTvdqyqRwx9DUnRgezR5");
+        String privateKey = RegistryServiceControl.dumpPrivKey("legacy_buyer", StringsService.WALLET_ADDRESS_BUYER);
         if(privateKey != null){
             walletPrivateKeyTextField.setText(privateKey);
             walletPrivateKeyTextField.setVisible(true);

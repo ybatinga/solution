@@ -9,7 +9,18 @@ package solution.service;
  * @author ssd
  */
 public class StringsService {
+    
+    public static String WALLET_ADDRESS_BUYER = Platform.LAPTOP_WALLET_ADDRESS_BUYER;
+    public static String WALLET_ADDRESS_OWNER = Platform.LAPTOP_WALLET_ADDRESS_OWNER;    
     public static String real_estate_registry_system = "Real Estate Registry System";    
     public static String register_new_property = "Register New Property";
     public static String register_contract = "Register Contract";
+    
+    public static class Platform{
+        public static final String DESKTOP_WALLET_ADDRESS_BUYER = "midFKFXtqdSN8pRTvdqyqRwx9DUnRgezR5";
+        public static final String DESKTOP_WALLET_ADDRESS_OWNER = "mq2ujk9tzw2EVr111GMxb2uekHqhwG5LiF";   
+        public static final String LAPTOP_WALLET_ADDRESS_BUYER = "mgBg38pkq8ULumNQgHugiKMi5uUzVEg35G";
+        public static final String LAPTOP_WALLET_ADDRESS_OWNER = "mu6TidaphD9PbALi7KR4bJvPukjSziCWZR";   
+    }
+    
 }

@@ -19,7 +19,7 @@ import solution.model.OrdInscribedDataModel;
  *
  * @author ssd
  */
-public class RegisterContractView extends javax.swing.JPanel {
+public class RegisterContractPanelView extends javax.swing.JPanel {
     static private final String newline = "\n";
     JFileChooser fc;
     JTextArea log;
@@ -27,7 +27,7 @@ public class RegisterContractView extends javax.swing.JPanel {
     /**
      * Creates new form RegisterProperty
      */
-    public RegisterContractView() {
+    public RegisterContractPanelView() {
         initComponents();
         contractIdTextField.setEditable(false);
         contractIdTextField.setVisible(false);
@@ -42,31 +42,20 @@ public class RegisterContractView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        selectFileButton = new javax.swing.JButton();
-        regNewPropLabel = new javax.swing.JLabel();
-        regPropButton = new javax.swing.JButton();
-        fileNameLabel = new javax.swing.JLabel();
+        registerNewPropertyLabel = new javax.swing.JLabel();
+        regContractButton = new javax.swing.JButton();
         contractIdTextField = new java.awt.TextField();
         contractIdLabel = new javax.swing.JLabel();
 
-        selectFileButton.setText("Select file");
-        selectFileButton.addActionListener(new java.awt.event.ActionListener() {
+        registerNewPropertyLabel.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        registerNewPropertyLabel.setText("Register Contract");
+
+        regContractButton.setText("Register");
+        regContractButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                selectFileButtonActionPerformed(evt);
+                regContractButtonActionPerformed(evt);
             }
         });
-
-        regNewPropLabel.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
-        regNewPropLabel.setText("Register Contract");
-
-        regPropButton.setText("Register contract");
-        regPropButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                regPropButtonActionPerformed(evt);
-            }
-        });
-
-        fileNameLabel.setText("File name: ");
 
         contractIdLabel.setText("Contract ID: ");
 
@@ -78,47 +67,39 @@ public class RegisterContractView extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(regNewPropLabel)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(registerNewPropertyLabel)
+                        .addContainerGap(241, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(fileNameLabel)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(selectFileButton)
-                                    .addComponent(contractIdLabel))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(contractIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(regPropButton))))
-                        .addGap(0, 149, Short.MAX_VALUE))))
+                                .addComponent(contractIdLabel)
+                                .addGap(21, 21, 21)
+                                .addComponent(contractIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(regContractButton))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(regNewPropLabel)
-                .addGap(12, 12, 12)
-                .addComponent(fileNameLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(selectFileButton)
-                    .addComponent(regPropButton))
+                .addComponent(registerNewPropertyLabel)
                 .addGap(18, 18, 18)
+                .addComponent(regContractButton)
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(contractIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(contractIdLabel))
-                .addContainerGap(169, Short.MAX_VALUE))
+                .addContainerGap(191, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void selectFileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectFileButtonActionPerformed
+    private void regContractButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regContractButtonActionPerformed
         fc = new JFileChooser();
         log = new JTextArea(5,20);
         log.setMargin(new Insets(5,5,5,5));
         log.setEditable(false);
         JScrollPane logScrollPane = new JScrollPane(log);
-        if (evt.getSource() == selectFileButton) {
+        if (evt.getSource() == regContractButton) {
             int returnVal = fc.showOpenDialog(fc);
 
             if (returnVal == JFileChooser.APPROVE_OPTION) {
@@ -129,10 +110,10 @@ public class RegisterContractView extends javax.swing.JPanel {
                     contractIdTextField.setText(ordInscribedDataModel.getInscriptions().get(0).getID());
                 } catch (IOException ex) {
                     contractIdTextField.setText(ex.getMessage());
-                    Logger.getLogger(RegisterContractView.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(RegisterContractPanelView.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (InterruptedException ex) {
                     contractIdTextField.setText(ex.getMessage());
-                    Logger.getLogger(RegisterContractView.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(RegisterContractPanelView.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 //This is where a real application would open the file.
                 log.append("Opening: " + file.getName() + "." + newline);
@@ -143,19 +124,13 @@ public class RegisterContractView extends javax.swing.JPanel {
 
         //Handle save button action.
         }
-    }//GEN-LAST:event_selectFileButtonActionPerformed
-
-    private void regPropButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regPropButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_regPropButtonActionPerformed
+    }//GEN-LAST:event_regContractButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel contractIdLabel;
     private java.awt.TextField contractIdTextField;
-    private javax.swing.JLabel fileNameLabel;
-    private javax.swing.JLabel regNewPropLabel;
-    private javax.swing.JButton regPropButton;
-    private javax.swing.JButton selectFileButton;
+    private javax.swing.JButton regContractButton;
+    private javax.swing.JLabel registerNewPropertyLabel;
     // End of variables declaration//GEN-END:variables
 }

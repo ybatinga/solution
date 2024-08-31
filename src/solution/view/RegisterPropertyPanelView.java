@@ -19,7 +19,7 @@ import solution.model.OrdInscribedDataModel;
  *
  * @author ssd
  */
-public class RegisterPropertyView extends javax.swing.JPanel {
+public class RegisterPropertyPanelView extends javax.swing.JPanel {
     static private final String newline = "\n";
     JFileChooser fc;
     JTextArea log;
@@ -27,7 +27,7 @@ public class RegisterPropertyView extends javax.swing.JPanel {
     /**
      * Creates new form RegisterProperty
      */
-    public RegisterPropertyView() {
+    public RegisterPropertyPanelView() {
         initComponents();
         propertyIdTextField.setEditable(false);
         propertyIdTextField.setVisible(false);
@@ -42,26 +42,20 @@ public class RegisterPropertyView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        selectFileButton = new javax.swing.JButton();
-        regNewPropLabel = new javax.swing.JLabel();
-        regPropButton = new javax.swing.JButton();
-        fileNameLabel = new javax.swing.JLabel();
+        registerNewPropertyLabel = new javax.swing.JLabel();
+        registerNewPropertyButton = new javax.swing.JButton();
         propertyIdLabel = new javax.swing.JLabel();
         propertyIdTextField = new java.awt.TextField();
 
-        selectFileButton.setText("Select file");
-        selectFileButton.addActionListener(new java.awt.event.ActionListener() {
+        registerNewPropertyLabel.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        registerNewPropertyLabel.setText("Register New Property");
+
+        registerNewPropertyButton.setText("Register");
+        registerNewPropertyButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                selectFileButtonActionPerformed(evt);
+                registerNewPropertyButtonActionPerformed(evt);
             }
         });
-
-        regNewPropLabel.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
-        regNewPropLabel.setText("Register New Property");
-
-        regPropButton.setText("Register property");
-
-        fileNameLabel.setText("New Property: ");
 
         propertyIdLabel.setText("Property ID: ");
 
@@ -79,47 +73,43 @@ public class RegisterPropertyView extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(regNewPropLabel)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(registerNewPropertyLabel)
+                        .addContainerGap(195, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(selectFileButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(regPropButton))
-                            .addComponent(fileNameLabel)
-                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(propertyIdLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(propertyIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 153, Short.MAX_VALUE))))
+                                .addComponent(propertyIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(registerNewPropertyButton))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(regNewPropLabel)
-                .addGap(12, 12, 12)
-                .addComponent(fileNameLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(selectFileButton)
-                    .addComponent(regPropButton))
+                .addComponent(registerNewPropertyLabel)
+                .addGap(18, 18, 18)
+                .addComponent(registerNewPropertyButton)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(propertyIdLabel)
                     .addComponent(propertyIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(169, Short.MAX_VALUE))
+                .addContainerGap(193, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void selectFileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectFileButtonActionPerformed
+    private void propertyIdTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_propertyIdTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_propertyIdTextFieldActionPerformed
+
+    private void registerNewPropertyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerNewPropertyButtonActionPerformed
         fc = new JFileChooser();
         log = new JTextArea(5,20);
         log.setMargin(new Insets(5,5,5,5));
         log.setEditable(false);
-        JScrollPane logScrollPane = new JScrollPane(log);
-        if (evt.getSource() == selectFileButton) {
+//        JScrollPane logScrollPane = new JScrollPane(log);
+        if (evt.getSource() == registerNewPropertyButton) {
             int returnVal = fc.showOpenDialog(fc);
 
             if (returnVal == JFileChooser.APPROVE_OPTION) {
@@ -127,14 +117,15 @@ public class RegisterPropertyView extends javax.swing.JPanel {
                 try {
                     ordInscribedDataModel = RegistryServiceControl.registerNewPropertyOrContract(file.getPath());
                     propertyIdTextField.setVisible(true);                    
+                    propertyIdTextField.isVisible();  
                     propertyIdTextField.setText(ordInscribedDataModel.getInscriptions().get(0).getID());
                     
                 } catch (IOException ex) {
                     propertyIdLabel.setText(ex.getMessage());
-                    Logger.getLogger(RegisterPropertyView.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(RegisterPropertyPanelView.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (InterruptedException ex) {
                     propertyIdLabel.setText(ex.getMessage());
-                    Logger.getLogger(RegisterPropertyView.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(RegisterPropertyPanelView.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 //This is where a real application would open the file.
                 log.append("Opening: " + file.getName() + "." + newline);
@@ -145,19 +136,13 @@ public class RegisterPropertyView extends javax.swing.JPanel {
 
         //Handle save button action.
         }
-    }//GEN-LAST:event_selectFileButtonActionPerformed
-
-    private void propertyIdTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_propertyIdTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_propertyIdTextFieldActionPerformed
+    }//GEN-LAST:event_registerNewPropertyButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel fileNameLabel;
     private javax.swing.JLabel propertyIdLabel;
     private java.awt.TextField propertyIdTextField;
-    private javax.swing.JLabel regNewPropLabel;
-    private javax.swing.JButton regPropButton;
-    private javax.swing.JButton selectFileButton;
+    private javax.swing.JButton registerNewPropertyButton;
+    private javax.swing.JLabel registerNewPropertyLabel;
     // End of variables declaration//GEN-END:variables
 }

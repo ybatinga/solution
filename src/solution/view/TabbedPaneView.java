@@ -56,39 +56,61 @@ import javax.swing.JTextArea;
 import solution.service.StringsService;
 
 public class TabbedPaneView extends JPanel {
+    
+    WalletBuyerPanelView walletBuyerPanelView;
+    WalletOwnerPanelView walletOwnerPanelView;
+    
     public TabbedPaneView() {
         super(new GridLayout(1, 1));
         
         JTabbedPane tabbedPane = new JTabbedPane();
         
-        
-        JComponent panel1 = registerNewProperty("Panel #1");
-        tabbedPane.addTab("1. " + StringsService.register_new_property, null, panel1,
-                "1. " + StringsService.register_new_property);
+        JComponent panel1 = buyerWalletPanel("Panel #1");
+        tabbedPane.addTab("Buyer Wallet", null, panel1,
+                "Buyer Wallet");
         tabbedPane.setMnemonicAt(0, KeyEvent.VK_1);
         
-        JComponent panel2 = registerContract("Panel #2");
-        tabbedPane.addTab("2. " + StringsService.register_contract, null, panel2,
-                "2. " + StringsService.register_contract);
+        JComponent panel2 = ownerWalletPanel("Panel #2");
+        tabbedPane.addTab("Owner Wallet", null, panel2,
+                "Owner Wallet");
         tabbedPane.setMnemonicAt(1, KeyEvent.VK_2);
         
-        JComponent panel3 = makeTextPanel("Panel #3");
-        tabbedPane.addTab("Tab 3", null, panel3,
-                "Still does nothing");
+        JComponent panel3 = registerNewPropertyPanel("Panel #3");
+        tabbedPane.addTab("1. " + StringsService.register_new_property, null, panel3,
+                "1. " + StringsService.register_new_property);
         tabbedPane.setMnemonicAt(2, KeyEvent.VK_3);
         
-        JComponent panel4 = makeTextPanel(
+        JComponent panel4 = registerContractPanel("Panel #4");
+        tabbedPane.addTab("2. " + StringsService.register_contract, null, panel4,
+                "2. " + StringsService.register_contract);
+        tabbedPane.setMnemonicAt(3, KeyEvent.VK_4);
+        
+        JComponent panel5 = createMultisigAddressPanel("Panel #5");
+        tabbedPane.addTab("3. Create Multisig Address", null, panel5,
+                "3. Create Multisig Address");
+        tabbedPane.setMnemonicAt(4, KeyEvent.VK_5);
+        
+        JComponent panel6 = makeTextPanel(
                 "Panel #4 (has a preferred size of 410 x 50).");
         panel4.setPreferredSize(new Dimension(410, 50));
-        tabbedPane.addTab("Tab 4", null, panel4,
+        tabbedPane.addTab("Tab 4", null, panel6,
                 "Does nothing at all");
-        tabbedPane.setMnemonicAt(3, KeyEvent.VK_4);
+        tabbedPane.setMnemonicAt(3, KeyEvent.VK_6);
         
         //Add the tabbed pane to this panel.
         add(tabbedPane);
         
         //The following line enables to use scrolling tabs.
         tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
+    }
+    
+    protected JComponent createMultisigAddressPanel(String text) {
+        CreateMultisigAddressPanel panel = new CreateMultisigAddressPanel(walletBuyerPanelView, walletOwnerPanelView);
+        JLabel filler = new JLabel(text);
+//        filler.setHorizontalAlignment(JLabel.CENTER);
+//        panel.setLayout(new GridLayout(1, 1));
+        panel.add(filler);
+        return panel;
     }
     
     protected JComponent makeTextPanel(String text) {
@@ -99,25 +121,41 @@ public class TabbedPaneView extends JPanel {
         panel.add(filler);
         return panel;
     }
-    
-    protected JComponent registerNewProperty(String text) {
-        RegisterPropertyView panel = new RegisterPropertyView();
+
+    protected JComponent buyerWalletPanel(String text) {
+        walletBuyerPanelView = new WalletBuyerPanelView();
         JLabel filler = new JLabel(text);
 //        filler.setHorizontalAlignment(JLabel.CENTER);
 //        panel.setLayout(new GridLayout(1, 1));
-        panel.add(filler);
-        return panel;
-
+        walletBuyerPanelView.add(filler);
+        return walletBuyerPanelView;
     }
     
-    protected JComponent registerContract(String text) {
-        RegisterContractView panel = new RegisterContractView();
+    protected JComponent ownerWalletPanel(String text) {
+        walletOwnerPanelView = new WalletOwnerPanelView();
+        JLabel filler = new JLabel(text);
+//        filler.setHorizontalAlignment(JLabel.CENTER);
+//        panel.setLayout(new GridLayout(1, 1));
+        walletOwnerPanelView.add(filler);
+        return walletOwnerPanelView;
+    }
+    
+    protected JComponent registerNewPropertyPanel(String text) {
+        RegisterPropertyPanelView panel = new RegisterPropertyPanelView();
         JLabel filler = new JLabel(text);
 //        filler.setHorizontalAlignment(JLabel.CENTER);
 //        panel.setLayout(new GridLayout(1, 1));
         panel.add(filler);
         return panel;
-
+    }
+    
+    protected JComponent registerContractPanel(String text) {
+        RegisterContractPanelView panel = new RegisterContractPanelView();
+        JLabel filler = new JLabel(text);
+//        filler.setHorizontalAlignment(JLabel.CENTER);
+//        panel.setLayout(new GridLayout(1, 1));
+        panel.add(filler);
+        return panel;
     }
     
     /** Returns an ImageIcon, or null if the path was invalid. */
@@ -138,7 +176,7 @@ public class TabbedPaneView extends JPanel {
      */
     private static void createAndShowGUI() {
         //Create and set up the window.
-        JFrame frame = new JFrame("Real Estate Registry System");
+        JFrame frame = new JFrame(StringsService.real_estate_registry_system);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         //Add content to the window.

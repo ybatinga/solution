@@ -9,6 +9,7 @@ package solution.service;
  * @author ssd
  */
 public class StringsService {
+    public static String real_estate_registry_system = "Real Estate Registry System";    
     public static String register_new_property = "Register New Property";
     public static String register_contract = "Register Contract";
 }

@@ -59,6 +59,8 @@ public class TransferContractToMultisigPanelView extends javax.swing.JPanel {
 
         contractTransactionIdLabel.setText("Contract Transaction ID:");
 
+        contractTransactionIdTextField.setEditable(false);
+
         transferContractToMultisigButton.setText("Transfer");
         transferContractToMultisigButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,12 +87,11 @@ public class TransferContractToMultisigPanelView extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(transferContractToMultisigAddressLable)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(contractTransactionIdLabel)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(contractTransactionIdTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(transferContractToMultisigAddressLable)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(contractTransactionIdLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(contractTransactionIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(transferContractToMultisigButton)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(voutLabel)
@@ -104,7 +105,7 @@ public class TransferContractToMultisigPanelView extends javax.swing.JPanel {
                         .addComponent(transactionIdOfTransferredContractLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(transactionIdOfTransferredContractTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(95, Short.MAX_VALUE))
+                .addContainerGap(198, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

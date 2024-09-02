@@ -13,34 +13,34 @@ import solution.model.CreateMultisigModel;
  */
 public class CreateMultisigAddressPanel extends javax.swing.JPanel {
 
-    WalletBuyerPanelView walletBuyerPanelView;
-    WalletOwnerPanelView walletOwnerPanelView;
+    private String walletBuyerPublicKey;
+    private String walletOwnerPublicKey;
+    private CreateMultisigModel createMultisigModel;
     /**
      * Creates new form CreateMultisigAddressPanel
      */
-    public CreateMultisigAddressPanel(WalletBuyerPanelView walletBuyerPanelView, WalletOwnerPanelView walletOwnerPanelView) {
+    public CreateMultisigAddressPanel(String walletBuyerPublicKey, String walletOwnerPublicKey) {
         initComponents();
-        this.walletBuyerPanelView = walletBuyerPanelView;
-        this.walletOwnerPanelView = walletOwnerPanelView;
-        
+        this.walletBuyerPublicKey = walletBuyerPublicKey;
+        this.walletOwnerPublicKey = walletOwnerPublicKey;
         buyerWalletPublicKeyTextField.setVisible(false);
         multisigAddressTextField.setVisible(false);   
         ownerWalletPublicKeyTextField.setVisible(false);
         redeemScriptTextField.setVisible(false);
         
-        if(walletBuyerPanelView != null){
+        if(walletBuyerPublicKey != null){
             buyerWalletPublicKeyTextField.setVisible(true);
-            buyerWalletPublicKeyTextField.setText(walletBuyerPanelView.getGetAddressInfoModel().getResult().getPubkey());
+            buyerWalletPublicKeyTextField.setText(walletBuyerPublicKey);
         }
         
-        if(walletOwnerPanelView != null){
+        if(walletOwnerPublicKey != null){
             ownerWalletPublicKeyTextField.setVisible(true);
-            ownerWalletPublicKeyTextField.setText(walletOwnerPanelView.getGetAddressInfoModel().getResult().getPubkey());
+            ownerWalletPublicKeyTextField.setText(walletOwnerPublicKey);
         }
         
-        CreateMultisigModel createMultisigModel = RegistryServiceControl.createMultisigAddress(
-                walletBuyerPanelView.getGetAddressInfoModel().getResult().getPubkey(), 
-                walletOwnerPanelView.getGetAddressInfoModel().getResult().getPubkey());
+        createMultisigModel = RegistryServiceControl.createMultisigAddress(
+                walletBuyerPublicKey, 
+                walletOwnerPublicKey);
         
         if(createMultisigModel != null){
             multisigAddressTextField.setVisible(true);   
@@ -153,9 +153,9 @@ public class CreateMultisigAddressPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void createMultisigAddressButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createMultisigAddressButtonActionPerformed
-        CreateMultisigModel createMultisigModel = RegistryServiceControl.createMultisigAddress(
-                walletBuyerPanelView.getGetAddressInfoModel().getResult().getPubkey(), 
-                walletOwnerPanelView.getGetAddressInfoModel().getResult().getPubkey());
+        createMultisigModel = RegistryServiceControl.createMultisigAddress(
+                walletBuyerPublicKey, 
+                walletOwnerPublicKey);
         
         if(createMultisigModel != null){
             multisigAddressTextField.setVisible(true);   
@@ -180,4 +180,8 @@ public class CreateMultisigAddressPanel extends javax.swing.JPanel {
     private javax.swing.JLabel redeemScriptLabel;
     private java.awt.TextField redeemScriptTextField;
     // End of variables declaration//GEN-END:variables
+
+    public CreateMultisigModel getCreateMultisigModel() {
+        return createMultisigModel;
+    }
 }

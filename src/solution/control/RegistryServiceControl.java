@@ -20,7 +20,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import solution.model.BitcoinCliStringResultModel;
 import solution.model.CreateMultisigModel;
+import solution.model.DecodeRawTransactionModel;
 import solution.model.GetAddressInfoModel1;
+import solution.model.GetRawTransactionModel;
+import solution.model.SignRawTransactionWithWalletModel;
 
 /**
  *
@@ -107,38 +110,6 @@ public class RegistryServiceControl {
         }
     }
     
-    public static CreateMultisigModel createMultisigAddress_(String buyerPublicKey, String ownerPublicKey){
-        
-        try {
-            HttpClient client = HttpClient.newHttpClient();
-            
-            String credentials = "rpc" + ":" + "rpc";
-            String auth = "Basic " + Base64.getEncoder().encodeToString(credentials.getBytes());
-            
-            
-            String asdf = new String();
-            asdf = "{\"jsonrpc\": \"1.0\", \"id\": \"curltest\", \"method\": \"createmultisig\", \"params\": [2, [\"" + buyerPublicKey + "\\\",\\\"" + ownerPublicKey + "\"]]}";
-//            asdf = "{\"jsonrpc\": \"1.0\", \"id\": \"curltest\", \"method\": \"createmultisig\", \"params\": [2, [\\\"03789ed0bb717d88f7d321a368d905e7430207ebbd82bd342cf11ae157a7ace5fd\\\",\\\"03dbc6764b8884a92e871274b87583e6d5c2a58819473e17e107ef3f6aa5a61626\\\"]\"]}";
-            HttpRequest request = HttpRequest.newBuilder()
-                    .uri(URI.create("http://127.0.0.1:18443/"))
-//                    .POST(BodyPublishers.ofString("{\"jsonrpc\": \"1.0\", \"id\": \"curltest\", \"method\": \"createmultisig\", \"params\": [2, \"keys\":\"[\\\"03eff92e93ad5443d8636da5233820426871eab2640cc3c48734a31ba388d843b2\\\",\\\"03ebbedbaf6d6b0add5de2f698631eb5b0a2b2e13f7f878cc9646c11512779d790\\\"]\"]}"))
-                    .POST(BodyPublishers.ofString(asdf))
-                    .setHeader("content-type", "text/plain;")
-                    .setHeader("authorization", auth)
-                    .build();
-            
-            HttpResponse response = client.send(request, HttpResponse.BodyHandlers.ofString());
-            String json = response.body().toString();
-            
-            CreateMultisigModel createMultisigResultModel = new Gson().fromJson(json, CreateMultisigModel.class);
-               
-            return createMultisigResultModel;
-        } catch (IOException | InterruptedException ex) {
-            Logger.getLogger(RegistryServiceControl.class.getName()).log(Level.SEVERE, null, ex);
-            return null;
-        }
-    }
-    
     public static CreateMultisigModel createMultisigAddress(String buyerPublicKey, String ownerPublicKey)  {
         try {
             
@@ -165,6 +136,167 @@ public class RegistryServiceControl {
         }
     }
     
+    public static GetRawTransactionModel getRawTransaction(String txId) {
+        
+        try {
+            HttpClient client = HttpClient.newHttpClient();
+            
+            String credentials = "rpc" + ":" + "rpc";
+            String auth = "Basic " + Base64.getEncoder().encodeToString(credentials.getBytes());
+            
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create("http://127.0.0.1:18443/wallet/ord"))
+                    .POST(BodyPublishers.ofString("{\"jsonrpc\": \"1.0\", \"id\": \"curltest\", \"method\": \"getrawtransaction\", \"params\": [\""+ txId +"\", true]}"))
+                    .setHeader("content-type", "text/plain;")
+                    .setHeader("authorization", auth)
+                    .build();
+            
+            HttpResponse response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            String json = response.body().toString();
+            GetRawTransactionModel getRawTransactionModel = new Gson().fromJson(json, GetRawTransactionModel.class);
+            return getRawTransactionModel;
+        } catch (IOException | InterruptedException ex) {
+            Logger.getLogger(RegistryServiceControl.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+
+    public static String createRawTransaction(String txId, long vout, String recipientAddress) {
+        try {
+            String[] command = new String[]{"/usr/local/apps/bitcoin-25.0/bin/bitcoin-cli", "createrawtransaction",
+//                        "[{\"txid\":\"" + txId + "\",\"vout\":0}]", "[{\"" + recipientAddress + "\":0.01}]"};
+                        "[{\"txid\":\"" + txId + "\",\"vout\":0}]", "[{\"" + recipientAddress + "\":0.00009000}]"};            
+
+            Process process = Runtime.getRuntime().exec(command); // for Linux
+
+            process.waitFor();
+
+        InputStreamReader reader =
+                new InputStreamReader(process.getInputStream());
+        String rawTxHex = new Gson().fromJson(reader, String.class);
+//            print error as output
+//            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+//            String line = new String();
+//            while ((line = reader.readLine()) != null) {
+//                System.out.println(line);
+//            }
+
+            return rawTxHex;
+//            return null;
+        } catch (IOException | InterruptedException ex) {
+            Logger.getLogger(RegistryServiceControl.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
     
+    public static String decodeRawTransaction(String rawTxHex) {
+        try {
+            String[] command = new String[]{"/usr/local/apps/bitcoin-25.0/bin/bitcoin-cli", "decoderawtransaction",
+                rawTxHex};
+
+            Process process = Runtime.getRuntime().exec(command); // for Linux
+
+            process.waitFor();
+
+            InputStreamReader reader
+                    = new InputStreamReader(process.getInputStream());
+            DecodeRawTransactionModel decodeRawTransactionModel = new Gson().fromJson(reader, DecodeRawTransactionModel.class);
+//            print error as output
+//            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+//            String line = new String();
+//            while ((line = reader.readLine()) != null) {
+//                System.out.println(line);
+//            }
+
+            return decodeRawTransactionModel.getTxid();
+//            return null;
+        } catch (IOException | InterruptedException ex) {
+            Logger.getLogger(RegistryServiceControl.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+    
+    public static String signRawTransactionWithWallet(String rawTxHex, String walletName) {
+        try {
+            String[] command = new String[]{"/usr/local/apps/bitcoin-25.0/bin/bitcoin-cli", "-rpcwallet=" + walletName, 
+                "signrawtransactionwithwallet", rawTxHex};
+
+            Process process = Runtime.getRuntime().exec(command); // for Linux
+
+            process.waitFor();
+
+            InputStreamReader reader
+                    = new InputStreamReader(process.getInputStream());
+            
+            SignRawTransactionWithWalletModel signRawTransactionWithWalletModel = new Gson().fromJson(reader, SignRawTransactionWithWalletModel.class);
+//            print error as output
+//            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+//            String line = new String();
+//            while ((line = reader.readLine()) != null) {
+//                System.out.println(line);
+//            }
+            
+            String signedTx = signRawTransactionWithWalletModel.getHex();
+            return signedTx;
+//            return null;
+        } catch (IOException | InterruptedException ex) {
+            Logger.getLogger(RegistryServiceControl.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+    
+    public static String sendRawTransaction(String signedTx, String walletName) {
+        try {
+            String[] command = new String[]{"/usr/local/apps/bitcoin-25.0/bin/bitcoin-cli", "-rpcwallet=" + walletName, 
+                "sendrawtransaction", signedTx};
+
+            Process process = Runtime.getRuntime().exec(command); // for Linux
+
+            process.waitFor();
+
+            //this code block gets result of object that does not have a Model object yet
+//            String newLine = System.getProperty("line.separator");
+//            BufferedReader reader = new BufferedReader(
+//                    new InputStreamReader(process.getInputStream()));
+//            StringBuilder result = new StringBuilder();
+//            for (String line; (line = reader.readLine()) != null; ) {
+//                if (result.length() > 0) {
+//                    result.append(newLine);
+//                }
+//                result.append(line);
+//            }            
+//            String txIdOfTransferredContract = result.toString();
+            
+            InputStreamReader reader
+                    = new InputStreamReader(process.getInputStream());
+            String txIdOfTransferredContract = new Gson().fromJson(reader, String.class);
+            
+
+            if(txIdOfTransferredContract == null || txIdOfTransferredContract.equals("")){
+//            if(signRawTransactionWithWalletModel == null){
+                printErrorInOutput(process);
+                return null;
+            }
+//            return signRawTransactionWithWalletModel.getHex();
+            return txIdOfTransferredContract;
+        } catch (IOException | InterruptedException ex) {
+            Logger.getLogger(RegistryServiceControl.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+    
+        public static void printErrorInOutput(Process process) {
+            try {
+                //            print error as output
+                BufferedReader reader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+                String line = new String();
+                while ((line = reader.readLine()) != null) {
+                    System.out.println(line);
+                }
+            } catch (IOException ex) {
+                Logger.getLogger(RegistryServiceControl.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
     
 }

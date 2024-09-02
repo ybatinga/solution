@@ -14,7 +14,7 @@ import solution.service.StringsService;
  */
 public class WalletBuyerPanelView extends javax.swing.JPanel {
     
-    private GetAddressInfoModel getAddressInfoModel;
+    public GetAddressInfoModel getAddressInfoModel;
     
     /**
      * Creates new form WalletBuyerPanelView

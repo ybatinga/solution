@@ -13,7 +13,7 @@ import solution.service.StringsService;
  * @author ssd
  */
 public class WalletOwnerPanelView extends javax.swing.JPanel {
-    private GetAddressInfoModel getAddressInfoModel;
+    GetAddressInfoModel getAddressInfoModel;
     /**
      * Creates new form WalletBuyerPanelView
      */

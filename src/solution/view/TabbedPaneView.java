@@ -57,8 +57,10 @@ import solution.service.StringsService;
 
 public class TabbedPaneView extends JPanel {
     
-    WalletBuyerPanelView walletBuyerPanelView;
-    WalletOwnerPanelView walletOwnerPanelView;
+    String walletBuyerPublicKey;
+    String walletOwnerPublicKey;
+    String multisigAddress;
+    
     
     public TabbedPaneView() {
         super(new GridLayout(1, 1));
@@ -90,12 +92,10 @@ public class TabbedPaneView extends JPanel {
                 "3. Create Multisig Address");
         tabbedPane.setMnemonicAt(4, KeyEvent.VK_5);
         
-        JComponent panel6 = makeTextPanel(
-                "Panel #4 (has a preferred size of 410 x 50).");
-        panel4.setPreferredSize(new Dimension(410, 50));
-        tabbedPane.addTab("Tab 4", null, panel6,
-                "Does nothing at all");
-        tabbedPane.setMnemonicAt(3, KeyEvent.VK_6);
+        JComponent panel6 = transferContractToMultisigAddressPanel("Panel #6");
+        tabbedPane.addTab("4. " + StringsService.transfer_contract_to_multisig_address, null, panel6,
+                "4. " + StringsService.transfer_contract_to_multisig_address);
+        tabbedPane.setMnemonicAt(5, KeyEvent.VK_6);
         
         //Add the tabbed pane to this panel.
         add(tabbedPane);
@@ -103,13 +103,23 @@ public class TabbedPaneView extends JPanel {
         //The following line enables to use scrolling tabs.
         tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
     }
-    
-    protected JComponent createMultisigAddressPanel(String text) {
-        CreateMultisigAddressPanel panel = new CreateMultisigAddressPanel(walletBuyerPanelView, walletOwnerPanelView);
+        
+    protected JComponent transferContractToMultisigAddressPanel(String text) {
+        TransferContractToMultisigPanelView panel = new TransferContractToMultisigPanelView(multisigAddress);
         JLabel filler = new JLabel(text);
 //        filler.setHorizontalAlignment(JLabel.CENTER);
 //        panel.setLayout(new GridLayout(1, 1));
         panel.add(filler);
+        return panel;
+    }
+            
+    protected JComponent createMultisigAddressPanel(String text) {
+        CreateMultisigAddressPanel panel = new CreateMultisigAddressPanel(walletBuyerPublicKey, walletOwnerPublicKey);
+        JLabel filler = new JLabel(text);
+//        filler.setHorizontalAlignment(JLabel.CENTER);
+//        panel.setLayout(new GridLayout(1, 1));
+        panel.add(filler);
+        multisigAddress = panel.getCreateMultisigModel().getAddress();
         return panel;
     }
     
@@ -123,20 +133,22 @@ public class TabbedPaneView extends JPanel {
     }
 
     protected JComponent buyerWalletPanel(String text) {
-        walletBuyerPanelView = new WalletBuyerPanelView();
+        WalletBuyerPanelView walletBuyerPanelView = new WalletBuyerPanelView();
         JLabel filler = new JLabel(text);
 //        filler.setHorizontalAlignment(JLabel.CENTER);
 //        panel.setLayout(new GridLayout(1, 1));
         walletBuyerPanelView.add(filler);
+        walletBuyerPublicKey = walletBuyerPanelView.getAddressInfoModel.getResult().getPubkey();
         return walletBuyerPanelView;
     }
     
     protected JComponent ownerWalletPanel(String text) {
-        walletOwnerPanelView = new WalletOwnerPanelView();
+        WalletOwnerPanelView walletOwnerPanelView = new WalletOwnerPanelView();
         JLabel filler = new JLabel(text);
 //        filler.setHorizontalAlignment(JLabel.CENTER);
 //        panel.setLayout(new GridLayout(1, 1));
         walletOwnerPanelView.add(filler);
+        walletOwnerPublicKey = walletOwnerPanelView.getAddressInfoModel.getResult().getPubkey();
         return walletOwnerPanelView;
     }
     

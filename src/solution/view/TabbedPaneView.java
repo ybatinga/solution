@@ -59,6 +59,7 @@ public class TabbedPaneView extends JPanel {
     
     String walletBuyerPublicKey;
     String walletOwnerPublicKey;
+    String contractTransactionId;
     String multisigAddress;
     
     
@@ -167,6 +168,7 @@ public class TabbedPaneView extends JPanel {
 //        filler.setHorizontalAlignment(JLabel.CENTER);
 //        panel.setLayout(new GridLayout(1, 1));
         panel.add(filler);
+        contractTransactionId = panel.getOrdInscribedDataModel().getReveal();
         return panel;
     }
     

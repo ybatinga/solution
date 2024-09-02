@@ -26,9 +26,9 @@
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="contractIdLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="contractTransactionIdLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                              <Component id="contractIdTextField" min="-2" max="-2" attributes="0"/>
+                              <Component id="contractTransactionIdTextField" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="regContractButton" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -47,8 +47,8 @@
               <Component id="regContractButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="contractIdTextField" min="-2" max="-2" attributes="0"/>
-                  <Component id="contractIdLabel" min="-2" max="-2" attributes="0"/>
+                  <Component id="contractTransactionIdTextField" min="-2" max="-2" attributes="0"/>
+                  <Component id="contractTransactionIdLabel" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="191" max="32767" attributes="0"/>
           </Group>
@@ -72,14 +72,14 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="regContractButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="java.awt.TextField" name="contractIdTextField">
+    <Component class="java.awt.TextField" name="contractTransactionIdTextField">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="contractIdLabel">
+    <Component class="javax.swing.JLabel" name="contractTransactionIdLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Contract ID: "/>
+        <Property name="text" type="java.lang.String" value="Contract Transaction ID: "/>
       </Properties>
     </Component>
   </SubComponents>

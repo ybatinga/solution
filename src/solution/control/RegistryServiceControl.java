@@ -165,7 +165,7 @@ public class RegistryServiceControl {
         try {
             String[] command = new String[]{"/usr/local/apps/bitcoin-25.0/bin/bitcoin-cli", "createrawtransaction",
 //                        "[{\"txid\":\"" + txId + "\",\"vout\":0}]", "[{\"" + recipientAddress + "\":0.01}]"};
-                        "[{\"txid\":\"" + txId + "\",\"vout\":0}]", "[{\"" + recipientAddress + "\":0.00009000}]"};            
+                        "[{\"txid\":\"" + txId + "\",\"vout\":" + txId + "}]", "[{\"" + recipientAddress + "\":0.00009000}]"};            
 
             Process process = Runtime.getRuntime().exec(command); // for Linux
 

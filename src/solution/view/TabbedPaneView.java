@@ -61,6 +61,7 @@ public class TabbedPaneView extends JPanel {
     String walletOwnerPublicKey;
     String contractTransactionId;
     String multisigAddress;
+    RegisterContractPanelView registerContractPanelView;
     
     
     public TabbedPaneView() {
@@ -106,7 +107,10 @@ public class TabbedPaneView extends JPanel {
     }
         
     protected JComponent transferContractToMultisigAddressPanel(String text) {
-        TransferContractToMultisigPanelView panel = new TransferContractToMultisigPanelView(multisigAddress);
+        if(registerContractPanelView.getOrdInscribedDataModel() != null){
+            contractTransactionId = registerContractPanelView.getOrdInscribedDataModel().getReveal();
+        }
+        TransferContractToMultisigPanelView panel = new TransferContractToMultisigPanelView(multisigAddress, contractTransactionId);
         JLabel filler = new JLabel(text);
 //        filler.setHorizontalAlignment(JLabel.CENTER);
 //        panel.setLayout(new GridLayout(1, 1));
@@ -163,13 +167,12 @@ public class TabbedPaneView extends JPanel {
     }
     
     protected JComponent registerContractPanel(String text) {
-        RegisterContractPanelView panel = new RegisterContractPanelView();
+        registerContractPanelView = new RegisterContractPanelView();
         JLabel filler = new JLabel(text);
 //        filler.setHorizontalAlignment(JLabel.CENTER);
 //        panel.setLayout(new GridLayout(1, 1));
-        panel.add(filler);
-        contractTransactionId = panel.getOrdInscribedDataModel().getReveal();
-        return panel;
+        registerContractPanelView.add(filler);
+        return registerContractPanelView;
     }
     
     /** Returns an ImageIcon, or null if the path was invalid. */

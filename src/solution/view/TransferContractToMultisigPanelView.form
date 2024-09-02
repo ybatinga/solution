@@ -22,9 +22,9 @@
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="transferContractToMultisigAddressLable" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="transactionIdLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="contractTransactionIdLabel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="transactionIdTextField" max="32767" attributes="0"/>
+                          <Component id="contractTransactionIdTextField" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Component id="transferContractToMultisigButton" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -55,8 +55,8 @@
               <Component id="transferContractToMultisigAddressLable" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="transactionIdLabel" min="-2" max="-2" attributes="0"/>
-                  <Component id="transactionIdTextField" min="-2" max="-2" attributes="0"/>
+                  <Component id="contractTransactionIdLabel" min="-2" max="-2" attributes="0"/>
+                  <Component id="contractTransactionIdTextField" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -89,12 +89,12 @@
         <Property name="text" type="java.lang.String" value="Transfer Contract to Multisig Address"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="transactionIdLabel">
+    <Component class="javax.swing.JLabel" name="contractTransactionIdLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Transaction ID:"/>
+        <Property name="text" type="java.lang.String" value="Contract Transaction ID:"/>
       </Properties>
     </Component>
-    <Component class="java.awt.TextField" name="transactionIdTextField">
+    <Component class="java.awt.TextField" name="contractTransactionIdTextField">
     </Component>
     <Component class="javax.swing.JButton" name="transferContractToMultisigButton">
       <Properties>

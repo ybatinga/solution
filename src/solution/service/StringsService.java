@@ -10,8 +10,8 @@ package solution.service;
  */
 public class StringsService {
     
-    public static String WALLET_ADDRESS_BUYER = Platform.DESKTOP_WALLET_ADDRESS_BUYER;
-    public static String WALLET_ADDRESS_OWNER = Platform.DESKTOP_WALLET_ADDRESS_OWNER;    
+    public static String WALLET_ADDRESS_BUYER = Platform.LAPTOP_WALLET_ADDRESS_BUYER;
+    public static String WALLET_ADDRESS_OWNER = Platform.LAPTOP_WALLET_ADDRESS_OWNER;    
     public static String real_estate_registry_system = "Real Estate Registry System";    
     public static String register_new_property = "Register New Property";
     public static String register_contract = "Register Contract";        

@@ -56,6 +56,11 @@ public class WalletBuyerPanelView extends javax.swing.JPanel {
         walletPrivateKeyLabel = new javax.swing.JLabel();
         walletPrivateKeyTextField = new java.awt.TextField();
         walletAddressTextField = new java.awt.TextField();
+        contractTransactionIdLabel = new javax.swing.JLabel();
+        contractTransactionIdTextField = new java.awt.TextField();
+        transactionHexLabel = new javax.swing.JLabel();
+        transactionHexTextField = new java.awt.TextField();
+        signContractButton = new javax.swing.JButton();
 
         buyerWalletLabel.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         buyerWalletLabel.setText("Buyer Wallet");
@@ -65,17 +70,23 @@ public class WalletBuyerPanelView extends javax.swing.JPanel {
         walletPublicKeyLabel.setText("Public Key:");
 
         walletPublicKeyTextField.setEditable(false);
-        walletPublicKeyTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                walletPublicKeyTextFieldActionPerformed(evt);
-            }
-        });
 
         walletPrivateKeyLabel.setText("Private Key:");
 
         walletPrivateKeyTextField.setEditable(false);
 
         walletAddressTextField.setEditable(false);
+
+        contractTransactionIdLabel.setText("Contract Transaction ID:");
+
+        transactionHexLabel.setText("Transaction Hex:");
+
+        signContractButton.setText("Sign");
+        signContractButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                signContractButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -84,6 +95,10 @@ public class WalletBuyerPanelView extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(transactionHexLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(transactionHexTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(buyerWalletLabel)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(walletPrivateKeyLabel)
@@ -96,8 +111,13 @@ public class WalletBuyerPanelView extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(walletAddressLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(walletAddressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(282, Short.MAX_VALUE))
+                        .addComponent(walletAddressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(contractTransactionIdLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(contractTransactionIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(signContractButton))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -116,17 +136,32 @@ public class WalletBuyerPanelView extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(walletPrivateKeyLabel)
                     .addComponent(walletPrivateKeyTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(177, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(contractTransactionIdLabel)
+                    .addComponent(contractTransactionIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(transactionHexLabel)
+                    .addComponent(transactionHexTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addComponent(signContractButton)
+                .addGap(60, 60, 60))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void walletPublicKeyTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_walletPublicKeyTextFieldActionPerformed
+    private void signContractButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signContractButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_walletPublicKeyTextFieldActionPerformed
+    }//GEN-LAST:event_signContractButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel buyerWalletLabel;
+    private javax.swing.JLabel contractTransactionIdLabel;
+    private java.awt.TextField contractTransactionIdTextField;
+    private javax.swing.JButton signContractButton;
+    private javax.swing.JLabel transactionHexLabel;
+    private java.awt.TextField transactionHexTextField;
     private javax.swing.JLabel walletAddressLabel;
     private java.awt.TextField walletAddressTextField;
     private javax.swing.JLabel walletPrivateKeyLabel;

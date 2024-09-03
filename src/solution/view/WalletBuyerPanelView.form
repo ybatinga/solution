@@ -19,6 +19,11 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="transactionHexLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="transactionHexTextField" min="-2" pref="277" max="-2" attributes="0"/>
+                  </Group>
                   <Component id="buyerWalletLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="walletPrivateKeyLabel" min="-2" max="-2" attributes="0"/>
@@ -35,8 +40,14 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="walletAddressTextField" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="contractTransactionIdLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="contractTransactionIdTextField" min="-2" pref="487" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="signContractButton" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="282" max="32767" attributes="0"/>
+              <EmptySpace pref="33" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -60,7 +71,19 @@
                   <Component id="walletPrivateKeyLabel" min="-2" max="-2" attributes="0"/>
                   <Component id="walletPrivateKeyTextField" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="177" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="contractTransactionIdLabel" min="-2" max="-2" attributes="0"/>
+                  <Component id="contractTransactionIdTextField" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="transactionHexLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="transactionHexTextField" alignment="0" min="-2" pref="102" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="20" max="32767" attributes="0"/>
+              <Component id="signContractButton" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -88,9 +111,6 @@
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="walletPublicKeyTextFieldActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="walletPrivateKeyLabel">
       <Properties>
@@ -106,6 +126,28 @@
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="contractTransactionIdLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Contract Transaction ID:"/>
+      </Properties>
+    </Component>
+    <Component class="java.awt.TextField" name="contractTransactionIdTextField">
+    </Component>
+    <Component class="javax.swing.JLabel" name="transactionHexLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Transaction Hex:"/>
+      </Properties>
+    </Component>
+    <Component class="java.awt.TextField" name="transactionHexTextField">
+    </Component>
+    <Component class="javax.swing.JButton" name="signContractButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Sign"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="signContractButtonActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

@@ -1,5 +1,5 @@
-VERIFY IF IT IS POSSIBLE AND NEEDED TO GET THE ADDRESS THAT REGISTERED AN ORD
-
+- VERIFY IF IT IS POSSIBLE AND NEEDED TO GET THE ADDRESS THAT REGISTERED AN ORD
+- ADD AMOUNT PARAM ON RegistryServiceControl.createRawTransaction
 
 - Bitcoin Core    
     - wallets loaded on startup (./bitcoin-cli -named loadwallet filename="ord_reg" load_on_startup=true

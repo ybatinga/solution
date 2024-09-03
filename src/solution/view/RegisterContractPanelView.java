@@ -19,11 +19,13 @@ import solution.model.OrdInscribedDataModel;
  *
  * @author ssd
  */
-public class RegisterContractPanelView extends javax.swing.JPanel {
+//        interface code
+//public class RegisterContractPanelView extends javax.swing.JPanel implements TransferContractToMultisigPanelView.ShareContractTransactionId{
+public class RegisterContractPanelView extends javax.swing.JPanel{
+
     static private final String newline = "\n";
     private JFileChooser fc;
     private JTextArea log;
-    private OrdInscribedDataModel ordInscribedDataModel;
     /**
      * Creates new form RegisterProperty
      */
@@ -106,8 +108,8 @@ public class RegisterContractPanelView extends javax.swing.JPanel {
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 File file = fc.getSelectedFile();
                 try {
-                    ordInscribedDataModel = RegistryServiceControl.registerNewPropertyOrContract(file.getPath());
-                    contractTransactionIdTextField.setText(getOrdInscribedDataModel().getReveal());
+                    OrdInscribedDataModel ordInscribedDataModel = RegistryServiceControl.registerNewPropertyOrContract(file.getPath());
+                    contractTransactionIdTextField.setText(ordInscribedDataModel.getReveal());
                     contractTransactionIdTextField.setVisible(true);   
                 } catch (IOException ex) {
                     contractTransactionIdTextField.setText(ex.getMessage());
@@ -135,7 +137,4 @@ public class RegisterContractPanelView extends javax.swing.JPanel {
     private javax.swing.JLabel registerNewPropertyLabel;
     // End of variables declaration//GEN-END:variables
 
-    public OrdInscribedDataModel getOrdInscribedDataModel() {
-        return ordInscribedDataModel;
-    }
 }

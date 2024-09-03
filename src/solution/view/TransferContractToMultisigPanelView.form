@@ -19,20 +19,13 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="transferContractToMultisigAddressLable" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="contractTransactionIdLabel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="contractTransactionIdTextField" max="32767" attributes="0"/>
-                      </Group>
+                  <Component id="transferContractToMultisigAddressLable" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="contractTransactionIdLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="contractTransactionIdTextField" min="-2" pref="800" max="-2" attributes="0"/>
                   </Group>
                   <Component id="transferContractToMultisigButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="voutLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="voutTextField" min="-2" max="-2" attributes="0"/>
-                  </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="multisigAddressLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -44,7 +37,7 @@
                       <Component id="transactionIdOfTransferredContractTextField" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="95" max="32767" attributes="0"/>
+              <EmptySpace pref="26" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -58,12 +51,7 @@
                   <Component id="contractTransactionIdLabel" min="-2" max="-2" attributes="0"/>
                   <Component id="contractTransactionIdTextField" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="voutLabel" min="-2" max="-2" attributes="0"/>
-                  <Component id="voutTextField" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="multisigAddressLabel" min="-2" max="-2" attributes="0"/>
                   <Component id="multisigAddressTextField" min="-2" max="-2" attributes="0"/>
@@ -75,7 +63,7 @@
                   <Component id="transactionIdOfTransferredContractLabel" min="-2" max="-2" attributes="0"/>
                   <Component id="transactionIdOfTransferredContractTextField" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="100" max="32767" attributes="0"/>
+              <EmptySpace pref="123" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -95,6 +83,11 @@
       </Properties>
     </Component>
     <Component class="java.awt.TextField" name="contractTransactionIdTextField">
+      <Properties>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Textcursor"/>
+        </Property>
+      </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="transferContractToMultisigButton">
       <Properties>
@@ -103,16 +96,6 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="transferContractToMultisigButtonActionPerformed"/>
       </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="voutLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Vout:"/>
-      </Properties>
-    </Component>
-    <Component class="java.awt.TextField" name="voutTextField">
-      <Properties>
-        <Property name="editable" type="boolean" value="false"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="multisigAddressLabel">
       <Properties>

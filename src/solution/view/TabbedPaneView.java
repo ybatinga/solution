@@ -45,24 +45,15 @@ import javax.swing.JComponent;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.awt.Insets;
 import java.awt.event.KeyEvent;
-import javax.swing.JButton;
-import javax.swing.JFileChooser;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
 import solution.service.StringsService;
 
 public class TabbedPaneView extends JPanel {
     
     String walletBuyerPublicKey;
     String walletOwnerPublicKey;
-    String contractTransactionId;
     String multisigAddress;
-    RegisterContractPanelView registerContractPanelView;
-    
     
     public TabbedPaneView() {
         super(new GridLayout(1, 1));
@@ -107,10 +98,7 @@ public class TabbedPaneView extends JPanel {
     }
         
     protected JComponent transferContractToMultisigAddressPanel(String text) {
-        if(registerContractPanelView.getOrdInscribedDataModel() != null){
-            contractTransactionId = registerContractPanelView.getOrdInscribedDataModel().getReveal();
-        }
-        TransferContractToMultisigPanelView panel = new TransferContractToMultisigPanelView(multisigAddress, contractTransactionId);
+        TransferContractToMultisigPanelView panel = new TransferContractToMultisigPanelView(multisigAddress);
         JLabel filler = new JLabel(text);
 //        filler.setHorizontalAlignment(JLabel.CENTER);
 //        panel.setLayout(new GridLayout(1, 1));
@@ -167,7 +155,7 @@ public class TabbedPaneView extends JPanel {
     }
     
     protected JComponent registerContractPanel(String text) {
-        registerContractPanelView = new RegisterContractPanelView();
+        RegisterContractPanelView registerContractPanelView = new RegisterContractPanelView();
         JLabel filler = new JLabel(text);
 //        filler.setHorizontalAlignment(JLabel.CENTER);
 //        panel.setLayout(new GridLayout(1, 1));

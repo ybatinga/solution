@@ -13,27 +13,27 @@ import solution.model.GetRawTransactionModel;
  */
 public class TransferContractToMultisigPanelView extends javax.swing.JPanel {
     private String multisigAddress;
-    private long vout;
+    
     /**
      * Creates new form TransferContractToMultisigPanelView
      */
-    public TransferContractToMultisigPanelView(String multisigAddress, String contractTransactionId) {
+    public TransferContractToMultisigPanelView(String multisigAddress) {
         initComponents();
         this.multisigAddress = multisigAddress;
-        contractTransactionIdTextField.setText(contractTransactionId);
-        voutTextField.setVisible(false);
         transactionIdOfTransferredContractTextField.setVisible(false);
         multisigAddressTextField.setText(multisigAddress);
         
-        // fix this by getting txid from Register Contract tab
-        GetRawTransactionModel getRawTransactionModel = RegistryServiceControl.getRawTransaction(contractTransactionIdTextField.getText());
-        if(getRawTransactionModel.getError() == null){
-            voutTextField.setVisible(true);
-            voutTextField.setText(String.valueOf(getRawTransactionModel.getResult().getVout().get(0).getN()));
-            vout = getRawTransactionModel.getResult().getVout().get(0).getN();
-        }
+        
+//        interface code
+//        shareContractTransactionId = (ShareContractTransactionId) registerContractPanelView;
     }
 
+//        interface code
+//    public static interface ShareContractTransactionId {
+//        
+//        public String onRegisterContractGetTransactionId(); 
+//    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -47,8 +47,6 @@ public class TransferContractToMultisigPanelView extends javax.swing.JPanel {
         contractTransactionIdLabel = new javax.swing.JLabel();
         contractTransactionIdTextField = new java.awt.TextField();
         transferContractToMultisigButton = new javax.swing.JButton();
-        voutLabel = new javax.swing.JLabel();
-        voutTextField = new java.awt.TextField();
         multisigAddressLabel = new javax.swing.JLabel();
         multisigAddressTextField = new java.awt.TextField();
         transactionIdOfTransferredContractLabel = new javax.swing.JLabel();
@@ -59,16 +57,14 @@ public class TransferContractToMultisigPanelView extends javax.swing.JPanel {
 
         contractTransactionIdLabel.setText("Contract Transaction ID:");
 
+        contractTransactionIdTextField.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+
         transferContractToMultisigButton.setText("Transfer");
         transferContractToMultisigButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 transferContractToMultisigButtonActionPerformed(evt);
             }
         });
-
-        voutLabel.setText("Vout:");
-
-        voutTextField.setEditable(false);
 
         multisigAddressLabel.setText("Multisig Address:");
 
@@ -85,17 +81,12 @@ public class TransferContractToMultisigPanelView extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(transferContractToMultisigAddressLable)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(contractTransactionIdLabel)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(contractTransactionIdTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(transferContractToMultisigButton)
+                    .addComponent(transferContractToMultisigAddressLable)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(voutLabel)
+                        .addComponent(contractTransactionIdLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(voutTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(contractTransactionIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(transferContractToMultisigButton)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(multisigAddressLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -104,7 +95,7 @@ public class TransferContractToMultisigPanelView extends javax.swing.JPanel {
                         .addComponent(transactionIdOfTransferredContractLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(transactionIdOfTransferredContractTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(95, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -115,11 +106,7 @@ public class TransferContractToMultisigPanelView extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(contractTransactionIdLabel)
                     .addComponent(contractTransactionIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(voutLabel)
-                    .addComponent(voutTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(multisigAddressLabel)
                     .addComponent(multisigAddressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -129,16 +116,28 @@ public class TransferContractToMultisigPanelView extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(transactionIdOfTransferredContractLabel)
                     .addComponent(transactionIdOfTransferredContractTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(100, Short.MAX_VALUE))
+                .addContainerGap(123, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void transferContractToMultisigButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transferContractToMultisigButtonActionPerformed
+        long vout = -1;
+        GetRawTransactionModel getRawTransactionModel = RegistryServiceControl.getRawTransaction(contractTransactionIdTextField.getText());
+        if(getRawTransactionModel.getError() == null){
+            vout = getRawTransactionModel.getResult().getVout().get(0).getN();
+        }
         String rawTxHex = RegistryServiceControl.createRawTransaction(contractTransactionIdTextField.getText(), vout, multisigAddress);
-        String txIdOfTransferContractToMultisig = RegistryServiceControl.decodeRawTransaction(rawTxHex);
+        String txIdOfTransferredContractToMultisig = RegistryServiceControl.decodeRawTransaction(rawTxHex);// not used; just for reference
         String signedTx = RegistryServiceControl.signRawTransactionWithWallet(rawTxHex, "ord");
         String txIdOfTransferredContract = RegistryServiceControl.sendRawTransaction(signedTx, "ord");
-        transactionIdOfTransferredContractTextField.setText(txIdOfTransferredContract);
+        if (vout == -1){
+            transactionIdOfTransferredContractTextField.setText("Invalid contranct transaction ID");
+            transactionIdOfTransferredContractTextField.setVisible(true);
+        }else {
+            transactionIdOfTransferredContractTextField.setText(txIdOfTransferredContract);
+            transactionIdOfTransferredContractTextField.setVisible(true);
+        }
+        
     }//GEN-LAST:event_transferContractToMultisigButtonActionPerformed
 
 
@@ -151,7 +150,5 @@ public class TransferContractToMultisigPanelView extends javax.swing.JPanel {
     private java.awt.TextField transactionIdOfTransferredContractTextField;
     private javax.swing.JLabel transferContractToMultisigAddressLable;
     private javax.swing.JButton transferContractToMultisigButton;
-    private javax.swing.JLabel voutLabel;
-    private java.awt.TextField voutTextField;
     // End of variables declaration//GEN-END:variables
 }

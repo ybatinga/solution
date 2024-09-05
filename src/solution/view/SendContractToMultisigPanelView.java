@@ -55,10 +55,12 @@ public class SendContractToMultisigPanelView extends javax.swing.JPanel {
 
         multisigAddressLabel.setText("Multisig Address:");
 
+        multisigAddressTextField.setBackground(new java.awt.Color(242, 242, 242));
         multisigAddressTextField.setEditable(false);
 
         sentContractTransactionIdLabel.setText("Transaction ID of Contract Sent to Multisig:");
 
+        sentContractTransactionIdTextField.setBackground(new java.awt.Color(242, 242, 242));
         sentContractTransactionIdTextField.setEditable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

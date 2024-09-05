@@ -110,11 +110,17 @@
     </Component>
     <Component class="java.awt.TextField" name="buyerWalletPublicKeyTextField">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="f2" green="f2" red="f2" type="rgb"/>
+        </Property>
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
     </Component>
     <Component class="java.awt.TextField" name="ownerWalletPublicKeyTextField">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="f2" green="f2" red="f2" type="rgb"/>
+        </Property>
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
     </Component>
@@ -130,11 +136,17 @@
     </Component>
     <Component class="java.awt.TextField" name="multisigAddressTextField">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="f2" green="f2" red="f2" type="rgb"/>
+        </Property>
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
     </Component>
     <Component class="java.awt.TextField" name="redeemScriptTextField">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="f2" green="f2" red="f2" type="rgb"/>
+        </Property>
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
     </Component>

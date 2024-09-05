@@ -29,10 +29,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="contractTransactionIdLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jTextField1" pref="0" max="32767" attributes="0"/>
-                                  <Component id="contractTransactionIdTextField" max="32767" attributes="0"/>
-                              </Group>
+                              <Component id="contractTransactionIdTextField" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="0" pref="202" max="32767" attributes="0"/>
@@ -53,9 +50,7 @@
                   <Component id="contractTransactionIdTextField" min="-2" max="-2" attributes="0"/>
                   <Component id="contractTransactionIdLabel" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="jTextField1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="155" max="32767" attributes="0"/>
+              <EmptySpace pref="191" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -79,6 +74,9 @@
     </Component>
     <Component class="java.awt.TextField" name="contractTransactionIdTextField">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="f2" green="f2" red="f2" type="rgb"/>
+        </Property>
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
     </Component>
@@ -86,8 +84,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Contract Transaction ID: "/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="jTextField1">
     </Component>
   </SubComponents>
 </Form>

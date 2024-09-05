@@ -59,6 +59,7 @@ public class RegisterPropertyPanelView extends javax.swing.JPanel {
 
         propertyIdLabel.setText("Property ID: ");
 
+        propertyIdTextField.setBackground(new java.awt.Color(242, 242, 242));
         propertyIdTextField.setEditable(false);
         propertyIdTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

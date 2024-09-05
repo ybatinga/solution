@@ -25,7 +25,7 @@ public class CreateMultisigTransactionPanel extends javax.swing.JPanel {
      */
     public CreateMultisigTransactionPanel() {
         initComponents();
-        multisigTransactionHexTextField.setVisible(false);
+        multisigRawTransactionHexTextField.setVisible(false);
     }
 
     /**
@@ -40,13 +40,9 @@ public class CreateMultisigTransactionPanel extends javax.swing.JPanel {
         CreateMultisigTransactionLabel = new javax.swing.JLabel();
         transactionIdOfTransferredContractLabel = new javax.swing.JLabel();
         createMultisigTransactionButton = new javax.swing.JButton();
-        multisigTransactionHexLabel = new javax.swing.JLabel();
-        multisigTransactionHexTextField = new java.awt.TextField();
+        multisigRawTransactionHexLabel = new javax.swing.JLabel();
         transactionIdOfContractSentToMultisigTextField = new java.awt.TextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        multisigTransactionHexTextArea = new javax.swing.JTextArea();
-        multisigTransactionHexJTextField = new javax.swing.JTextField();
-        textArea1 = new java.awt.TextArea();
+        multisigRawTransactionHexTextField = new java.awt.TextField();
 
         CreateMultisigTransactionLabel.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         CreateMultisigTransactionLabel.setText("Create Multisig Transaction");
@@ -60,15 +56,9 @@ public class CreateMultisigTransactionPanel extends javax.swing.JPanel {
             }
         });
 
-        multisigTransactionHexLabel.setText("MultisigTransaction Hex:");
+        multisigRawTransactionHexLabel.setText("Multisig Raw Transaction Hex:");
 
-        multisigTransactionHexTextField.setEditable(false);
-
-        multisigTransactionHexTextArea.setColumns(20);
-        multisigTransactionHexTextArea.setRows(5);
-        jScrollPane1.setViewportView(multisigTransactionHexTextArea);
-
-        multisigTransactionHexJTextField.setText("jTextField1");
+        multisigRawTransactionHexTextField.setEditable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -80,26 +70,14 @@ public class CreateMultisigTransactionPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(transactionIdOfTransferredContractLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(transactionIdOfContractSentToMultisigTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(transactionIdOfContractSentToMultisigTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(CreateMultisigTransactionLabel)
+                    .addComponent(createMultisigTransactionButton)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(CreateMultisigTransactionLabel)
-                            .addComponent(createMultisigTransactionButton)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(multisigTransactionHexLabel)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(17, 17, 17)
-                                        .addComponent(textArea1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(multisigTransactionHexTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(multisigTransactionHexJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 55, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(multisigRawTransactionHexLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(multisigRawTransactionHexTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 554, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,18 +92,9 @@ public class CreateMultisigTransactionPanel extends javax.swing.JPanel {
                 .addComponent(createMultisigTransactionButton)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(multisigTransactionHexTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(24, 24, 24)
-                        .addComponent(multisigTransactionHexJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(16, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(multisigTransactionHexLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(textArea1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(39, 39, 39))))
+                    .addComponent(multisigRawTransactionHexLabel)
+                    .addComponent(multisigRawTransactionHexTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(195, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -138,17 +107,12 @@ public class CreateMultisigTransactionPanel extends javax.swing.JPanel {
         vout = getRawTransactionModel.getResult().getVout().get(0).getN();
         String rawTxHex = RegistryServiceControl.createRawTransaction(transactionIdOfContractSentToMultisigTextField.getText(), vout, StringsService.WALLET_ADDRESS_ORD, 0.00008000);
         if (vout == -1){
-            multisigTransactionHexTextField.setText("Invalid raw transaction ID");
-            multisigTransactionHexTextField.setVisible(true);
+            multisigRawTransactionHexTextField.setText("Invalid raw transaction ID");
+            multisigRawTransactionHexTextField.setVisible(true);
         }else{
-            multisigTransactionHexTextArea.setWrapStyleWord(true);
-            multisigTransactionHexTextField.setText(rawTxHex);
-            multisigTransactionHexTextField.setVisible(true);
-            multisigTransactionHexTextArea.setText(rawTxHex);
-            multisigTransactionHexTextArea.setWrapStyleWord(true);
-            textArea1.setText(rawTxHex);
-//            multisigTransactionHexJTextField.setW
-//            multisigTransactionHexJTextField.setText(rawTxHex);
+//            multisigTransactionHexTextArea.setWrapStyleWord(true);
+            multisigRawTransactionHexTextField.setText(rawTxHex);
+            multisigRawTransactionHexTextField.setVisible(true);
         }
         
         
@@ -158,12 +122,8 @@ public class CreateMultisigTransactionPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel CreateMultisigTransactionLabel;
     private javax.swing.JButton createMultisigTransactionButton;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField multisigTransactionHexJTextField;
-    private javax.swing.JLabel multisigTransactionHexLabel;
-    private javax.swing.JTextArea multisigTransactionHexTextArea;
-    private java.awt.TextField multisigTransactionHexTextField;
-    private java.awt.TextArea textArea1;
+    private javax.swing.JLabel multisigRawTransactionHexLabel;
+    private java.awt.TextField multisigRawTransactionHexTextField;
     private java.awt.TextField transactionIdOfContractSentToMultisigTextField;
     private javax.swing.JLabel transactionIdOfTransferredContractLabel;
     // End of variables declaration//GEN-END:variables

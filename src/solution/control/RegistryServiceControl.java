@@ -310,12 +310,14 @@ public class RegistryServiceControl {
             }
         }
 
-    public static String signRawTransactionWithkKey(String rawTxHex, 
-            String walletPrivateKeyLabel, 
-            String transactionId,
-            long vout,
-            String scriptPubKey,
-            String redeemScript) {
+    public static String signRawTransactionWithkKey(
+            String rawTxHex, // Multisig Raw Transaction Hex
+            String walletPrivateKeyLabel, // Buyer/Owner Wallet private key
+            String transactionId, // Transaction ID of Contract Sent to Multisig
+            long vout, // Vout of Transaction ID of Contract Sent to Multisig
+            String scriptPubKey, // Script that locked transaction of Contract Sent to Multisig
+            String redeemScript // Multisig Redeem Script 
+    ) {
         try {
 //            ./bitcoin-cli signrawtransactionwithkey  [ { "txid": "'$utxo_txid'", "vout": '$utxo_vout', "scriptPubKey": "'$utxo_spk'", "redeemScript": "'$redeem_script'" } ] ["cN9bnTYK1ob98Tgy9e43wLJfnEXuo5ZK1T9fYfKdnoRkjm8ie4Ho"]
 //            $ ./bitcoin-cli -named signrawtransactionwithkey hexstring=$rawtxhex 
@@ -339,8 +341,6 @@ public class RegistryServiceControl {
 //            while ((line = reader.readLine()) != null) {
 //                System.out.println(line);
 //            }
-            
-            
             
             if(signRawTransactionWithKeyModel == null){
 //            if(signRawTransactionWithWalletModel == null){

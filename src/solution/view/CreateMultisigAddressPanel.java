@@ -85,16 +85,20 @@ public class CreateMultisigAddressPanel extends javax.swing.JPanel {
             }
         });
 
+        buyerWalletPublicKeyTextField.setBackground(new java.awt.Color(242, 242, 242));
         buyerWalletPublicKeyTextField.setEditable(false);
 
+        ownerWalletPublicKeyTextField.setBackground(new java.awt.Color(242, 242, 242));
         ownerWalletPublicKeyTextField.setEditable(false);
 
         multisigAddressLabel.setText("Multisig Address:");
 
         redeemScriptLabel.setText("Redeem Script:");
 
+        multisigAddressTextField.setBackground(new java.awt.Color(242, 242, 242));
         multisigAddressTextField.setEditable(false);
 
+        redeemScriptTextField.setBackground(new java.awt.Color(242, 242, 242));
         redeemScriptTextField.setEditable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

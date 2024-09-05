@@ -22,35 +22,17 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="transactionIdOfTransferredContractLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="transactionIdOfContractSentToMultisigTextField" max="32767" attributes="0"/>
+                      <Component id="transactionIdOfContractSentToMultisigTextField" min="-2" pref="450" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="CreateMultisigTransactionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="createMultisigTransactionButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="multisigTransactionHexLabel" min="-2" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                                      <Component id="textArea1" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="multisigTransactionHexTextField" min="-2" pref="277" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="multisigTransactionHexJTextField" min="-2" pref="539" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                      </Group>
-                      <EmptySpace min="0" pref="55" max="32767" attributes="0"/>
+                  <Component id="CreateMultisigTransactionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="createMultisigTransactionButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="multisigRawTransactionHexLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="multisigRawTransactionHexTextField" min="-2" pref="554" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -68,22 +50,10 @@
               <Component id="createMultisigTransactionButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="multisigTransactionHexTextField" min="-2" pref="102" max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                      <Component id="multisigTransactionHexJTextField" min="-2" pref="72" max="-2" attributes="0"/>
-                      <EmptySpace pref="16" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="multisigTransactionHexLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="textArea1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="multisigRawTransactionHexLabel" min="-2" max="-2" attributes="0"/>
+                  <Component id="multisigRawTransactionHexTextField" min="-2" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace pref="195" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -110,39 +80,17 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="createMultisigTransactionButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="multisigTransactionHexLabel">
+    <Component class="javax.swing.JLabel" name="multisigRawTransactionHexLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="MultisigTransaction Hex:"/>
-      </Properties>
-    </Component>
-    <Component class="java.awt.TextField" name="multisigTransactionHexTextField">
-      <Properties>
-        <Property name="editable" type="boolean" value="false"/>
+        <Property name="text" type="java.lang.String" value="Multisig Raw Transaction Hex:"/>
       </Properties>
     </Component>
     <Component class="java.awt.TextField" name="transactionIdOfContractSentToMultisigTextField">
     </Component>
-    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
-      <AuxValues>
-        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-      </AuxValues>
-
-      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-      <SubComponents>
-        <Component class="javax.swing.JTextArea" name="multisigTransactionHexTextArea">
-          <Properties>
-            <Property name="columns" type="int" value="20"/>
-            <Property name="rows" type="int" value="5"/>
-          </Properties>
-        </Component>
-      </SubComponents>
-    </Container>
-    <Component class="javax.swing.JTextField" name="multisigTransactionHexJTextField">
+    <Component class="java.awt.TextField" name="multisigRawTransactionHexTextField">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
+        <Property name="editable" type="boolean" value="false"/>
       </Properties>
-    </Component>
-    <Component class="java.awt.TextArea" name="textArea1">
     </Component>
   </SubComponents>
 </Form>

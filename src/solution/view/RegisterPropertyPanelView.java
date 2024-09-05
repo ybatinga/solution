@@ -23,7 +23,6 @@ public class RegisterPropertyPanelView extends javax.swing.JPanel {
     static private final String newline = "\n";
     JFileChooser fc;
     JTextArea log;
-    OrdInscribedDataModel ordInscribedDataModel;
     /**
      * Creates new form RegisterProperty
      */
@@ -117,8 +116,8 @@ public class RegisterPropertyPanelView extends javax.swing.JPanel {
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 File file = fc.getSelectedFile();
                 try {
-                    ordInscribedDataModel = RegistryServiceControl.registerNewPropertyOrContract(file.getPath());
-                    propertyIdTextField.setText(ordInscribedDataModel.getReveal());
+                    String contractTransactionId = RegistryServiceControl.registerNewPropertyOrContract(file.getPath());
+                    propertyIdTextField.setText(contractTransactionId);
                     propertyIdTextField.setVisible(true);                    
                 } catch (IOException ex) {
                     propertyIdLabel.setText(ex.getMessage());

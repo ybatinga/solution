@@ -19,25 +19,25 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="transferContractToMultisigAddressLable" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="sentContractToMultisigAddressLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="contractTransactionIdLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="contractTransactionIdTextField" min="-2" pref="800" max="-2" attributes="0"/>
+                      <Component id="contractTransactionIdTextField" min="-2" pref="512" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="transferContractToMultisigButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="sendContractToMultisigButton" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="multisigAddressLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="multisigAddressTextField" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="transactionIdOfTransferredContractLabel" min="-2" max="-2" attributes="0"/>
+                      <Component id="sentContractTransactionIdLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="transactionIdOfTransferredContractTextField" min="-2" max="-2" attributes="0"/>
+                      <Component id="sentContractTransactionIdTextField" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="26" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -45,7 +45,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="transferContractToMultisigAddressLable" min="-2" max="-2" attributes="0"/>
+              <Component id="sentContractToMultisigAddressLabel" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="contractTransactionIdLabel" min="-2" max="-2" attributes="0"/>
@@ -57,11 +57,11 @@
                   <Component id="multisigAddressTextField" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-              <Component id="transferContractToMultisigButton" min="-2" max="-2" attributes="0"/>
+              <Component id="sendContractToMultisigButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="transactionIdOfTransferredContractLabel" min="-2" max="-2" attributes="0"/>
-                  <Component id="transactionIdOfTransferredContractTextField" min="-2" max="-2" attributes="0"/>
+                  <Component id="sentContractTransactionIdLabel" min="-2" max="-2" attributes="0"/>
+                  <Component id="sentContractTransactionIdTextField" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="123" max="32767" attributes="0"/>
           </Group>
@@ -69,12 +69,12 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="transferContractToMultisigAddressLable">
+    <Component class="javax.swing.JLabel" name="sentContractToMultisigAddressLabel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Liberation Sans" size="18" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Transfer Contract to Multisig Address"/>
+        <Property name="text" type="java.lang.String" value="Send Contract to Multisig Address"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="contractTransactionIdLabel">
@@ -83,18 +83,13 @@
       </Properties>
     </Component>
     <Component class="java.awt.TextField" name="contractTransactionIdTextField">
-      <Properties>
-        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-          <Color id="Textcursor"/>
-        </Property>
-      </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="transferContractToMultisigButton">
+    <Component class="javax.swing.JButton" name="sendContractToMultisigButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Transfer"/>
+        <Property name="text" type="java.lang.String" value="Send"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="transferContractToMultisigButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sendContractToMultisigButtonActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="multisigAddressLabel">
@@ -107,12 +102,12 @@
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="transactionIdOfTransferredContractLabel">
+    <Component class="javax.swing.JLabel" name="sentContractTransactionIdLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Transaction ID of Transferred Contract:"/>
+        <Property name="text" type="java.lang.String" value="Transaction ID of Contract Sent to Multisig:"/>
       </Properties>
     </Component>
-    <Component class="java.awt.TextField" name="transactionIdOfTransferredContractTextField">
+    <Component class="java.awt.TextField" name="sentContractTransactionIdTextField">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
       </Properties>

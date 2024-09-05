@@ -22,6 +22,7 @@ import solution.model.BitcoinCliStringResultModel;
 import solution.model.CreateMultisigModel;
 import solution.model.DecodeRawTransactionModel;
 import solution.model.GetRawTransactionModel;
+import solution.model.SignRawTransactionWithKeyModel;
 import solution.model.SignRawTransactionWithWalletModel;
 
 /**
@@ -30,7 +31,7 @@ import solution.model.SignRawTransactionWithWalletModel;
  */
 public class RegistryServiceControl {
     
-    public static OrdInscribedDataModel registerNewPropertyOrContract(String filePath) throws IOException, InterruptedException {
+    public static String registerNewPropertyOrContract(String filePath) throws IOException, InterruptedException {
 
         Process process = Runtime.getRuntime().exec("/usr/local/apps/ord-0.19.1/ord --chain regtest --bitcoin-rpc-password rpc --bitcoin-rpc-username rpc wallet inscribe --fee-rate 2 --file " + filePath); // for Linux
             //Process process = Runtime.getRuntime().exec("cmd /c dir"); //for Windows
@@ -41,22 +42,28 @@ public class RegistryServiceControl {
                 new InputStreamReader(process.getInputStream());
         OrdInscribedDataModel ordInscribedDataModel = new Gson().fromJson(reader, OrdInscribedDataModel.class);
         
-        if(ordInscribedDataModel == null){
-            OrdInscribedDataModel ordInscribedDataModelError = new OrdInscribedDataModel();
-            OrdInscribedDataModel.Inscription inscription = ordInscribedDataModelError.new Inscription();
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
-            inscription.setID(bufferedReader.readLine());
-            ordInscribedDataModelError.getInscriptions().add(inscription);
+        if(ordInscribedDataModel == null || ordInscribedDataModel.equals("")){
+//            if(signRawTransactionWithWalletModel == null){
+                String concatErrorMsg = printErrorInOutput(process);
+                return concatErrorMsg;
+            }
+        
+//        if(ordInscribedDataModel == null){
+//            OrdInscribedDataModel ordInscribedDataModelError = new OrdInscribedDataModel();
+//            OrdInscribedDataModel.Inscription inscription = ordInscribedDataModelError.new Inscription();
+//            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+//            inscription.setID(bufferedReader.readLine());
+//            ordInscribedDataModelError.getInscriptions().add(inscription);
            
 //        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(process.getErrorStream()));    
 //        String line = new String();
 //            while ((line = bufferedReader.readLine()) != null) {
 //                System.out.println(line);
 //            }
-            return ordInscribedDataModelError;
-        }
+//            return ordInscribedDataModelError;
+//        }
             
-        return ordInscribedDataModel;
+        return ordInscribedDataModel.getReveal();
     }
     
     public static GetAddressInfoModel getAddressInfo(String walletName, String walletAddress) {
@@ -160,11 +167,12 @@ public class RegistryServiceControl {
         }
     }
 
-    public static String createRawTransaction(String txId, long vout, String recipientAddress) {
+
+    public static String createRawTransaction(String txId, long vout, String recipientAddress, double amount) {
         try {
             String[] command = new String[]{"/usr/local/apps/bitcoin-25.0/bin/bitcoin-cli", "createrawtransaction",
 //                        "[{\"txid\":\"" + txId + "\",\"vout\":0}]", "[{\"" + recipientAddress + "\":0.01}]"};
-                        "[{\"txid\":\"" + txId + "\",\"vout\":" + vout + "}]", "[{\"" + recipientAddress + "\":0.00009000}]"};            
+                        "[{\"txid\":\"" + txId + "\",\"vout\":" + vout + "}]", "[{\"" + recipientAddress + "\":" + amount + "}]"};            
 
             Process process = Runtime.getRuntime().exec(command); // for Linux
 
@@ -207,7 +215,7 @@ public class RegistryServiceControl {
 //                System.out.println(line);
 //            }
 
-            return decodeRawTransactionModel.getTxid();
+            return decodeRawTransactionModel.getVin().get(0).getTxid();
 //            return null;
         } catch (IOException | InterruptedException ex) {
             Logger.getLogger(RegistryServiceControl.class.getName()).log(Level.SEVERE, null, ex);
@@ -273,8 +281,8 @@ public class RegistryServiceControl {
 
             if(txIdOfTransferredContract == null || txIdOfTransferredContract.equals("")){
 //            if(signRawTransactionWithWalletModel == null){
-                printErrorInOutput(process);
-                return null;
+                String concatErrorMsg = printErrorInOutput(process);
+                return concatErrorMsg;
             }
 //            return signRawTransactionWithWalletModel.getHex();
             return txIdOfTransferredContract;
@@ -284,18 +292,68 @@ public class RegistryServiceControl {
         }
     }
     
-        public static void printErrorInOutput(Process process) {
+        public static String printErrorInOutput(Process process) {
+            String concatErrorMsg = new String();
             try {
                 //            print error as output
                 BufferedReader reader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+                
                 String line = new String();
                 while ((line = reader.readLine()) != null) {
                     System.out.println(line);
+                    concatErrorMsg = concatErrorMsg + line + " ";
                 }
+                return concatErrorMsg; 
             } catch (IOException ex) {
                 Logger.getLogger(RegistryServiceControl.class.getName()).log(Level.SEVERE, null, ex);
+                return concatErrorMsg; 
             }
         }
 
-    
+    public static String signRawTransactionWithkKey(String rawTxHex, 
+            String walletPrivateKeyLabel, 
+            String transactionId,
+            long vout,
+            String scriptPubKey,
+            String redeemScript) {
+        try {
+//            ./bitcoin-cli signrawtransactionwithkey  [ { "txid": "'$utxo_txid'", "vout": '$utxo_vout', "scriptPubKey": "'$utxo_spk'", "redeemScript": "'$redeem_script'" } ] ["cN9bnTYK1ob98Tgy9e43wLJfnEXuo5ZK1T9fYfKdnoRkjm8ie4Ho"]
+//            $ ./bitcoin-cli -named signrawtransactionwithkey hexstring=$rawtxhex 
+//              prevtxs='''[ { "txid": "'$utxo_txid'", "vout": '$utxo_vout', "scriptPubKey": "'$utxo_spk'", "redeemScript": "'$redeem_script'" } ]''' 
+            
+            String[] command = new String[]{"/usr/local/apps/bitcoin-25.0/bin/bitcoin-cli",
+                "signrawtransactionwithkey", rawTxHex, "[\"" + walletPrivateKeyLabel + "\"]", 
+                "[{\"txid\":\"" + transactionId + "\",\"vout\":" + vout + ",\"scriptPubKey\":\"" + scriptPubKey + "\",\"redeemScript\":\"" + redeemScript + "\"}]"};
+            
+            Process process = Runtime.getRuntime().exec(command); // for Linux
+
+            process.waitFor();
+
+            InputStreamReader reader
+                    = new InputStreamReader(process.getInputStream());
+            
+            SignRawTransactionWithKeyModel signRawTransactionWithKeyModel = new Gson().fromJson(reader, SignRawTransactionWithKeyModel.class);
+//            print error as output
+//            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+//            String line = new String();
+//            while ((line = reader.readLine()) != null) {
+//                System.out.println(line);
+//            }
+            
+            
+            
+            if(signRawTransactionWithKeyModel == null){
+//            if(signRawTransactionWithWalletModel == null){
+                String concatErrorMsg = printErrorInOutput(process);
+                return concatErrorMsg;
+            }
+            
+            String signedTx = signRawTransactionWithKeyModel.getHex();
+            return signedTx;
+//            return null;
+        } catch (IOException | InterruptedException ex) {
+            Logger.getLogger(RegistryServiceControl.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
 }

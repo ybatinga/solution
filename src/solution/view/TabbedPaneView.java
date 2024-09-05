@@ -85,10 +85,15 @@ public class TabbedPaneView extends JPanel {
                 "3. Create Multisig Address");
         tabbedPane.setMnemonicAt(4, KeyEvent.VK_5);
         
-        JComponent panel6 = transferContractToMultisigAddressPanel("Panel #6");
-        tabbedPane.addTab("4. " + StringsService.transfer_contract_to_multisig_address, null, panel6,
-                "4. " + StringsService.transfer_contract_to_multisig_address);
+        JComponent panel6 = sendContractToMultisigAddressPanel("Panel #6");
+        tabbedPane.addTab("4. " + StringsService.send_contract_to_multisig_address, null, panel6,
+                "4. " + StringsService.send_contract_to_multisig_address);
         tabbedPane.setMnemonicAt(5, KeyEvent.VK_6);
+        
+        JComponent panel7 = createMultisigTransactionPanel("Panel #7");
+        tabbedPane.addTab("5. " + "Create Multisig Transaction", null, panel7,
+                "5. " + "Create Multisig Transaction");
+        tabbedPane.setMnemonicAt(6, KeyEvent.VK_7);
         
         //Add the tabbed pane to this panel.
         add(tabbedPane);
@@ -97,8 +102,17 @@ public class TabbedPaneView extends JPanel {
         tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
     }
         
-    protected JComponent transferContractToMultisigAddressPanel(String text) {
-        TransferContractToMultisigPanelView panel = new TransferContractToMultisigPanelView(multisigAddress);
+    protected JComponent createMultisigTransactionPanel(String text) {
+        CreateMultisigTransactionPanel panel = new CreateMultisigTransactionPanel();
+        JLabel filler = new JLabel(text);
+//        filler.setHorizontalAlignment(JLabel.CENTER);
+//        panel.setLayout(new GridLayout(1, 1));
+        panel.add(filler);
+        return panel;
+    }
+    
+    protected JComponent sendContractToMultisigAddressPanel(String text) {
+        SendContractToMultisigPanelView panel = new SendContractToMultisigPanelView(multisigAddress);
         JLabel filler = new JLabel(text);
 //        filler.setHorizontalAlignment(JLabel.CENTER);
 //        panel.setLayout(new GridLayout(1, 1));

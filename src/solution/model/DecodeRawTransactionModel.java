@@ -4,6 +4,8 @@
  */
 package solution.model;
 
+import java.util.List;
+
 /**
  *
  * @author ssd
@@ -17,8 +19,10 @@ public class DecodeRawTransactionModel {
     private long vsize;
     private long weight;
     private long locktime;
-    private Vin[] vin;
-    private Vout[] vout;
+//    private Vin[vin] vin;
+    private List<Vin> vin;
+//    private Vout[] vout;
+    private List<Vout> vout;
 
     public String getTxid() {
         return txid;
@@ -76,20 +80,36 @@ public class DecodeRawTransactionModel {
         this.locktime = value;
     }
 
-    public Vin[] getVin() {
+//    public Vin[] getVin() {
+//        return vin;
+//    }
+//
+//    public void setVin(Vin[] value) {
+//        this.setVin(value);
+//    }
+
+//    public Vout[] getVout() {
+//        return vout;
+//    }
+//
+//    public void setVout(Vout[] value) {
+//        this.vout = value;
+//    }
+    
+    public void setVin(List<Vin> vin) {
+        this.vin = vin;
+    }
+
+    public List<Vin> getVin() {
         return vin;
     }
-
-    public void setVin(Vin[] value) {
-        this.vin = value;
-    }
-
-    public Vout[] getVout() {
+    
+    public List<Vout> getVout() {
         return vout;
     }
 
-    public void setVout(Vout[] value) {
-        this.vout = value;
+    public void setVout(List<Vout> vout) {
+        this.vout = vout;
     }
 
     public class Vin {
@@ -233,4 +253,5 @@ public class DecodeRawTransactionModel {
             this.type = value;
         }
     }
+
 }

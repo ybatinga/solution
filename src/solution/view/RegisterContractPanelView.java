@@ -32,6 +32,7 @@ public class RegisterContractPanelView extends javax.swing.JPanel{
     public RegisterContractPanelView() {
         initComponents();
         contractTransactionIdTextField.setVisible(false);
+        jTextField1.setVisible(false);
     }
 
     /**
@@ -47,6 +48,7 @@ public class RegisterContractPanelView extends javax.swing.JPanel{
         regContractButton = new javax.swing.JButton();
         contractTransactionIdTextField = new java.awt.TextField();
         contractTransactionIdLabel = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
 
         registerNewPropertyLabel.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         registerNewPropertyLabel.setText("Register Contract");
@@ -74,12 +76,14 @@ public class RegisterContractPanelView extends javax.swing.JPanel{
                         .addContainerGap(241, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(regContractButton)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(contractTransactionIdLabel)
                                 .addGap(21, 21, 21)
-                                .addComponent(contractTransactionIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(regContractButton))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                    .addComponent(contractTransactionIdTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(0, 202, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,7 +96,9 @@ public class RegisterContractPanelView extends javax.swing.JPanel{
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(contractTransactionIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(contractTransactionIdLabel))
-                .addContainerGap(191, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(155, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -108,9 +114,12 @@ public class RegisterContractPanelView extends javax.swing.JPanel{
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 File file = fc.getSelectedFile();
                 try {
-                    OrdInscribedDataModel ordInscribedDataModel = RegistryServiceControl.registerNewPropertyOrContract(file.getPath());
-                    contractTransactionIdTextField.setText(ordInscribedDataModel.getReveal());
+                    String contractTransactionId = RegistryServiceControl.registerNewPropertyOrContract(file.getPath());
+                    contractTransactionIdTextField.setText(contractTransactionId);
                     contractTransactionIdTextField.setVisible(true);   
+                    jTextField1.setVisible(true);
+                    jTextField1.setEditable(false);
+                    jTextField1.setText(contractTransactionId);
                 } catch (IOException ex) {
                     contractTransactionIdTextField.setText(ex.getMessage());
                     Logger.getLogger(RegisterContractPanelView.class.getName()).log(Level.SEVERE, null, ex);
@@ -133,6 +142,7 @@ public class RegisterContractPanelView extends javax.swing.JPanel{
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel contractTransactionIdLabel;
     private java.awt.TextField contractTransactionIdTextField;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JButton regContractButton;
     private javax.swing.JLabel registerNewPropertyLabel;
     // End of variables declaration//GEN-END:variables

@@ -61,13 +61,13 @@ public class TabbedPaneView extends JPanel {
         JTabbedPane tabbedPane = new JTabbedPane();
         
         JComponent panel1 = buyerWalletPanel("Panel #1");
-        tabbedPane.addTab("Buyer Wallet", null, panel1,
-                "Buyer Wallet");
+        tabbedPane.addTab(StringsService.byuer_wallet, null, panel1,
+                StringsService.byuer_wallet);
         tabbedPane.setMnemonicAt(0, KeyEvent.VK_1);
         
         JComponent panel2 = ownerWalletPanel("Panel #2");
-        tabbedPane.addTab("Owner Wallet", null, panel2,
-                "Owner Wallet");
+        tabbedPane.addTab(StringsService.owner_wallet, null, panel2,
+                StringsService.owner_wallet);
         tabbedPane.setMnemonicAt(1, KeyEvent.VK_2);
         
         JComponent panel3 = registerNewPropertyPanel("Panel #3");
@@ -81,8 +81,8 @@ public class TabbedPaneView extends JPanel {
         tabbedPane.setMnemonicAt(3, KeyEvent.VK_4);
         
         JComponent panel5 = createMultisigAddressPanel("Panel #5");
-        tabbedPane.addTab("3. Create Multisig Address", null, panel5,
-                "3. Create Multisig Address");
+        tabbedPane.addTab("3. " + StringsService.create_multisig_address, null, panel5,
+                "3. " + StringsService.create_multisig_address);
         tabbedPane.setMnemonicAt(4, KeyEvent.VK_5);
         
         JComponent panel6 = sendContractToMultisigAddressPanel("Panel #6");
@@ -91,15 +91,29 @@ public class TabbedPaneView extends JPanel {
         tabbedPane.setMnemonicAt(5, KeyEvent.VK_6);
         
         JComponent panel7 = createMultisigTransactionPanel("Panel #7");
-        tabbedPane.addTab("5. " + "Create Multisig Transaction", null, panel7,
-                "5. " + "Create Multisig Transaction");
+        tabbedPane.addTab("5. " + StringsService.create_multisig_transaction, null, panel7,
+                "5. " + StringsService.create_multisig_transaction);
         tabbedPane.setMnemonicAt(6, KeyEvent.VK_7);
+        
+        JComponent panel8 = sendSignedContractToRegistryAddressPanel("Panel #8");
+        tabbedPane.addTab("6. " + StringsService.send_signed_contract_to_registry_address, null, panel8,
+                "6. " + StringsService.send_signed_contract_to_registry_address);
+        tabbedPane.setMnemonicAt(6, KeyEvent.VK_8);
         
         //Add the tabbed pane to this panel.
         add(tabbedPane);
         
         //The following line enables to use scrolling tabs.
         tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
+    }
+    
+    protected JComponent sendSignedContractToRegistryAddressPanel(String text) {
+        SendSignedContractToRegistryPanel panel = new SendSignedContractToRegistryPanel();
+        JLabel filler = new JLabel(text);
+//        filler.setHorizontalAlignment(JLabel.CENTER);
+//        panel.setLayout(new GridLayout(1, 1));
+        panel.add(filler);
+        return panel;
     }
         
     protected JComponent createMultisigTransactionPanel(String text) {

@@ -43,9 +43,9 @@
                       </Group>
                       <Component id="signContractButton" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="ownerSignatureHexLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="ownerBuyerSignatureHexLabel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="ownerSignatureHexTextField" min="-2" pref="702" max="-2" attributes="0"/>
+                          <Component id="ownerBuyerSignatureHexTextField" min="-2" pref="702" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="redeemScriptLabel" min="-2" max="-2" attributes="0"/>
@@ -92,8 +92,8 @@
               <Component id="signContractButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="ownerSignatureHexLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="ownerSignatureHexTextField" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="ownerBuyerSignatureHexLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="ownerBuyerSignatureHexTextField" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="91" max="32767" attributes="0"/>
           </Group>
@@ -148,7 +148,7 @@
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
     </Component>
-    <Component class="java.awt.TextField" name="ownerSignatureHexTextField">
+    <Component class="java.awt.TextField" name="ownerBuyerSignatureHexTextField">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="f2" green="f2" red="f2" type="rgb"/>
@@ -179,9 +179,9 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="signContractButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="ownerSignatureHexLabel">
+    <Component class="javax.swing.JLabel" name="ownerBuyerSignatureHexLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Owner Signature Hex:"/>
+        <Property name="text" type="java.lang.String" value="Owner and Buyer Signature Hex:"/>
       </Properties>
     </Component>
     <Component class="java.awt.TextField" name="buyerSignatureHexTextField">

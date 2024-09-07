@@ -105,7 +105,7 @@ public class CreateMultisigTransactionPanel extends javax.swing.JPanel {
             vout = getRawTransactionModel.getResult().getVout().get(0).getN();
         }
         vout = getRawTransactionModel.getResult().getVout().get(0).getN();
-        String rawTxHex = RegistryServiceControl.createRawTransaction(transactionIdOfContractSentToMultisigTextField.getText(), vout, StringsService.WALLET_ADDRESS_ORD, 0.00008000);
+        String rawTxHex = RegistryServiceControl.createRawTransaction(transactionIdOfContractSentToMultisigTextField.getText(), vout, StringsService.PLATFORM.getORD_REG_ADDRESS(), 0.00008000);
         if (vout == -1){
             multisigRawTransactionHexTextField.setText("Invalid raw transaction ID");
             multisigRawTransactionHexTextField.setVisible(true);

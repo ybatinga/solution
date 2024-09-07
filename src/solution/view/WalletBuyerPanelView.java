@@ -24,13 +24,13 @@ public class WalletBuyerPanelView extends javax.swing.JPanel {
         initComponents();
         buyerSignatureHexTextField.setVisible(false);
         
-        getAddressInfoModel = RegistryServiceControl.getAddressInfo("legacy_buyer", StringsService.WALLET_ADDRESS_BUYER);
+        getAddressInfoModel = RegistryServiceControl.getAddressInfo("legacy_buyer", StringsService.PLATFORM.getWALLET_ADDRESS_BUYER());
         if(getAddressInfoModel != null){
             walletAddressTextField.setText(getAddressInfoModel.getResult().getAddress());
             walletPublicKeyTextField.setText(getAddressInfoModel.getResult().getPubkey());
         }
         
-        String privateKey = RegistryServiceControl.dumpPrivKey("legacy_buyer", StringsService.WALLET_ADDRESS_BUYER);
+        String privateKey = RegistryServiceControl.dumpPrivKey("legacy_buyer", StringsService.PLATFORM.getWALLET_ADDRESS_BUYER());
         if(privateKey != null){
             walletPrivateKeyTextField.setText(privateKey);
         }

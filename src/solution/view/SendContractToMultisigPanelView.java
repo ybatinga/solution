@@ -20,7 +20,6 @@ public class SendContractToMultisigPanelView extends javax.swing.JPanel {
     public SendContractToMultisigPanelView(String multisigAddress) {
         initComponents();
         this.multisigAddress = multisigAddress;
-        txIdOfContractSentToMultisigTextField.setVisible(false);
         multisigAddressTextField.setText(multisigAddress);
     }
 
@@ -84,7 +83,7 @@ public class SendContractToMultisigPanelView extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(txIdOfContractSentToMultisigLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txIdOfContractSentToMultisigTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txIdOfContractSentToMultisigTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -122,10 +121,8 @@ public class SendContractToMultisigPanelView extends javax.swing.JPanel {
         String txIdOfSentContract = RegistryServiceControl.sendRawTransaction(signedTx, StringsService.wallet_ord);
         if (vout == -1){
             txIdOfContractSentToMultisigTextField.setText(StringsService.invalid_contract_transaction_ID);
-            txIdOfContractSentToMultisigTextField.setVisible(true);
         }else {
             txIdOfContractSentToMultisigTextField.setText(txIdOfSentContract);
-            txIdOfContractSentToMultisigTextField.setVisible(true);
         }
     }//GEN-LAST:event_sendContractToMultisigButtonActionPerformed
 

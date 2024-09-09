@@ -25,7 +25,6 @@ public class CreateMultisigTransactionPanel extends javax.swing.JPanel {
      */
     public CreateMultisigTransactionPanel() {
         initComponents();
-        multisigRawTransactionHexTextField.setVisible(false);
     }
 
     /**
@@ -58,6 +57,7 @@ public class CreateMultisigTransactionPanel extends javax.swing.JPanel {
 
         multisigRawTransactionHexLabel.setText("Multisig Raw Transaction Hex:");
 
+        multisigRawTransactionHexTextField.setBackground(new java.awt.Color(242, 242, 242));
         multisigRawTransactionHexTextField.setEditable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -108,11 +108,9 @@ public class CreateMultisigTransactionPanel extends javax.swing.JPanel {
         String rawTxHex = RegistryServiceControl.createRawTransaction(transactionIdOfContractSentToMultisigTextField.getText(), vout, StringsService.PLATFORM.getORD_REG_ADDRESS(), 0.00008000);
         if (vout == -1){
             multisigRawTransactionHexTextField.setText("Invalid raw transaction ID");
-            multisigRawTransactionHexTextField.setVisible(true);
         }else{
 //            multisigTransactionHexTextArea.setWrapStyleWord(true);
             multisigRawTransactionHexTextField.setText(rawTxHex);
-            multisigRawTransactionHexTextField.setVisible(true);
         }
         
         

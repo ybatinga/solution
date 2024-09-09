@@ -18,7 +18,6 @@ public class SendSignedContractToRegistryPanel extends javax.swing.JPanel {
      */
     public SendSignedContractToRegistryPanel() {
         initComponents();
-        txIdOfSignedContractSentToRegistryAddressTextField.setVisible(false);
     }
 
     /**
@@ -61,16 +60,19 @@ public class SendSignedContractToRegistryPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(sendSignedContractToRegistryOfficeLabel)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(ownerBuyerSignatureHexLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ownerBuyerSignatureHexTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(sendSignedContractButton)
+                        .addComponent(ownerBuyerSignatureHexTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 535, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(txIdOfSignedContractSentToRegistryAddressLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txIdOfSignedContractSentToRegistryAddressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(sendSignedContractToRegistryOfficeLabel)
+                            .addComponent(sendSignedContractButton)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txIdOfSignedContractSentToRegistryAddressLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txIdOfSignedContractSentToRegistryAddressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(55, 55, 55))
         );
         layout.setVerticalGroup(
@@ -97,7 +99,6 @@ public class SendSignedContractToRegistryPanel extends javax.swing.JPanel {
         String ownerBuyerSignatureHex = ownerBuyerSignatureHexTextField.getText();
         String txIdOfSignedContractSentToRegistryAddress = RegistryServiceControl.sendRawTransaction(ownerBuyerSignatureHex, StringsService.wallet_ord_notary);
         txIdOfSignedContractSentToRegistryAddressTextField.setText(txIdOfSignedContractSentToRegistryAddress);
-        txIdOfSignedContractSentToRegistryAddressTextField.setVisible(true);
     }//GEN-LAST:event_sendSignedContractButtonActionPerformed
 
 

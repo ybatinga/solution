@@ -5,6 +5,7 @@
 package solution.control;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import solution.model.GetAddressInfoModel;
@@ -15,13 +16,16 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpRequest.BodyPublishers;
 import java.net.http.HttpResponse;
+import java.util.ArrayList;
 import java.util.Base64;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import solution.model.BitcoinCliStringResultModel;
 import solution.model.CreateMultisigModel;
 import solution.model.DecodeRawTransactionModel;
 import solution.model.GetRawTransactionModel;
+import solution.model.ListUnspentModel;
 import solution.model.SignRawTransactionWithKeyModel;
 import solution.model.SignRawTransactionWithWalletModel;
 
@@ -170,9 +174,13 @@ public class RegistryServiceControl {
 
     public static String createRawTransaction(String txId, long vout, String recipientAddress, double amount) {
         try {
-            String[] command = new String[]{"/usr/local/apps/bitcoin-25.0/bin/bitcoin-cli", "createrawtransaction",
-//                        "[{\"txid\":\"" + txId + "\",\"vout\":0}]", "[{\"" + recipientAddress + "\":0.01}]"};
-                        "[{\"txid\":\"" + txId + "\",\"vout\":" + vout + "}]", "[{\"" + recipientAddress + "\":" + amount + "}]"};            
+            //                        "[{\"txid\":\"" + txId + "\",\"vout\":0}]", "[{\"" + recipientAddress + "\":0.01}]"};
+            String[] command = new String[]{
+                "/usr/local/apps/bitcoin-25.0/bin/bitcoin-cli",
+                "createrawtransaction",
+                "[{\"txid\":\"" + txId + "\",\"vout\":" + vout + "}]",
+                "[{\"" + recipientAddress + "\":" + amount + "}]"
+            };            
 
             Process process = Runtime.getRuntime().exec(command); // for Linux
 
@@ -190,6 +198,41 @@ public class RegistryServiceControl {
 
             return rawTxHex;
 //            return null;
+        } catch (IOException | InterruptedException ex) {
+            Logger.getLogger(RegistryServiceControl.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+    
+    public static String createRawTransactionWithChangeAddress(String txId, 
+            long vout, 
+            String recipientAddress, 
+            double amount, 
+            String changeAddress, 
+            double changeAmount) {
+        try {
+//                        "[{\"txid\":\"" + txId + "\",\"vout\":0}]", "[{\"" + recipientAddress + "\":0.01}]"};
+             String[] command = new String[]{
+                 "/usr/local/apps/bitcoin-25.0/bin/bitcoin-cli", 
+                 "createrawtransaction",
+                 "[{\"txid\":\"" + txId + "\",\"vout\":" + vout + "}]", 
+                 "{\"" + recipientAddress + "\":" + amount + ",\"" + changeAddress + "\":" + changeAmount + "}"};            
+            
+            Process process = Runtime.getRuntime().exec(command); // for Linux
+
+            process.waitFor();
+
+        InputStreamReader reader =
+                new InputStreamReader(process.getInputStream());
+        String rawTxHex = new Gson().fromJson(reader, String.class);
+        
+        if (rawTxHex == null || rawTxHex.equals("")) {
+                String concatErrorMsg = printErrorInOutput(process);
+                return concatErrorMsg;
+            }
+  
+            return rawTxHex;
+
         } catch (IOException | InterruptedException ex) {
             Logger.getLogger(RegistryServiceControl.class.getName()).log(Level.SEVERE, null, ex);
             return null;
@@ -280,7 +323,6 @@ public class RegistryServiceControl {
             
 
             if(txIdOfTransferredContract == null || txIdOfTransferredContract.equals("")){
-//            if(signRawTransactionWithWalletModel == null){
                 String concatErrorMsg = printErrorInOutput(process);
                 return concatErrorMsg;
             }
@@ -350,6 +392,45 @@ public class RegistryServiceControl {
             
             String signedTx = signRawTransactionWithKeyModel.getHex();
             return signedTx;
+//            return null;
+        } catch (IOException | InterruptedException ex) {
+            Logger.getLogger(RegistryServiceControl.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+    
+    public static List<ListUnspentModel> listUnspent(String walletName, String walletAddress, double minimumAmount) {
+        try {
+            
+//            "./bitcoin-cli -rpcwallet=legacy_buyer listunspent 6 9999999 [\"midFKFXtqdSN8pRTvdqyqRwx9DUnRgezR5\"] false { \"minimumAmount\": 10 }"
+            
+//          source of command comments: https://developer.bitcoin.org/reference/rpc/listunspent.html
+            String[] command = new String[]{
+                "/usr/local/apps/bitcoin-25.0/bin/bitcoin-cli", 
+                "-rpcwallet=" + walletName, //wallet name being used
+                "listunspent", // command name
+                "6", // The minimum confirmations to filter
+                "9999999", // The maximum confirmations to filter
+                "[\""+ walletAddress+ "\"]", // wallet address to list unspent transactions
+                "false", // boolean to "Include outputs that are not safe to spend"
+                "{ \"minimumAmount\": " + minimumAmount + "}" // JSON with query options with "minimumAmount" query (Minimum value of each UTXO in BTC)
+            };
+
+            Process process = Runtime.getRuntime().exec(command); // for Linux
+
+            process.waitFor();
+
+            InputStreamReader reader
+                    = new InputStreamReader(process.getInputStream());
+            java.lang.reflect.Type listOfMyClassObject = new TypeToken<ArrayList<ListUnspentModel>>() {}.getType();
+            List<ListUnspentModel>  listUnspentModelList = new Gson().fromJson(reader, listOfMyClassObject);
+           
+            if (listUnspentModelList == null) {
+                String concatErrorMsg = printErrorInOutput(process);
+                return null;
+            }
+            
+            return listUnspentModelList;
 //            return null;
         } catch (IOException | InterruptedException ex) {
             Logger.getLogger(RegistryServiceControl.class.getName()).log(Level.SEVERE, null, ex);

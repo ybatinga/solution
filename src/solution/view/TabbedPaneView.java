@@ -53,6 +53,7 @@ public class TabbedPaneView extends JPanel {
     
     String walletBuyerPublicKey;
     String walletOwnerPublicKey;
+    String walletOwnerAddress;
     String multisigAddress;
     
     public TabbedPaneView() {
@@ -60,14 +61,14 @@ public class TabbedPaneView extends JPanel {
         
         JTabbedPane tabbedPane = new JTabbedPane();
         
-        JComponent panel1 = buyerWalletPanel("Panel #1");
-        tabbedPane.addTab(StringsService.byuer_wallet, null, panel1,
-                StringsService.byuer_wallet);
+        JComponent panel1 = ownerWalletPanel("Panel #1");
+        tabbedPane.addTab(StringsService.owner_wallet, null, panel1,
+                StringsService.owner_wallet);
         tabbedPane.setMnemonicAt(0, KeyEvent.VK_1);
         
-        JComponent panel2 = ownerWalletPanel("Panel #2");
-        tabbedPane.addTab(StringsService.owner_wallet, null, panel2,
-                StringsService.owner_wallet);
+        JComponent panel2 = buyerWalletPanel("Panel #2");
+        tabbedPane.addTab(StringsService.byuer_wallet, null, panel2,
+                StringsService.byuer_wallet);
         tabbedPane.setMnemonicAt(1, KeyEvent.VK_2);
         
         JComponent panel3 = registerNewPropertyPanel("Panel #3");
@@ -154,7 +155,7 @@ public class TabbedPaneView extends JPanel {
     }
 
     protected JComponent buyerWalletPanel(String text) {
-        WalletBuyerPanelView walletBuyerPanelView = new WalletBuyerPanelView();
+        WalletBuyerPanelView walletBuyerPanelView = new WalletBuyerPanelView(walletOwnerAddress);
         JLabel filler = new JLabel(text);
 //        filler.setHorizontalAlignment(JLabel.CENTER);
 //        panel.setLayout(new GridLayout(1, 1));
@@ -170,6 +171,7 @@ public class TabbedPaneView extends JPanel {
 //        panel.setLayout(new GridLayout(1, 1));
         walletOwnerPanelView.add(filler);
         walletOwnerPublicKey = walletOwnerPanelView.getAddressInfoModel.getResult().getPubkey();
+        walletOwnerAddress = walletOwnerPanelView.getAddressInfoModel.getResult().getAddress();
         return walletOwnerPanelView;
     }
     

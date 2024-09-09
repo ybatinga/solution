@@ -28,7 +28,6 @@ public class RegisterPropertyPanelView extends javax.swing.JPanel {
      */
     public RegisterPropertyPanelView() {
         initComponents();
-        propertyIdTextField.setVisible(false);
     }
 
     /**
@@ -42,8 +41,8 @@ public class RegisterPropertyPanelView extends javax.swing.JPanel {
 
         registerNewPropertyLabel = new javax.swing.JLabel();
         registerNewPropertyButton = new javax.swing.JButton();
-        propertyIdLabel = new javax.swing.JLabel();
-        propertyIdTextField = new java.awt.TextField();
+        propertyTransactionIdLabel = new javax.swing.JLabel();
+        propertyTransactionIdTextField = new java.awt.TextField();
 
         setDoubleBuffered(false);
 
@@ -57,13 +56,13 @@ public class RegisterPropertyPanelView extends javax.swing.JPanel {
             }
         });
 
-        propertyIdLabel.setText("Property ID: ");
+        propertyTransactionIdLabel.setText("Property ID: ");
 
-        propertyIdTextField.setBackground(new java.awt.Color(242, 242, 242));
-        propertyIdTextField.setEditable(false);
-        propertyIdTextField.addActionListener(new java.awt.event.ActionListener() {
+        propertyTransactionIdTextField.setBackground(new java.awt.Color(242, 242, 242));
+        propertyTransactionIdTextField.setEditable(false);
+        propertyTransactionIdTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                propertyIdTextFieldActionPerformed(evt);
+                propertyTransactionIdTextFieldActionPerformed(evt);
             }
         });
 
@@ -80,11 +79,11 @@ public class RegisterPropertyPanelView extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(propertyIdLabel)
+                                .addComponent(propertyTransactionIdLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(propertyIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(propertyTransactionIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(registerNewPropertyButton))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(0, 23, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -95,15 +94,15 @@ public class RegisterPropertyPanelView extends javax.swing.JPanel {
                 .addComponent(registerNewPropertyButton)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(propertyIdLabel)
-                    .addComponent(propertyIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(propertyTransactionIdLabel)
+                    .addComponent(propertyTransactionIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(193, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void propertyIdTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_propertyIdTextFieldActionPerformed
+    private void propertyTransactionIdTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_propertyTransactionIdTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_propertyIdTextFieldActionPerformed
+    }//GEN-LAST:event_propertyTransactionIdTextFieldActionPerformed
 
     private void registerNewPropertyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerNewPropertyButtonActionPerformed
         fc = new JFileChooser();
@@ -118,13 +117,12 @@ public class RegisterPropertyPanelView extends javax.swing.JPanel {
                 File file = fc.getSelectedFile();
                 try {
                     String contractTransactionId = RegistryServiceControl.registerNewPropertyOrContract(file.getPath());
-                    propertyIdTextField.setText(contractTransactionId);
-                    propertyIdTextField.setVisible(true);                    
+                    propertyTransactionIdTextField.setText(contractTransactionId);
                 } catch (IOException ex) {
-                    propertyIdLabel.setText(ex.getMessage());
+                    propertyTransactionIdLabel.setText(ex.getMessage());
                     Logger.getLogger(RegisterPropertyPanelView.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (InterruptedException ex) {
-                    propertyIdLabel.setText(ex.getMessage());
+                    propertyTransactionIdLabel.setText(ex.getMessage());
                     Logger.getLogger(RegisterPropertyPanelView.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 //This is where a real application would open the file.
@@ -140,8 +138,8 @@ public class RegisterPropertyPanelView extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel propertyIdLabel;
-    private java.awt.TextField propertyIdTextField;
+    private javax.swing.JLabel propertyTransactionIdLabel;
+    private java.awt.TextField propertyTransactionIdTextField;
     private javax.swing.JButton registerNewPropertyButton;
     private javax.swing.JLabel registerNewPropertyLabel;
     // End of variables declaration//GEN-END:variables

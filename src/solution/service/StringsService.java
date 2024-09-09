@@ -30,7 +30,8 @@ public class StringsService {
     
     public static String wallet_ord = "ord";
     public static String wallet_ord_notary = "ord_notary";
-    
+    public static String wallet_buyer = "legacy_buyer";
+        
     public static String invalid_contract_transaction_ID = "Invalid contract transaction ID";
     
     

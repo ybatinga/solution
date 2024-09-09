@@ -20,8 +20,7 @@ public class WalletOwnerPanelView extends javax.swing.JPanel {
      */
     public WalletOwnerPanelView() {
         initComponents();
-        ownerBuyerSignatureHexTextField.setVisible(false);
-        
+                
         getAddressInfoModel = RegistryServiceControl.getAddressInfo("legacy_owner", StringsService.PLATFORM.getWALLET_ADDRESS_OWNER());
         if(getAddressInfoModel != null){
             walletAddressTextField.setText(getAddressInfoModel.getResult().getAddress());
@@ -191,7 +190,6 @@ public class WalletOwnerPanelView extends javax.swing.JPanel {
         );
         
         ownerBuyerSignatureHexTextField.setText(ownerSignatureHex);
-        ownerBuyerSignatureHexTextField.setVisible(true);
     }//GEN-LAST:event_signContractButtonActionPerformed
 
 

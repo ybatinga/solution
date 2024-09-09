@@ -35,7 +35,7 @@ import solution.model.SignRawTransactionWithWalletModel;
  */
 public class RegistryServiceControl {
     
-    public static String registerNewPropertyOrContract(String filePath) throws IOException, InterruptedException {
+    public static OrdInscribedDataModel registerNewPropertyOrContract(String filePath) throws IOException, InterruptedException {
 
         Process process = Runtime.getRuntime().exec("/usr/local/apps/ord-0.19.1/ord --chain regtest --bitcoin-rpc-password rpc --bitcoin-rpc-username rpc wallet inscribe --fee-rate 2 --file " + filePath); // for Linux
             //Process process = Runtime.getRuntime().exec("cmd /c dir"); //for Windows
@@ -49,7 +49,9 @@ public class RegistryServiceControl {
         if(ordInscribedDataModel == null || ordInscribedDataModel.equals("")){
 //            if(signRawTransactionWithWalletModel == null){
                 String concatErrorMsg = printErrorInOutput(process);
-                return concatErrorMsg;
+                ordInscribedDataModel = new OrdInscribedDataModel();
+                ordInscribedDataModel.setReveal(concatErrorMsg);
+                return ordInscribedDataModel;
             }
         
 //        if(ordInscribedDataModel == null){
@@ -67,7 +69,44 @@ public class RegistryServiceControl {
 //            return ordInscribedDataModelError;
 //        }
             
-        return ordInscribedDataModel.getReveal();
+        return ordInscribedDataModel;
+    }
+    
+    public static OrdInscribedDataModel registerPropertyTransfer(String filePath, String parentInscriptionID) throws IOException, InterruptedException {
+
+        Process process = Runtime.getRuntime().exec("/usr/local/apps/ord-0.19.1/ord --chain regtest --bitcoin-rpc-password rpc --bitcoin-rpc-username rpc wallet inscribe --fee-rate 2 --parent " + parentInscriptionID + " --file " + filePath); // for Linux
+            //Process process = Runtime.getRuntime().exec("cmd /c dir"); //for Windows
+
+        process.waitFor();
+
+        InputStreamReader reader =
+                new InputStreamReader(process.getInputStream());
+        OrdInscribedDataModel ordInscribedDataModel = new Gson().fromJson(reader, OrdInscribedDataModel.class);
+        
+        if(ordInscribedDataModel == null || ordInscribedDataModel.equals("")){
+//            if(signRawTransactionWithWalletModel == null){
+                String concatErrorMsg = printErrorInOutput(process);
+                ordInscribedDataModel = new OrdInscribedDataModel();
+                ordInscribedDataModel.setReveal(concatErrorMsg);
+                return ordInscribedDataModel;
+            }
+        
+//        if(ordInscribedDataModel == null){
+//            OrdInscribedDataModel ordInscribedDataModelError = new OrdInscribedDataModel();
+//            OrdInscribedDataModel.Inscription inscription = ordInscribedDataModelError.new Inscription();
+//            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+//            inscription.setID(bufferedReader.readLine());
+//            ordInscribedDataModelError.getInscriptions().add(inscription);
+           
+//        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(process.getErrorStream()));    
+//        String line = new String();
+//            while ((line = bufferedReader.readLine()) != null) {
+//                System.out.println(line);
+//            }
+//            return ordInscribedDataModelError;
+//        }
+            
+        return ordInscribedDataModel;
     }
     
     public static GetAddressInfoModel getAddressInfo(String walletName, String walletAddress) {

@@ -27,6 +27,8 @@ public class StringsService {
     public static String send_contract_to_multisig_address = "Send Contract to Multisig Address";    
     public static String create_multisig_transaction = "Create Multisig Transaction";
     public static String send_signed_contract_to_registry_address = "Send Signed Contract to Registry Address";
+    public static String transfer_property = "Transfer Property";
+
     
     public static String wallet_ord = "ord";
     public static String wallet_ord_notary = "ord_notary";

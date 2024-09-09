@@ -22,22 +22,20 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="registerNewPropertyLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="registerNewPropertyLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="195" max="32767" attributes="0"/>
+                      <Component id="propertyTransactionIdLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="propertyTransactionIdTextField" min="-2" pref="512" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="propertyTransactionIdLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="propertyTransactionIdTextField" min="-2" pref="280" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="registerNewPropertyButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="0" pref="23" max="32767" attributes="0"/>
+                  <Component id="registerNewPropertyButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="propertyInscriptionIdLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="propertyInscriptionIdTextField" min="-2" pref="513" max="-2" attributes="0"/>
                   </Group>
               </Group>
+              <EmptySpace min="10" pref="20" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -53,7 +51,12 @@
                   <Component id="propertyTransactionIdLabel" min="-2" max="-2" attributes="0"/>
                   <Component id="propertyTransactionIdTextField" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="193" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="propertyInscriptionIdLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="propertyInscriptionIdTextField" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="164" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -77,7 +80,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="propertyTransactionIdLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Property ID: "/>
+        <Property name="text" type="java.lang.String" value="Property Transaction ID: "/>
       </Properties>
     </Component>
     <Component class="java.awt.TextField" name="propertyTransactionIdTextField">
@@ -89,6 +92,22 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="propertyTransactionIdTextFieldActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="propertyInscriptionIdLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Property Inscription ID: "/>
+      </Properties>
+    </Component>
+    <Component class="java.awt.TextField" name="propertyInscriptionIdTextField">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="f2" green="f2" red="f2" type="rgb"/>
+        </Property>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="propertyInscriptionIdTextFieldActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

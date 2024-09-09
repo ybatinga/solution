@@ -101,11 +101,25 @@ public class TabbedPaneView extends JPanel {
                 "6. " + StringsService.send_signed_contract_to_registry_address);
         tabbedPane.setMnemonicAt(6, KeyEvent.VK_8);
         
+        JComponent panel9 = tranferPropertyToBuyerAddressPanel("Panel #9");
+        tabbedPane.addTab("7. " + StringsService.transfer_property, null, panel9,
+                "7. " + StringsService.transfer_property);
+        tabbedPane.setMnemonicAt(7, KeyEvent.VK_9);
+        
         //Add the tabbed pane to this panel.
         add(tabbedPane);
         
         //The following line enables to use scrolling tabs.
         tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
+    }
+    
+    protected JComponent tranferPropertyToBuyerAddressPanel(String text) {
+        TransferPropertyPanel panel = new TransferPropertyPanel();
+        JLabel filler = new JLabel(text);
+//        filler.setHorizontalAlignment(JLabel.CENTER);
+//        panel.setLayout(new GridLayout(1, 1));
+        panel.add(filler);
+        return panel;
     }
     
     protected JComponent sendSignedContractToRegistryAddressPanel(String text) {

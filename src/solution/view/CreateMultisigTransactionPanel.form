@@ -18,21 +18,21 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="transactionIdOfTransferredContractLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="transactionIdOfContractSentToMultisigTextField" min="-2" pref="450" max="-2" attributes="0"/>
+                      <Component id="transactionIdOfContractSentToMultisigTextField" min="-2" pref="516" max="-2" attributes="0"/>
                   </Group>
                   <Component id="CreateMultisigTransactionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="createMultisigTransactionButton" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="multisigRawTransactionHexLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="multisigRawTransactionHexTextField" min="-2" pref="554" max="-2" attributes="0"/>
+                      <Component id="multisigRawTransactionHexTextField" max="32767" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="41" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

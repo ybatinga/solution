@@ -75,15 +75,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="paymentAmountTextField" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="CreatePaymentTransactionButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="paymentRawTransactionHexLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="sendPaymentButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="paymentRawTransactionHexTextField" min="-2" pref="528" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="sendPaymentButton" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="23" max="32767" attributes="0"/>
                   </Group>
@@ -142,20 +134,13 @@
                   <Component id="paymentAmountTextField" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="CreatePaymentTransactionButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="paymentRawTransactionHexLabel" min="-2" max="-2" attributes="0"/>
-                  <Component id="paymentRawTransactionHexTextField" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               <Component id="sendPaymentButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Component id="transactionIdOfPaymentSentToOwnerAddressLabel" min="-2" max="-2" attributes="0"/>
                   <Component id="transactionIdOfPaymentSentToOwnerAddressTextField" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="25" max="32767" attributes="0"/>
+              <EmptySpace pref="104" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -272,20 +257,7 @@
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="CreatePaymentTransactionButton">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Create Payment Transaction"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CreatePaymentTransactionButtonActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JSeparator" name="jSeparator1">
-    </Component>
-    <Component class="javax.swing.JLabel" name="paymentRawTransactionHexLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Payment Raw Transaction Hex:"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="sendPaymentButton">
       <Properties>
@@ -301,14 +273,6 @@
       </Properties>
     </Component>
     <Component class="java.awt.TextField" name="transactionIdOfPaymentSentToOwnerAddressTextField">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="f2" green="f2" red="f2" type="rgb"/>
-        </Property>
-        <Property name="editable" type="boolean" value="false"/>
-      </Properties>
-    </Component>
-    <Component class="java.awt.TextField" name="paymentRawTransactionHexTextField">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="f2" green="f2" red="f2" type="rgb"/>

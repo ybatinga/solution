@@ -62,7 +62,11 @@ public class SendContractToMultisigPanelView extends javax.swing.JPanel {
 
         txIdOfContractSentToMultisigTextField.setBackground(new java.awt.Color(242, 242, 242));
         txIdOfContractSentToMultisigTextField.setEditable(false);
-        txIdOfContractSentToMultisigTextField.setText("9dd9d61ba0e27e79c909a66c2a96544466573ec5e4ee469a3e79ef22509cc458");
+        txIdOfContractSentToMultisigTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txIdOfContractSentToMultisigTextFieldActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -126,6 +130,10 @@ public class SendContractToMultisigPanelView extends javax.swing.JPanel {
             txIdOfContractSentToMultisigTextField.setText(txIdOfSentContract);
         }
     }//GEN-LAST:event_sendContractToMultisigButtonActionPerformed
+
+    private void txIdOfContractSentToMultisigTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txIdOfContractSentToMultisigTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txIdOfContractSentToMultisigTextFieldActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

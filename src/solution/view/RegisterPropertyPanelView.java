@@ -134,7 +134,10 @@ public class RegisterPropertyPanelView extends javax.swing.JPanel {
                 try {
                     OrdInscribedDataModel ordInscribedDataModel  = RegistryServiceControl.registerNewPropertyOrContract(file.getPath());
                     propertyTransactionIdTextField.setText(ordInscribedDataModel.getReveal());
-                    propertyInscriptionIdTextField.setText(ordInscribedDataModel.getInscriptions().get(0).getID());
+                    if (!ordInscribedDataModel.getInscriptions().isEmpty()){
+                        propertyInscriptionIdTextField.setText(ordInscribedDataModel.getInscriptions().get(0).getID());
+                    }
+                    
                 } catch (IOException ex) {
                     propertyTransactionIdLabel.setText(ex.getMessage());
                     Logger.getLogger(RegisterPropertyPanelView.class.getName()).log(Level.SEVERE, null, ex);

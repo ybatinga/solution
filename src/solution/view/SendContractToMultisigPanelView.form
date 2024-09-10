@@ -116,8 +116,10 @@
           <Color blue="f2" green="f2" red="f2" type="rgb"/>
         </Property>
         <Property name="editable" type="boolean" value="false"/>
-        <Property name="text" type="java.lang.String" value="9dd9d61ba0e27e79c909a66c2a96544466573ec5e4ee469a3e79ef22509cc458"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txIdOfContractSentToMultisigTextFieldActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

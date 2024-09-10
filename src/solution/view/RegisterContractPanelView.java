@@ -124,7 +124,9 @@ public class RegisterContractPanelView extends javax.swing.JPanel{
                     OrdInscribedDataModel ordInscribedDataModel = RegistryServiceControl.registerNewPropertyOrContract(file.getPath());
                             
                     contractTransactionIdTextField.setText(ordInscribedDataModel.getReveal());
-                    contractInscriptionIdTextField.setText(ordInscribedDataModel.getInscriptions().get(0).getID());
+                    if (!ordInscribedDataModel.getInscriptions().isEmpty()){
+                        contractInscriptionIdTextField.setText(ordInscribedDataModel.getInscriptions().get(0).getID());
+                    }
                 } catch (IOException ex) {
                     contractTransactionIdTextField.setText(ex.getMessage());
                     Logger.getLogger(RegisterContractPanelView.class.getName()).log(Level.SEVERE, null, ex);

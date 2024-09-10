@@ -76,13 +76,10 @@ public class WalletBuyerPanelView extends javax.swing.JPanel {
         walletOwnerAddressTextField = new java.awt.TextField();
         paymentAmountLabel = new javax.swing.JLabel();
         paymentAmountTextField = new java.awt.TextField();
-        CreatePaymentTransactionButton = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
-        paymentRawTransactionHexLabel = new javax.swing.JLabel();
         sendPaymentButton = new javax.swing.JButton();
         transactionIdOfPaymentSentToOwnerAddressLabel = new javax.swing.JLabel();
         transactionIdOfPaymentSentToOwnerAddressTextField = new java.awt.TextField();
-        paymentRawTransactionHexTextField = new java.awt.TextField();
 
         buyerWalletLabel.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         buyerWalletLabel.setText("Buyer Wallet");
@@ -129,15 +126,6 @@ public class WalletBuyerPanelView extends javax.swing.JPanel {
         paymentAmountTextField.setBackground(new java.awt.Color(242, 242, 242));
         paymentAmountTextField.setEditable(false);
 
-        CreatePaymentTransactionButton.setText("Create Payment Transaction");
-        CreatePaymentTransactionButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CreatePaymentTransactionButtonActionPerformed(evt);
-            }
-        });
-
-        paymentRawTransactionHexLabel.setText("Payment Raw Transaction Hex:");
-
         sendPaymentButton.setText("Send Payment");
         sendPaymentButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -149,9 +137,6 @@ public class WalletBuyerPanelView extends javax.swing.JPanel {
 
         transactionIdOfPaymentSentToOwnerAddressTextField.setBackground(new java.awt.Color(242, 242, 242));
         transactionIdOfPaymentSentToOwnerAddressTextField.setEditable(false);
-
-        paymentRawTransactionHexTextField.setBackground(new java.awt.Color(242, 242, 242));
-        paymentRawTransactionHexTextField.setEditable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -202,13 +187,7 @@ public class WalletBuyerPanelView extends javax.swing.JPanel {
                                 .addComponent(paymentAmountLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(paymentAmountTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(CreatePaymentTransactionButton)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(paymentRawTransactionHexLabel)
-                                    .addComponent(sendPaymentButton))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(paymentRawTransactionHexTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 528, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(sendPaymentButton))
                         .addGap(0, 23, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -254,18 +233,12 @@ public class WalletBuyerPanelView extends javax.swing.JPanel {
                     .addComponent(paymentAmountLabel)
                     .addComponent(paymentAmountTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(CreatePaymentTransactionButton)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(paymentRawTransactionHexLabel)
-                    .addComponent(paymentRawTransactionHexTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
                 .addComponent(sendPaymentButton)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(transactionIdOfPaymentSentToOwnerAddressLabel)
                     .addComponent(transactionIdOfPaymentSentToOwnerAddressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(104, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -298,7 +271,9 @@ public class WalletBuyerPanelView extends javax.swing.JPanel {
         buyerSignatureHexTextField.setText(buyerSignatureHex);
     }//GEN-LAST:event_signContractButtonActionPerformed
 
-    private void CreatePaymentTransactionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreatePaymentTransactionButtonActionPerformed
+    private void sendPaymentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendPaymentButtonActionPerformed
+        
+        String paymentRawTransactionHex = null;
         
         List<ListUnspentModel>  listUnspentModelList = RegistryServiceControl.listUnspent(
                 StringsService.wallet_buyer, 
@@ -306,7 +281,7 @@ public class WalletBuyerPanelView extends javax.swing.JPanel {
                 Double.parseDouble(paymentAmountTextField.getText()));
         
         if (listUnspentModelList.isEmpty()) {
-            paymentRawTransactionHexTextField.setText("It cannot create paymento transaction because listUnspent list is empty");
+            transactionIdOfPaymentSentToOwnerAddressTextField.setText("It cannot create paymento transaction because listUnspent list is empty");
 //            paymentRawTransactionHexTextField.setVisible(true);
         } else {
 
@@ -317,7 +292,7 @@ public class WalletBuyerPanelView extends javax.swing.JPanel {
             BigDecimal change = amount.subtract(paymentAmount);
             BigDecimal changeMinusTxFee = change.subtract(new BigDecimal(0.00001).setScale(5, RoundingMode.DOWN)); // sutract 0.00001 BTC so that this to 0.00001 BTC amount is used to pay for transaction fee
 
-            String paymentRawTransactionHex = RegistryServiceControl.createRawTransactionWithChangeAddress(
+            paymentRawTransactionHex = RegistryServiceControl.createRawTransactionWithChangeAddress(
                     txId,
                     vout,
                     walletOwnerAddress,
@@ -325,14 +300,7 @@ public class WalletBuyerPanelView extends javax.swing.JPanel {
                     getAddressInfoModel.getResult().getAddress(),
                     Double.parseDouble(changeMinusTxFee.toString()));
 
-            paymentRawTransactionHexTextField.setText(paymentRawTransactionHex);
-//            paymentRawTransactionHexTextField.setVisible(true);
         }
-    }//GEN-LAST:event_CreatePaymentTransactionButtonActionPerformed
-
-    private void sendPaymentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendPaymentButtonActionPerformed
-        
-        String paymentRawTransactionHex = paymentRawTransactionHexTextField.getText();
         
         String signedTx = RegistryServiceControl.signRawTransactionWithWallet(paymentRawTransactionHex, StringsService.wallet_buyer);
 
@@ -346,7 +314,6 @@ public class WalletBuyerPanelView extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton CreatePaymentTransactionButton;
     private javax.swing.JLabel buyerSignatureHexLabel;
     private java.awt.TextField buyerSignatureHexTextField;
     private javax.swing.JLabel buyerWalletLabel;
@@ -356,8 +323,6 @@ public class WalletBuyerPanelView extends javax.swing.JPanel {
     private java.awt.TextField multisigTransactionHexTextField1;
     private javax.swing.JLabel paymentAmountLabel;
     private java.awt.TextField paymentAmountTextField;
-    private javax.swing.JLabel paymentRawTransactionHexLabel;
-    private java.awt.TextField paymentRawTransactionHexTextField;
     private javax.swing.JLabel redeemScriptLabel;
     private java.awt.TextField redeemScriptTextField;
     private javax.swing.JButton sendPaymentButton;

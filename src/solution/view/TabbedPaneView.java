@@ -51,9 +51,6 @@ import solution.service.StringsService;
 
 public class TabbedPaneView extends JPanel {
     
-    String walletBuyerPublicKey;
-    String walletOwnerPublicKey;
-    String walletOwnerAddress;
     String multisigAddress;
     
     public TabbedPaneView() {
@@ -61,50 +58,50 @@ public class TabbedPaneView extends JPanel {
         
         JTabbedPane tabbedPane = new JTabbedPane();
         
-        JComponent panel1 = ownerWalletPanel("Panel #1");
-        tabbedPane.addTab(StringsService.owner_wallet, null, panel1,
-                StringsService.owner_wallet);
+        JComponent panel1 = registerNewPropertyPanel("Panel #1");
+        tabbedPane.addTab("1. " + StringsService.register_new_property, null, panel1,
+                "1. " + StringsService.register_new_property);
         tabbedPane.setMnemonicAt(0, KeyEvent.VK_1);
         
-        JComponent panel2 = buyerWalletPanel("Panel #2");
-        tabbedPane.addTab(StringsService.byuer_wallet, null, panel2,
-                StringsService.byuer_wallet);
+        JComponent panel2 = registerContractPanel("Panel #2");
+        tabbedPane.addTab("2. " + StringsService.register_contract, null, panel2,
+                "2. " + StringsService.register_contract);
         tabbedPane.setMnemonicAt(1, KeyEvent.VK_2);
         
-        JComponent panel3 = registerNewPropertyPanel("Panel #3");
-        tabbedPane.addTab("1. " + StringsService.register_new_property, null, panel3,
-                "1. " + StringsService.register_new_property);
-        tabbedPane.setMnemonicAt(2, KeyEvent.VK_3);
+        JComponent panel3 = createMultisigAddressPanel("Panel #3");
+        tabbedPane.addTab("3. " + StringsService.create_multisig_address, null, panel3,
+                "3. " + StringsService.create_multisig_address);
+        tabbedPane.setMnemonicAt(2, KeyEvent.VK_3);        
         
-        JComponent panel4 = registerContractPanel("Panel #4");
-        tabbedPane.addTab("2. " + StringsService.register_contract, null, panel4,
-                "2. " + StringsService.register_contract);
+        JComponent panel4 = sendContractToMultisigAddressPanel("Panel #4");
+        tabbedPane.addTab("4. " + StringsService.send_contract_to_multisig_address, null, panel4,
+                "4. " + StringsService.send_contract_to_multisig_address);
         tabbedPane.setMnemonicAt(3, KeyEvent.VK_4);
         
-        JComponent panel5 = createMultisigAddressPanel("Panel #5");
-        tabbedPane.addTab("3. " + StringsService.create_multisig_address, null, panel5,
-                "3. " + StringsService.create_multisig_address);
+        JComponent panel5 = createMultisigTransactionPanel("Panel #5");
+        tabbedPane.addTab("5. " + StringsService.create_multisig_transaction, null, panel5,
+                "5. " + StringsService.create_multisig_transaction);
         tabbedPane.setMnemonicAt(4, KeyEvent.VK_5);
         
-        JComponent panel6 = sendContractToMultisigAddressPanel("Panel #6");
-        tabbedPane.addTab("4. " + StringsService.send_contract_to_multisig_address, null, panel6,
-                "4. " + StringsService.send_contract_to_multisig_address);
+        JComponent panel6 = ownerWalletPanel("Panel #6");
+        tabbedPane.addTab("6. " + StringsService.owner_wallet, null, panel6,
+                StringsService.owner_wallet);
         tabbedPane.setMnemonicAt(5, KeyEvent.VK_6);
         
-        JComponent panel7 = createMultisigTransactionPanel("Panel #7");
-        tabbedPane.addTab("5. " + StringsService.create_multisig_transaction, null, panel7,
-                "5. " + StringsService.create_multisig_transaction);
+        JComponent panel7 = buyerWalletPanel("Panel #7");
+        tabbedPane.addTab("7. " + StringsService.byuer_wallet, null, panel7,
+                StringsService.byuer_wallet);
         tabbedPane.setMnemonicAt(6, KeyEvent.VK_7);
         
         JComponent panel8 = sendSignedContractToRegistryAddressPanel("Panel #8");
-        tabbedPane.addTab("6. " + StringsService.send_signed_contract_to_registry_address, null, panel8,
-                "6. " + StringsService.send_signed_contract_to_registry_address);
-        tabbedPane.setMnemonicAt(6, KeyEvent.VK_8);
+        tabbedPane.addTab("8. " + StringsService.send_signed_contract_to_registry_address, null, panel8,
+                "8. " + StringsService.send_signed_contract_to_registry_address);
+        tabbedPane.setMnemonicAt(7, KeyEvent.VK_8);
         
         JComponent panel9 = tranferPropertyToBuyerAddressPanel("Panel #9");
-        tabbedPane.addTab("7. " + StringsService.transfer_property, null, panel9,
-                "7. " + StringsService.transfer_property);
-        tabbedPane.setMnemonicAt(7, KeyEvent.VK_9);
+        tabbedPane.addTab("9. " + StringsService.transfer_property, null, panel9,
+                "9. " + StringsService.transfer_property);
+        tabbedPane.setMnemonicAt(8, KeyEvent.VK_9);
         
         //Add the tabbed pane to this panel.
         add(tabbedPane);
@@ -150,7 +147,7 @@ public class TabbedPaneView extends JPanel {
     }
             
     protected JComponent createMultisigAddressPanel(String text) {
-        CreateMultisigAddressPanel panel = new CreateMultisigAddressPanel(walletBuyerPublicKey, walletOwnerPublicKey);
+        CreateMultisigAddressPanel panel = new CreateMultisigAddressPanel();
         JLabel filler = new JLabel(text);
 //        filler.setHorizontalAlignment(JLabel.CENTER);
 //        panel.setLayout(new GridLayout(1, 1));
@@ -169,12 +166,11 @@ public class TabbedPaneView extends JPanel {
     }
 
     protected JComponent buyerWalletPanel(String text) {
-        WalletBuyerPanelView walletBuyerPanelView = new WalletBuyerPanelView(walletOwnerAddress);
+        WalletBuyerPanelView walletBuyerPanelView = new WalletBuyerPanelView();
         JLabel filler = new JLabel(text);
 //        filler.setHorizontalAlignment(JLabel.CENTER);
 //        panel.setLayout(new GridLayout(1, 1));
         walletBuyerPanelView.add(filler);
-        walletBuyerPublicKey = walletBuyerPanelView.getAddressInfoModel.getResult().getPubkey();
         return walletBuyerPanelView;
     }
     
@@ -184,8 +180,6 @@ public class TabbedPaneView extends JPanel {
 //        filler.setHorizontalAlignment(JLabel.CENTER);
 //        panel.setLayout(new GridLayout(1, 1));
         walletOwnerPanelView.add(filler);
-        walletOwnerPublicKey = walletOwnerPanelView.getAddressInfoModel.getResult().getPubkey();
-        walletOwnerAddress = walletOwnerPanelView.getAddressInfoModel.getResult().getAddress();
         return walletOwnerPanelView;
     }
     

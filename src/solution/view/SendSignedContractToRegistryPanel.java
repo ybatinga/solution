@@ -37,7 +37,7 @@ public class SendSignedContractToRegistryPanel extends javax.swing.JPanel {
         ownerBuyerSignatureHexTextField = new java.awt.TextField();
 
         sendSignedContractToRegistryOfficeLabel.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
-        sendSignedContractToRegistryOfficeLabel.setText("Send Signed Contract to Registry Address");
+        sendSignedContractToRegistryOfficeLabel.setText("Send Signed Contract to Registry");
 
         ownerBuyerSignatureHexLabel.setText("Owner and Buyer Signature Hex:");
 

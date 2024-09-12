@@ -42,7 +42,7 @@ public class SendContractToMultisigPanelView extends javax.swing.JPanel {
         txIdOfContractSentToMultisigTextField = new java.awt.TextField();
 
         sentContractToMultisigAddressLabel.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
-        sentContractToMultisigAddressLabel.setText("Send Contract to Multisig Address");
+        sentContractToMultisigAddressLabel.setText("Send Contract to Multisig");
 
         contractTransactionIdLabel.setText("Contract Transaction ID:");
 

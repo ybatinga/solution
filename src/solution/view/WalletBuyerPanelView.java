@@ -28,14 +28,13 @@ public class WalletBuyerPanelView extends javax.swing.JPanel {
      */
     public WalletBuyerPanelView() {
         initComponents();
-        GetAddressInfoModel getOwnerAddressInfoModel = RegistryServiceControl.getAddressInfo("legacy_owner", StringsService.PLATFORM.getWALLET_ADDRESS_OWNER());
-        walletOwnerAddress = getOwnerAddressInfoModel.getResult().getAddress();
+        walletOwnerAddress = StringsService.PLATFORM.getWALLET_ADDRESS_OWNER();
 //        transactionIdOfPaymentSentToOwnerAddressTextField.setVisible(false);
 //        paymentRawTransactionHexTextField.setVisible(false);
         
         getAddressInfoModel = RegistryServiceControl.getAddressInfo("legacy_buyer", StringsService.PLATFORM.getWALLET_ADDRESS_BUYER());
         if(getAddressInfoModel != null){
-            walletAddressTextField.setText(getAddressInfoModel.getResult().getAddress());
+            walletAddressTextField.setText(walletOwnerAddress);
             walletPublicKeyTextField.setText(getAddressInfoModel.getResult().getPubkey());
         }
         
@@ -46,7 +45,7 @@ public class WalletBuyerPanelView extends javax.swing.JPanel {
         
         double paymentAmount = 1.485;
         paymentAmountTextField.setText(Double.toString(paymentAmount));        
-        walletOwnerAddressTextField.setText(this.walletOwnerAddress);
+        walletOwnerAddressTextField.setText(walletOwnerAddress);
     }
     
     /**
@@ -278,7 +277,7 @@ public class WalletBuyerPanelView extends javax.swing.JPanel {
         
         List<ListUnspentModel>  listUnspentModelList = RegistryServiceControl.listUnspent(
                 StringsService.wallet_buyer, 
-                getAddressInfoModel.getResult().getAddress(),                 
+                walletOwnerAddress,                 
                 Double.parseDouble(paymentAmountTextField.getText()));
         
         if (listUnspentModelList.isEmpty()) {
@@ -298,7 +297,7 @@ public class WalletBuyerPanelView extends javax.swing.JPanel {
                     vout,
                     walletOwnerAddress,
                     Double.parseDouble(paymentAmount.toString()),
-                    getAddressInfoModel.getResult().getAddress(),
+                    walletOwnerAddress,
                     Double.parseDouble(changeMinusTxFee.toString()));
 
         }

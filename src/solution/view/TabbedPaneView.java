@@ -61,47 +61,57 @@ public class TabbedPaneView extends JPanel {
         JComponent panel1 = registerNewPropertyPanel("Panel #1");
         tabbedPane.addTab("1. " + StringsService.register_new_property, null, panel1,
                 "1. " + StringsService.register_new_property);
-        tabbedPane.setMnemonicAt(0, KeyEvent.VK_1);
+        tabbedPane.setMnemonicAt(0, KeyEvent.VK_A);
         
         JComponent panel2 = registerContractPanel("Panel #2");
         tabbedPane.addTab("2. " + StringsService.register_contract, null, panel2,
                 "2. " + StringsService.register_contract);
-        tabbedPane.setMnemonicAt(1, KeyEvent.VK_2);
+        tabbedPane.setMnemonicAt(1, KeyEvent.VK_B);
         
         JComponent panel3 = createMultisigAddressPanel("Panel #3");
         tabbedPane.addTab("3. " + StringsService.create_multisig_address, null, panel3,
                 "3. " + StringsService.create_multisig_address);
-        tabbedPane.setMnemonicAt(2, KeyEvent.VK_3);        
+        tabbedPane.setMnemonicAt(2, KeyEvent.VK_C);        
         
         JComponent panel4 = sendContractToMultisigAddressPanel("Panel #4");
         tabbedPane.addTab("4. " + StringsService.send_contract_to_multisig_address, null, panel4,
                 "4. " + StringsService.send_contract_to_multisig_address);
-        tabbedPane.setMnemonicAt(3, KeyEvent.VK_4);
+        tabbedPane.setMnemonicAt(3, KeyEvent.VK_D);
         
         JComponent panel5 = createMultisigTransactionPanel("Panel #5");
         tabbedPane.addTab("5. " + StringsService.create_multisig_transaction, null, panel5,
                 "5. " + StringsService.create_multisig_transaction);
-        tabbedPane.setMnemonicAt(4, KeyEvent.VK_5);
+        tabbedPane.setMnemonicAt(4, KeyEvent.VK_E);
         
         JComponent panel6 = ownerWalletPanel("Panel #6");
         tabbedPane.addTab("6. " + StringsService.owner_wallet, null, panel6,
                 StringsService.owner_wallet);
-        tabbedPane.setMnemonicAt(5, KeyEvent.VK_6);
+        tabbedPane.setMnemonicAt(5, KeyEvent.VK_F);
         
         JComponent panel7 = buyerWalletPanel("Panel #7");
         tabbedPane.addTab("7. " + StringsService.byuer_wallet, null, panel7,
                 StringsService.byuer_wallet);
-        tabbedPane.setMnemonicAt(6, KeyEvent.VK_7);
+        tabbedPane.setMnemonicAt(6, KeyEvent.VK_G);
         
         JComponent panel8 = sendSignedContractToRegistryAddressPanel("Panel #8");
         tabbedPane.addTab("8. " + StringsService.send_signed_contract_to_registry_address, null, panel8,
                 "8. " + StringsService.send_signed_contract_to_registry_address);
-        tabbedPane.setMnemonicAt(7, KeyEvent.VK_8);
+        tabbedPane.setMnemonicAt(7, KeyEvent.VK_H);
         
-        JComponent panel9 = tranferPropertyToBuyerAddressPanel("Panel #9");
-        tabbedPane.addTab("9. " + StringsService.transfer_property, null, panel9,
-                "9. " + StringsService.transfer_property);
-        tabbedPane.setMnemonicAt(8, KeyEvent.VK_9);
+        JComponent panel9 = sendPaymentFromBuyerToOwnerPanel("Panel #9");
+        tabbedPane.addTab("9. " + StringsService.send_payment_from_buyer_to_owner, null, panel9,
+                "9. " + StringsService.send_payment_from_buyer_to_owner);
+        tabbedPane.setMnemonicAt(8, KeyEvent.VK_I);
+        
+        JComponent panel10 = tranferPropertyToBuyerAddressPanel("Panel #10");
+        tabbedPane.addTab("10. " + StringsService.transfer_property, null, panel10,
+                "10. " + StringsService.transfer_property);
+        tabbedPane.setMnemonicAt(9, KeyEvent.VK_J);
+        
+        JComponent panel11 = tranferPropertyToBuyerAddressPanel("Panel #11");
+        tabbedPane.addTab("11. " + StringsService.transfer_property, null, panel11,
+                "11. " + StringsService.transfer_property);
+        tabbedPane.setMnemonicAt(10, KeyEvent.VK_K);
         
         //Add the tabbed pane to this panel.
         add(tabbedPane);
@@ -112,6 +122,24 @@ public class TabbedPaneView extends JPanel {
     
     protected JComponent tranferPropertyToBuyerAddressPanel(String text) {
         TransferPropertyPanel panel = new TransferPropertyPanel();
+        JLabel filler = new JLabel(text);
+//        filler.setHorizontalAlignment(JLabel.CENTER);
+//        panel.setLayout(new GridLayout(1, 1));
+        panel.add(filler);
+        return panel;
+    }
+    
+    protected JComponent verifyTransactionsPanel(String text) {
+        VerifyTransactionsPanel panel = new VerifyTransactionsPanel();
+        JLabel filler = new JLabel(text);
+//        filler.setHorizontalAlignment(JLabel.CENTER);
+//        panel.setLayout(new GridLayout(1, 1));
+        panel.add(filler);
+        return panel;
+    }
+    
+    protected JComponent sendPaymentFromBuyerToOwnerPanel(String text) {
+        SendPaymentFromBuyerToOwnerPanel panel = new SendPaymentFromBuyerToOwnerPanel();
         JLabel filler = new JLabel(text);
 //        filler.setHorizontalAlignment(JLabel.CENTER);
 //        panel.setLayout(new GridLayout(1, 1));

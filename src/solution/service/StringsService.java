@@ -23,10 +23,11 @@ public class StringsService {
     public static String owner_wallet = "Owner Wallet";
     public static String register_new_property = "Register New Property";
     public static String register_contract = "Register Contract";      
-    public static String create_multisig_address = "Create Multisig Address";
-    public static String send_contract_to_multisig_address = "Send Contract to Multisig Address";    
+    public static String create_multisig_address = "Create Multisig";
+    public static String send_contract_to_multisig_address = "Send Contract to Multisig";    
     public static String create_multisig_transaction = "Create Multisig Transaction";
-    public static String send_signed_contract_to_registry_address = "Send Signed Contract to Registry Address";
+    public static String send_signed_contract_to_registry_address = "Send Signed Contract to Registry";
+    public static String send_payment_from_buyer_to_owner = "Send Payment";
     public static String transfer_property = "Transfer Property";
 
     

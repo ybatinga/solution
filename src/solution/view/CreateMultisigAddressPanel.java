@@ -76,7 +76,7 @@ public class CreateMultisigAddressPanel extends javax.swing.JPanel {
         redeemScriptTextField = new java.awt.TextField();
 
         createMultisigAddressLabel.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
-        createMultisigAddressLabel.setText("Create Multisig Address");
+        createMultisigAddressLabel.setText("Create Multisig");
 
         buyerWalletPublicKeyLabel.setText("Buyer Wallet Public Key:");
 
@@ -131,7 +131,7 @@ public class CreateMultisigAddressPanel extends javax.swing.JPanel {
                             .addComponent(multisigAddressLabel)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(multisigAddressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(185, Short.MAX_VALUE))
+                .addContainerGap(210, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

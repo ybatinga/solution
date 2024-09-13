@@ -28,6 +28,7 @@ import solution.model.BitcoinCliStringResultModel;
 import solution.model.CreateMultisigModel;
 import solution.model.DecodeRawTransactionModel;
 import solution.model.GetBlockModel;
+import solution.model.GetBlockchainInfoModel;
 import solution.model.GetRawTransactionModel;
 import solution.model.ListUnspentModel;
 import solution.model.SignRawTransactionWithKeyModel;
@@ -312,7 +313,7 @@ public class RegistryServiceControl {
     public static String signRawTransactionWithWallet(String rawTxHex, String walletName) {
         try {
             String[] command = new String[]{"/usr/local/apps/bitcoin-25.0/bin/bitcoin-cli", "-rpcwallet=" + walletName, 
-                "createrawtransaction", rawTxHex};
+                "signrawtransactionwithwallet", rawTxHex};
 
             Process process = Runtime.getRuntime().exec(command); // for Linux
 
@@ -322,12 +323,11 @@ public class RegistryServiceControl {
                     = new InputStreamReader(process.getInputStream());
             
             SignRawTransactionWithWalletModel signRawTransactionWithWalletModel = new Gson().fromJson(reader, SignRawTransactionWithWalletModel.class);
-//            print error as output
-//            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
-//            String line = new String();
-//            while ((line = reader.readLine()) != null) {
-//                System.out.println(line);
-//            }
+
+            if(signRawTransactionWithWalletModel == null){
+                String concatErrorMsg = printErrorInOutput(process);
+                return concatErrorMsg;
+            }
             
             String signedTx = signRawTransactionWithWalletModel.getHex();
             return signedTx;
@@ -481,10 +481,9 @@ public class RegistryServiceControl {
         }
     }
     
-    public static GetBlockModel getBlock(String txId) {
+    public static GetBlockModel getBlock(String blockHash, String txId) {
         try {
-            String[] command = new String[]{"/usr/local/apps/bitcoin-25.0/bin/bitcoin-cli", "getblock", 
-                "createrawtransaction", txId};
+            String[] command = new String[]{"/usr/local/apps/bitcoin-25.0/bin/bitcoin-cli", "getblock", blockHash};
 
             Process process = Runtime.getRuntime().exec(command); // for Linux
 
@@ -507,6 +506,27 @@ public class RegistryServiceControl {
             }else {
                 return null;
             }
+            
+        } catch (IOException | InterruptedException ex) {
+            Logger.getLogger(RegistryServiceControl.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+        
+    public static String getBlockchainInfo() {
+        try {
+            String[] command = new String[]{"/usr/local/apps/bitcoin-25.0/bin/bitcoin-cli", "getblockchaininfo"};
+
+            Process process = Runtime.getRuntime().exec(command); // for Linux
+
+            process.waitFor();
+
+            InputStreamReader reader
+                    = new InputStreamReader(process.getInputStream());
+            
+            GetBlockchainInfoModel getBlockchainInfoModel = new Gson().fromJson(reader, GetBlockchainInfoModel.class);
+            
+            return getBlockchainInfoModel.getBestblockhash();
             
         } catch (IOException | InterruptedException ex) {
             Logger.getLogger(RegistryServiceControl.class.getName()).log(Level.SEVERE, null, ex);

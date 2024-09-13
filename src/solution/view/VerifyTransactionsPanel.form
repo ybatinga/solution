@@ -26,7 +26,22 @@
                       <Component id="paymentTransactionIdTextField" min="-2" pref="184" max="-2" attributes="0"/>
                   </Group>
                   <Component id="verifyPaymentButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="paymentConfirmationMessageLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="confirmationsLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="confirmationsTextField" min="-2" pref="29" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="confirmationBlockNumberLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="confirmationBlockNumberTextField" min="-2" pref="59" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="timeStampLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="timeStampTextField" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace pref="39" max="32767" attributes="0"/>
           </Group>
@@ -45,8 +60,23 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="verifyPaymentButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="164" max="32767" attributes="0"/>
+              <Component id="paymentConfirmationMessageLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="confirmationsLabel" min="-2" max="-2" attributes="0"/>
+                  <Component id="confirmationsTextField" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="confirmationBlockNumberLabel" min="-2" max="-2" attributes="0"/>
+                  <Component id="confirmationBlockNumberTextField" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="timeStampLabel" min="-2" max="-2" attributes="0"/>
+                  <Component id="timeStampTextField" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="73" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -75,9 +105,33 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="verifyPaymentButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Component class="javax.swing.JLabel" name="paymentConfirmationMessageLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jLabel1"/>
+        <Property name="text" type="java.lang.String" value="Payment Confirmation Message:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="confirmationsLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Confirmations:"/>
+      </Properties>
+    </Component>
+    <Component class="java.awt.TextField" name="confirmationsTextField">
+    </Component>
+    <Component class="javax.swing.JLabel" name="confirmationBlockNumberLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Confirmation Block Number:"/>
+      </Properties>
+    </Component>
+    <Component class="java.awt.TextField" name="confirmationBlockNumberTextField">
+    </Component>
+    <Component class="javax.swing.JLabel" name="timeStampLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Timestamp:"/>
+      </Properties>
+    </Component>
+    <Component class="java.awt.TextField" name="timeStampTextField">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="textField2"/>
       </Properties>
     </Component>
   </SubComponents>

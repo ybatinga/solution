@@ -14,7 +14,7 @@ public class StringsService {
 //    public static String WALLET_ADDRESS_OWNER = Platform.DESKTOP_WALLET_ADDRESS_OWNER;    
 //    public static String WALLET_ADDRESS_ORD = Platform.DESKTOP_ORD_ADDRESS;    
     
-    public static Laptop PLATFORM;
+    public static Desktop PLATFORM;
     
     public static String real_estate_registry_system = "Real Estate Registry System";    
     
@@ -30,12 +30,17 @@ public class StringsService {
     public static String send_payment_from_buyer_to_owner = "Send Payment";
     public static String transfer_property = "Transfer Property";
 
-    
+    // wallet names
     public static String wallet_ord = "ord";
     public static String wallet_ord_notary = "ord_notary";
     public static String wallet_buyer = "legacy_buyer";
         
+    // error messages
     public static String invalid_contract_transaction_ID = "Invalid contract transaction ID";
+    
+    // veritication messages
+    public static String payment_has_been_confirmed_on_the_blockchain = "Payment has been confirmed on the blockchain.";
+    public static String payment_has_not_been_confirmed_on_the_blockchain = "Payment has NOT been confirmed on the blockchain.";
     
     // https://github.com/BlockchainCommons/Learning-Bitcoin-from-the-Command-Line/blob/master/06_1_Sending_a_Transaction_to_a_Multisig.md#collect-public-keys
     public static String reference_wallet_public_keys = "Collect Public Keys. You can't create a multi-sig with the addresses, as those are the hashes of public keys. You instead need the public keys themselves. This information is readily available with the getaddressinfo command.";

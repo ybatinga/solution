@@ -26,10 +26,25 @@ public class VerifyTransactionsPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        verifyPaymentTransactionLabel = new javax.swing.JLabel();
+        paymentTransactionIdLabel = new javax.swing.JLabel();
+        paymentTransactionIdTextField = new java.awt.TextField();
+        verifyPaymentButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
-        jLabel1.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
-        jLabel1.setText("Verify Transactions");
+        verifyPaymentTransactionLabel.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        verifyPaymentTransactionLabel.setText("Verify Payment Transaction");
+
+        paymentTransactionIdLabel.setText("Payment Transaction ID:");
+
+        verifyPaymentButton.setText("Verify");
+        verifyPaymentButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verifyPaymentButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("jLabel1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -37,20 +52,43 @@ public class VerifyTransactionsPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(224, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(verifyPaymentTransactionLabel)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(paymentTransactionIdLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(paymentTransactionIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(verifyPaymentButton)
+                    .addComponent(jLabel1))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(verifyPaymentTransactionLabel)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(paymentTransactionIdLabel)
+                    .addComponent(paymentTransactionIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(verifyPaymentButton)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel1)
-                .addContainerGap(272, Short.MAX_VALUE))
+                .addContainerGap(164, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void verifyPaymentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verifyPaymentButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_verifyPaymentButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel paymentTransactionIdLabel;
+    private java.awt.TextField paymentTransactionIdTextField;
+    private javax.swing.JButton verifyPaymentButton;
+    private javax.swing.JLabel verifyPaymentTransactionLabel;
     // End of variables declaration//GEN-END:variables
 }

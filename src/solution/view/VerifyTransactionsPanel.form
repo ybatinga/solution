@@ -16,10 +16,19 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="224" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="verifyPaymentTransactionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="paymentTransactionIdLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="paymentTransactionIdTextField" min="-2" pref="184" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="verifyPaymentButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="39" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -27,19 +36,48 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
+              <Component id="verifyPaymentTransactionLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="paymentTransactionIdLabel" min="-2" max="-2" attributes="0"/>
+                  <Component id="paymentTransactionIdTextField" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="verifyPaymentButton" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="272" max="32767" attributes="0"/>
+              <EmptySpace pref="164" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Component class="javax.swing.JLabel" name="verifyPaymentTransactionLabel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Liberation Sans" size="18" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Verify Transactions"/>
+        <Property name="text" type="java.lang.String" value="Verify Payment Transaction"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="paymentTransactionIdLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Payment Transaction ID:"/>
+      </Properties>
+    </Component>
+    <Component class="java.awt.TextField" name="paymentTransactionIdTextField">
+    </Component>
+    <Component class="javax.swing.JButton" name="verifyPaymentButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Verify"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="verifyPaymentButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jLabel1"/>
       </Properties>
     </Component>
   </SubComponents>

@@ -16,14 +16,18 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpRequest.BodyPublishers;
 import java.net.http.HttpResponse;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Base64;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import solution.model.BitcoinCliStringResultModel;
 import solution.model.CreateMultisigModel;
 import solution.model.DecodeRawTransactionModel;
+import solution.model.GetBlockModel;
 import solution.model.GetRawTransactionModel;
 import solution.model.ListUnspentModel;
 import solution.model.SignRawTransactionWithKeyModel;
@@ -308,7 +312,7 @@ public class RegistryServiceControl {
     public static String signRawTransactionWithWallet(String rawTxHex, String walletName) {
         try {
             String[] command = new String[]{"/usr/local/apps/bitcoin-25.0/bin/bitcoin-cli", "-rpcwallet=" + walletName, 
-                "signrawtransactionwithwallet", rawTxHex};
+                "createrawtransaction", rawTxHex};
 
             Process process = Runtime.getRuntime().exec(command); // for Linux
 
@@ -475,5 +479,49 @@ public class RegistryServiceControl {
             Logger.getLogger(RegistryServiceControl.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
+    }
+    
+    public static GetBlockModel getBlock(String txId) {
+        try {
+            String[] command = new String[]{"/usr/local/apps/bitcoin-25.0/bin/bitcoin-cli", "getblock", 
+                "createrawtransaction", txId};
+
+            Process process = Runtime.getRuntime().exec(command); // for Linux
+
+            process.waitFor();
+
+            InputStreamReader reader
+                    = new InputStreamReader(process.getInputStream());
+            
+            boolean isTxId = false;
+            GetBlockModel getBlockModel = new Gson().fromJson(reader, GetBlockModel.class);
+            List<String> txIdList = getBlockModel.getTx();
+            for (String transaction : txIdList){
+                if (transaction.equals(txId)){
+                    isTxId = true;
+                }
+            }
+            
+            if (isTxId){
+                return getBlockModel;
+            }else {
+                return null;
+            }
+            
+        } catch (IOException | InterruptedException ex) {
+            Logger.getLogger(RegistryServiceControl.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+    
+    public static String parseStringToDate (String dateInString){
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
+        Date date = null;
+        try {
+            date = formatter.parse(dateInString.replaceAll("Z$", "+0000"));
+        } catch (ParseException e) {
+
+        }
+        return date.toLocaleString();
     }
 }

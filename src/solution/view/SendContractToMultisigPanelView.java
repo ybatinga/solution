@@ -4,6 +4,7 @@
  */
 package solution.view;
 
+import java.util.List;
 import solution.control.RegistryServiceControl;
 import solution.model.GetRawTransactionModel;
 import solution.service.StringsService;
@@ -115,6 +116,9 @@ public class SendContractToMultisigPanelView extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void sendContractToMultisigButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendContractToMultisigButtonActionPerformed
+        // generate 6 new blocks before sending contract inscription to multisig address
+        List<String> blockHashList = RegistryServiceControl.generateToAddress(6);
+                    
         long vout = -1;
         GetRawTransactionModel getRawTransactionModel = RegistryServiceControl.getRawTransaction(contractTransactionIdTextField.getText());
         if(getRawTransactionModel.getError() == null){
@@ -122,8 +126,8 @@ public class SendContractToMultisigPanelView extends javax.swing.JPanel {
         }
         String rawTxHex = RegistryServiceControl.createRawTransaction(contractTransactionIdTextField.getText(), vout, multisigAddress, 0.00009000);
         String txIdOfSentContractToMultisig = RegistryServiceControl.decodeRawTransaction(rawTxHex);// not used; just for reference
-        String signedTx = RegistryServiceControl.signRawTransactionWithWallet(rawTxHex, StringsService.wallet_ord);
-        String txIdOfSentContract = RegistryServiceControl.sendRawTransaction(signedTx, StringsService.wallet_ord);
+        String signedTx = RegistryServiceControl.signRawTransactionWithWallet(rawTxHex, StringsService.wallet_name_ord);
+        String txIdOfSentContract = RegistryServiceControl.sendRawTransaction(signedTx, StringsService.wallet_name_ord);
         if (vout == -1){
             txIdOfContractSentToMultisigTextField.setText(StringsService.invalid_contract_transaction_ID);
         }else {

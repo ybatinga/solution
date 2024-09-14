@@ -8,6 +8,7 @@ import com.google.gson.Gson;
 import java.awt.Insets;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
@@ -120,7 +121,9 @@ public class RegisterContractPanelView extends javax.swing.JPanel{
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 File file = fc.getSelectedFile();
                 try {
-                    
+                    // generate 6 new blocks before creating new inscription
+                    List<String> blockHashList = RegistryServiceControl.generateToAddress(6);
+            
                     OrdInscribedDataModel ordInscribedDataModel = RegistryServiceControl.registerNewPropertyOrContract(file.getPath());
                             
                     contractTransactionIdTextField.setText(ordInscribedDataModel.getReveal());

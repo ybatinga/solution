@@ -4,6 +4,7 @@
  */
 package solution.view;
 
+import java.util.List;
 import solution.control.RegistryServiceControl;
 import solution.model.GetBlockModel;
 import solution.service.StringsService;
@@ -119,7 +120,7 @@ public class VerifyTransactionsPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(blockHashLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(blockHashTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(blockHashTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 522, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -158,6 +159,9 @@ public class VerifyTransactionsPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void verifyPaymentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verifyPaymentButtonActionPerformed
+        // generate 1 new block to verify payment transaction confirmed on first generated block 
+        List<String> blockHashList = RegistryServiceControl.generateToAddress(1);
+        
         String getBestblockhash = RegistryServiceControl.getBlockchainInfo();
         GetBlockModel getBlockModel = RegistryServiceControl.getBlock(getBestblockhash, paymentTransactionIdTextField.getText());
         if (getBlockModel != null){

@@ -11,12 +11,12 @@ import java.io.InputStreamReader;
 import solution.model.GetAddressInfoModel;
 import solution.model.OrdInscribedDataModel;
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpRequest.BodyPublishers;
 import java.net.http.HttpResponse;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Base64;
@@ -34,6 +34,7 @@ import solution.model.GetRawTransactionModel;
 import solution.model.ListUnspentModel;
 import solution.model.SignRawTransactionWithKeyModel;
 import solution.model.SignRawTransactionWithWalletModel;
+import solution.service.StringsService;
 
 /**
  *
@@ -545,4 +546,35 @@ public class RegistryServiceControl {
         
         return utcDate;
     }
+    
+    public static List<String> generateToAddress(long numberOfBlocks) {
+        try {
+            String[] command = new String[]{
+                "/usr/local/apps/bitcoin-25.0/bin/bitcoin-cli", 
+                "-rpcwallet=" + StringsService.wallet_name_buyer, 
+                "generatetoaddress", Long.toString(numberOfBlocks), 
+                StringsService.PLATFORM.getGENERATE_TO_ADDRESS_WALLET_BUYER()};
+
+            Process process = Runtime.getRuntime().exec(command); // for Linux
+
+            process.waitFor();
+
+            InputStreamReader reader
+                    = new InputStreamReader(process.getInputStream());
+            Type listType = new TypeToken<List<String>>() {}.getType();
+
+            List<String>  blockHash = new Gson().fromJson(reader, listType);
+            
+
+            if(blockHash == null || blockHash.size() == 0){
+                String concatErrorMsg = printErrorInOutput(process);
+                return null;
+            }
+            return blockHash;
+        } catch (IOException | InterruptedException ex) {
+            Logger.getLogger(RegistryServiceControl.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+    
 }

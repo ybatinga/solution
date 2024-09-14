@@ -7,10 +7,10 @@ package solution.view;
 import java.awt.Insets;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
-import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import solution.control.RegistryServiceControl;
 import solution.model.OrdInscribedDataModel;
@@ -132,6 +132,9 @@ public class RegisterPropertyPanelView extends javax.swing.JPanel {
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 File file = fc.getSelectedFile();
                 try {
+                    // generate 6 new blocks before creating new inscription
+//                    List<String> blockHashList = RegistryServiceControl.generateToAddress(6);
+            
                     OrdInscribedDataModel ordInscribedDataModel  = RegistryServiceControl.registerNewPropertyOrContract(file.getPath());
                     propertyTransactionIdTextField.setText(ordInscribedDataModel.getReveal());
                     if (!ordInscribedDataModel.getInscriptions().isEmpty()){

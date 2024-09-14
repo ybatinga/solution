@@ -276,7 +276,7 @@ public class WalletBuyerPanelView extends javax.swing.JPanel {
         String paymentRawTransactionHex = null;
         
         List<ListUnspentModel>  listUnspentModelList = RegistryServiceControl.listUnspent(
-                StringsService.wallet_buyer, 
+                StringsService.wallet_name_buyer, 
                 walletOwnerAddress,                 
                 Double.parseDouble(paymentAmountTextField.getText()));
         
@@ -302,12 +302,12 @@ public class WalletBuyerPanelView extends javax.swing.JPanel {
 
         }
         
-        String signedTx = RegistryServiceControl.signRawTransactionWithWallet(paymentRawTransactionHex, StringsService.wallet_buyer);
+        String signedTx = RegistryServiceControl.signRawTransactionWithWallet(paymentRawTransactionHex, StringsService.wallet_name_buyer);
 
 
         String txIdOfPaymentSentToOwnerAddress = RegistryServiceControl.sendRawTransaction(
                 signedTx, 
-                StringsService.wallet_buyer);
+                StringsService.wallet_name_buyer);
         transactionIdOfPaymentSentToOwnerAddressTextField.setText(txIdOfPaymentSentToOwnerAddress);
 //        transactionIdOfPaymentSentToOwnerAddressTextField.setVisible(true);
     }//GEN-LAST:event_sendPaymentButtonActionPerformed

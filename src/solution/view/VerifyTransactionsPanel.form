@@ -49,7 +49,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="blockHashLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="blockHashTextField" min="-2" pref="174" max="-2" attributes="0"/>
+                      <Component id="blockHashTextField" min="-2" pref="522" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="24" max="32767" attributes="0"/>

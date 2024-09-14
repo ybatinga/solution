@@ -14,12 +14,12 @@ public class StringsService {
 //    public static String WALLET_ADDRESS_OWNER = Platform.DESKTOP_WALLET_ADDRESS_OWNER;    
 //    public static String WALLET_ADDRESS_ORD = Platform.DESKTOP_ORD_ADDRESS;    
     
-    public static Desktop PLATFORM;
+    public static Laptop PLATFORM;
     
     public static String real_estate_registry_system = "Real Estate Registry System";    
     
     // tab names
-    public static String byuer_wallet = "Buyer Wallet";
+    public static String buyer_wallet = "Buyer Wallet";
     public static String owner_wallet = "Owner Wallet";
     public static String register_new_property = "Register New Property";
     public static String register_contract = "Register Contract";      
@@ -32,9 +32,9 @@ public class StringsService {
     public static String transfer_property = "Transfer Property";
 
     // wallet names
-    public static String wallet_ord = "ord";
-    public static String wallet_ord_notary = "ord_notary";
-    public static String wallet_buyer = "legacy_buyer";
+    public static String wallet_name_ord = "ord";
+    public static String wallet_name_ord_notary = "ord_notary";
+    public static String wallet_name_buyer = "legacy_buyer";
         
     // error messages
     public static String invalid_contract_transaction_ID = "Invalid contract transaction ID";
@@ -65,6 +65,7 @@ public class StringsService {
         private static final String WALLET_ADDRESS_BUYER = "mgBg38pkq8ULumNQgHugiKMi5uUzVEg35G";
         private static final String WALLET_ADDRESS_OWNER = "mu6TidaphD9PbALi7KR4bJvPukjSziCWZR";   
         private static final String ORD_REG_ADDRESS = "bcrt1pmjjg0vg7p9zkfwfd2msasql7t2m4qp37su6ww0gr3g9xgfz32k6qplwajr";
+        private static final String GENERATE_TO_ADDRESS_WALLET_BUYER = "n4WHVo6ogtiRivJahJcUG5sHoZCeCvwWm4";
 
         public static String getWALLET_ADDRESS_BUYER() {
             return WALLET_ADDRESS_BUYER;
@@ -77,6 +78,12 @@ public class StringsService {
         public static String getORD_REG_ADDRESS() {
             return ORD_REG_ADDRESS;
         }
+
+        public static String getGENERATE_TO_ADDRESS_WALLET_BUYER() {
+            return GENERATE_TO_ADDRESS_WALLET_BUYER;
+        }
+        
+        
     }
     
     public static class Desktop{

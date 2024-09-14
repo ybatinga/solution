@@ -119,13 +119,15 @@ public class SendPaymentFromBuyerToOwnerPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void sendPaymentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendPaymentButtonActionPerformed
+        // generate 6 new blocks before sending payment
+        List<String> blockHashList = RegistryServiceControl.generateToAddress(6);
         
         String paymentRawTransactionHex = null;
         
         String walletBuyerAddress = StringsService.PLATFORM.getWALLET_ADDRESS_BUYER();
 
         List<ListUnspentModel>  listUnspentModelList = RegistryServiceControl.listUnspent(
-            StringsService.wallet_buyer,
+            StringsService.wallet_name_buyer,
             walletBuyerAddress,
             Double.parseDouble(paymentAmountTextField.getText()));
 
@@ -149,12 +151,13 @@ public class SendPaymentFromBuyerToOwnerPanel extends javax.swing.JPanel {
                 walletBuyerAddress,
                 Double.parseDouble(changeMinusTxFee.toString()));
             
-            String signedTx = RegistryServiceControl.signRawTransactionWithWallet(paymentRawTransactionHex, StringsService.wallet_buyer);
+            String signedTx = RegistryServiceControl.signRawTransactionWithWallet(paymentRawTransactionHex, StringsService.wallet_name_buyer);
 
             String txIdOfPaymentSentToOwnerAddress = RegistryServiceControl.sendRawTransaction(
                 signedTx,
-                StringsService.wallet_buyer);
+                StringsService.wallet_name_buyer);
             transactionIdOfPaymentSentToOwnerAddressTextField.setText(txIdOfPaymentSentToOwnerAddress);
+            
         }
         
     }//GEN-LAST:event_sendPaymentButtonActionPerformed

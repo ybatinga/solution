@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import solution.model.BitcoinCliStringResultModel;
@@ -534,14 +535,14 @@ public class RegistryServiceControl {
         }
     }
     
-    public static String parseStringToDate (String dateInString){
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
-        Date date = null;
-        try {
-            date = formatter.parse(dateInString.replaceAll("Z$", "+0000"));
-        } catch (ParseException e) {
-
-        }
-        return date.toLocaleString();
+    public static String convertUnixEpochToUtcTime (long time){
+        
+        TimeZone.setDefault( TimeZone.getTimeZone("UTC"));
+        String timeToString = Long.toString(time);
+        Date date = new Date(Long.parseLong(timeToString) * 1000);
+        SimpleDateFormat jdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss 'UTC'");
+        String utcDate = jdf.format(date);
+        
+        return utcDate;
     }
 }

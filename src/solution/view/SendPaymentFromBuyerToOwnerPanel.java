@@ -148,16 +148,15 @@ public class SendPaymentFromBuyerToOwnerPanel extends javax.swing.JPanel {
                 Double.parseDouble(paymentAmount.toString()),
                 walletBuyerAddress,
                 Double.parseDouble(changeMinusTxFee.toString()));
+            
+            String signedTx = RegistryServiceControl.signRawTransactionWithWallet(paymentRawTransactionHex, StringsService.wallet_buyer);
 
+            String txIdOfPaymentSentToOwnerAddress = RegistryServiceControl.sendRawTransaction(
+                signedTx,
+                StringsService.wallet_buyer);
+            transactionIdOfPaymentSentToOwnerAddressTextField.setText(txIdOfPaymentSentToOwnerAddress);
         }
-
-        String signedTx = RegistryServiceControl.signRawTransactionWithWallet(paymentRawTransactionHex, StringsService.wallet_buyer);
-
-        String txIdOfPaymentSentToOwnerAddress = RegistryServiceControl.sendRawTransaction(
-            signedTx,
-            StringsService.wallet_buyer);
-        transactionIdOfPaymentSentToOwnerAddressTextField.setText(txIdOfPaymentSentToOwnerAddress);
-        //        transactionIdOfPaymentSentToOwnerAddressTextField.setVisible(true);
+        
     }//GEN-LAST:event_sendPaymentButtonActionPerformed
 
 

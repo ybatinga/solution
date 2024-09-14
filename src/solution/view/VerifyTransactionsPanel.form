@@ -16,17 +16,26 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="timeStampLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="timeStampTextField" min="-2" pref="174" max="-2" attributes="0"/>
+                  </Group>
                   <Component id="verifyPaymentTransactionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="paymentTransactionIdLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="paymentTransactionIdTextField" min="-2" pref="184" max="-2" attributes="0"/>
+                      <Component id="paymentTransactionIdTextField" min="-2" pref="512" max="-2" attributes="0"/>
                   </Group>
                   <Component id="verifyPaymentButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="paymentConfirmationMessageLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="paymentConfirmationMessageLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="paymentConfirmationMessageTextField" min="-2" pref="450" max="-2" attributes="0"/>
+                  </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="confirmationsLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -38,12 +47,12 @@
                       <Component id="confirmationBlockNumberTextField" min="-2" pref="59" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="timeStampLabel" min="-2" max="-2" attributes="0"/>
+                      <Component id="blockHashLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="timeStampTextField" min="-2" max="-2" attributes="0"/>
+                      <Component id="blockHashTextField" min="-2" pref="174" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="39" max="32767" attributes="0"/>
+              <EmptySpace pref="24" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -60,7 +69,10 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="verifyPaymentButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="paymentConfirmationMessageLabel" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="paymentConfirmationMessageLabel" min="-2" max="-2" attributes="0"/>
+                  <Component id="paymentConfirmationMessageTextField" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="confirmationsLabel" min="-2" max="-2" attributes="0"/>
@@ -73,10 +85,15 @@
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="timeStampLabel" min="-2" max="-2" attributes="0"/>
-                  <Component id="timeStampTextField" min="-2" max="-2" attributes="0"/>
+                  <Component id="blockHashLabel" min="-2" max="-2" attributes="0"/>
+                  <Component id="blockHashTextField" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="73" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="timeStampLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="timeStampTextField" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="42" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -116,6 +133,12 @@
       </Properties>
     </Component>
     <Component class="java.awt.TextField" name="confirmationsTextField">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="f2" green="f2" red="f2" type="rgb"/>
+        </Property>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="confirmationBlockNumberLabel">
       <Properties>
@@ -123,6 +146,38 @@
       </Properties>
     </Component>
     <Component class="java.awt.TextField" name="confirmationBlockNumberTextField">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="f2" green="f2" red="f2" type="rgb"/>
+        </Property>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="blockHashLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Block Hash:"/>
+      </Properties>
+    </Component>
+    <Component class="java.awt.TextField" name="blockHashTextField">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="f2" green="f2" red="f2" type="rgb"/>
+        </Property>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="java.awt.TextField" name="paymentConfirmationMessageTextField">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="f2" green="f2" red="f2" type="rgb"/>
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Dialog" size="15" style="1"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="paymentConfirmationMessageTextFieldActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="timeStampLabel">
       <Properties>
@@ -131,7 +186,10 @@
     </Component>
     <Component class="java.awt.TextField" name="timeStampTextField">
       <Properties>
-        <Property name="text" type="java.lang.String" value="textField2"/>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="f2" green="f2" red="f2" type="rgb"/>
+        </Property>
+        <Property name="editable" type="boolean" value="false"/>
       </Properties>
     </Component>
   </SubComponents>

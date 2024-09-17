@@ -19,14 +19,14 @@ import solution.model.OrdInscribedDataModel;
  *
  * @author ssd
  */
-public class RegisterPropertyPanelView extends javax.swing.JPanel {
+public class RegisterNewPropertyPanelView extends javax.swing.JPanel {
     static private final String newline = "\n";
     JFileChooser fc;
     JTextArea log;
     /**
      * Creates new form RegisterProperty
      */
-    public RegisterPropertyPanelView() {
+    public RegisterNewPropertyPanelView() {
         initComponents();
     }
 
@@ -132,21 +132,22 @@ public class RegisterPropertyPanelView extends javax.swing.JPanel {
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 File file = fc.getSelectedFile();
                 try {
-                    // generate 6 new blocks before creating new inscription
-//                    List<String> blockHashList = RegistryServiceControl.generateToAddress(6);
-            
+                                
                     OrdInscribedDataModel ordInscribedDataModel  = RegistryServiceControl.registerNewPropertyOrContract(file.getPath());
                     propertyTransactionIdTextField.setText(ordInscribedDataModel.getReveal());
                     if (!ordInscribedDataModel.getInscriptions().isEmpty()){
                         propertyInscriptionIdTextField.setText(ordInscribedDataModel.getInscriptions().get(0).getID());
+                        
+                        // generate 6 new blocks after creating new inscription
+                    List<String> blockHashList = RegistryServiceControl.generateToAddress(6);
                     }
                     
                 } catch (IOException ex) {
                     propertyTransactionIdLabel.setText(ex.getMessage());
-                    Logger.getLogger(RegisterPropertyPanelView.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(RegisterNewPropertyPanelView.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (InterruptedException ex) {
                     propertyTransactionIdLabel.setText(ex.getMessage());
-                    Logger.getLogger(RegisterPropertyPanelView.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(RegisterNewPropertyPanelView.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 //This is where a real application would open the file.
                 log.append("Opening: " + file.getName() + "." + newline);

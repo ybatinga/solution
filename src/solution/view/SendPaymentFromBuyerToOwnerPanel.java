@@ -23,7 +23,8 @@ public class SendPaymentFromBuyerToOwnerPanel extends javax.swing.JPanel {
      */
     public SendPaymentFromBuyerToOwnerPanel() {
         initComponents();
-        double paymentAmount = 1.485;
+//        double paymentAmount = 1.485;
+        double paymentAmount = 0.005;
         paymentAmountTextField.setText(Double.toString(paymentAmount)); 
         walletOwnerAddress = StringsService.PLATFORM.getWALLET_ADDRESS_OWNER();
         walletOwnerAddressTextField.setText(walletOwnerAddress);
@@ -119,8 +120,6 @@ public class SendPaymentFromBuyerToOwnerPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void sendPaymentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendPaymentButtonActionPerformed
-        // generate 6 new blocks before sending payment
-        List<String> blockHashList = RegistryServiceControl.generateToAddress(6);
         
         String paymentRawTransactionHex = null;
         
@@ -157,7 +156,9 @@ public class SendPaymentFromBuyerToOwnerPanel extends javax.swing.JPanel {
                 signedTx,
                 StringsService.wallet_name_buyer);
             transactionIdOfPaymentSentToOwnerAddressTextField.setText(txIdOfPaymentSentToOwnerAddress);
-            
+
+            // generate 6 new blocks after sending payment
+            List<String> blockHashList = RegistryServiceControl.generateToAddress(6);            
         }
         
     }//GEN-LAST:event_sendPaymentButtonActionPerformed

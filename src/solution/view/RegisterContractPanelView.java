@@ -121,14 +121,15 @@ public class RegisterContractPanelView extends javax.swing.JPanel{
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 File file = fc.getSelectedFile();
                 try {
-                    // generate 6 new blocks before creating new inscription
-                    List<String> blockHashList = RegistryServiceControl.generateToAddress(6);
-            
+                    
                     OrdInscribedDataModel ordInscribedDataModel = RegistryServiceControl.registerNewPropertyOrContract(file.getPath());
                             
                     contractTransactionIdTextField.setText(ordInscribedDataModel.getReveal());
                     if (!ordInscribedDataModel.getInscriptions().isEmpty()){
                         contractInscriptionIdTextField.setText(ordInscribedDataModel.getInscriptions().get(0).getID());
+                        
+                        // generate 6 new blocks after creating new inscription
+                        List<String> blockHashList = RegistryServiceControl.generateToAddress(6);
                     }
                 } catch (IOException ex) {
                     contractTransactionIdTextField.setText(ex.getMessage());

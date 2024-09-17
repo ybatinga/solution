@@ -116,8 +116,6 @@ public class SendContractToMultisigPanelView extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void sendContractToMultisigButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendContractToMultisigButtonActionPerformed
-        // generate 6 new blocks before sending contract inscription to multisig address
-        List<String> blockHashList = RegistryServiceControl.generateToAddress(6);
                     
         long vout = -1;
         GetRawTransactionModel getRawTransactionModel = RegistryServiceControl.getRawTransaction(contractTransactionIdTextField.getText());
@@ -132,6 +130,9 @@ public class SendContractToMultisigPanelView extends javax.swing.JPanel {
             txIdOfContractSentToMultisigTextField.setText(StringsService.invalid_contract_transaction_ID);
         }else {
             txIdOfContractSentToMultisigTextField.setText(txIdOfSentContract);
+            
+            // generate 6 new blocks after sending contract inscription to multisig address
+            List<String> blockHashList = RegistryServiceControl.generateToAddress(6);
         }
     }//GEN-LAST:event_sendContractToMultisigButtonActionPerformed
 

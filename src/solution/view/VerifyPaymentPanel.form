@@ -16,7 +16,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
@@ -51,6 +51,16 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="blockHashTextField" min="-2" pref="522" max="-2" attributes="0"/>
                   </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="recipientAddressLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="recipientAddressTextField" min="-2" pref="278" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="amountSentLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="amountSentTextField" min="-2" pref="39" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace pref="24" max="32767" attributes="0"/>
           </Group>
@@ -73,27 +83,37 @@
                   <Component id="paymentConfirmationMessageLabel" min="-2" max="-2" attributes="0"/>
                   <Component id="paymentConfirmationMessageTextField" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="confirmationsLabel" min="-2" max="-2" attributes="0"/>
                   <Component id="confirmationsTextField" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="confirmationBlockNumberLabel" min="-2" max="-2" attributes="0"/>
                   <Component id="confirmationBlockNumberTextField" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="blockHashLabel" min="-2" max="-2" attributes="0"/>
                   <Component id="blockHashTextField" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="timeStampTextField" min="-2" max="-2" attributes="0"/>
                   <Component id="timeStampLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="timeStampTextField" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="42" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="recipientAddressLabel" min="-2" max="-2" attributes="0"/>
+                  <Component id="recipientAddressTextField" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="amountSentLabel" min="-2" max="-2" attributes="0"/>
+                  <Component id="amountSentTextField" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="79" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -175,9 +195,6 @@
           <Font name="Dialog" size="15" style="1"/>
         </Property>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="paymentConfirmationMessageTextFieldActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="timeStampLabel">
       <Properties>
@@ -190,6 +207,30 @@
           <Color blue="f2" green="f2" red="f2" type="rgb"/>
         </Property>
         <Property name="editable" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="recipientAddressLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Recipient Address:"/>
+      </Properties>
+    </Component>
+    <Component class="java.awt.TextField" name="recipientAddressTextField">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="f2" green="f2" red="f2" type="rgb"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="amountSentLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Amount Sent:"/>
+      </Properties>
+    </Component>
+    <Component class="java.awt.TextField" name="amountSentTextField">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="f2" green="f2" red="f2" type="rgb"/>
+        </Property>
       </Properties>
     </Component>
   </SubComponents>

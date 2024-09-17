@@ -7,10 +7,6 @@ package solution.model;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author ssd
- */
 public class GetBlockModel {
     private String hash;
     private long confirmations;

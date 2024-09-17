@@ -93,12 +93,13 @@ public class SendSignedContractToRegistryPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void sendSignedContractButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendSignedContractButtonActionPerformed
-        // generate 6 new blocks before sending signed contract inscription to registry office's address
-        List<String> blockHashList = RegistryServiceControl.generateToAddress(6);
         
         String ownerBuyerSignatureHex = ownerBuyerSignatureHexTextField.getText();
         String txIdOfSignedContractSentToRegistryAddress = RegistryServiceControl.sendRawTransaction(ownerBuyerSignatureHex, StringsService.wallet_name_ord_notary);
         txIdOfSignedContractSentToRegistryAddressTextField.setText(txIdOfSignedContractSentToRegistryAddress);
+        
+        // generate 6 new blocks after sending signed contract inscription to registry office's address
+        List<String> blockHashList = RegistryServiceControl.generateToAddress(6);
     }//GEN-LAST:event_sendSignedContractButtonActionPerformed
 
 

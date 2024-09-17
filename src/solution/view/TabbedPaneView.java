@@ -27,15 +27,13 @@
  * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */ 
-
+ */
 package solution.view;
 
 /*
  * TabbedPaneDemo.java requires one additional file:
  *   images/middle.gif.
  */
-
 import javax.swing.JTabbedPane;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -47,133 +45,155 @@ import javax.swing.UIManager;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.KeyEvent;
+import javax.swing.JScrollPane;
 import solution.service.StringsService;
 
 public class TabbedPaneView extends JPanel {
-    
+
     String multisigAddress;
-    
+
     public TabbedPaneView() {
         super(new GridLayout(1, 1));
-        
+
         JTabbedPane tabbedPane = new JTabbedPane();
-        
+
         JComponent panel1 = registerNewPropertyPanel("Panel #1");
         tabbedPane.addTab("1. " + StringsService.register_new_property, null, panel1,
                 "1. " + StringsService.register_new_property);
         tabbedPane.setMnemonicAt(0, KeyEvent.VK_A);
-        
+
         JComponent panel2 = registerContractPanel("Panel #2");
         tabbedPane.addTab("2. " + StringsService.register_contract, null, panel2,
                 "2. " + StringsService.register_contract);
         tabbedPane.setMnemonicAt(1, KeyEvent.VK_B);
-        
+
         JComponent panel3 = createMultisigAddressPanel("Panel #3");
         tabbedPane.addTab("3. " + StringsService.create_multisig_address, null, panel3,
                 "3. " + StringsService.create_multisig_address);
-        tabbedPane.setMnemonicAt(2, KeyEvent.VK_C);        
-        
+        tabbedPane.setMnemonicAt(2, KeyEvent.VK_C);
+
         JComponent panel4 = sendContractToMultisigAddressPanel("Panel #4");
         tabbedPane.addTab("4. " + StringsService.send_contract_to_multisig_address, null, panel4,
                 "4. " + StringsService.send_contract_to_multisig_address);
         tabbedPane.setMnemonicAt(3, KeyEvent.VK_D);
-        
+
         JComponent panel5 = createMultisigTransactionPanel("Panel #5");
         tabbedPane.addTab("5. " + StringsService.create_multisig_transaction, null, panel5,
                 "5. " + StringsService.create_multisig_transaction);
         tabbedPane.setMnemonicAt(4, KeyEvent.VK_E);
-        
+
         JComponent panel6 = ownerWalletPanel("Panel #6");
         tabbedPane.addTab("6. " + StringsService.owner_wallet, null, panel6,
                 StringsService.owner_wallet);
         tabbedPane.setMnemonicAt(5, KeyEvent.VK_F);
-        
+
         JComponent panel7 = buyerWalletPanel("Panel #7");
         tabbedPane.addTab("7. " + StringsService.buyer_wallet, null, panel7,
                 StringsService.buyer_wallet);
         tabbedPane.setMnemonicAt(6, KeyEvent.VK_G);
-        
+
         JComponent panel8 = sendSignedContractToRegistryAddressPanel("Panel #8");
         tabbedPane.addTab("8. " + StringsService.send_signed_contract_to_registry_address, null, panel8,
                 "8. " + StringsService.send_signed_contract_to_registry_address);
         tabbedPane.setMnemonicAt(7, KeyEvent.VK_H);
-        
-        JComponent panel9 = sendPaymentFromBuyerToOwnerPanel("Panel #9");
-        tabbedPane.addTab("9. " + StringsService.send_payment_from_buyer_to_owner, null, panel9,
-                "9. " + StringsService.send_payment_from_buyer_to_owner);
+
+        JComponent panel9 = verifyContractSignaturesPanel("Panel #9");
+        tabbedPane.addTab("9. " + StringsService.verify_contract_signatures, null, panel9,
+                "9. " + StringsService.verify_contract_signatures);
         tabbedPane.setMnemonicAt(8, KeyEvent.VK_I);
-        
-        JComponent panel10 = verifyTransactionsPanel("Panel #10");
-        tabbedPane.addTab("10. " + StringsService.verify_transaction, null, panel10,
-                "10. " + StringsService.verify_transaction);
+
+        JComponent panel10 = sendPaymentFromBuyerToOwnerPanel("Panel #10");
+        tabbedPane.addTab("10. " + StringsService.send_payment_from_buyer_to_owner, null, panel10,
+                "10. " + StringsService.send_payment_from_buyer_to_owner);
         tabbedPane.setMnemonicAt(9, KeyEvent.VK_J);
-        
-        JComponent panel11 = tranferPropertyToBuyerAddressPanel("Panel #11");
-        tabbedPane.addTab("11. " + StringsService.transfer_property, null, panel11,
-                "11. " + StringsService.transfer_property);
+
+        JComponent panel11 = verifyTransactionsPanel("Panel #11");
+        tabbedPane.addTab("11. " + StringsService.verify_transaction, null, panel11,
+                "11. " + StringsService.verify_transaction);
         tabbedPane.setMnemonicAt(10, KeyEvent.VK_K);
-        
+
+        JComponent panel12 = tranferPropertyToBuyerAddressPanel("Panel #12");
+        tabbedPane.addTab("12. " + StringsService.transfer_property, null, panel12,
+                "12. " + StringsService.transfer_property);
+        tabbedPane.setMnemonicAt(11, KeyEvent.VK_L);
+
         //Add the tabbed pane to this panel.
         add(tabbedPane);
-        
+
         //The following line enables to use scrolling tabs.
         tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
     }
-    
+
     protected JComponent tranferPropertyToBuyerAddressPanel(String text) {
         TransferPropertyPanel panel = new TransferPropertyPanel();
         JLabel filler = new JLabel(text);
 //        filler.setHorizontalAlignment(JLabel.CENTER);
 //        panel.setLayout(new GridLayout(1, 1));
         panel.add(filler);
-        return panel;
+        JScrollPane scroller = new JScrollPane(panel);
+        return scroller;
     }
-    
+
     protected JComponent verifyTransactionsPanel(String text) {
-        VerifyTransactionsPanel panel = new VerifyTransactionsPanel();
+        VerifyPaymentPanel panel = new VerifyPaymentPanel();
         JLabel filler = new JLabel(text);
 //        filler.setHorizontalAlignment(JLabel.CENTER);
 //        panel.setLayout(new GridLayout(1, 1));
         panel.add(filler);
-        return panel;
+        JScrollPane scroller = new JScrollPane(panel);
+        return scroller;
     }
-    
+
     protected JComponent sendPaymentFromBuyerToOwnerPanel(String text) {
         SendPaymentFromBuyerToOwnerPanel panel = new SendPaymentFromBuyerToOwnerPanel();
         JLabel filler = new JLabel(text);
 //        filler.setHorizontalAlignment(JLabel.CENTER);
 //        panel.setLayout(new GridLayout(1, 1));
         panel.add(filler);
-        return panel;
+        JScrollPane scroller = new JScrollPane(panel);
+        return scroller;
     }
-    
+
+    protected JComponent verifyContractSignaturesPanel(String text) {
+        VerifyContractSignaturesPanel panel = new VerifyContractSignaturesPanel();
+        JLabel filler = new JLabel(text);
+//        filler.setHorizontalAlignment(JLabel.CENTER);
+//        panel.setLayout(new GridLayout(1, 1));
+        panel.add(filler);
+        JScrollPane scroller = new JScrollPane(panel);
+        return scroller;
+    }
+
     protected JComponent sendSignedContractToRegistryAddressPanel(String text) {
         SendSignedContractToRegistryPanel panel = new SendSignedContractToRegistryPanel();
         JLabel filler = new JLabel(text);
 //        filler.setHorizontalAlignment(JLabel.CENTER);
 //        panel.setLayout(new GridLayout(1, 1));
         panel.add(filler);
-        return panel;
+        JScrollPane scroller = new JScrollPane(panel);
+        return scroller;
     }
-        
+
     protected JComponent createMultisigTransactionPanel(String text) {
         CreateMultisigTransactionPanel panel = new CreateMultisigTransactionPanel();
         JLabel filler = new JLabel(text);
 //        filler.setHorizontalAlignment(JLabel.CENTER);
 //        panel.setLayout(new GridLayout(1, 1));
         panel.add(filler);
-        return panel;
+        JScrollPane scroller = new JScrollPane(panel);
+        return scroller;
     }
-    
+
     protected JComponent sendContractToMultisigAddressPanel(String text) {
         SendContractToMultisigPanelView panel = new SendContractToMultisigPanelView(multisigAddress);
         JLabel filler = new JLabel(text);
 //        filler.setHorizontalAlignment(JLabel.CENTER);
 //        panel.setLayout(new GridLayout(1, 1));
         panel.add(filler);
-        return panel;
+        JScrollPane scroller = new JScrollPane(panel);
+        return scroller;
     }
-            
+
     protected JComponent createMultisigAddressPanel(String text) {
         CreateMultisigAddressPanel panel = new CreateMultisigAddressPanel();
         JLabel filler = new JLabel(text);
@@ -181,55 +201,63 @@ public class TabbedPaneView extends JPanel {
 //        panel.setLayout(new GridLayout(1, 1));
         panel.add(filler);
         multisigAddress = panel.getCreateMultisigModel().getAddress();
-        return panel;
+        JScrollPane scroller = new JScrollPane(panel);
+        return scroller;
     }
-    
+
     protected JComponent makeTextPanel(String text) {
         JPanel panel = new JPanel(false);
         JLabel filler = new JLabel(text);
         filler.setHorizontalAlignment(JLabel.CENTER);
         panel.setLayout(new GridLayout(1, 1));
         panel.add(filler);
-        return panel;
+        JScrollPane scroller = new JScrollPane(panel);
+        return scroller;
     }
 
     protected JComponent buyerWalletPanel(String text) {
-        WalletBuyerPanelView walletBuyerPanelView = new WalletBuyerPanelView();
-        JLabel filler = new JLabel(text);
-//        filler.setHorizontalAlignment(JLabel.CENTER);
-//        panel.setLayout(new GridLayout(1, 1));
-        walletBuyerPanelView.add(filler);
-        return walletBuyerPanelView;
-    }
-    
-    protected JComponent ownerWalletPanel(String text) {
-        WalletOwnerPanelView walletOwnerPanelView = new WalletOwnerPanelView();
-        JLabel filler = new JLabel(text);
-//        filler.setHorizontalAlignment(JLabel.CENTER);
-//        panel.setLayout(new GridLayout(1, 1));
-        walletOwnerPanelView.add(filler);
-        return walletOwnerPanelView;
-    }
-    
-    protected JComponent registerNewPropertyPanel(String text) {
-        RegisterPropertyPanelView panel = new RegisterPropertyPanelView();
+        WalletBuyerPanelView panel = new WalletBuyerPanelView();
         JLabel filler = new JLabel(text);
 //        filler.setHorizontalAlignment(JLabel.CENTER);
 //        panel.setLayout(new GridLayout(1, 1));
         panel.add(filler);
-        return panel;
+        JScrollPane scroller = new JScrollPane(panel);
+        return scroller;
     }
-    
-    protected JComponent registerContractPanel(String text) {
-        RegisterContractPanelView registerContractPanelView = new RegisterContractPanelView();
+
+    protected JComponent ownerWalletPanel(String text) {
+        WalletOwnerPanelView panel = new WalletOwnerPanelView();
         JLabel filler = new JLabel(text);
 //        filler.setHorizontalAlignment(JLabel.CENTER);
 //        panel.setLayout(new GridLayout(1, 1));
-        registerContractPanelView.add(filler);
-        return registerContractPanelView;
+        panel.add(filler);
+        JScrollPane scroller = new JScrollPane(panel);
+        return scroller;
     }
-    
-    /** Returns an ImageIcon, or null if the path was invalid. */
+
+    protected JComponent registerNewPropertyPanel(String text) {
+        RegisterNewPropertyPanelView panel = new RegisterNewPropertyPanelView();
+        JLabel filler = new JLabel(text);
+//        filler.setHorizontalAlignment(JLabel.CENTER);
+//        panel.setLayout(new GridLayout(1, 1));
+        panel.add(filler);
+        JScrollPane scroller = new JScrollPane(panel);
+        return scroller;
+    }
+
+    protected JComponent registerContractPanel(String text) {
+        RegisterContractPanelView panel = new RegisterContractPanelView();
+        JLabel filler = new JLabel(text);
+//        filler.setHorizontalAlignment(JLabel.CENTER);
+//        panel.setLayout(new GridLayout(1, 1));
+        panel.add(filler);
+        JScrollPane scroller = new JScrollPane(panel);
+        return scroller;
+    }
+
+    /**
+     * Returns an ImageIcon, or null if the path was invalid.
+     */
     protected static ImageIcon createImageIcon(String path) {
         java.net.URL imgURL = TabbedPaneView.class.getResource(path);
         if (imgURL != null) {
@@ -239,33 +267,32 @@ public class TabbedPaneView extends JPanel {
             return null;
         }
     }
-    
+
     /**
-     * Create the GUI and show it.  For thread safety,
-     * this method should be invoked from
-     * the event dispatch thread.
+     * Create the GUI and show it. For thread safety, this method should be
+     * invoked from the event dispatch thread.
      */
     private static void createAndShowGUI() {
         //Create and set up the window.
         JFrame frame = new JFrame(StringsService.real_estate_registry_system);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
+
         //Add content to the window.
         frame.add(new TabbedPaneView(), BorderLayout.CENTER);
-        
+
         //Display the window.
         frame.pack();
         frame.setVisible(true);
     }
-    
+
     public static void main(String[] args) {
         //Schedule a job for the event dispatch thread:
         //creating and showing this application's GUI.
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 //Turn off metal's use of bold fonts
-		UIManager.put("swing.boldMetal", Boolean.FALSE);
-		createAndShowGUI();
+                UIManager.put("swing.boldMetal", Boolean.FALSE);
+                createAndShowGUI();
             }
         });
     }

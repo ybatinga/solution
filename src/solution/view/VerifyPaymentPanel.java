@@ -7,18 +7,19 @@ package solution.view;
 import java.util.List;
 import solution.control.RegistryServiceControl;
 import solution.model.GetBlockModel;
+import solution.model.GetRawTransactionModel;
 import solution.service.StringsService;
 
 /**
  *
  * @author ssd
  */
-public class VerifyTransactionsPanel extends javax.swing.JPanel {
+public class VerifyPaymentPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form VerifyTransactions
      */
-    public VerifyTransactionsPanel() {
+    public VerifyPaymentPanel() {
         initComponents();
     }
 
@@ -45,6 +46,10 @@ public class VerifyTransactionsPanel extends javax.swing.JPanel {
         paymentConfirmationMessageTextField = new java.awt.TextField();
         timeStampLabel = new javax.swing.JLabel();
         timeStampTextField = new java.awt.TextField();
+        recipientAddressLabel = new javax.swing.JLabel();
+        recipientAddressTextField = new java.awt.TextField();
+        amountSentLabel = new javax.swing.JLabel();
+        amountSentTextField = new java.awt.TextField();
 
         verifyPaymentTransactionLabel.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         verifyPaymentTransactionLabel.setText("Verify Payment Transaction");
@@ -77,16 +82,19 @@ public class VerifyTransactionsPanel extends javax.swing.JPanel {
 
         paymentConfirmationMessageTextField.setBackground(new java.awt.Color(242, 242, 242));
         paymentConfirmationMessageTextField.setFont(new java.awt.Font("Dialog", 1, 15)); // NOI18N
-        paymentConfirmationMessageTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                paymentConfirmationMessageTextFieldActionPerformed(evt);
-            }
-        });
 
         timeStampLabel.setText("Timestamp:");
 
         timeStampTextField.setBackground(new java.awt.Color(242, 242, 242));
         timeStampTextField.setEditable(false);
+
+        recipientAddressLabel.setText("Recipient Address:");
+
+        recipientAddressTextField.setBackground(new java.awt.Color(242, 242, 242));
+
+        amountSentLabel.setText("Amount Sent:");
+
+        amountSentTextField.setBackground(new java.awt.Color(242, 242, 242));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -120,7 +128,15 @@ public class VerifyTransactionsPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(blockHashLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(blockHashTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 522, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(blockHashTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 522, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(recipientAddressLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(recipientAddressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(amountSentLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(amountSentTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -138,50 +154,61 @@ public class VerifyTransactionsPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(paymentConfirmationMessageLabel)
                     .addComponent(paymentConfirmationMessageTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(confirmationsLabel)
                     .addComponent(confirmationsTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(confirmationBlockNumberLabel)
                     .addComponent(confirmationBlockNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(blockHashLabel)
                     .addComponent(blockHashTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(timeStampLabel)
-                    .addComponent(timeStampTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(42, Short.MAX_VALUE))
+                    .addComponent(timeStampTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(timeStampLabel))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(recipientAddressLabel)
+                    .addComponent(recipientAddressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(amountSentLabel)
+                    .addComponent(amountSentTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void verifyPaymentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verifyPaymentButtonActionPerformed
-        // generate 1 new block to verify payment transaction confirmed on first generated block 
-        List<String> blockHashList = RegistryServiceControl.generateToAddress(1);
-        
-        String getBestblockhash = RegistryServiceControl.getBlockchainInfo();
-        GetBlockModel getBlockModel = RegistryServiceControl.getBlock(getBestblockhash, paymentTransactionIdTextField.getText());
+                
+        String paymentTransactionId = paymentTransactionIdTextField.getText();
+        GetBlockModel getBlockModel = RegistryServiceControl.searchTransactionInBlocks(paymentTransactionId);
         if (getBlockModel != null){
             paymentConfirmationMessageTextField.setText(StringsService.payment_has_been_confirmed_on_the_blockchain);
             confirmationsTextField.setText(Long.toString(getBlockModel.getConfirmations()));
             confirmationBlockNumberTextField.setText(Long.toString(getBlockModel.getHeight()));
-            blockHashTextField.setText(getBestblockhash);
+            blockHashTextField.setText(getBlockModel.getHash());
             String time = RegistryServiceControl.convertUnixEpochToUtcTime(getBlockModel.getTime());
             timeStampTextField.setText(time);
+            
+            GetRawTransactionModel getRawTransactionModel = RegistryServiceControl.getRawTransaction(paymentTransactionId);
+            String recipientAddress = getRawTransactionModel.getResult().getVout().get(0).getScriptPubKey().getAddress();
+            recipientAddressTextField.setText(recipientAddress);
+            String amountSent = Double.toString(getRawTransactionModel.getResult().getVout().get(0).getValue());
+            amountSentTextField.setText(amountSent);
+                        
         }else{
             paymentConfirmationMessageTextField.setText(StringsService.payment_has_not_been_confirmed_on_the_blockchain);
         }
     }//GEN-LAST:event_verifyPaymentButtonActionPerformed
 
-    private void paymentConfirmationMessageTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paymentConfirmationMessageTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_paymentConfirmationMessageTextFieldActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel amountSentLabel;
+    private java.awt.TextField amountSentTextField;
     private javax.swing.JLabel blockHashLabel;
     private java.awt.TextField blockHashTextField;
     private javax.swing.JLabel confirmationBlockNumberLabel;
@@ -192,6 +219,8 @@ public class VerifyTransactionsPanel extends javax.swing.JPanel {
     private java.awt.TextField paymentConfirmationMessageTextField;
     private javax.swing.JLabel paymentTransactionIdLabel;
     private java.awt.TextField paymentTransactionIdTextField;
+    private javax.swing.JLabel recipientAddressLabel;
+    private java.awt.TextField recipientAddressTextField;
     private javax.swing.JLabel timeStampLabel;
     private java.awt.TextField timeStampTextField;
     private javax.swing.JButton verifyPaymentButton;

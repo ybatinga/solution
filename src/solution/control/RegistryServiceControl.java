@@ -201,7 +201,7 @@ public class RegistryServiceControl {
             String auth = "Basic " + Base64.getEncoder().encodeToString(credentials.getBytes());
             
             HttpRequest request = HttpRequest.newBuilder()
-                    .uri(URI.create("http://127.0.0.1:18443/wallet/ord"))
+                    .uri(URI.create("http://127.0.0.1:18443/"))
                     .POST(BodyPublishers.ofString("{\"jsonrpc\": \"1.0\", \"id\": \"curltest\", \"method\": \"getrawtransaction\", \"params\": [\""+ txId +"\", true]}"))
                     .setHeader("content-type", "text/plain;")
                     .setHeader("authorization", auth)
@@ -483,7 +483,7 @@ public class RegistryServiceControl {
         }
     }
     
-    public static GetBlockModel getBlock(String blockHash, String txId) {
+    public static GetBlockModel getBlock(String blockHash) {
         try {
             String[] command = new String[]{"/usr/local/apps/bitcoin-25.0/bin/bitcoin-cli", "getblock", blockHash};
 
@@ -494,20 +494,8 @@ public class RegistryServiceControl {
             InputStreamReader reader
                     = new InputStreamReader(process.getInputStream());
             
-            boolean isTxId = false;
             GetBlockModel getBlockModel = new Gson().fromJson(reader, GetBlockModel.class);
-            List<String> txIdList = getBlockModel.getTx();
-            for (String transaction : txIdList){
-                if (transaction.equals(txId)){
-                    isTxId = true;
-                }
-            }
-            
-            if (isTxId){
-                return getBlockModel;
-            }else {
-                return null;
-            }
+            return getBlockModel;
             
         } catch (IOException | InterruptedException ex) {
             Logger.getLogger(RegistryServiceControl.class.getName()).log(Level.SEVERE, null, ex);
@@ -534,6 +522,27 @@ public class RegistryServiceControl {
             Logger.getLogger(RegistryServiceControl.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
+    }
+    
+    public static GetBlockModel searchTransactionInBlocks(String txId){
+        // gets the last (current) block
+        String getBestblockhash = RegistryServiceControl.getBlockchainInfo();
+        
+        GetBlockModel getBlockModel = getBlock(getBestblockhash);
+        boolean isTxId = false;
+        while (!isTxId){
+            List<String> txIdList = getBlockModel.getTx();
+            for (String transaction : txIdList){
+                if (transaction.equals(txId)){
+                    isTxId = true;
+                }
+            }
+            if (!isTxId){
+                getBlockModel = getBlock(getBlockModel.getPreviousblockhash());
+            }
+        }
+                
+        return getBlockModel;
     }
     
     public static String convertUnixEpochToUtcTime (long time){

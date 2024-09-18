@@ -62,11 +62,6 @@ public class RegisterNewPropertyPanelView extends javax.swing.JPanel {
 
         propertyTransactionIdTextField.setBackground(new java.awt.Color(242, 242, 242));
         propertyTransactionIdTextField.setEditable(false);
-        propertyTransactionIdTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                propertyTransactionIdTextFieldActionPerformed(evt);
-            }
-        });
 
         propertyInscriptionIdLabel.setText("Property Inscription ID: ");
 
@@ -115,10 +110,6 @@ public class RegisterNewPropertyPanelView extends javax.swing.JPanel {
                 .addContainerGap(164, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void propertyTransactionIdTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_propertyTransactionIdTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_propertyTransactionIdTextFieldActionPerformed
 
     private void registerNewPropertyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerNewPropertyButtonActionPerformed
         fc = new JFileChooser();

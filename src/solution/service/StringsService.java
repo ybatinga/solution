@@ -29,7 +29,7 @@ public class StringsService {
     public static String send_signed_contract_to_registry_address = "Send Signed Contract to Registry";
     public static String verify_contract_signatures = "Verify Contract Signatures";    
     public static String send_payment_from_buyer_to_owner = "Send Payment";
-    public static String verify_transaction = "Verify Transaction";
+    public static String verify_payment = "Verify Payment";
     public static String transfer_property = "Transfer Property";
 
     // wallet names

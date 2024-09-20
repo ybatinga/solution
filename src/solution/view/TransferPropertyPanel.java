@@ -7,6 +7,7 @@ package solution.view;
 import java.awt.Insets;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
@@ -139,6 +140,8 @@ public class TransferPropertyPanel extends javax.swing.JPanel {
                     transferPropertyTransactionIdTextField.setText(ordInscribedDataModel.getReveal());
                     if (!ordInscribedDataModel.getInscriptions().isEmpty()){
                         transferPropertyInscriptionIdTextField.setText(ordInscribedDataModel.getInscriptions().get(0).getID());
+                        // generate 6 new blocks after creating new inscription
+                        List<String> blockHashList = RegistryServiceControl.generateToAddress(6);
                     }
                 } catch (IOException ex) {
                     transferPropertyTransactionIdTextField.setText(ex.getMessage());

@@ -50,6 +50,8 @@ public class RegisterContractPanelView extends javax.swing.JPanel{
         contractTransactionIdLabel = new javax.swing.JLabel();
         contractInscriptionIdTextField = new java.awt.TextField();
         contractInscriptionIdLabel = new javax.swing.JLabel();
+        propertyInscriptionIdLabel = new javax.swing.JLabel();
+        propertyInscriptionIdTextField = new java.awt.TextField();
 
         registerNewPropertyLabel.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         registerNewPropertyLabel.setText("Register Contract");
@@ -71,6 +73,16 @@ public class RegisterContractPanelView extends javax.swing.JPanel{
 
         contractInscriptionIdLabel.setText("Contract Inscription ID: ");
 
+        propertyInscriptionIdLabel.setText("Property Inscription ID: ");
+
+        propertyInscriptionIdTextField.setBackground(new java.awt.Color(242, 242, 242));
+        propertyInscriptionIdTextField.setEditable(false);
+        propertyInscriptionIdTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                propertyInscriptionIdTextFieldActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -78,17 +90,27 @@ public class RegisterContractPanelView extends javax.swing.JPanel{
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(contractInscriptionIdLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(contractInscriptionIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 514, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(regContractButton)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(contractTransactionIdLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(contractTransactionIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(contractInscriptionIdLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(contractInscriptionIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 514, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(registerNewPropertyLabel)
-                    .addComponent(regContractButton)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(contractTransactionIdLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(contractTransactionIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(registerNewPropertyLabel)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(propertyInscriptionIdLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(propertyInscriptionIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -96,6 +118,10 @@ public class RegisterContractPanelView extends javax.swing.JPanel{
                 .addContainerGap()
                 .addComponent(registerNewPropertyLabel)
                 .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(propertyInscriptionIdLabel)
+                    .addComponent(propertyInscriptionIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(regContractButton)
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -105,7 +131,7 @@ public class RegisterContractPanelView extends javax.swing.JPanel{
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(contractInscriptionIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(contractInscriptionIdLabel))
-                .addContainerGap(162, Short.MAX_VALUE))
+                .addContainerGap(133, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -149,12 +175,18 @@ public class RegisterContractPanelView extends javax.swing.JPanel{
         }
     }//GEN-LAST:event_regContractButtonActionPerformed
 
+    private void propertyInscriptionIdTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_propertyInscriptionIdTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_propertyInscriptionIdTextFieldActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel contractInscriptionIdLabel;
     private java.awt.TextField contractInscriptionIdTextField;
     private javax.swing.JLabel contractTransactionIdLabel;
     private java.awt.TextField contractTransactionIdTextField;
+    private javax.swing.JLabel propertyInscriptionIdLabel;
+    private java.awt.TextField propertyInscriptionIdTextField;
     private javax.swing.JButton regContractButton;
     private javax.swing.JLabel registerNewPropertyLabel;
     // End of variables declaration//GEN-END:variables

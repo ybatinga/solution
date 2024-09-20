@@ -31,6 +31,7 @@ import solution.model.DecodeRawTransactionModel;
 import solution.model.GetBlockModel;
 import solution.model.GetBlockchainInfoModel;
 import solution.model.GetRawTransactionModel;
+import solution.model.InscriptionModel;
 import solution.model.ListUnspentModel;
 import solution.model.SignRawTransactionWithKeyModel;
 import solution.model.SignRawTransactionWithWalletModel;
@@ -44,7 +45,7 @@ public class RegistryServiceControl {
     
     public static OrdInscribedDataModel registerNewPropertyOrContract(String filePath) throws IOException, InterruptedException {
 
-        Process process = Runtime.getRuntime().exec("/usr/local/apps/ord-0.19.1/ord --chain regtest --bitcoin-rpc-password rpc --bitcoin-rpc-username rpc wallet inscribe --fee-rate 2 --file " + filePath); // for Linux
+        Process process = Runtime.getRuntime().exec("/usr/local/apps/" + StringsService.ord_version + "/ord --chain regtest --bitcoin-rpc-password rpc --bitcoin-rpc-username rpc wallet inscribe --fee-rate 2 --file " + filePath); // for Linux
             //Process process = Runtime.getRuntime().exec("cmd /c dir"); //for Windows
 
         process.waitFor();
@@ -81,7 +82,7 @@ public class RegistryServiceControl {
     
     public static OrdInscribedDataModel registerPropertyTransfer(String filePath, String parentInscriptionID) throws IOException, InterruptedException {
 
-        Process process = Runtime.getRuntime().exec("/usr/local/apps/ord-0.19.1/ord --chain regtest --bitcoin-rpc-password rpc --bitcoin-rpc-username rpc wallet inscribe --fee-rate 2 --parent " + parentInscriptionID + " --file " + filePath); // for Linux
+        Process process = Runtime.getRuntime().exec("/usr/local/apps/" + StringsService.ord_version + "/ord --chain regtest --bitcoin-rpc-password rpc --bitcoin-rpc-username rpc wallet inscribe --fee-rate 2 --parent " + parentInscriptionID + " --file " + filePath); // for Linux
             //Process process = Runtime.getRuntime().exec("cmd /c dir"); //for Windows
 
         process.waitFor();
@@ -585,5 +586,29 @@ public class RegistryServiceControl {
             return null;
         }
     }
+    
+    public static InscriptionModel inscription(String inscriptionId) {
+        
+        try {
+            
+            HttpClient client = HttpClient.newHttpClient();
+
+            HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create("http://0.0.0.0:80/inscription/" + inscriptionId))
+                .GET()
+                .setHeader("Accept", "application/json")
+                .build();
+
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            
+            String json = response.body().toString();
+            InscriptionModel inscriptionModel = new Gson().fromJson(json, InscriptionModel.class);
+            return inscriptionModel;
+        } catch (IOException | InterruptedException ex) {
+            Logger.getLogger(RegistryServiceControl.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+    
     
 }

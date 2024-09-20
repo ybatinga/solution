@@ -49,8 +49,8 @@ public class StringsService {
     // https://github.com/BlockchainCommons/Learning-Bitcoin-from-the-Command-Line/blob/master/06_1_Sending_a_Transaction_to_a_Multisig.md#collect-public-keys
     public static String reference_wallet_public_keys = "Collect Public Keys. You can't create a multi-sig with the addresses, as those are the hashes of public keys. You instead need the public keys themselves. This information is readily available with the getaddressinfo command.";
     
-    
-
+//    public static String ord_version = "ord-0.19.1";
+    public static String ord_version = "ord-0.20.0";
     
 //    public static class Platform{
 //        public static final String DESKTOP_WALLET_ADDRESS_BUYER = "midFKFXtqdSN8pRTvdqyqRwx9DUnRgezR5";

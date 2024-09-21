@@ -14,7 +14,7 @@ public class StringsService {
 //    public static String WALLET_ADDRESS_OWNER = Platform.DESKTOP_WALLET_ADDRESS_OWNER;    
 //    public static String WALLET_ADDRESS_ORD = Platform.DESKTOP_ORD_ADDRESS;    
     
-    public static Laptop PLATFORM;
+    public static Desktop PLATFORM;
     
     public static String real_estate_registry_system = "Real Estate Registry System";    
     

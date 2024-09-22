@@ -64,17 +64,17 @@ public class RegistryModel {
     // BuyerInfo.java
     public class BuyerInfo {
 
-        private String nationalID;
+        private String buyerNationalID;
         private String buyerName;
         private String buyerWalletAddress;
         private String buyerWalletPublicKeyAddress;
 
-        public String getNationalID() {
-            return nationalID;
+        public String getBuyerNationalID() {
+            return buyerNationalID;
         }
 
-        public void setNationalID(String value) {
-            this.nationalID = value;
+        public void setBuyerNationalID(String buyerNationalID) {
+            this.buyerNationalID = buyerNationalID;
         }
 
         public String getBuyerName() {
@@ -100,31 +100,23 @@ public class RegistryModel {
         public void setBuyerWalletPublicKeyAddress(String value) {
             this.buyerWalletPublicKeyAddress = value;
         }
+
     }
 
 // OwnerInfo.java
     public class OwnerInfo {
 
-        private String name;
-        private String nationalID;
+        private String ownerNationalID;
         private String ownerName;
         private String ownerWalletAddress;
         private String ownerWalletPublicKeyAddress;
 
-        public String getName() {
-            return name;
+        public String getOwnerNationalID() {
+            return ownerNationalID;
         }
 
-        public void setName(String value) {
-            this.name = value;
-        }
-
-        public String getNationalID() {
-            return nationalID;
-        }
-
-        public void setNationalID(String value) {
-            this.nationalID = value;
+        public void setOwnerNationalID(String ownerNationalID) {
+            this.ownerNationalID = ownerNationalID;
         }
 
         public String getOwnerName() {
@@ -150,6 +142,7 @@ public class RegistryModel {
         public void setOwnerWalletPublicKeyAddress(String value) {
             this.ownerWalletPublicKeyAddress = value;
         }
+
     }
 
 // Info.java

@@ -8,6 +8,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import solution.model.InscriptionModel;
 import solution.model.RegModel;
+import solution.model.RegistryModel;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -28,8 +29,8 @@ public class GetInscriptionDataToJson {
         try {
 //            bufferedReader = new BufferedReader(new FileReader("/home/ssd/Dropbox/thesis/ordinals_metadata_contract_signning/inscription.json"));
 //            InscriptionModel inscriptionModel = new Gson().fromJson(bufferedReader, InscriptionModel.class);
-            bufferedReader = new BufferedReader(new FileReader("/home/ssd/Dropbox/thesis/ordinals_metadata_contract_signning/property_sale_contract.json"));
-            RegModel regModel = new Gson().fromJson(bufferedReader, RegModel.class);
+            bufferedReader = new BufferedReader(new FileReader("/home/ssd/Dropbox/thesis/ordinals_metadata_contract_signning/property_transfer.json"));
+            RegistryModel regModel = new Gson().fromJson(bufferedReader, RegistryModel.class);
             String asdf = null;
         } catch (FileNotFoundException ex) {
             Logger.getLogger(GetInscriptionDataToJson.class.getName()).log(Level.SEVERE, null, ex);

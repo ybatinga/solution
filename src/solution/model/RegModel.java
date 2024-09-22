@@ -1,231 +1,240 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package solution.model;
 
-/**
- *
- * @author ssd
- */
 public class RegModel {
 
-    private String documentType;
-    private PropertyInfo propertyInfo;
-    private OwnerInfo ownerInfo;
-    private BuyerInfo buyerInfo;
-    private SaleAgreementContractInfo saleAgreementContractInfo;
+    private String document_type;
+    private Property_info property_info;
+    private Owner_info owner_info;
+    private Buyer_info buyer_info;
+    private Sale_agreement_contract_info sale_agreement_contract_info;
 
-    public String getDocumentType() {
-        return documentType;
+    public String getDocument_type() {
+        return document_type;
     }
 
-    public void setDocumentType(String value) {
-        this.documentType = value;
+    public void setDocument_type(String document_type) {
+        this.document_type = document_type;
     }
 
-    public PropertyInfo getPropertyInfo() {
-        return propertyInfo;
+    public Property_info getProperty_info() {
+        return property_info;
     }
 
-    public void setPropertyInfo(PropertyInfo value) {
-        this.propertyInfo = value;
+    public void setProperty_info(Property_info property_info) {
+        this.property_info = property_info;
     }
 
-    public OwnerInfo getOwnerInfo() {
-        return ownerInfo;
+    public Owner_info getOwner_info() {
+        return owner_info;
     }
 
-    public void setOwnerInfo(OwnerInfo value) {
-        this.ownerInfo = value;
+    public void setOwner_info(Owner_info owner_info) {
+        this.owner_info = owner_info;
     }
 
-    public BuyerInfo getBuyerInfo() {
-        return buyerInfo;
+    public Buyer_info getBuyer_info() {
+        return buyer_info;
     }
 
-    public void setBuyerInfo(BuyerInfo value) {
-        this.buyerInfo = value;
+    public void setBuyer_info(Buyer_info buyer_info) {
+        this.buyer_info = buyer_info;
     }
 
-    public SaleAgreementContractInfo getSaleAgreementContractInfo() {
-        return saleAgreementContractInfo;
+    public Sale_agreement_contract_info getSale_agreement_contract_info() {
+        return sale_agreement_contract_info;
     }
 
-    public void setSaleAgreementContractInfo(SaleAgreementContractInfo value) {
-        this.saleAgreementContractInfo = value;
+    public void setSale_agreement_contract_info(Sale_agreement_contract_info sale_agreement_contract_info) {
+        this.sale_agreement_contract_info = sale_agreement_contract_info;
     }
 
-// BuyerInfo.java
-    public class BuyerInfo {
+    
+    public class Property_info {
 
-        private String nationalID;
-        private String buyerName;
-        private String buyerWalletAddress;
-        private String buyerWalletPublicKeyAddress;
-
-        public String getNationalID() {
-            return nationalID;
-        }
-
-        public void setNationalID(String value) {
-            this.nationalID = value;
-        }
-
-        public String getBuyerName() {
-            return buyerName;
-        }
-
-        public void setBuyerName(String value) {
-            this.buyerName = value;
-        }
-
-        public String getBuyerWalletAddress() {
-            return buyerWalletAddress;
-        }
-
-        public void setBuyerWalletAddress(String value) {
-            this.buyerWalletAddress = value;
-        }
-
-        public String getBuyerWalletPublicKeyAddress() {
-            return buyerWalletPublicKeyAddress;
-        }
-
-        public void setBuyerWalletPublicKeyAddress(String value) {
-            this.buyerWalletPublicKeyAddress = value;
-        }
-    }
-
-// OwnerInfo.java
-    public class OwnerInfo {
-
-        private String nationalID;
-        private String ownerName;
-        private String ownerWalletAddress;
-        private String ownerWalletPublicKeyAddress;
-
-        public String getNationalID() {
-            return nationalID;
-        }
-
-        public void setNationalID(String value) {
-            this.nationalID = value;
-        }
-
-        public String getOwnerName() {
-            return ownerName;
-        }
-
-        public void setOwnerName(String value) {
-            this.ownerName = value;
-        }
-
-        public String getOwnerWalletAddress() {
-            return ownerWalletAddress;
-        }
-
-        public void setOwnerWalletAddress(String value) {
-            this.ownerWalletAddress = value;
-        }
-
-        public String getOwnerWalletPublicKeyAddress() {
-            return ownerWalletPublicKeyAddress;
-        }
-
-        public void setOwnerWalletPublicKeyAddress(String value) {
-            this.ownerWalletPublicKeyAddress = value;
-        }
-    }
-
-// PropertyInfo.java
-    public class PropertyInfo {
-
-        private long inscriptionNumber;
-        private String inscriptionID;
-        private String revealTransactionGenesisID;
-        private long blockHeightGenesis;
-        private String blockHashGenesis;
+        private float inscription_number;
+        private String inscription_id;
+        private String reveal_transaction_genesis_id;
+        private float block_height_genesis;
+        private String block_hash_genesis;
         private String timestamp;
-        private String propertyAddress;
-        private long propertyAreaSquareMeters;
+        private String property_address;
+        private float property_area_square_meters;
 
-        public long getInscriptionNumber() {
-            return inscriptionNumber;
+        // Getter Methods 
+        public float getInscription_number() {
+            return inscription_number;
         }
 
-        public void setInscriptionNumber(long value) {
-            this.inscriptionNumber = value;
+        public String getInscription_id() {
+            return inscription_id;
         }
 
-        public String getInscriptionID() {
-            return inscriptionID;
+        public String getReveal_transaction_genesis_id() {
+            return reveal_transaction_genesis_id;
         }
 
-        public void setInscriptionID(String value) {
-            this.inscriptionID = value;
+        public float getBlock_height_genesis() {
+            return block_height_genesis;
         }
 
-        public String getRevealTransactionGenesisID() {
-            return revealTransactionGenesisID;
-        }
-
-        public void setRevealTransactionGenesisID(String value) {
-            this.revealTransactionGenesisID = value;
-        }
-
-        public long getBlockHeightGenesis() {
-            return blockHeightGenesis;
-        }
-
-        public void setBlockHeightGenesis(long value) {
-            this.blockHeightGenesis = value;
-        }
-
-        public String getBlockHashGenesis() {
-            return blockHashGenesis;
-        }
-
-        public void setBlockHashGenesis(String value) {
-            this.blockHashGenesis = value;
+        public String getBlock_hash_genesis() {
+            return block_hash_genesis;
         }
 
         public String getTimestamp() {
             return timestamp;
         }
 
-        public void setTimestamp(String value) {
-            this.timestamp = value;
+        public String getProperty_address() {
+            return property_address;
         }
 
-        public String getPropertyAddress() {
-            return propertyAddress;
+        public float getProperty_area_square_meters() {
+            return property_area_square_meters;
         }
 
-        public void setPropertyAddress(String value) {
-            this.propertyAddress = value;
+        // Setter Methods 
+        public void setInscription_number(float inscription_number) {
+            this.inscription_number = inscription_number;
         }
 
-        public long getPropertyAreaSquareMeters() {
-            return propertyAreaSquareMeters;
+        public void setInscription_id(String inscription_id) {
+            this.inscription_id = inscription_id;
         }
 
-        public void setPropertyAreaSquareMeters(long value) {
-            this.propertyAreaSquareMeters = value;
+        public void setReveal_transaction_genesis_id(String reveal_transaction_genesis_id) {
+            this.reveal_transaction_genesis_id = reveal_transaction_genesis_id;
+        }
+
+        public void setBlock_height_genesis(float block_height_genesis) {
+            this.block_height_genesis = block_height_genesis;
+        }
+
+        public void setBlock_hash_genesis(String block_hash_genesis) {
+            this.block_hash_genesis = block_hash_genesis;
+        }
+
+        public void setTimestamp(String timestamp) {
+            this.timestamp = timestamp;
+        }
+
+        public void setProperty_address(String property_address) {
+            this.property_address = property_address;
+        }
+
+        public void setProperty_area_square_meters(float property_area_square_meters) {
+            this.property_area_square_meters = property_area_square_meters;
+        }
+    }
+    
+    public class Buyer_info {
+
+        private String national_id;
+        private String buyer_name;
+        private String buyer_wallet_address;
+        private String buyer_wallet_public_key_address;
+
+        // Getter Methods 
+        public String getNational_id() {
+            return national_id;
+        }
+
+        public String getBuyer_name() {
+            return buyer_name;
+        }
+
+        public String getBuyer_wallet_address() {
+            return buyer_wallet_address;
+        }
+
+        public String getBuyer_wallet_public_key_address() {
+            return buyer_wallet_public_key_address;
+        }
+
+        // Setter Methods 
+        public void setNational_id(String national_id) {
+            this.national_id = national_id;
+        }
+
+        public void setBuyer_name(String buyer_name) {
+            this.buyer_name = buyer_name;
+        }
+
+        public void setBuyer_wallet_address(String buyer_wallet_address) {
+            this.buyer_wallet_address = buyer_wallet_address;
+        }
+
+        public void setBuyer_wallet_public_key_address(String buyer_wallet_public_key_address) {
+            this.buyer_wallet_public_key_address = buyer_wallet_public_key_address;
         }
     }
 
-// SaleAgreementContractInfo.java
-    public class SaleAgreementContractInfo {
+    public class Owner_info {
 
-        private double salePrice;
+        private String name;
+        private String national_id;
+        private String owner_name;
+        private String owner_wallet_address;
+        private String owner_wallet_public_key_address;
 
-        public double getSalePrice() {
-            return salePrice;
+        // Getter Methods 
+        public String getName() {
+            return name;
         }
 
-        public void setSalePrice(double value) {
-            this.salePrice = value;
+        public String getNational_id() {
+            return national_id;
+        }
+
+        public String getOwner_name() {
+            return owner_name;
+        }
+
+        public String getOwner_wallet_address() {
+            return owner_wallet_address;
+        }
+
+        public String getOwner_wallet_public_key_address() {
+            return owner_wallet_public_key_address;
+        }
+
+        // Setter Methods 
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public void setNational_id(String national_id) {
+            this.national_id = national_id;
+        }
+
+        public void setOwner_name(String owner_name) {
+            this.owner_name = owner_name;
+        }
+
+        public void setOwner_wallet_address(String owner_wallet_address) {
+            this.owner_wallet_address = owner_wallet_address;
+        }
+
+        public void setOwner_wallet_public_key_address(String owner_wallet_public_key_address) {
+            this.owner_wallet_public_key_address = owner_wallet_public_key_address;
+        }
+    }
+
+    
+    
+
+    public class Sale_agreement_contract_info {
+
+        private float sale_price;
+
+        // Getter Methods 
+        public float getSale_price() {
+            return sale_price;
+        }
+
+        // Setter Methods 
+        public void setSale_price(float sale_price) {
+            this.sale_price = sale_price;
         }
     }
 }

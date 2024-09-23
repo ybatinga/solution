@@ -209,6 +209,7 @@ public class RegistryModel {
 
         private long inscriptionNumber;
         private String inscriptionID;
+        private String inscriptionAddress;
         private String revealTransactionGenesisID;
         private long blockHeightGenesis;
         private String blockHashGenesis;
@@ -232,6 +233,14 @@ public class RegistryModel {
             this.inscriptionID = value;
         }
 
+        public String getInscriptionAddress() {
+            return inscriptionAddress;
+        }
+
+        public void setInscriptionAddress(String inscriptionAddress) {
+            this.inscriptionAddress = inscriptionAddress;
+        }
+        
         public String getRevealTransactionGenesisID() {
             return revealTransactionGenesisID;
         }
@@ -279,6 +288,7 @@ public class RegistryModel {
         public void setPropertyAreaSquareMeters(long value) {
             this.propertyAreaSquareMeters = value;
         }
+
     }
 
 // SaleAgreementContractInfo.java

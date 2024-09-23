@@ -7,10 +7,12 @@ package solution.control;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.io.BufferedReader;
+import java.io.FileWriter;
 import java.io.InputStreamReader;
 import solution.model.GetAddressInfoModel;
 import solution.model.OrdInscribedDataModel;
 import java.io.IOException;
+import java.io.Writer;
 import java.lang.reflect.Type;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -610,5 +612,24 @@ public class RegistryServiceControl {
         }
     }
     
-    
+    public static <T> T writeInscriptionDataToDisk (T object, String fileName) {
+        Writer writer = null;
+        try {
+//            InscriptionModel inscriptionModel = RegistryServiceControl.inscription("e39367db30ee904399ec233d89653ace065219f4ed44b99d1ec1136cc4754a28i0");
+            writer = new FileWriter("/home/ssd/Dropbox/thesis/ordinals_metadata_contract_signning/" + fileName);
+            Gson gson = new Gson();
+            gson.toJson(object, writer);
+//            Gson gson = new Gson();
+//            gson.toJson(person, writer);
+        } catch (IOException ex) {
+            
+        } finally {
+            try {
+                writer.close();
+            } catch (IOException ex) {
+                
+            }
+        }
+        return object;
+    }
 }

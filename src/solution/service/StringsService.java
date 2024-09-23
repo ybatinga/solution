@@ -14,7 +14,7 @@ public class StringsService {
 //    public static String WALLET_ADDRESS_OWNER = Platform.DESKTOP_WALLET_ADDRESS_OWNER;    
 //    public static String WALLET_ADDRESS_ORD = Platform.DESKTOP_ORD_ADDRESS;    
     
-    public static Desktop PLATFORM;
+    public static Laptop PLATFORM;
     
     public static String real_estate_registry_system = "Real Estate Registry System";    
     
@@ -52,16 +52,7 @@ public class StringsService {
 //    public static String ord_version = "ord-0.19.1";
     public static String ord_version = "ord-0.20.0";
     
-//    public static class Platform{
-//        public static final String DESKTOP_WALLET_ADDRESS_BUYER = "midFKFXtqdSN8pRTvdqyqRwx9DUnRgezR5";
-//        public static final String DESKTOP_WALLET_ADDRESS_OWNER = "mq2ujk9tzw2EVr111GMxb2uekHqhwG5LiF";   
-//        public static final String DESKTOP_ORD_REG_ADDRESS = "bcrt1p28pn5ahzz5tl802ymgq6mug84l5fjj2hplmuamfgwlgu6h2ah0ssrr4j9z";
-//        public static final String DESKTOP_ORD_NOTARY_ADDRESS = "bcrt1p2hrhwq2w046upvzxwqxe33mvj5yxvtfg940824j8y2krtdz42cuq548xde";
-//        
-//        public static final String LAPTOP_WALLET_ADDRESS_BUYER = "mgBg38pkq8ULumNQgHugiKMi5uUzVEg35G";
-//        public static final String LAPTOP_WALLET_ADDRESS_OWNER = "mu6TidaphD9PbALi7KR4bJvPukjSziCWZR";  
-//        public static final String LAPTOP_ORD_ADDRESS = "";
-//    }
+    public static String file_name_property_sale_contract = "property_sale_contract_.json";
     
     public static class Laptop{
         private static final String WALLET_ADDRESS_BUYER = "mgBg38pkq8ULumNQgHugiKMi5uUzVEg35G";

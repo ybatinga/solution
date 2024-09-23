@@ -21,9 +21,11 @@ import javax.swing.JFileChooser;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import solution.control.RegistryServiceControl;
+import solution.model.InscriptionModel;
 import solution.model.OrdInscribedDataModel;
 import solution.model.OrdInscribedDataModel.Inscription;
 import solution.model.RegistryModel;
+import solution.service.StringsService;
 
 /**
  *
@@ -84,14 +86,6 @@ public class RegisterContractPanelView extends javax.swing.JPanel {
 
         propertyInscriptionIdLabel.setText("Property Inscription ID: ");
 
-        propertyInscriptionIdTextField.setBackground(new java.awt.Color(242, 242, 242));
-        propertyInscriptionIdTextField.setEditable(false);
-        propertyInscriptionIdTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                propertyInscriptionIdTextFieldActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -103,7 +97,7 @@ public class RegisterContractPanelView extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(propertyInscriptionIdLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(propertyInscriptionIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(propertyInscriptionIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 516, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(contractInscriptionIdLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -149,10 +143,25 @@ public class RegisterContractPanelView extends javax.swing.JPanel {
 
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 try {
-                    File file = fc.getSelectedFile();
                     
+                    // load contract in JSON file that contains buyer and owner data, including their wallet info, and price of property
+                    File file = fc.getSelectedFile();
                     Reader reader = new FileReader(file);
                     RegistryModel registryModel = new Gson().fromJson(reader, RegistryModel.class);
+                    
+                    //save data from property inscription into the contract
+                    InscriptionModel inscriptionModel = RegistryServiceControl.inscription(propertyInscriptionIdTextField.getText());
+                    registryModel.getPropertyInfo().setInscriptionNumber(inscriptionModel.getNumber());
+                    registryModel.getPropertyInfo().setInscriptionID(inscriptionModel.getID());
+                    registryModel.getPropertyInfo().setInscriptionAddress(inscriptionModel.getAddress());
+//                    registryModel.getPropertyInfo().setRevealTransactionGenesisID(inscriptionModel.get);//inscriptionModel does not contain it
+                    registryModel.getPropertyInfo().setBlockHeightGenesis(inscriptionModel.getHeight());
+//                    registryModel.getPropertyInfo().setBlockHashGenesis(inscriptionModel.get);//inscriptionModel does not contain it
+                    String timestamp = RegistryServiceControl.convertUnixEpochToUtcTime(inscriptionModel.getTimestamp());
+                    registryModel.getPropertyInfo().setTimestamp(timestamp);
+                    
+                    // save registryModel object in JSON file format
+                    RegistryServiceControl.writeInscriptionDataToDisk(registryModel, StringsService.file_name_property_sale_contract);
 
                     try {
 
@@ -185,10 +194,6 @@ public class RegisterContractPanelView extends javax.swing.JPanel {
             //Handle save button action.
         }
     }//GEN-LAST:event_regContractButtonActionPerformed
-
-    private void propertyInscriptionIdTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_propertyInscriptionIdTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_propertyInscriptionIdTextFieldActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

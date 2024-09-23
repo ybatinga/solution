@@ -5,12 +5,15 @@
 package solution.view;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import java.awt.Insets;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.Reader;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,6 +23,7 @@ import javax.swing.JTextArea;
 import solution.control.RegistryServiceControl;
 import solution.model.OrdInscribedDataModel;
 import solution.model.OrdInscribedDataModel.Inscription;
+import solution.model.RegistryModel;
 
 /**
  *
@@ -146,23 +150,9 @@ public class RegisterContractPanelView extends javax.swing.JPanel {
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 try {
                     File file = fc.getSelectedFile();
-                    String path = file.getPath();
-                    BufferedReader bufferedReader = new BufferedReader(new FileReader(path));
-
-                    Gson gson = new Gson();
-                    Inscription registryModel = new Gson().fromJson(bufferedReader, Inscription.class);
-                    String saf = null;
-//                    Object json = gson.fromJson(bufferedReader, Object.class);
-//                    file.getP
-////                    // Read from File to String
-//                    JsonObject jsonObject = new JsonObject();
-//                    
-//                    JsonParser parser = new JsonParser();
-//                    JsonElement jsonElement = parser.parse(new FileReader(file));
-//                    jsonObject = jsonElement.getAsJsonObject();
-//                    Reader reader = new FileReader(file);
-//                    JsonReader jsonReader = new JsonReader(reader);
-//                    RegistryModel registryModel = new Gson().fromJson(jsonReader, RegistryModel.class);
+                    
+                    Reader reader = new FileReader(file);
+                    RegistryModel registryModel = new Gson().fromJson(reader, RegistryModel.class);
 
                     try {
 

@@ -160,6 +160,11 @@ public class RegisterContractPanelView extends javax.swing.JPanel {
                     String timestamp = RegistryServiceControl.convertUnixEpochToUtcTime(inscriptionModel.getTimestamp());
                     registryModel.getPropertyInfo().setTimestamp(timestamp);
                     
+                    // set blockHeightGenesis variable to -1 because payment hasn't been yet
+                    registryModel.getSaleAgreementContractInfo().setBlockHeightGenesis(-1);
+                    // set blockHeightGenesis variable to -1 because payment hasn't been yet
+                    registryModel.getSaleAgreementContractInfo().setInscriptionNumber(-1);
+                    
                     // save registryModel object in JSON file format
                     RegistryServiceControl.writeInscriptionDataToDisk(registryModel, StringsService.file_name_property_sale_contract);
 

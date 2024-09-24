@@ -135,8 +135,10 @@ public class TransferPropertyPanel extends javax.swing.JPanel {
                 File file = fc.getSelectedFile();
                 try {
                     String propertyInscriptionId = propertyInscriptionIdTextField.getText();
+                    
+                    
                     OrdInscribedDataModel ordInscribedDataModel = RegistryServiceControl.registerPropertyTransfer(file.getPath(), propertyInscriptionId);
-                            
+                    
                     transferPropertyTransactionIdTextField.setText(ordInscribedDataModel.getReveal());
                     if (!ordInscribedDataModel.getInscriptions().isEmpty()){
                         transferPropertyInscriptionIdTextField.setText(ordInscribedDataModel.getInscriptions().get(0).getID());

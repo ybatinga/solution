@@ -28,9 +28,9 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="verifyContractSignaturesLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="paymentTransactionIdLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="txIdOfSignedContractSentToRegistryAddressLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="paymentTransactionIdTextField" min="-2" pref="512" max="-2" attributes="0"/>
+                              <Component id="txIdOfSignedContractSentToRegistryAddressTextField" min="-2" pref="512" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="timeStampLabel" min="-2" max="-2" attributes="0"/>
@@ -79,7 +79,7 @@
                               <Component id="onwerWalletPublicKeyTextField" min="-2" pref="531" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="0" pref="70" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -95,8 +95,8 @@
                       <Component id="verifyContractSignaturesLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="paymentTransactionIdLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="paymentTransactionIdTextField" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="txIdOfSignedContractSentToRegistryAddressLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="txIdOfSignedContractSentToRegistryAddressTextField" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -242,9 +242,9 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="paymentTransactionIdLabel">
+    <Component class="javax.swing.JLabel" name="txIdOfSignedContractSentToRegistryAddressLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Payment Transaction ID:"/>
+        <Property name="text" type="java.lang.String" value="Transaction ID of Signed Contract Sent to Registry Office Address:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="timeStampLabel">
@@ -252,7 +252,7 @@
         <Property name="text" type="java.lang.String" value="Timestamp:"/>
       </Properties>
     </Component>
-    <Component class="java.awt.TextField" name="paymentTransactionIdTextField">
+    <Component class="java.awt.TextField" name="txIdOfSignedContractSentToRegistryAddressTextField">
     </Component>
     <Component class="java.awt.TextField" name="timeStampTextField">
       <Properties>

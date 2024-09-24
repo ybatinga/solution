@@ -44,9 +44,9 @@ public class VerifyContractSignaturesPanel extends javax.swing.JPanel {
         amountSentLabel = new javax.swing.JLabel();
         paymentConfirmationMessageTextField = new java.awt.TextField();
         amountSentTextField = new java.awt.TextField();
-        paymentTransactionIdLabel = new javax.swing.JLabel();
+        txIdOfSignedContractSentToRegistryAddressLabel = new javax.swing.JLabel();
         timeStampLabel = new javax.swing.JLabel();
-        paymentTransactionIdTextField = new java.awt.TextField();
+        txIdOfSignedContractSentToRegistryAddressTextField = new java.awt.TextField();
         timeStampTextField = new java.awt.TextField();
         verifyPaymentButton = new javax.swing.JButton();
         buyerWalletPublicKeyLabel = new javax.swing.JLabel();
@@ -87,7 +87,7 @@ public class VerifyContractSignaturesPanel extends javax.swing.JPanel {
 
         amountSentTextField.setBackground(new java.awt.Color(242, 242, 242));
 
-        paymentTransactionIdLabel.setText("Payment Transaction ID:");
+        txIdOfSignedContractSentToRegistryAddressLabel.setText("Transaction ID of Signed Contract Sent to Registry Office Address:");
 
         timeStampLabel.setText("Timestamp:");
 
@@ -125,9 +125,9 @@ public class VerifyContractSignaturesPanel extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(verifyContractSignaturesLabel)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(paymentTransactionIdLabel)
+                                .addComponent(txIdOfSignedContractSentToRegistryAddressLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(paymentTransactionIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 512, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txIdOfSignedContractSentToRegistryAddressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 512, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(timeStampLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -165,7 +165,7 @@ public class VerifyContractSignaturesPanel extends javax.swing.JPanel {
                                 .addComponent(ownerWalletPublicKeyLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(onwerWalletPublicKeyTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 70, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -177,8 +177,8 @@ public class VerifyContractSignaturesPanel extends javax.swing.JPanel {
                         .addComponent(verifyContractSignaturesLabel)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(paymentTransactionIdLabel)
-                            .addComponent(paymentTransactionIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txIdOfSignedContractSentToRegistryAddressLabel)
+                            .addComponent(txIdOfSignedContractSentToRegistryAddressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(buyerWalletPublicKeyLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -226,7 +226,7 @@ public class VerifyContractSignaturesPanel extends javax.swing.JPanel {
 
     private void verifyPaymentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verifyPaymentButtonActionPerformed
 
-        String paymentTransactionId = paymentTransactionIdTextField.getText();
+        String paymentTransactionId = txIdOfSignedContractSentToRegistryAddressTextField.getText();
         String buyerWalletPublicKey = buyerWalletPublicKeyTextField.getText();
         String ownerWalletPublicKey = onwerWalletPublicKeyTextField.getText();
                 
@@ -276,13 +276,13 @@ public class VerifyContractSignaturesPanel extends javax.swing.JPanel {
     private java.awt.TextField ownerBuyerSignatureHexTextField;
     private javax.swing.JLabel ownerWalletPublicKeyLabel;
     private java.awt.TextField paymentConfirmationMessageTextField;
-    private javax.swing.JLabel paymentTransactionIdLabel;
-    private java.awt.TextField paymentTransactionIdTextField;
     private javax.swing.JLabel recipientAddressLabel;
     private java.awt.TextField recipientAddressTextField;
     private javax.swing.JLabel signaturesConfirmationMessageLabel;
     private javax.swing.JLabel timeStampLabel;
     private java.awt.TextField timeStampTextField;
+    private javax.swing.JLabel txIdOfSignedContractSentToRegistryAddressLabel;
+    private java.awt.TextField txIdOfSignedContractSentToRegistryAddressTextField;
     private javax.swing.JLabel verifyContractSignaturesLabel;
     private javax.swing.JButton verifyPaymentButton;
     // End of variables declaration//GEN-END:variables

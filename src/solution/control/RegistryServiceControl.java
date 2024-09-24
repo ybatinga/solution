@@ -5,6 +5,7 @@
 package solution.control;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import java.io.BufferedReader;
 import java.io.FileWriter;
@@ -617,7 +618,9 @@ public class RegistryServiceControl {
         try {
 //            InscriptionModel inscriptionModel = RegistryServiceControl.inscription("e39367db30ee904399ec233d89653ace065219f4ed44b99d1ec1136cc4754a28i0");
             writer = new FileWriter("/home/ssd/Dropbox/thesis/ordinals_metadata_contract_signning/" + fileName);
-            Gson gson = new Gson();
+            GsonBuilder gsonBuilder = new GsonBuilder();
+            gsonBuilder = gsonBuilder.setPrettyPrinting();
+            Gson gson = gsonBuilder.create();
             gson.toJson(object, writer);
 //            Gson gson = new Gson();
 //            gson.toJson(person, writer);

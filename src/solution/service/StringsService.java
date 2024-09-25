@@ -53,6 +53,7 @@ public class StringsService {
     public static String ord_version = "ord-0.20.0";
     
     public static String file_name_property_sale_contract = "property_sale_contract_.json";
+    public static String file_name_property_transfer = "property_transfer_.json";
     
     public static class Laptop{
         private static final String WALLET_ADDRESS_BUYER = "mgBg38pkq8ULumNQgHugiKMi5uUzVEg35G";

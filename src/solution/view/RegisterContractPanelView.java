@@ -150,7 +150,7 @@ public class RegisterContractPanelView extends javax.swing.JPanel {
                     RegistryModel registryModel = new Gson().fromJson(reader, RegistryModel.class);
                     
                     //save data from property inscription into the contract
-                    InscriptionModel inscriptionModel = RegistryServiceControl.inscription(propertyInscriptionIdTextField.getText());
+                    InscriptionModel inscriptionModel = RegistryServiceControl.getInscriptionData(propertyInscriptionIdTextField.getText());
                     registryModel.getPropertyInfo().setInscriptionNumber(inscriptionModel.getNumber());
                     registryModel.getPropertyInfo().setInscriptionID(inscriptionModel.getID());
                     registryModel.getPropertyInfo().setInscriptionAddress(inscriptionModel.getAddress());

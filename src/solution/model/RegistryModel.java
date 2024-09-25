@@ -296,6 +296,7 @@ public class RegistryModel {
 
         private long inscriptionNumber;
         private String inscriptionID;
+        private String inscriptionAddress;
         private String revealTransactionGenesisID;
         private long blockHeightGenesis;
         private String blockHashGenesis;
@@ -318,6 +319,14 @@ public class RegistryModel {
 
         public void setInscriptionID(String value) {
             this.inscriptionID = value;
+        }
+        
+        public String getInscriptionAddress() {
+            return inscriptionAddress;
+        }
+
+        public void setInscriptionAddress(String inscriptionAddress) {
+            this.inscriptionAddress = inscriptionAddress;
         }
 
         public String getRevealTransactionGenesisID() {
@@ -375,6 +384,7 @@ public class RegistryModel {
         public void setSignedContractSentToRegistryOfficeInfo(Info value) {
             this.signedContractSentToRegistryOfficeInfo = value;
         }
+
     }
 
 }

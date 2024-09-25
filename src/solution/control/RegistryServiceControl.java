@@ -36,6 +36,7 @@ import solution.model.GetBlockchainInfoModel;
 import solution.model.GetRawTransactionModel;
 import solution.model.InscriptionModel;
 import solution.model.ListUnspentModel;
+import solution.model.RegistryModel;
 import solution.model.SignRawTransactionWithKeyModel;
 import solution.model.SignRawTransactionWithWalletModel;
 import solution.service.StringsService;
@@ -590,7 +591,7 @@ public class RegistryServiceControl {
         }
     }
     
-    public static InscriptionModel inscription(String inscriptionId) {
+    public static InscriptionModel getInscriptionData(String inscriptionId) {
         
         try {
             
@@ -607,6 +608,29 @@ public class RegistryServiceControl {
             String json = response.body().toString();
             InscriptionModel inscriptionModel = new Gson().fromJson(json, InscriptionModel.class);
             return inscriptionModel;
+        } catch (IOException | InterruptedException ex) {
+            Logger.getLogger(RegistryServiceControl.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+    
+    public static RegistryModel getInscriptionContent(String inscriptionId) {
+        
+        try {
+            
+            HttpClient client = HttpClient.newHttpClient();
+
+            HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create("http://0.0.0.0:80/content/" + inscriptionId))
+                .GET()
+                .setHeader("Accept", "application/json")
+                .build();
+
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            
+            String json = response.body().toString();
+            RegistryModel registryModel = new Gson().fromJson(json, RegistryModel.class);
+            return registryModel;
         } catch (IOException | InterruptedException ex) {
             Logger.getLogger(RegistryServiceControl.class.getName()).log(Level.SEVERE, null, ex);
             return null;

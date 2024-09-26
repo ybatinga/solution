@@ -113,8 +113,8 @@ public class TabbedPaneView extends JPanel {
         tabbedPane.setMnemonicAt(10, KeyEvent.VK_K);
 
         JComponent panel12 = tranferPropertyToBuyerAddressPanel("Panel #12");
-        tabbedPane.addTab("12. " + StringsService.transfer_property, null, panel12,
-                "12. " + StringsService.transfer_property);
+        tabbedPane.addTab("12. " + StringsService.register_property_transfer, null, panel12,
+                "12. " + StringsService.register_property_transfer);
         tabbedPane.setMnemonicAt(11, KeyEvent.VK_L);
 
         //Add the tabbed pane to this panel.
@@ -125,7 +125,7 @@ public class TabbedPaneView extends JPanel {
     }
 
     protected JComponent tranferPropertyToBuyerAddressPanel(String text) {
-        TransferPropertyPanel panel = new TransferPropertyPanel();
+        RegisterPropertyTransferPanel panel = new RegisterPropertyTransferPanel();
         JLabel filler = new JLabel(text);
 //        filler.setHorizontalAlignment(JLabel.CENTER);
 //        panel.setLayout(new GridLayout(1, 1));

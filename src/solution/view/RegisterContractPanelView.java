@@ -160,6 +160,11 @@ public class RegisterContractPanelView extends javax.swing.JPanel {
                     String timestamp = RegistryServiceControl.convertUnixEpochToUtcTime(inscriptionModel.getTimestamp());
                     registryModel.getPropertyInfo().setTimestamp(timestamp);
                     
+                    // get property address and property square meters
+                    RegistryModel registryModel1 = RegistryServiceControl.getInscriptionContent(propertyInscriptionIdTextField.getText());
+                    registryModel.getPropertyInfo().setPropertyAddress(registryModel1.getPropertyInfo().getPropertyAddress());
+                    registryModel.getPropertyInfo().setPropertyAreaSquareMeters(registryModel1.getPropertyInfo().getPropertyAreaSquareMeters());
+                    
                     // set blockHeightGenesis variable to -1 because payment hasn't been yet
                     registryModel.getSaleAgreementContractInfo().setBlockHeightGenesis(-1);
                     // set blockHeightGenesis variable to -1 because payment hasn't been yet

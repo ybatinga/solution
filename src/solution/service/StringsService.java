@@ -30,7 +30,7 @@ public class StringsService {
     public static String verify_contract_signatures = "Verify Contract Signatures";    
     public static String send_payment_from_buyer_to_owner = "Send Payment";
     public static String verify_payment = "Verify Payment";
-    public static String transfer_property = "Transfer Property";
+    public static String register_property_transfer = "Register Property Transfer";
 
     // wallet names
     public static String wallet_name_ord = "ord";
@@ -54,6 +54,8 @@ public class StringsService {
     
     public static String file_name_property_sale_contract = "property_sale_contract_.json";
     public static String file_name_property_transfer = "property_transfer_.json";
+    
+    public static String file_path_register_property_transfer = "/home/ssd/Dropbox/thesis/ordinals_metadata_contract_signning/property_transfer_.json";
     
     public static class Laptop{
         private static final String WALLET_ADDRESS_BUYER = "mgBg38pkq8ULumNQgHugiKMi5uUzVEg35G";

@@ -55,6 +55,8 @@ public class StringsService {
     public static String file_name_property_sale_contract = "property_sale_contract_.json";
     public static String file_name_property_transfer = "property_transfer_.json";
     
+    public static String document_type_property_sale_agreement_contract = "Property Sale Agreement Contract";
+    public static String document_type_property_transfer_registry = "Property Transfer Registry";
     public static String file_path_register_property_transfer = "/home/ssd/Dropbox/thesis/ordinals_metadata_contract_signning/property_transfer_.json";
     
     public static class Laptop{

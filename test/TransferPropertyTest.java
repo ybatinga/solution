@@ -45,6 +45,7 @@ public class TransferPropertyTest {
             //save data from property inscription into the contract
             InscriptionModel inscriptionModel = RegistryServiceControl.getInscriptionData(contractInscriptionId);
             RegistryModel registryModel = RegistryServiceControl.getInscriptionContent(contractInscriptionId);
+            registryModel.setDocumentType(StringsService.document_type_property_transfer_registry);
             registryModel.getSaleAgreementContractInfo().setInscriptionNumber(inscriptionModel.getNumber());
             registryModel.getSaleAgreementContractInfo().setInscriptionID(inscriptionModel.getID());
             registryModel.getSaleAgreementContractInfo().setInscriptionAddress(inscriptionModel.getAddress());

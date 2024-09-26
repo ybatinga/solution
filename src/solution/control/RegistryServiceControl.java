@@ -97,11 +97,11 @@ public class RegistryServiceControl {
         
         if(ordInscribedDataModel == null || ordInscribedDataModel.equals("")){
 //            if(signRawTransactionWithWalletModel == null){
-                String concatErrorMsg = printErrorInOutput(process);
-                ordInscribedDataModel = new OrdInscribedDataModel();
-                ordInscribedDataModel.setReveal(concatErrorMsg);
-                return ordInscribedDataModel;
-            }
+            String concatErrorMsg = printErrorInOutput(process);
+            ordInscribedDataModel = new OrdInscribedDataModel();
+            ordInscribedDataModel.setReveal(concatErrorMsg);
+            return ordInscribedDataModel;
+        }
         
 //        if(ordInscribedDataModel == null){
 //            OrdInscribedDataModel ordInscribedDataModelError = new OrdInscribedDataModel();

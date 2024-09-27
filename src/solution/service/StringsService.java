@@ -10,11 +10,7 @@ package solution.service;
  */
 public class StringsService {
     
-//    public static String WALLET_ADDRESS_BUYER = Platform.DESKTOP_WALLET_ADDRESS_BUYER;
-//    public static String WALLET_ADDRESS_OWNER = Platform.DESKTOP_WALLET_ADDRESS_OWNER;    
-//    public static String WALLET_ADDRESS_ORD = Platform.DESKTOP_ORD_ADDRESS;    
-    
-    public static Desktop PLATFORM;
+    public static Laptop PLATFORM;
     
     public static String real_estate_registry_system = "Real Estate Registry System";    
     
@@ -35,8 +31,6 @@ public class StringsService {
     // wallet names
     public static String wallet_name_ord = "ord";
     public static String wallet_name_ord_notary = "ord_notary";
-    public static String wallet_name_buyer = "legacy_buyer";
-    public static String wallet_name_owner = "legacy_owner";
         
     // error messages
     public static String invalid_contract_transaction_ID = "Invalid contract transaction ID";
@@ -52,16 +46,38 @@ public class StringsService {
 //    public static String ord_version = "ord-0.19.1";
     public static String ord_version = "ord-0.20.0";
     
+    public static String file_name_new_property = "new_property.json";
     public static String file_name_property_sale_contract = "property_sale_contract_.json";
     public static String file_name_property_transfer = "property_transfer_.json";
     
+    public static String file_path = "/home/ssd/Dropbox/thesis/ordinals_metadata_contract_signning/";
+    
+    public static String document_type_new_property_registry = "New Property Registry";
     public static String document_type_property_sale_agreement_contract = "Property Sale Agreement Contract";
     public static String document_type_property_transfer_registry = "Property Transfer Registry";
-    public static String file_path_register_property_transfer = "/home/ssd/Dropbox/thesis/ordinals_metadata_contract_signning/property_transfer_.json";
+    
+    public static String propertyAddress = "Rua Rio Grande do Sul - Nova Ubiratã, MT, 78888-000, Brasil";
+    public static long propertyAreaSquareMeters = 32;
     
     public static class Laptop{
-        private static final String WALLET_ADDRESS_BUYER = "mgBg38pkq8ULumNQgHugiKMi5uUzVEg35G";
-        private static final String WALLET_ADDRESS_OWNER = "mu6TidaphD9PbALi7KR4bJvPukjSziCWZR";   
+//        private static final String WALLET_ADDRESS_BUYER = "mgBg38pkq8ULumNQgHugiKMi5uUzVEg35G";
+//        private static final String WALLET_ADDRESS_OWNER = "mu6TidaphD9PbALi7KR4bJvPukjSziCWZR";   
+//        private static final String WALLET_NAME_BUYER = "legacy_buyer";
+//        private static final String WALLET_NAME_OWNER = "legacy_owner";
+//        private static final String NATIONAL_ID_BUYER = "450.593.347-48";
+//        private static final String NATIONAL_ID_OWNER = "345.564.675-69";
+//        private static final String NAME_BUYER = "Joao Silva";
+//        private static final String NAME_OWNER = "Maria Oliveira";
+        
+        private static final String WALLET_ADDRESS_OWNER = "mgBg38pkq8ULumNQgHugiKMi5uUzVEg35G";
+        private static final String WALLET_ADDRESS_BUYER = "mu6TidaphD9PbALi7KR4bJvPukjSziCWZR";   
+        public static String WALLET_NAME_OWNER = "legacy_buyer";
+        public static String WALLET_NAME_BUYER = "legacy_owner";
+        private static final String NATIONAL_ID_OWNER = "450.593.347-48";
+        private static final String NATIONAL_ID_BUYER = "345.564.675-69";
+        private static final String NAME_OWNER = "Joao Silva";
+        private static final String NAME_BUYER = "Maria Oliveira";
+        
         private static final String ORD_REG_ADDRESS = "bcrt1pmjjg0vg7p9zkfwfd2msasql7t2m4qp37su6ww0gr3g9xgfz32k6qplwajr";
         private static final String GENERATE_TO_ADDRESS_WALLET_BUYER = "n4WHVo6ogtiRivJahJcUG5sHoZCeCvwWm4";
 
@@ -80,15 +96,53 @@ public class StringsService {
         public static String getGENERATE_TO_ADDRESS_WALLET_BUYER() {
             return GENERATE_TO_ADDRESS_WALLET_BUYER;
         }
-        
+
+        public static String getWALLET_NAME_BUYER() {
+            return WALLET_NAME_BUYER;
+        }
+
+        public static String getWALLET_NAME_OWNER() {
+            return WALLET_NAME_OWNER;
+        }
+
+        public static String getNATIONAL_ID_OWNER() {
+            return NATIONAL_ID_OWNER;
+        }
+
+        public static String getNATIONAL_ID_BUYER() {
+            return NATIONAL_ID_BUYER;
+        }
+
+        public static String getNAME_OWNER() {
+            return NAME_OWNER;
+        }
+
+        public static String getNAME_BUYER() {
+            return NAME_BUYER;
+        }
         
     }
     
     public static class Desktop{
-//        private static final String WALLET_ADDRESS_BUYER = "midFKFXtqdSN8pRTvdqyqRwx9DUnRgezR5";
-//        private static final String WALLET_ADDRESS_OWNER = "mq2ujk9tzw2EVr111GMxb2uekHqhwG5LiF";   
-        private static final String WALLET_ADDRESS_OWNER = "midFKFXtqdSN8pRTvdqyqRwx9DUnRgezR5";
-        private static final String WALLET_ADDRESS_BUYER = "mq2ujk9tzw2EVr111GMxb2uekHqhwG5LiF";   
+        private static final String WALLET_ADDRESS_BUYER = "midFKFXtqdSN8pRTvdqyqRwx9DUnRgezR5";
+        private static final String WALLET_ADDRESS_OWNER = "mq2ujk9tzw2EVr111GMxb2uekHqhwG5LiF";   
+        private static final String WALLET_NAME_BUYER = "legacy_buyer";
+        private static final String WALLET_NAME_OWNER = "legacy_owner";
+        private static final String NATIONAL_ID_BUYER = "450.593.347-48";
+        private static final String NATIONAL_ID_OWNER = "345.564.675-69";
+        private static final String NAME_BUYER = "Joao Silva";
+        private static final String NAME_OWNER = "Maria Oliveira";
+        
+//        private static final String WALLET_ADDRESS_OWNER = "midFKFXtqdSN8pRTvdqyqRwx9DUnRgezR5";
+//        private static final String WALLET_ADDRESS_BUYER = "mq2ujk9tzw2EVr111GMxb2uekHqhwG5LiF";   
+//        public static String WALLET_NAME_OWNER = "legacy_buyer";
+//        public static String WALLET_NAME_BUYER = "legacy_owner";
+//        private static final String NATIONAL_ID_OWNER = "450.593.347-48";
+//        private static final String NATIONAL_ID_BUYER = "345.564.675-69";
+//        private static final String NAME_OWNER = "Joao Silva";
+//        private static final String NAME_BUYER = "Maria Oliveira";
+        
+        
         private static final String ORD_REG_ADDRESS = "bcrt1p28pn5ahzz5tl802ymgq6mug84l5fjj2hplmuamfgwlgu6h2ah0ssrr4j9z";
         private static final String GENERATE_TO_ADDRESS_WALLET_BUYER = "mkNMhQixSRHmPuPy7s3PHN3mHmRE5xWXYz";
 
@@ -109,16 +163,31 @@ public class StringsService {
         public static String getGENERATE_TO_ADDRESS_WALLET_BUYER() {
             return GENERATE_TO_ADDRESS_WALLET_BUYER;
         }
+
+        public static String getWALLET_NAME_BUYER() {
+            return WALLET_NAME_BUYER;
+        }
+
+        public static String getWALLET_NAME_OWNER() {
+            return WALLET_NAME_OWNER;
+        }
+        
+                public static String getNATIONAL_ID_OWNER() {
+            return NATIONAL_ID_OWNER;
+        }
+
+        public static String getNATIONAL_ID_BUYER() {
+            return NATIONAL_ID_BUYER;
+        }
+
+        public static String getNAME_OWNER() {
+            return NAME_OWNER;
+        }
+
+        public static String getNAME_BUYER() {
+            return NAME_BUYER;
+        }
     }
     
-    public static class Wallet1{
-        private static final String WALLET_ADDRESS_BUYER = "mgBg38pkq8ULumNQgHugiKMi5uUzVEg35G";
-        private static final String WALLET_ADDRESS_OWNER = "mu6TidaphD9PbALi7KR4bJvPukjSziCWZR";  
-    }
-    
-    public static class Wallet2 {
-        private static final String WALLET_ADDRESS_OWNER = "midFKFXtqdSN8pRTvdqyqRwx9DUnRgezR5";
-        private static final String WALLET_ADDRESS_BUYER = "mq2ujk9tzw2EVr111GMxb2uekHqhwG5LiF";  
-    }
     
 }

@@ -22,6 +22,11 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="propertyAreaSquareMetersLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="propertyAreaSquareMetersTextField" min="-2" pref="40" max="-2" attributes="0"/>
+                  </Group>
                   <Component id="registerNewPropertyLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="propertyTransactionIdLabel" min="-2" max="-2" attributes="0"/>
@@ -34,8 +39,23 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="propertyInscriptionIdTextField" min="-2" pref="513" max="-2" attributes="0"/>
                   </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="propertyAddressLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="propertyAddressTextField" min="-2" pref="395" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="ownerNationalIdLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="ownerNationalIdTextField" min="-2" pref="111" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="ownerNameLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="ownerNameTextField" min="-2" pref="157" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace min="10" pref="20" max="32767" attributes="0"/>
+              <EmptySpace pref="20" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -44,6 +64,26 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="registerNewPropertyLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="propertyAddressLabel" min="-2" max="-2" attributes="0"/>
+                  <Component id="propertyAddressTextField" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="propertyAreaSquareMetersLabel" min="-2" max="-2" attributes="0"/>
+                  <Component id="propertyAreaSquareMetersTextField" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="ownerNationalIdLabel" min="-2" max="-2" attributes="0"/>
+                  <Component id="ownerNationalIdTextField" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="ownerNameLabel" min="-2" max="-2" attributes="0"/>
+                  <Component id="ownerNameTextField" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="registerNewPropertyButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -56,7 +96,7 @@
                   <Component id="propertyInscriptionIdLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="propertyInscriptionIdTextField" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="164" max="32767" attributes="0"/>
+              <EmptySpace pref="37" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -106,6 +146,40 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="propertyInscriptionIdTextFieldActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="propertyAddressLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Property Address:"/>
+      </Properties>
+    </Component>
+    <Component class="java.awt.TextField" name="propertyAddressTextField">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="propertyAddressTextFieldActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="java.awt.TextField" name="propertyAreaSquareMetersTextField">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="propertyAreaSquareMetersTextFieldActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="propertyAreaSquareMetersLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Property Area in Square Meters:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="ownerNationalIdLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Owner National ID:"/>
+      </Properties>
+    </Component>
+    <Component class="java.awt.TextField" name="ownerNationalIdTextField">
+    </Component>
+    <Component class="javax.swing.JLabel" name="ownerNameLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Owner Name:"/>
+      </Properties>
+    </Component>
+    <Component class="java.awt.TextField" name="ownerNameTextField">
     </Component>
   </SubComponents>
 </Form>

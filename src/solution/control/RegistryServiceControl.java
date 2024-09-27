@@ -565,7 +565,7 @@ public class RegistryServiceControl {
         try {
             String[] command = new String[]{
                 "/usr/local/apps/bitcoin-25.0/bin/bitcoin-cli", 
-                "-rpcwallet=" + StringsService.wallet_name_buyer, 
+                "-rpcwallet=" + StringsService.PLATFORM.getWALLET_ADDRESS_BUYER(), 
                 "generatetoaddress", Long.toString(numberOfBlocks), 
                 StringsService.PLATFORM.getGENERATE_TO_ADDRESS_WALLET_BUYER()};
 

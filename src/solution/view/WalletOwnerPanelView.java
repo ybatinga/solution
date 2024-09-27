@@ -21,13 +21,13 @@ public class WalletOwnerPanelView extends javax.swing.JPanel {
     public WalletOwnerPanelView() {
         initComponents();
                 
-        getAddressInfoModel = RegistryServiceControl.getAddressInfo(StringsService.wallet_name_owner, StringsService.PLATFORM.getWALLET_ADDRESS_OWNER());
+        getAddressInfoModel = RegistryServiceControl.getAddressInfo(StringsService.PLATFORM.getWALLET_NAME_OWNER(), StringsService.PLATFORM.getWALLET_ADDRESS_OWNER());
         if(getAddressInfoModel != null){
             walletAddressTextField.setText(getAddressInfoModel.getResult().getAddress());
             walletPublicKeyTextField.setText(getAddressInfoModel.getResult().getPubkey());
         }
         
-        String privateKey = RegistryServiceControl.dumpPrivKey(StringsService.wallet_name_owner, StringsService.PLATFORM.getWALLET_ADDRESS_OWNER());
+        String privateKey = RegistryServiceControl.dumpPrivKey(StringsService.PLATFORM.getWALLET_NAME_OWNER(), StringsService.PLATFORM.getWALLET_ADDRESS_OWNER());
         if(privateKey != null){
             walletPrivateKeyTextField.setText(privateKey);
         }

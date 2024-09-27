@@ -32,13 +32,13 @@ public class WalletBuyerPanelView extends javax.swing.JPanel {
 //        transactionIdOfPaymentSentToOwnerAddressTextField.setVisible(false);
 //        paymentRawTransactionHexTextField.setVisible(false);
         
-        getAddressInfoModel = RegistryServiceControl.getAddressInfo(StringsService.wallet_name_buyer, StringsService.PLATFORM.getWALLET_ADDRESS_BUYER());
+        getAddressInfoModel = RegistryServiceControl.getAddressInfo(StringsService.PLATFORM.getWALLET_NAME_BUYER(), StringsService.PLATFORM.getWALLET_ADDRESS_BUYER());
         if(getAddressInfoModel != null){
             walletAddressTextField.setText(getAddressInfoModel.getResult().getAddress());
             walletPublicKeyTextField.setText(getAddressInfoModel.getResult().getPubkey());
         }
         
-        String privateKey = RegistryServiceControl.dumpPrivKey(StringsService.wallet_name_buyer, StringsService.PLATFORM.getWALLET_ADDRESS_BUYER());
+        String privateKey = RegistryServiceControl.dumpPrivKey(StringsService.PLATFORM.getWALLET_NAME_BUYER(), StringsService.PLATFORM.getWALLET_ADDRESS_BUYER());
         if(privateKey != null){
             walletPrivateKeyTextField.setText(privateKey);
         }
@@ -276,7 +276,7 @@ public class WalletBuyerPanelView extends javax.swing.JPanel {
         String paymentRawTransactionHex = null;
         
         List<ListUnspentModel>  listUnspentModelList = RegistryServiceControl.listUnspent(
-                StringsService.wallet_name_buyer, 
+                StringsService.PLATFORM.getWALLET_NAME_BUYER(), 
                 walletOwnerAddress,                 
                 Double.parseDouble(paymentAmountTextField.getText()));
         
@@ -302,12 +302,12 @@ public class WalletBuyerPanelView extends javax.swing.JPanel {
 
         }
         
-        String signedTx = RegistryServiceControl.signRawTransactionWithWallet(paymentRawTransactionHex, StringsService.wallet_name_buyer);
+        String signedTx = RegistryServiceControl.signRawTransactionWithWallet(paymentRawTransactionHex, StringsService.PLATFORM.getWALLET_NAME_BUYER());
 
 
         String txIdOfPaymentSentToOwnerAddress = RegistryServiceControl.sendRawTransaction(
                 signedTx, 
-                StringsService.wallet_name_buyer);
+                StringsService.PLATFORM.getWALLET_NAME_BUYER());
         transactionIdOfPaymentSentToOwnerAddressTextField.setText(txIdOfPaymentSentToOwnerAddress);
 //        transactionIdOfPaymentSentToOwnerAddressTextField.setVisible(true);
     }//GEN-LAST:event_sendPaymentButtonActionPerformed

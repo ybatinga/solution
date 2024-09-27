@@ -1,5 +1,7 @@
 package solution.model;
 
+import java.math.BigDecimal;
+
 /**
  *
  * @author ssd
@@ -11,7 +13,7 @@ public class RegistryModel {
     private OwnerInfo ownerInfo;
     private BuyerInfo buyerInfo;
     private SaleAgreementContractInfo saleAgreementContractInfo;
-    private Info paymentInfo;
+    private TransactionInfo paymentInfo;
 
     public String getDocumentType() {
         return documentType;
@@ -53,11 +55,11 @@ public class RegistryModel {
         this.saleAgreementContractInfo = value;
     }
 
-    public Info getPaymentInfo() {
+    public TransactionInfo getPaymentInfo() {
         return paymentInfo;
     }
 
-    public void setPaymentInfo(Info value) {
+    public void setPaymentInfo(TransactionInfo value) {
         this.paymentInfo = value;
     }
 
@@ -146,7 +148,7 @@ public class RegistryModel {
     }
 
 // Info.java
-    public class Info {
+    public class TransactionInfo {
 
         private String transactionID;
         private long blockHeight;
@@ -207,21 +209,21 @@ public class RegistryModel {
 // PropertyInfo.java
     public class PropertyInfo {
 
-        private long inscriptionNumber;
+        private BigDecimal inscriptionNumber;
         private String inscriptionID;
         private String inscriptionAddress;
         private String revealTransactionGenesisID;
-        private long blockHeightGenesis;
+        private BigDecimal blockHeightGenesis;
         private String blockHashGenesis;
         private String timestamp;
         private String propertyAddress;
         private long propertyAreaSquareMeters;
 
-        public long getInscriptionNumber() {
+        public BigDecimal getInscriptionNumber() {
             return inscriptionNumber;
         }
 
-        public void setInscriptionNumber(long value) {
+        public void setInscriptionNumber(BigDecimal value) {
             this.inscriptionNumber = value;
         }
 
@@ -249,11 +251,11 @@ public class RegistryModel {
             this.revealTransactionGenesisID = value;
         }
 
-        public long getBlockHeightGenesis() {
+        public BigDecimal getBlockHeightGenesis() {
             return blockHeightGenesis;
         }
 
-        public void setBlockHeightGenesis(long value) {
+        public void setBlockHeightGenesis(BigDecimal value) {
             this.blockHeightGenesis = value;
         }
 
@@ -302,8 +304,8 @@ public class RegistryModel {
         private String blockHashGenesis;
         private double salePrice;
         private String timestamp;
-        private Info contractSentToMultisigInfo;
-        private Info signedContractSentToRegistryOfficeInfo;
+        private TransactionInfo contractSentToMultisigInfo;
+        private TransactionInfo signedContractSentToRegistryOfficeInfo;
 
         public long getInscriptionNumber() {
             return inscriptionNumber;
@@ -369,19 +371,19 @@ public class RegistryModel {
             this.timestamp = value;
         }
 
-        public Info getContractSentToMultisigInfo() {
+        public TransactionInfo getContractSentToMultisigInfo() {
             return contractSentToMultisigInfo;
         }
 
-        public void setContractSentToMultisigInfo(Info value) {
+        public void setContractSentToMultisigInfo(TransactionInfo value) {
             this.contractSentToMultisigInfo = value;
         }
 
-        public Info getSignedContractSentToRegistryOfficeInfo() {
+        public TransactionInfo getSignedContractSentToRegistryOfficeInfo() {
             return signedContractSentToRegistryOfficeInfo;
         }
 
-        public void setSignedContractSentToRegistryOfficeInfo(Info value) {
+        public void setSignedContractSentToRegistryOfficeInfo(TransactionInfo value) {
             this.signedContractSentToRegistryOfficeInfo = value;
         }
 

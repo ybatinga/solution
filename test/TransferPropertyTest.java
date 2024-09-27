@@ -58,7 +58,7 @@ public class TransferPropertyTest {
             
             // get Signed Contract Sent to Registry Office info
             GetBlockModel getBlockModel1 = RegistryServiceControl.searchTransactionInBlocks(txIdOfSignedContractSentToRegistryAddress);
-            RegistryModel.Info signedContractSentToRegistryOfficeInfo = registryModel.new Info();
+            RegistryModel.TransactionInfo signedContractSentToRegistryOfficeInfo = registryModel.new TransactionInfo();
             registryModel.getSaleAgreementContractInfo().setSignedContractSentToRegistryOfficeInfo(signedContractSentToRegistryOfficeInfo);
             registryModel.getSaleAgreementContractInfo().getSignedContractSentToRegistryOfficeInfo().setTransactionID(txIdOfSignedContractSentToRegistryAddress);
             registryModel.getSaleAgreementContractInfo().getSignedContractSentToRegistryOfficeInfo().setBlockHash(getBlockModel1.getHash());
@@ -73,7 +73,7 @@ public class TransferPropertyTest {
             
             // get payment info
             GetBlockModel getBlockModel = RegistryServiceControl.searchTransactionInBlocks(paymentTransactionId);
-            RegistryModel.Info paymentInfo = registryModel.new Info();
+            RegistryModel.TransactionInfo paymentInfo = registryModel.new TransactionInfo();
             registryModel.setPaymentInfo(paymentInfo);
             registryModel.getPaymentInfo().setTransactionID(paymentTransactionId);
             registryModel.getPaymentInfo().setBlockHash(getBlockModel.getHash());

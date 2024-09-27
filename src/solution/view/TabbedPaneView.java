@@ -50,7 +50,8 @@ import solution.service.StringsService;
 
 public class TabbedPaneView extends JPanel {
 
-    String multisigAddress;
+    private String multisigAddress;
+    private RegisterNewPropertyPanelView registerNewPropertyPanelView;
 
     public TabbedPaneView() {
         super(new GridLayout(1, 1));
@@ -236,17 +237,17 @@ public class TabbedPaneView extends JPanel {
     }
 
     protected JComponent registerNewPropertyPanel(String text) {
-        RegisterNewPropertyPanelView panel = new RegisterNewPropertyPanelView();
+        registerNewPropertyPanelView = new RegisterNewPropertyPanelView();
         JLabel filler = new JLabel(text);
 //        filler.setHorizontalAlignment(JLabel.CENTER);
 //        panel.setLayout(new GridLayout(1, 1));
-        panel.add(filler);
-        JScrollPane scroller = new JScrollPane(panel);
+        registerNewPropertyPanelView.add(filler);
+        JScrollPane scroller = new JScrollPane(registerNewPropertyPanelView);
         return scroller;
     }
 
     protected JComponent registerContractPanel(String text) {
-        RegisterContractPanelView panel = new RegisterContractPanelView();
+        RegisterContractPanelView panel = new RegisterContractPanelView(registerNewPropertyPanelView);
         JLabel filler = new JLabel(text);
 //        filler.setHorizontalAlignment(JLabel.CENTER);
 //        panel.setLayout(new GridLayout(1, 1));

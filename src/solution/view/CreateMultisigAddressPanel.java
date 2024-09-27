@@ -23,9 +23,9 @@ public class CreateMultisigAddressPanel extends javax.swing.JPanel {
      */
     public CreateMultisigAddressPanel() {
         initComponents();
-        GetAddressInfoModel getBuyerAddressInfoModel = RegistryServiceControl.getAddressInfo("legacy_buyer", StringsService.PLATFORM.getWALLET_ADDRESS_BUYER());
+        GetAddressInfoModel getBuyerAddressInfoModel = RegistryServiceControl.getAddressInfo(StringsService.wallet_name_buyer, StringsService.PLATFORM.getWALLET_ADDRESS_BUYER());
         walletBuyerPublicKey = getBuyerAddressInfoModel.getResult().getPubkey();
-        GetAddressInfoModel getOwnerAddressInfoModel = RegistryServiceControl.getAddressInfo("legacy_owner", StringsService.PLATFORM.getWALLET_ADDRESS_OWNER());
+        GetAddressInfoModel getOwnerAddressInfoModel = RegistryServiceControl.getAddressInfo(StringsService.wallet_name_owner, StringsService.PLATFORM.getWALLET_ADDRESS_OWNER());
         walletOwnerPublicKey = getOwnerAddressInfoModel.getResult().getPubkey();
         buyerWalletPublicKeyTextField.setVisible(false);
         multisigAddressTextField.setVisible(false);   

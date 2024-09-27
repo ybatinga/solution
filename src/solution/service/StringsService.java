@@ -14,7 +14,7 @@ public class StringsService {
 //    public static String WALLET_ADDRESS_OWNER = Platform.DESKTOP_WALLET_ADDRESS_OWNER;    
 //    public static String WALLET_ADDRESS_ORD = Platform.DESKTOP_ORD_ADDRESS;    
     
-    public static Laptop PLATFORM;
+    public static Desktop PLATFORM;
     
     public static String real_estate_registry_system = "Real Estate Registry System";    
     
@@ -85,8 +85,10 @@ public class StringsService {
     }
     
     public static class Desktop{
-        private static final String WALLET_ADDRESS_BUYER = "midFKFXtqdSN8pRTvdqyqRwx9DUnRgezR5";
-        private static final String WALLET_ADDRESS_OWNER = "mq2ujk9tzw2EVr111GMxb2uekHqhwG5LiF";   
+//        private static final String WALLET_ADDRESS_BUYER = "midFKFXtqdSN8pRTvdqyqRwx9DUnRgezR5";
+//        private static final String WALLET_ADDRESS_OWNER = "mq2ujk9tzw2EVr111GMxb2uekHqhwG5LiF";   
+        private static final String WALLET_ADDRESS_OWNER = "midFKFXtqdSN8pRTvdqyqRwx9DUnRgezR5";
+        private static final String WALLET_ADDRESS_BUYER = "mq2ujk9tzw2EVr111GMxb2uekHqhwG5LiF";   
         private static final String ORD_REG_ADDRESS = "bcrt1p28pn5ahzz5tl802ymgq6mug84l5fjj2hplmuamfgwlgu6h2ah0ssrr4j9z";
         private static final String GENERATE_TO_ADDRESS_WALLET_BUYER = "mkNMhQixSRHmPuPy7s3PHN3mHmRE5xWXYz";
 
@@ -109,5 +111,14 @@ public class StringsService {
         }
     }
     
+    public static class Wallet1{
+        private static final String WALLET_ADDRESS_BUYER = "mgBg38pkq8ULumNQgHugiKMi5uUzVEg35G";
+        private static final String WALLET_ADDRESS_OWNER = "mu6TidaphD9PbALi7KR4bJvPukjSziCWZR";  
+    }
+    
+    public static class Wallet2 {
+        private static final String WALLET_ADDRESS_OWNER = "midFKFXtqdSN8pRTvdqyqRwx9DUnRgezR5";
+        private static final String WALLET_ADDRESS_BUYER = "mq2ujk9tzw2EVr111GMxb2uekHqhwG5LiF";  
+    }
     
 }

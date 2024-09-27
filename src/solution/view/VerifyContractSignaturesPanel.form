@@ -69,14 +69,14 @@
                               <Component id="amountSentTextField" min="-2" pref="39" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="buyerWalletPublicKeyLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="buyerWalletPublicKeyTextField" min="-2" pref="528" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
                               <Component id="ownerWalletPublicKeyLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="onwerWalletPublicKeyTextField" min="-2" pref="531" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="buyerWalletPublicKeyLabel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="buyerWalletPublicKeyTextField" min="-2" pref="528" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -90,23 +90,21 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
+              <Component id="verifyContractSignaturesLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="txIdOfSignedContractSentToRegistryAddressLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="txIdOfSignedContractSentToRegistryAddressTextField" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="verifyContractSignaturesLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txIdOfSignedContractSentToRegistryAddressLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="txIdOfSignedContractSentToRegistryAddressTextField" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="buyerWalletPublicKeyLabel" min="-2" pref="23" max="-2" attributes="0"/>
-                          <Component id="buyerWalletPublicKeyTextField" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="ownerWalletPublicKeyLabel" min="-2" pref="23" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="ownerWalletPublicKeyLabel" alignment="1" min="-2" pref="23" max="-2" attributes="0"/>
                   <Component id="onwerWalletPublicKeyTextField" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="buyerWalletPublicKeyLabel" min="-2" pref="23" max="-2" attributes="0"/>
+                  <Component id="buyerWalletPublicKeyTextField" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="verifyPaymentButton" min="-2" max="-2" attributes="0"/>
@@ -150,7 +148,7 @@
                   <Component id="ownerBuyerSignatureHexLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="ownerBuyerSignatureHexTextField" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="67" max="32767" attributes="0"/>
+              <EmptySpace pref="70" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

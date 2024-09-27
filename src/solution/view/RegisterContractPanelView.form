@@ -117,6 +117,9 @@
       </Properties>
     </Component>
     <Component class="java.awt.TextField" name="propertyInscriptionIdTextField">
+      <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="propertyInscriptionIdTextFieldFocusGained"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

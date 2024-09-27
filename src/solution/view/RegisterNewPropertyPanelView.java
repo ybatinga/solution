@@ -19,10 +19,11 @@ import solution.model.OrdInscribedDataModel;
  *
  * @author ssd
  */
-public class RegisterNewPropertyPanelView extends javax.swing.JPanel {
+public class RegisterNewPropertyPanelView extends javax.swing.JPanel implements RegisterContractPanelView.OnRegisterContractTextFieldInteraction{
     static private final String newline = "\n";
     JFileChooser fc;
     JTextArea log;
+    String propertyInscriptionId;
     /**
      * Creates new form RegisterProperty
      */
@@ -127,7 +128,8 @@ public class RegisterNewPropertyPanelView extends javax.swing.JPanel {
                     OrdInscribedDataModel ordInscribedDataModel  = RegistryServiceControl.registerNewPropertyOrContract(file.getPath());
                     propertyTransactionIdTextField.setText(ordInscribedDataModel.getReveal());
                     if (!ordInscribedDataModel.getInscriptions().isEmpty()){
-                        propertyInscriptionIdTextField.setText(ordInscribedDataModel.getInscriptions().get(0).getID());
+                        propertyInscriptionId = ordInscribedDataModel.getInscriptions().get(0).getID();
+                        propertyInscriptionIdTextField.setText(propertyInscriptionId);
                         
                         // generate 6 new blocks after creating new inscription
                     List<String> blockHashList = RegistryServiceControl.generateToAddress(6);
@@ -164,4 +166,13 @@ public class RegisterNewPropertyPanelView extends javax.swing.JPanel {
     private javax.swing.JButton registerNewPropertyButton;
     private javax.swing.JLabel registerNewPropertyLabel;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public String onRegisterContractInteraction() {
+        if (propertyInscriptionId == null){
+            return null;
+        }else{
+            return propertyInscriptionId;
+        }
+    }
 }

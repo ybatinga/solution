@@ -38,12 +38,16 @@ public class RegisterContractPanelView extends javax.swing.JPanel {
     static private final String newline = "\n";
     private JFileChooser fc;
     private JTextArea log;
+    private OnRegisterContractTextFieldInteraction onRegisterContractTextFieldInteraction;
+//    private RegisterNewPropertyPanelView registerNewPropertyPanelView;
 
     /**
      * Creates new form RegisterProperty
      */
-    public RegisterContractPanelView() {
+    public RegisterContractPanelView(RegisterNewPropertyPanelView registerNewPropertyPanelView) {
         initComponents();
+//        this.registerNewPropertyPanelView = registerNewPropertyPanelView;
+        onRegisterContractTextFieldInteraction = (OnRegisterContractTextFieldInteraction) registerNewPropertyPanelView;
     }
 
     /**
@@ -85,6 +89,12 @@ public class RegisterContractPanelView extends javax.swing.JPanel {
         contractInscriptionIdLabel.setText("Contract Inscription ID: ");
 
         propertyInscriptionIdLabel.setText("Property Inscription ID: ");
+
+        propertyInscriptionIdTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                propertyInscriptionIdTextFieldFocusGained(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -205,6 +215,19 @@ public class RegisterContractPanelView extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_regContractButtonActionPerformed
 
+    private void propertyInscriptionIdTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_propertyInscriptionIdTextFieldFocusGained
+        String propertyInscriptionId = onRegisterContractTextFieldInteraction.onRegisterContractInteraction();
+        if (propertyInscriptionId != null){
+            propertyInscriptionIdTextField.setText(propertyInscriptionId);
+        }
+        
+    }//GEN-LAST:event_propertyInscriptionIdTextFieldFocusGained
+
+    public interface OnRegisterContractTextFieldInteraction {
+        // TODO: Update argument type and name
+        public String onRegisterContractInteraction();
+
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel contractInscriptionIdLabel;

@@ -10,7 +10,7 @@ package solution.service;
  */
 public class StringsService {
     
-    public static Laptop PLATFORM;
+    public static Desktop PLATFORM;
     
     public static String real_estate_registry_system = "Real Estate Registry System";    
     
@@ -58,6 +58,9 @@ public class StringsService {
     
     public static String propertyAddress = "Rua Rio Grande do Sul - Nova Ubiratã, MT, 78888-000, Brasil";
     public static long propertyAreaSquareMeters = 32;
+    public static double paymentAmount = 0.195;
+    
+    public static double transactionFee = 0.00001;
     
     public static class Laptop{
 //        private static final String WALLET_ADDRESS_BUYER = "mgBg38pkq8ULumNQgHugiKMi5uUzVEg35G";

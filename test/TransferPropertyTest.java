@@ -2,6 +2,7 @@
 import java.awt.Insets;
 import java.io.File;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -49,10 +50,10 @@ public class TransferPropertyTest {
             InscriptionModel inscriptionModel = RegistryServiceControl.getInscriptionData(contractInscriptionId);
             RegistryModel registryModel = RegistryServiceControl.getInscriptionContent(contractInscriptionId);
             registryModel.setDocumentType(StringsService.document_type_property_transfer_registry);
-            registryModel.getSaleAgreementContractInfo().setInscriptionNumber(inscriptionModel.getNumber());
+            registryModel.getSaleAgreementContractInfo().setInscriptionNumber(new BigDecimal(inscriptionModel.getNumber()));
             registryModel.getSaleAgreementContractInfo().setInscriptionID(inscriptionModel.getID());
             registryModel.getSaleAgreementContractInfo().setInscriptionAddress(inscriptionModel.getAddress());
-            registryModel.getSaleAgreementContractInfo().setBlockHeightGenesis(inscriptionModel.getHeight());
+            registryModel.getSaleAgreementContractInfo().setBlockHeightGenesis(new BigDecimal(inscriptionModel.getHeight()));
             String timestamp = RegistryServiceControl.convertUnixEpochToUtcTime(inscriptionModel.getTimestamp());
             registryModel.getSaleAgreementContractInfo().setTimestamp(timestamp);
             

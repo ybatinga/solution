@@ -296,22 +296,22 @@ public class RegistryModel {
 // SaleAgreementContractInfo.java
     public class SaleAgreementContractInfo {
 
-        private long inscriptionNumber;
+        private BigDecimal inscriptionNumber;
         private String inscriptionID;
         private String inscriptionAddress;
         private String revealTransactionGenesisID;
-        private long blockHeightGenesis;
+        private BigDecimal blockHeightGenesis;
         private String blockHashGenesis;
         private double salePrice;
         private String timestamp;
         private TransactionInfo contractSentToMultisigInfo;
         private TransactionInfo signedContractSentToRegistryOfficeInfo;
 
-        public long getInscriptionNumber() {
+        public BigDecimal getInscriptionNumber() {
             return inscriptionNumber;
         }
 
-        public void setInscriptionNumber(long value) {
+        public void setInscriptionNumber(BigDecimal value) {
             this.inscriptionNumber = value;
         }
 
@@ -339,11 +339,11 @@ public class RegistryModel {
             this.revealTransactionGenesisID = value;
         }
 
-        public long getBlockHeightGenesis() {
+        public BigDecimal getBlockHeightGenesis() {
             return blockHeightGenesis;
         }
 
-        public void setBlockHeightGenesis(long value) {
+        public void setBlockHeightGenesis(BigDecimal value) {
             this.blockHeightGenesis = value;
         }
 

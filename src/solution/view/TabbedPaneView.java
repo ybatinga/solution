@@ -52,6 +52,7 @@ public class TabbedPaneView extends JPanel {
 
     private String multisigAddress;
     private RegisterNewPropertyPanelView registerNewPropertyPanelView;
+    private RegisterContractPanelView registerContractPanelView;
 
     public TabbedPaneView() {
         super(new GridLayout(1, 1));
@@ -186,7 +187,7 @@ public class TabbedPaneView extends JPanel {
     }
 
     protected JComponent sendContractToMultisigAddressPanel(String text) {
-        SendContractToMultisigPanelView panel = new SendContractToMultisigPanelView(multisigAddress);
+        SendContractToMultisigPanelView panel = new SendContractToMultisigPanelView(multisigAddress, registerContractPanelView);
         JLabel filler = new JLabel(text);
 //        filler.setHorizontalAlignment(JLabel.CENTER);
 //        panel.setLayout(new GridLayout(1, 1));
@@ -247,12 +248,12 @@ public class TabbedPaneView extends JPanel {
     }
 
     protected JComponent registerContractPanel(String text) {
-        RegisterContractPanelView panel = new RegisterContractPanelView(registerNewPropertyPanelView);
+        registerContractPanelView = new RegisterContractPanelView(registerNewPropertyPanelView);
         JLabel filler = new JLabel(text);
 //        filler.setHorizontalAlignment(JLabel.CENTER);
 //        panel.setLayout(new GridLayout(1, 1));
-        panel.add(filler);
-        JScrollPane scroller = new JScrollPane(panel);
+        registerContractPanelView.add(filler);
+        JScrollPane scroller = new JScrollPane(registerContractPanelView);
         return scroller;
     }
 

@@ -449,11 +449,11 @@ public class RegistryServiceControl {
         }
     }
     
-    public static List<ListUnspentModel> listUnspent(String walletName, String walletAddress, double minimumAmount) {
+    public static List<ListUnspentModel> listUnspent(String walletName, String walletAddress, double minimumAmountConsideringTxFee) {
         try {
             
 //            "./bitcoin-cli -rpcwallet=legacy_buyer listunspent 6 9999999 [\"midFKFXtqdSN8pRTvdqyqRwx9DUnRgezR5\"] false { \"minimumAmount\": 10 }"
-            
+           
 //          source of command comments: https://developer.bitcoin.org/reference/rpc/listunspent.html
             String[] command = new String[]{
                 "/usr/local/apps/bitcoin-25.0/bin/bitcoin-cli", 
@@ -463,7 +463,7 @@ public class RegistryServiceControl {
                 "9999999", // The maximum confirmations to filter
                 "[\""+ walletAddress+ "\"]", // wallet address to list unspent transactions
                 "false", // boolean to "Include outputs that are not safe to spend"
-                "{ \"minimumAmount\": " + minimumAmount + "}" // JSON with query options with "minimumAmount" query (Minimum value of each UTXO in BTC)
+                "{ \"minimumAmount\": " + minimumAmountConsideringTxFee + "}" // JSON with query options with "minimumAmount" query (Minimum value of each UTXO in BTC)
             };
 
             Process process = Runtime.getRuntime().exec(command); // for Linux

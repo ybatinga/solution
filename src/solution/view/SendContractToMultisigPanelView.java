@@ -15,13 +15,15 @@ import solution.service.StringsService;
  */
 public class SendContractToMultisigPanelView extends javax.swing.JPanel {
     private String multisigAddress;
+    private OnSendContractToMultisigTextFieldInteraction onSendContractToMultisigTextFieldInteraction;
     /**
      * Creates new form SendContractToMultisigPanelView
      */
-    public SendContractToMultisigPanelView(String multisigAddress) {
+    public SendContractToMultisigPanelView(String multisigAddress, RegisterContractPanelView registerContractPanelView) {
         initComponents();
         this.multisigAddress = multisigAddress;
         multisigAddressTextField.setText(multisigAddress);
+//        onSendContractToMultisigTextFieldInteraction = (OnSendContractToMultisigTextFieldInteraction) registerContractPanelView;
     }
 
     /**
@@ -63,11 +65,6 @@ public class SendContractToMultisigPanelView extends javax.swing.JPanel {
 
         txIdOfContractSentToMultisigTextField.setBackground(new java.awt.Color(242, 242, 242));
         txIdOfContractSentToMultisigTextField.setEditable(false);
-        txIdOfContractSentToMultisigTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txIdOfContractSentToMultisigTextFieldActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -136,11 +133,12 @@ public class SendContractToMultisigPanelView extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_sendContractToMultisigButtonActionPerformed
 
-    private void txIdOfContractSentToMultisigTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txIdOfContractSentToMultisigTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txIdOfContractSentToMultisigTextFieldActionPerformed
+    public interface OnSendContractToMultisigTextFieldInteraction {
+        // TODO: Update argument type and name
+        public String onSendContractToMultisigInteraction();
 
-
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel contractTransactionIdLabel;
     private java.awt.TextField contractTransactionIdTextField;

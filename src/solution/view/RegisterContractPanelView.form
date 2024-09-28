@@ -16,9 +16,14 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="paymentAmountLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="paymentAmountTextField" min="-2" pref="46" max="-2" attributes="0"/>
+                  </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="buyerWalletPublicKeyLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -33,16 +38,6 @@
                       <Component id="ownerWalletAddressLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="ownerWalletAddressTextField" min="-2" pref="279" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="propertyAreaSquareMetersLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="propertyAreaSquareMetersTextField" min="-2" pref="40" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="propertyAddressLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="propertyAddressTextField" min="-2" pref="395" max="-2" attributes="0"/>
                   </Group>
                   <Component id="registerNewPropertyLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
@@ -103,16 +98,6 @@
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="propertyAddressLabel" min="-2" max="-2" attributes="0"/>
-                  <Component id="propertyAddressTextField" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="propertyAreaSquareMetersLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="propertyAreaSquareMetersTextField" alignment="0" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="ownerNationalIdLabel" min="-2" max="-2" attributes="0"/>
                   <Component id="ownerNationalIdTextField" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -151,6 +136,11 @@
                   <Component id="buyerWalletPublicKeyLabel" alignment="0" min="-2" pref="23" max="-2" attributes="0"/>
                   <Component id="buyerWalletPublicKeyTextField" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="paymentAmountLabel" min="-2" max="-2" attributes="0"/>
+                  <Component id="paymentAmountTextField" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               <Component id="regContractButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -163,7 +153,7 @@
                   <Component id="contractInscriptionIdLabel" min="-2" max="-2" attributes="0"/>
                   <Component id="contractInscriptionIdTextField" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="26" max="32767" attributes="0"/>
+              <EmptySpace pref="19" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -221,15 +211,6 @@
         <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="propertyInscriptionIdTextFieldFocusGained"/>
       </Events>
     </Component>
-    <Component class="java.awt.TextField" name="propertyAddressTextField">
-    </Component>
-    <Component class="java.awt.TextField" name="propertyAreaSquareMetersTextField">
-    </Component>
-    <Component class="javax.swing.JLabel" name="propertyAreaSquareMetersLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Property Area in Square Meters:"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="ownerNationalIdLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="Owner National ID:"/>
@@ -243,11 +224,6 @@
       </Properties>
     </Component>
     <Component class="java.awt.TextField" name="ownerNameTextField">
-    </Component>
-    <Component class="javax.swing.JLabel" name="propertyAddressLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Property Address:"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="ownerWalletAddressLabel">
       <Properties>
@@ -290,6 +266,13 @@
     <Component class="java.awt.TextField" name="buyerWalletAddressTextField">
     </Component>
     <Component class="java.awt.TextField" name="buyerWalletPublicKeyTextField">
+    </Component>
+    <Component class="javax.swing.JLabel" name="paymentAmountLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Payment Amount:"/>
+      </Properties>
+    </Component>
+    <Component class="java.awt.TextField" name="paymentAmountTextField">
     </Component>
   </SubComponents>
 </Form>

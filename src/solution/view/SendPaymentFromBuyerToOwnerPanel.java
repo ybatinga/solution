@@ -23,8 +23,7 @@ public class SendPaymentFromBuyerToOwnerPanel extends javax.swing.JPanel {
      */
     public SendPaymentFromBuyerToOwnerPanel() {
         initComponents();
-//        double paymentAmount = 1.485;
-        double paymentAmount = 0.005;
+        double paymentAmount = StringsService.paymentAmount;
         paymentAmountTextField.setText(Double.toString(paymentAmount)); 
         walletOwnerAddress = StringsService.PLATFORM.getWALLET_ADDRESS_OWNER();
         walletOwnerAddressTextField.setText(walletOwnerAddress);
@@ -125,10 +124,13 @@ public class SendPaymentFromBuyerToOwnerPanel extends javax.swing.JPanel {
         
         String walletBuyerAddress = StringsService.PLATFORM.getWALLET_ADDRESS_BUYER();
 
+        BigDecimal minimumAmount = new BigDecimal(paymentAmountTextField.getText()).setScale(5, RoundingMode.DOWN);
+        BigDecimal minimumAmountConsideringTxFee = minimumAmount.add(new BigDecimal(Double.toString(StringsService.transactionFee)).setScale(5, RoundingMode.DOWN));
+        
         List<ListUnspentModel>  listUnspentModelList = RegistryServiceControl.listUnspent(
             StringsService.PLATFORM.getWALLET_NAME_BUYER(),
             walletBuyerAddress,
-            Double.parseDouble(paymentAmountTextField.getText()));
+            minimumAmountConsideringTxFee.doubleValue());
 
         if (listUnspentModelList.isEmpty()) {
             transactionIdOfPaymentSentToOwnerAddressTextField.setText("It cannot create paymento transaction because listUnspent list is empty");
@@ -140,7 +142,7 @@ public class SendPaymentFromBuyerToOwnerPanel extends javax.swing.JPanel {
             BigDecimal amount = BigDecimal.valueOf(listUnspentModelList.get(0).getAmount());
             BigDecimal paymentAmount = BigDecimal.valueOf(Double.parseDouble(paymentAmountTextField.getText()));
             BigDecimal change = amount.subtract(paymentAmount);
-            BigDecimal changeMinusTxFee = change.subtract(new BigDecimal(0.00001).setScale(5, RoundingMode.DOWN)); // sutract 0.00001 BTC so that this to 0.00001 BTC amount is used to pay for transaction fee
+            BigDecimal changeMinusTxFee = change.subtract(new BigDecimal(StringsService.transactionFee).setScale(5, RoundingMode.DOWN)); // sutract 0.00001 BTC so that this to 0.00001 BTC amount is used to pay for transaction fee
 
             paymentRawTransactionHex = RegistryServiceControl.createRawTransactionWithChangeAddress(
                 txId,

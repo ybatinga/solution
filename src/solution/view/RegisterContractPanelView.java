@@ -4,29 +4,17 @@
  */
 package solution.view;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import java.awt.Insets;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.Reader;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JFileChooser;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
 import solution.control.RegistryServiceControl;
 import solution.model.GetAddressInfoModel;
 import solution.model.InscriptionModel;
 import solution.model.OrdInscribedDataModel;
-import solution.model.OrdInscribedDataModel.Inscription;
 import solution.model.RegistryModel;
+import solution.model.RegistryModel.SaleAgreementContractInfo;
 import solution.service.StringsService;
 
 /**
@@ -41,6 +29,7 @@ public class RegisterContractPanelView extends javax.swing.JPanel {
 //    private JFileChooser fc;
 //    private JTextArea log;
     private OnRegisterContractTextFieldInteraction onRegisterContractTextFieldInteraction;
+    RegistryModel registryModel;
 
     /**
      * Creates new form RegisterProperty
@@ -49,27 +38,10 @@ public class RegisterContractPanelView extends javax.swing.JPanel {
         initComponents();
         onRegisterContractTextFieldInteraction = (OnRegisterContractTextFieldInteraction) registerNewPropertyPanelView;
         
-        RegistryModel registryModel = new RegistryModel();
+        registryModel = new RegistryModel();
         
-        //save data from property inscription into the contract
-        InscriptionModel inscriptionModel = RegistryServiceControl.getInscriptionData(propertyInscriptionIdTextField.getText());
-        
-        RegistryModel.PropertyInfo propertyInfo = registryModel.new PropertyInfo();
-        propertyInfo.setInscriptionNumber(new BigDecimal(inscriptionModel.getNumber()));
-        propertyInfo.setInscriptionID(inscriptionModel.getID());
-        propertyInfo.setInscriptionAddress(inscriptionModel.getAddress());
-        propertyInfo.setBlockHeightGenesis(new BigDecimal(inscriptionModel.getHeight()));
-        String timestamp = RegistryServiceControl.convertUnixEpochToUtcTime(inscriptionModel.getTimestamp());
-        propertyInfo.setTimestamp(timestamp);
-        // get property address and property square meters
-        RegistryModel registryModelInscriptionContent = RegistryServiceControl.getInscriptionContent(propertyInscriptionIdTextField.getText());
-        propertyInfo.setPropertyAddress(registryModelInscriptionContent.getPropertyInfo().getPropertyAddress());
-        propertyInfo.setPropertyAreaSquareMeters(registryModelInscriptionContent.getPropertyInfo().getPropertyAreaSquareMeters());
-        registryModel.setPropertyInfo(propertyInfo);
-
-        propertyInscriptionIdTextField.setText(inscriptionModel.getID());
-        propertyAddressTextField.setText(registryModelInscriptionContent.getPropertyInfo().getPropertyAddress());
-        propertyAreaSquareMetersTextField.setText(Long.toString(registryModelInscriptionContent.getPropertyInfo().getPropertyAreaSquareMeters()));
+//        propertyAddressTextField.setText(registryModelInscriptionContent.getPropertyInfo().getPropertyAddress());
+//        propertyAreaSquareMetersTextField.setText(Long.toString(registryModelInscriptionContent.getPropertyInfo().getPropertyAreaSquareMeters()));
         ownerNationalIdTextField.setText(StringsService.PLATFORM.getNATIONAL_ID_OWNER());
         ownerNameTextField.setText(StringsService.PLATFORM.getNAME_OWNER());
         ownerWalletAddressTextField.setText(StringsService.PLATFORM.getWALLET_ADDRESS_OWNER());
@@ -80,18 +52,25 @@ public class RegisterContractPanelView extends javax.swing.JPanel {
         buyerWalletAddressTextField.setText(StringsService.PLATFORM.getWALLET_ADDRESS_BUYER());
         GetAddressInfoModel getAddressInfoModelBuyer = RegistryServiceControl.getAddressInfo(StringsService.PLATFORM.getWALLET_NAME_BUYER(), StringsService.PLATFORM.getWALLET_ADDRESS_BUYER());
         buyerWalletPublicKeyTextField.setText(getAddressInfoModelBuyer.getResult().getPubkey());
+        paymentAmountTextField.setText(Double.toString(StringsService.paymentAmount));
         
         RegistryModel.OwnerInfo ownerInfo = registryModel.new OwnerInfo();
         ownerInfo.setOwnerNationalID(StringsService.PLATFORM.getNATIONAL_ID_OWNER());
         ownerInfo.setOwnerName(StringsService.PLATFORM.getNAME_OWNER());
         ownerInfo.setOwnerWalletAddress(StringsService.PLATFORM.getWALLET_ADDRESS_OWNER());
         ownerInfo.setOwnerWalletPublicKeyAddress(getAddressInfoModelOwner.getResult().getPubkey());
+        registryModel.setOwnerInfo(ownerInfo);
         
         RegistryModel.BuyerInfo buyerInfo = registryModel.new BuyerInfo();
         buyerInfo.setBuyerNationalID(StringsService.PLATFORM.getNATIONAL_ID_BUYER());
         buyerInfo.setBuyerName(StringsService.PLATFORM.getNAME_BUYER());
         buyerInfo.setBuyerWalletAddress(StringsService.PLATFORM.getWALLET_ADDRESS_BUYER());
         buyerInfo.setBuyerWalletPublicKeyAddress(getAddressInfoModelBuyer.getResult().getPubkey());
+        registryModel.setBuyerInfo(buyerInfo);
+        
+        RegistryModel.SaleAgreementContractInfo saleAgreementContractInfo = registryModel.new SaleAgreementContractInfo();
+        registryModel.setSaleAgreementContractInfo(saleAgreementContractInfo);
+        registryModel.getSaleAgreementContractInfo().setSalePrice(StringsService.paymentAmount);
         
         // save registryModel object in JSON file format
         RegistryServiceControl.writeInscriptionDataToDisk(registryModel, StringsService.file_name_property_sale_contract);
@@ -114,14 +93,10 @@ public class RegisterContractPanelView extends javax.swing.JPanel {
         contractInscriptionIdLabel = new javax.swing.JLabel();
         propertyInscriptionIdLabel = new javax.swing.JLabel();
         propertyInscriptionIdTextField = new java.awt.TextField();
-        propertyAddressTextField = new java.awt.TextField();
-        propertyAreaSquareMetersTextField = new java.awt.TextField();
-        propertyAreaSquareMetersLabel = new javax.swing.JLabel();
         ownerNationalIdLabel = new javax.swing.JLabel();
         ownerNationalIdTextField = new java.awt.TextField();
         ownerNameLabel = new javax.swing.JLabel();
         ownerNameTextField = new java.awt.TextField();
-        propertyAddressLabel = new javax.swing.JLabel();
         ownerWalletAddressLabel = new javax.swing.JLabel();
         ownerWalletPublicKeyLabel = new javax.swing.JLabel();
         ownerWalletAddressTextField = new java.awt.TextField();
@@ -134,6 +109,8 @@ public class RegisterContractPanelView extends javax.swing.JPanel {
         buyerNameTextField = new java.awt.TextField();
         buyerWalletAddressTextField = new java.awt.TextField();
         buyerWalletPublicKeyTextField = new java.awt.TextField();
+        paymentAmountLabel = new javax.swing.JLabel();
+        paymentAmountTextField = new java.awt.TextField();
 
         registerNewPropertyLabel.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         registerNewPropertyLabel.setText("Register Contract");
@@ -163,13 +140,9 @@ public class RegisterContractPanelView extends javax.swing.JPanel {
             }
         });
 
-        propertyAreaSquareMetersLabel.setText("Property Area in Square Meters:");
-
         ownerNationalIdLabel.setText("Owner National ID:");
 
         ownerNameLabel.setText("Owner Name:");
-
-        propertyAddressLabel.setText("Property Address:");
 
         ownerWalletAddressLabel.setText("Owner Wallet Address:");
 
@@ -183,6 +156,8 @@ public class RegisterContractPanelView extends javax.swing.JPanel {
 
         buyerWalletPublicKeyLabel.setText("Buyer Wallet Public Key:");
 
+        paymentAmountLabel.setText("Payment Amount:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -190,6 +165,10 @@ public class RegisterContractPanelView extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(paymentAmountLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(paymentAmountTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(buyerWalletPublicKeyLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -202,14 +181,6 @@ public class RegisterContractPanelView extends javax.swing.JPanel {
                         .addComponent(ownerWalletAddressLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(ownerWalletAddressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(propertyAreaSquareMetersLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(propertyAreaSquareMetersTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(propertyAddressLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(propertyAddressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(registerNewPropertyLabel)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(propertyInscriptionIdLabel)
@@ -257,14 +228,6 @@ public class RegisterContractPanelView extends javax.swing.JPanel {
                     .addComponent(propertyInscriptionIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(propertyAddressLabel)
-                    .addComponent(propertyAddressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(propertyAreaSquareMetersLabel)
-                    .addComponent(propertyAreaSquareMetersTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ownerNationalIdLabel)
                     .addComponent(ownerNationalIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -295,6 +258,10 @@ public class RegisterContractPanelView extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(buyerWalletPublicKeyLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buyerWalletPublicKeyTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(paymentAmountLabel)
+                    .addComponent(paymentAmountTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(regContractButton)
                 .addGap(18, 18, 18)
@@ -305,7 +272,7 @@ public class RegisterContractPanelView extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(contractInscriptionIdLabel)
                     .addComponent(contractInscriptionIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -315,6 +282,27 @@ public class RegisterContractPanelView extends javax.swing.JPanel {
 //                    File file = fc.getSelectedFile();
 //                    Reader reader = new FileReader(file);
 //                    RegistryModel registryModel = new Gson().fromJson(reader, RegistryModel.class);
+
+            RegistryModel.PropertyInfo propertyInfo = registryModel.new PropertyInfo();
+            registryModel.setPropertyInfo(propertyInfo);
+
+            //save data from property inscription into the contract
+            InscriptionModel inscriptionModel = RegistryServiceControl.getInscriptionData(propertyInscriptionIdTextField.getText());
+            registryModel.getPropertyInfo().setInscriptionNumber(new BigDecimal(inscriptionModel.getNumber()));
+            registryModel.getPropertyInfo().setInscriptionID(inscriptionModel.getID());
+            registryModel.getPropertyInfo().setInscriptionAddress(inscriptionModel.getAddress());
+            registryModel.getPropertyInfo().setBlockHeightGenesis(new BigDecimal(inscriptionModel.getHeight()));
+            String timestamp = RegistryServiceControl.convertUnixEpochToUtcTime(inscriptionModel.getTimestamp());
+            registryModel.getPropertyInfo().setTimestamp(timestamp);
+
+            // get property address and property square meters
+            RegistryModel registryModelInscriptionContent = RegistryServiceControl.getInscriptionContent(propertyInscriptionIdTextField.getText());
+            registryModel.getPropertyInfo().setPropertyAddress(registryModelInscriptionContent.getPropertyInfo().getPropertyAddress());
+            registryModel.getPropertyInfo().setPropertyAreaSquareMeters(registryModelInscriptionContent.getPropertyInfo().getPropertyAreaSquareMeters());
+                        
+            // save registryModel object in JSON file format
+            RegistryServiceControl.writeInscriptionDataToDisk(registryModel, StringsService.file_name_property_sale_contract);
+            
             OrdInscribedDataModel ordInscribedDataModel = RegistryServiceControl.registerNewPropertyOrContract(StringsService.file_path + StringsService.file_name_property_sale_contract); //This is where a real application would open the file.
 //                    log.append("Opening: " + file.getName() + "." + newline);
             contractTransactionIdTextField.setText(ordInscribedDataModel.getReveal());
@@ -336,7 +324,7 @@ public class RegisterContractPanelView extends javax.swing.JPanel {
         if (propertyInscriptionId != null){
             propertyInscriptionIdTextField.setText(propertyInscriptionId);
         }
-        
+
     }//GEN-LAST:event_propertyInscriptionIdTextFieldFocusGained
 
     public interface OnRegisterContractTextFieldInteraction {
@@ -366,10 +354,8 @@ public class RegisterContractPanelView extends javax.swing.JPanel {
     private java.awt.TextField ownerWalletAddressTextField;
     private javax.swing.JLabel ownerWalletPublicKeyLabel;
     private java.awt.TextField ownerWalletPublicKeyTextField;
-    private javax.swing.JLabel propertyAddressLabel;
-    private java.awt.TextField propertyAddressTextField;
-    private javax.swing.JLabel propertyAreaSquareMetersLabel;
-    private java.awt.TextField propertyAreaSquareMetersTextField;
+    private javax.swing.JLabel paymentAmountLabel;
+    private java.awt.TextField paymentAmountTextField;
     private javax.swing.JLabel propertyInscriptionIdLabel;
     private java.awt.TextField propertyInscriptionIdTextField;
     private javax.swing.JButton regContractButton;

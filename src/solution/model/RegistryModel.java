@@ -154,7 +154,7 @@ public class RegistryModel {
         private long blockHeight;
         private String blockHash;
         private String recipientAddress;
-        private Double paymentAmount;
+        private BigDecimal paymentAmount;
         private String timestamp;
 
         public String getTransactionID() {
@@ -189,11 +189,11 @@ public class RegistryModel {
             this.recipientAddress = value;
         }
 
-        public Double getPaymentAmount() {
+        public BigDecimal getPaymentAmount() {
             return paymentAmount;
         }
 
-        public void setPaymentAmount(Double value) {
+        public void setPaymentAmount(BigDecimal value) {
             this.paymentAmount = value;
         }
 

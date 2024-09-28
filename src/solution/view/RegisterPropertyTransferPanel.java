@@ -174,9 +174,10 @@ public class RegisterPropertyTransferPanel extends javax.swing.JPanel {
             String txIdOfSignedContractSentToRegistryAddress = txIdOfSignedContractSentToRegistryAddressTextField.getText();
             String paymentTransactionId = transactionIdOfPaymentSentToOwnerAddressTextField.getText();
 
-//save data from contract inscription into properte transfer inscription
+//save data from contract inscription into property transfer inscription
             InscriptionModel inscriptionModel = RegistryServiceControl.getInscriptionData(contractInscriptionId);
             RegistryModel registryModel = RegistryServiceControl.getInscriptionContent(contractInscriptionId);
+            registryModel.setDocumentType(StringsService.document_type_property_transfer_registry);
             registryModel.getSaleAgreementContractInfo().setInscriptionNumber(new BigDecimal(inscriptionModel.getNumber()));
             registryModel.getSaleAgreementContractInfo().setInscriptionID(inscriptionModel.getID());
             registryModel.getSaleAgreementContractInfo().setInscriptionAddress(inscriptionModel.getAddress());
@@ -196,8 +197,8 @@ public class RegisterPropertyTransferPanel extends javax.swing.JPanel {
             GetRawTransactionModel getRawTransactionModel1 = RegistryServiceControl.getRawTransaction(txIdOfSignedContractSentToRegistryAddress);
             String recipientAddress1 = getRawTransactionModel1.getResult().getVout().get(0).getScriptPubKey().getAddress();
             registryModel.getSaleAgreementContractInfo().getSignedContractSentToRegistryOfficeInfo().setRecipientAddress(recipientAddress1);
-            double amountSent1 = getRawTransactionModel1.getResult().getVout().get(0).getValue();
-            registryModel.getSaleAgreementContractInfo().getSignedContractSentToRegistryOfficeInfo().setPaymentAmount(amountSent1);
+//            double amountSent1 = getRawTransactionModel1.getResult().getVout().get(0).getValue();
+//            registryModel.getSaleAgreementContractInfo().getSignedContractSentToRegistryOfficeInfo().setPaymentAmount(new BigDecimal(amountSent1));
 
 // get payment info
             GetBlockModel getBlockModel = RegistryServiceControl.searchTransactionInBlocks(paymentTransactionId);
@@ -212,7 +213,7 @@ public class RegisterPropertyTransferPanel extends javax.swing.JPanel {
             String recipientAddress = getRawTransactionModel.getResult().getVout().get(0).getScriptPubKey().getAddress();
             registryModel.getPaymentInfo().setRecipientAddress(recipientAddress);
             double amountSent = getRawTransactionModel.getResult().getVout().get(0).getValue();
-            registryModel.getPaymentInfo().setPaymentAmount(amountSent);
+            registryModel.getPaymentInfo().setPaymentAmount(new BigDecimal(amountSent));
 
             RegistryServiceControl.writeInscriptionDataToDisk(registryModel, StringsService.file_name_property_transfer);
             OrdInscribedDataModel ordInscribedDataModel = RegistryServiceControl.registerPropertyTransfer(StringsService.file_path + StringsService.file_name_property_transfer, propertyInscriptionId);

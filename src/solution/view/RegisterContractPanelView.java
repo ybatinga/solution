@@ -39,7 +39,7 @@ public class RegisterContractPanelView extends javax.swing.JPanel {
         onRegisterContractTextFieldInteraction = (OnRegisterContractTextFieldInteraction) registerNewPropertyPanelView;
         
         registryModel = new RegistryModel();
-        
+        registryModel.setDocumentType(StringsService.document_type_property_sale_agreement_contract);
 //        propertyAddressTextField.setText(registryModelInscriptionContent.getPropertyInfo().getPropertyAddress());
 //        propertyAreaSquareMetersTextField.setText(Long.toString(registryModelInscriptionContent.getPropertyInfo().getPropertyAreaSquareMeters()));
         ownerNationalIdTextField.setText(StringsService.PLATFORM.getNATIONAL_ID_OWNER());

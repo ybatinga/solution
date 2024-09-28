@@ -70,7 +70,7 @@ public class TransferPropertyTest {
             String recipientAddress1 = getRawTransactionModel1.getResult().getVout().get(0).getScriptPubKey().getAddress();
             registryModel.getSaleAgreementContractInfo().getSignedContractSentToRegistryOfficeInfo().setRecipientAddress(recipientAddress1);
             double amountSent1 = getRawTransactionModel1.getResult().getVout().get(0).getValue();
-            registryModel.getSaleAgreementContractInfo().getSignedContractSentToRegistryOfficeInfo().setPaymentAmount(amountSent1);
+            registryModel.getSaleAgreementContractInfo().getSignedContractSentToRegistryOfficeInfo().setPaymentAmount(new BigDecimal(amountSent1));
             
             // get payment info
             GetBlockModel getBlockModel = RegistryServiceControl.searchTransactionInBlocks(paymentTransactionId);
@@ -85,7 +85,7 @@ public class TransferPropertyTest {
             String recipientAddress = getRawTransactionModel.getResult().getVout().get(0).getScriptPubKey().getAddress();
             registryModel.getPaymentInfo().setRecipientAddress(recipientAddress);
             double amountSent = getRawTransactionModel.getResult().getVout().get(0).getValue();
-            registryModel.getPaymentInfo().setPaymentAmount(amountSent);
+            registryModel.getPaymentInfo().setPaymentAmount(new BigDecimal(amountSent));
             
             RegistryServiceControl.writeInscriptionDataToDisk(registryModel, StringsService.file_name_property_transfer);
             try {

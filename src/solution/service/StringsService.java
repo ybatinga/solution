@@ -36,8 +36,10 @@ public class StringsService {
     public static String invalid_contract_transaction_ID = "Invalid contract transaction ID";
     
     // veritication messages
-    public static String payment_has_been_confirmed_on_the_blockchain = "Payment has been confirmed on the blockchain.";
-    public static String payment_has_not_been_confirmed_on_the_blockchain = "Payment has NOT been confirmed on the blockchain.";
+    public static String payment_contract_signing_confirmed = "Contract Signing Confirmed";
+    public static String payment_contract_signing_not_confirmed = "Contract Signing NOT Confirmed";
+    public static String payment_confirmed = "Payment Confirmed";
+    public static String payment_has_not_been_confirmed_on_the_blockchain = "Payment has NOT been confirmed on the blockchain";
     public static String payment_confirmation_message = "Payment Confirmation Message: ";
     
     // https://github.com/BlockchainCommons/Learning-Bitcoin-from-the-Command-Line/blob/master/06_1_Sending_a_Transaction_to_a_Multisig.md#collect-public-keys

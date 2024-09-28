@@ -248,13 +248,13 @@ public class VerifyContractSignaturesPanel extends javax.swing.JPanel {
                 String amountSent = Double.toString(getRawTransactionModel.getResult().getVout().get(0).getValue());
                 amountSentTextField.setText(amountSent);
 
-                paymentConfirmationMessageTextField.setText(StringsService.payment_has_been_confirmed_on_the_blockchain);
+                paymentConfirmationMessageTextField.setText(StringsService.payment_contract_signing_confirmed);
 
             }else{
-                paymentConfirmationMessageTextField.setText(StringsService.payment_has_not_been_confirmed_on_the_blockchain);
+                paymentConfirmationMessageTextField.setText(StringsService.payment_contract_signing_not_confirmed);
             }
         }else{
-            paymentConfirmationMessageTextField.setText(StringsService.payment_has_not_been_confirmed_on_the_blockchain);
+            paymentConfirmationMessageTextField.setText(StringsService.payment_contract_signing_not_confirmed);
         }
     }//GEN-LAST:event_verifyPaymentButtonActionPerformed
 

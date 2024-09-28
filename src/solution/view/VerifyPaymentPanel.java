@@ -187,7 +187,7 @@ public class VerifyPaymentPanel extends javax.swing.JPanel {
         String paymentTransactionId = paymentTransactionIdTextField.getText();
         GetBlockModel getBlockModel = RegistryServiceControl.searchTransactionInBlocks(paymentTransactionId);
         if (getBlockModel != null){
-            paymentConfirmationMessageTextField.setText(StringsService.payment_has_been_confirmed_on_the_blockchain);
+            paymentConfirmationMessageTextField.setText(StringsService.payment_confirmed);
             confirmationsTextField.setText(Long.toString(getBlockModel.getConfirmations()));
             confirmationBlockNumberTextField.setText(Long.toString(getBlockModel.getHeight()));
             blockHashTextField.setText(getBlockModel.getHash());

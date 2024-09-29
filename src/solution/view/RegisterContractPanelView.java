@@ -112,6 +112,8 @@ public class RegisterContractPanelView extends javax.swing.JPanel {
         paymentAmountLabel = new javax.swing.JLabel();
         paymentAmountTextField = new java.awt.TextField();
 
+        setBackground(new java.awt.Color(247, 247, 247));
+
         registerNewPropertyLabel.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         registerNewPropertyLabel.setText("Register Contract");
 
@@ -122,12 +124,12 @@ public class RegisterContractPanelView extends javax.swing.JPanel {
             }
         });
 
-        contractTransactionIdTextField.setBackground(new java.awt.Color(242, 242, 242));
+        contractTransactionIdTextField.setBackground(new java.awt.Color(248, 248, 248));
         contractTransactionIdTextField.setEditable(false);
 
         contractTransactionIdLabel.setText("Contract Transaction ID: ");
 
-        contractInscriptionIdTextField.setBackground(new java.awt.Color(242, 242, 242));
+        contractInscriptionIdTextField.setBackground(new java.awt.Color(248, 248, 248));
         contractInscriptionIdTextField.setEditable(false);
 
         contractInscriptionIdLabel.setText("Contract Inscription ID: ");
@@ -142,21 +144,47 @@ public class RegisterContractPanelView extends javax.swing.JPanel {
 
         ownerNationalIdLabel.setText("Owner National ID:");
 
+        ownerNationalIdTextField.setBackground(new java.awt.Color(248, 248, 248));
+        ownerNationalIdTextField.setEditable(false);
+
         ownerNameLabel.setText("Owner Name:");
+
+        ownerNameTextField.setBackground(new java.awt.Color(248, 248, 248));
+        ownerNameTextField.setEditable(false);
 
         ownerWalletAddressLabel.setText("Owner Wallet Address:");
 
         ownerWalletPublicKeyLabel.setText("Onwer Wallet Public Key:");
 
+        ownerWalletAddressTextField.setBackground(new java.awt.Color(248, 248, 248));
+        ownerWalletAddressTextField.setEditable(false);
+
+        ownerWalletPublicKeyTextField.setBackground(new java.awt.Color(248, 248, 248));
+        ownerWalletPublicKeyTextField.setEditable(false);
+
         buyerNationalIdLabel.setText("Buyer National ID:");
 
         buyerWalletAddressLabel.setText("Buyer Wallet Address:");
+
+        buyerNationalIdTextField.setBackground(new java.awt.Color(248, 248, 248));
+        buyerNationalIdTextField.setEditable(false);
 
         buyerNameLabel.setText("Buyer Name:");
 
         buyerWalletPublicKeyLabel.setText("Buyer Wallet Public Key:");
 
+        buyerNameTextField.setBackground(new java.awt.Color(248, 248, 248));
+        buyerNameTextField.setEditable(false);
+
+        buyerWalletAddressTextField.setBackground(new java.awt.Color(248, 248, 248));
+        buyerWalletAddressTextField.setEditable(false);
+
+        buyerWalletPublicKeyTextField.setBackground(new java.awt.Color(248, 248, 248));
+        buyerWalletPublicKeyTextField.setEditable(false);
+
         paymentAmountLabel.setText("Payment Amount:");
+
+        paymentAmountTextField.setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

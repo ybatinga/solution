@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+  <Properties>
+    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+      <Color blue="f7" green="f7" red="f7" type="rgb"/>
+    </Property>
+  </Properties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -175,7 +180,7 @@
     <Component class="java.awt.TextField" name="confirmationsTextField">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="f2" green="f2" red="f2" type="rgb"/>
+          <Color blue="f8" green="f8" red="f8" type="rgb"/>
         </Property>
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
@@ -188,7 +193,7 @@
     <Component class="java.awt.TextField" name="confirmationBlockNumberTextField">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="f2" green="f2" red="f2" type="rgb"/>
+          <Color blue="f8" green="f8" red="f8" type="rgb"/>
         </Property>
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
@@ -206,14 +211,14 @@
     <Component class="java.awt.TextField" name="recipientAddressTextField">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="f2" green="f2" red="f2" type="rgb"/>
+          <Color blue="f8" green="f8" red="f8" type="rgb"/>
         </Property>
       </Properties>
     </Component>
     <Component class="java.awt.TextField" name="blockHashTextField">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="f2" green="f2" red="f2" type="rgb"/>
+          <Color blue="f8" green="f8" red="f8" type="rgb"/>
         </Property>
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
@@ -226,7 +231,7 @@
     <Component class="java.awt.TextField" name="paymentConfirmationMessageTextField">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="f2" green="f2" red="f2" type="rgb"/>
+          <Color blue="f8" green="f8" red="f8" type="rgb"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Dialog" size="15" style="1"/>
@@ -236,7 +241,7 @@
     <Component class="java.awt.TextField" name="amountSentTextField">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="f2" green="f2" red="f2" type="rgb"/>
+          <Color blue="f8" green="f8" red="f8" type="rgb"/>
         </Property>
       </Properties>
     </Component>
@@ -255,7 +260,7 @@
     <Component class="java.awt.TextField" name="timeStampTextField">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="f2" green="f2" red="f2" type="rgb"/>
+          <Color blue="f8" green="f8" red="f8" type="rgb"/>
         </Property>
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
@@ -286,7 +291,7 @@
     <Component class="java.awt.TextField" name="ownerBuyerSignatureHexTextField">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="f2" green="f2" red="f2" type="rgb"/>
+          <Color blue="f8" green="f8" red="f8" type="rgb"/>
         </Property>
         <Property name="editable" type="boolean" value="false"/>
       </Properties>

@@ -51,6 +51,8 @@ public class VerifyPaymentPanel extends javax.swing.JPanel {
         amountSentLabel = new javax.swing.JLabel();
         amountSentTextField = new java.awt.TextField();
 
+        setBackground(new java.awt.Color(247, 247, 247));
+
         verifyPaymentTransactionLabel.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         verifyPaymentTransactionLabel.setText("Verify Payment Transaction");
 
@@ -67,34 +69,34 @@ public class VerifyPaymentPanel extends javax.swing.JPanel {
 
         confirmationsLabel.setText("Confirmations:");
 
-        confirmationsTextField.setBackground(new java.awt.Color(242, 242, 242));
+        confirmationsTextField.setBackground(new java.awt.Color(248, 248, 248));
         confirmationsTextField.setEditable(false);
 
         confirmationBlockNumberLabel.setText("Confirmation Block Number:");
 
-        confirmationBlockNumberTextField.setBackground(new java.awt.Color(242, 242, 242));
+        confirmationBlockNumberTextField.setBackground(new java.awt.Color(248, 248, 248));
         confirmationBlockNumberTextField.setEditable(false);
 
         blockHashLabel.setText("Block Hash:");
 
-        blockHashTextField.setBackground(new java.awt.Color(242, 242, 242));
+        blockHashTextField.setBackground(new java.awt.Color(248, 248, 248));
         blockHashTextField.setEditable(false);
 
-        paymentConfirmationMessageTextField.setBackground(new java.awt.Color(242, 242, 242));
+        paymentConfirmationMessageTextField.setBackground(new java.awt.Color(248, 248, 248));
         paymentConfirmationMessageTextField.setFont(new java.awt.Font("Dialog", 1, 15)); // NOI18N
 
         timeStampLabel.setText("Timestamp:");
 
-        timeStampTextField.setBackground(new java.awt.Color(242, 242, 242));
+        timeStampTextField.setBackground(new java.awt.Color(248, 248, 248));
         timeStampTextField.setEditable(false);
 
         recipientAddressLabel.setText("Recipient Address:");
 
-        recipientAddressTextField.setBackground(new java.awt.Color(242, 242, 242));
+        recipientAddressTextField.setBackground(new java.awt.Color(248, 248, 248));
 
         amountSentLabel.setText("Amount Sent:");
 
-        amountSentTextField.setBackground(new java.awt.Color(242, 242, 242));
+        amountSentTextField.setBackground(new java.awt.Color(248, 248, 248));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

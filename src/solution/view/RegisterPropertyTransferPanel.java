@@ -63,10 +63,12 @@ public class RegisterPropertyTransferPanel extends javax.swing.JPanel {
         txIdOfSignedContractSentToRegistryAddressTextField = new java.awt.TextField();
         transactionIdOfPaymentSentToOwnerAddressTextField = new java.awt.TextField();
 
+        setBackground(new java.awt.Color(247, 247, 247));
+
         transferPropertyLabel.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         transferPropertyLabel.setText("Transfer Property");
 
-        transferPropertyInscriptionIdTextField.setBackground(new java.awt.Color(242, 242, 242));
+        transferPropertyInscriptionIdTextField.setBackground(new java.awt.Color(248, 248, 248));
         transferPropertyInscriptionIdTextField.setEditable(false);
 
         transferPropertyInscriptionIdLabel.setText("Transfer Property Inscription ID: ");
@@ -78,7 +80,7 @@ public class RegisterPropertyTransferPanel extends javax.swing.JPanel {
             }
         });
 
-        transferPropertyTransactionIdTextField.setBackground(new java.awt.Color(242, 242, 242));
+        transferPropertyTransactionIdTextField.setBackground(new java.awt.Color(248, 248, 248));
         transferPropertyTransactionIdTextField.setEditable(false);
 
         transferPropertyTransactionIdLabel.setText("Transfer Property Transaction ID: ");

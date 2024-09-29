@@ -47,18 +47,19 @@ public class SendPaymentFromBuyerToOwnerPanel extends javax.swing.JPanel {
         transactionIdOfPaymentSentToOwnerAddressLabel = new javax.swing.JLabel();
         transactionIdOfPaymentSentToOwnerAddressTextField = new java.awt.TextField();
 
+        setBackground(new java.awt.Color(247, 247, 247));
+
         sendPaymentLabel.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         sendPaymentLabel.setText("Send Payment");
 
         walletOwnerAddressLabel.setText("Owner Wallet Address:");
 
-        walletOwnerAddressTextField.setBackground(new java.awt.Color(242, 242, 242));
+        walletOwnerAddressTextField.setBackground(new java.awt.Color(248, 248, 248));
         walletOwnerAddressTextField.setEditable(false);
 
         paymentAmountLabel.setText("Payment Amount:");
 
-        paymentAmountTextField.setBackground(new java.awt.Color(242, 242, 242));
-        paymentAmountTextField.setEditable(false);
+        paymentAmountTextField.setBackground(new java.awt.Color(255, 255, 255));
 
         sendPaymentButton.setText("Send Payment");
         sendPaymentButton.addActionListener(new java.awt.event.ActionListener() {
@@ -69,7 +70,7 @@ public class SendPaymentFromBuyerToOwnerPanel extends javax.swing.JPanel {
 
         transactionIdOfPaymentSentToOwnerAddressLabel.setText("Transaction ID of Payment Sent to Owner Address:");
 
-        transactionIdOfPaymentSentToOwnerAddressTextField.setBackground(new java.awt.Color(242, 242, 242));
+        transactionIdOfPaymentSentToOwnerAddressTextField.setBackground(new java.awt.Color(248, 248, 248));
         transactionIdOfPaymentSentToOwnerAddressTextField.setEditable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -110,11 +111,11 @@ public class SendPaymentFromBuyerToOwnerPanel extends javax.swing.JPanel {
                     .addComponent(paymentAmountTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(sendPaymentButton)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(19, 19, 19)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(transactionIdOfPaymentSentToOwnerAddressLabel)
                     .addComponent(transactionIdOfPaymentSentToOwnerAddressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(127, Short.MAX_VALUE))
+                .addContainerGap(126, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

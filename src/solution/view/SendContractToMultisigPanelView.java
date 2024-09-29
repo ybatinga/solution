@@ -44,6 +44,8 @@ public class SendContractToMultisigPanelView extends javax.swing.JPanel {
         txIdOfContractSentToMultisigLabel = new javax.swing.JLabel();
         txIdOfContractSentToMultisigTextField = new java.awt.TextField();
 
+        setBackground(new java.awt.Color(247, 247, 247));
+
         sentContractToMultisigAddressLabel.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         sentContractToMultisigAddressLabel.setText("Send Contract to Multisig");
 
@@ -58,12 +60,12 @@ public class SendContractToMultisigPanelView extends javax.swing.JPanel {
 
         multisigAddressLabel.setText("Multisig Address:");
 
-        multisigAddressTextField.setBackground(new java.awt.Color(242, 242, 242));
+        multisigAddressTextField.setBackground(new java.awt.Color(248, 248, 248));
         multisigAddressTextField.setEditable(false);
 
         txIdOfContractSentToMultisigLabel.setText("Transaction ID of Contract Sent to Multisig:");
 
-        txIdOfContractSentToMultisigTextField.setBackground(new java.awt.Color(242, 242, 242));
+        txIdOfContractSentToMultisigTextField.setBackground(new java.awt.Color(248, 248, 248));
         txIdOfContractSentToMultisigTextField.setEditable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

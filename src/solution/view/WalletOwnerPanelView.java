@@ -57,29 +57,33 @@ public class WalletOwnerPanelView extends javax.swing.JPanel {
         ownerSignatureHexLabel = new javax.swing.JLabel();
         multisigRawTransactionHexTextField = new java.awt.TextField();
 
+        setBackground(new java.awt.Color(247, 247, 247));
+
         buyerWalletLabel.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         buyerWalletLabel.setText("Owner Wallet");
 
         walletAddressLabel.setText("Address:");
 
-        walletAddressTextField.setBackground(new java.awt.Color(242, 242, 242));
+        walletAddressTextField.setBackground(new java.awt.Color(248, 248, 248));
         walletAddressTextField.setEditable(false);
 
         walletPublicKeyLabel.setText("Public Key:");
 
-        walletPublicKeyTextField.setBackground(new java.awt.Color(242, 242, 242));
+        walletPublicKeyTextField.setBackground(new java.awt.Color(248, 248, 248));
         walletPublicKeyTextField.setEditable(false);
 
         walletPrivateKeyLabel.setText("Private Key:");
 
-        walletPrivateKeyTextField.setBackground(new java.awt.Color(242, 242, 242));
+        walletPrivateKeyTextField.setBackground(new java.awt.Color(248, 248, 248));
         walletPrivateKeyTextField.setEditable(false);
 
-        ownerSignatureHexTextField.setBackground(new java.awt.Color(242, 242, 242));
+        ownerSignatureHexTextField.setBackground(new java.awt.Color(248, 248, 248));
         ownerSignatureHexTextField.setEditable(false);
-        ownerSignatureHexTextField.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
         redeemScriptLabel.setText("Redeem Script:");
+
+        redeemScriptTextField.setBackground(new java.awt.Color(255, 255, 255));
+        redeemScriptTextField.setEditable(false);
 
         multisigRawTransactionHexLabel.setText("Multisig Raw Transaction Hex:");
 
@@ -91,6 +95,9 @@ public class WalletOwnerPanelView extends javax.swing.JPanel {
         });
 
         ownerSignatureHexLabel.setText("Owner Signature Hex:");
+
+        multisigRawTransactionHexTextField.setBackground(new java.awt.Color(255, 255, 255));
+        multisigRawTransactionHexTextField.setEditable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -159,7 +166,7 @@ public class WalletOwnerPanelView extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ownerSignatureHexLabel)
                     .addComponent(ownerSignatureHexTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addContainerGap(93, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

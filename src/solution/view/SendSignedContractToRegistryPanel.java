@@ -37,6 +37,8 @@ public class SendSignedContractToRegistryPanel extends javax.swing.JPanel {
         txIdOfSignedContractSentToRegistryAddressTextField = new java.awt.TextField();
         ownerBuyerSignatureHexTextField = new java.awt.TextField();
 
+        setBackground(new java.awt.Color(247, 247, 247));
+
         sendSignedContractToRegistryOfficeLabel.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         sendSignedContractToRegistryOfficeLabel.setText("Send Signed Contract to Registry");
 
@@ -51,7 +53,7 @@ public class SendSignedContractToRegistryPanel extends javax.swing.JPanel {
 
         txIdOfSignedContractSentToRegistryAddressLabel.setText("Transaction ID of Signed Contract Sent to Registry Office Address:");
 
-        txIdOfSignedContractSentToRegistryAddressTextField.setBackground(new java.awt.Color(242, 242, 242));
+        txIdOfSignedContractSentToRegistryAddressTextField.setBackground(new java.awt.Color(248, 248, 248));
         txIdOfSignedContractSentToRegistryAddressTextField.setEditable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

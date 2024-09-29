@@ -50,8 +50,6 @@ public class RegisterNewPropertyPanelView extends javax.swing.JPanel implements 
 
         registerNewPropertyLabel = new javax.swing.JLabel();
         registerNewPropertyButton = new javax.swing.JButton();
-        propertyTransactionIdLabel = new javax.swing.JLabel();
-        propertyTransactionIdTextField = new java.awt.TextField();
         propertyInscriptionIdLabel = new javax.swing.JLabel();
         propertyInscriptionIdTextField = new java.awt.TextField();
         propertyAddressLabel = new javax.swing.JLabel();
@@ -63,6 +61,7 @@ public class RegisterNewPropertyPanelView extends javax.swing.JPanel implements 
         ownerNameLabel = new javax.swing.JLabel();
         ownerNameTextField = new java.awt.TextField();
 
+        setBackground(new java.awt.Color(247, 247, 247));
         setDoubleBuffered(false);
 
         registerNewPropertyLabel.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
@@ -74,11 +73,6 @@ public class RegisterNewPropertyPanelView extends javax.swing.JPanel implements 
                 registerNewPropertyButtonActionPerformed(evt);
             }
         });
-
-        propertyTransactionIdLabel.setText("Property Transaction ID: ");
-
-        propertyTransactionIdTextField.setBackground(new java.awt.Color(242, 242, 242));
-        propertyTransactionIdTextField.setEditable(false);
 
         propertyInscriptionIdLabel.setText("Property Inscription ID: ");
 
@@ -108,7 +102,13 @@ public class RegisterNewPropertyPanelView extends javax.swing.JPanel implements 
 
         ownerNationalIdLabel.setText("Owner National ID:");
 
+        ownerNationalIdTextField.setBackground(new java.awt.Color(248, 248, 248));
+        ownerNationalIdTextField.setEditable(false);
+
         ownerNameLabel.setText("Owner Name:");
+
+        ownerNameTextField.setBackground(new java.awt.Color(248, 248, 248));
+        ownerNameTextField.setEditable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -116,21 +116,17 @@ public class RegisterNewPropertyPanelView extends javax.swing.JPanel implements 
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(propertyAreaSquareMetersLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(propertyAreaSquareMetersTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(registerNewPropertyLabel)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(propertyTransactionIdLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(propertyTransactionIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 512, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(registerNewPropertyButton)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(propertyInscriptionIdLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(propertyInscriptionIdTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(propertyInscriptionIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 523, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(propertyAddressLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -170,13 +166,9 @@ public class RegisterNewPropertyPanelView extends javax.swing.JPanel implements 
                 .addComponent(registerNewPropertyButton)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(propertyTransactionIdLabel)
-                    .addComponent(propertyTransactionIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(propertyInscriptionIdLabel)
                     .addComponent(propertyInscriptionIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -210,7 +202,7 @@ public class RegisterNewPropertyPanelView extends javax.swing.JPanel implements 
                     RegistryServiceControl.writeInscriptionDataToDisk(registryModel, StringsService.file_name_new_property);
                     
                     OrdInscribedDataModel ordInscribedDataModel  = RegistryServiceControl.registerNewPropertyOrContract(StringsService.file_path + StringsService.file_name_new_property);
-                    propertyTransactionIdTextField.setText(ordInscribedDataModel.getReveal());
+//                    propertyTransactionIdTextField.setText(ordInscribedDataModel.getReveal());
                     if (!ordInscribedDataModel.getInscriptions().isEmpty()){
                         propertyInscriptionId = ordInscribedDataModel.getInscriptions().get(0).getID();
                         propertyInscriptionIdTextField.setText(propertyInscriptionId);
@@ -220,10 +212,8 @@ public class RegisterNewPropertyPanelView extends javax.swing.JPanel implements 
                     }
                     
                 } catch (IOException ex) {
-                    propertyTransactionIdLabel.setText(ex.getMessage());
                     Logger.getLogger(RegisterNewPropertyPanelView.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (InterruptedException ex) {
-                    propertyTransactionIdLabel.setText(ex.getMessage());
                     Logger.getLogger(RegisterNewPropertyPanelView.class.getName()).log(Level.SEVERE, null, ex);
                 }
 //                //This is where a real application would open the file.
@@ -261,8 +251,6 @@ public class RegisterNewPropertyPanelView extends javax.swing.JPanel implements 
     private java.awt.TextField propertyAreaSquareMetersTextField;
     private javax.swing.JLabel propertyInscriptionIdLabel;
     private java.awt.TextField propertyInscriptionIdTextField;
-    private javax.swing.JLabel propertyTransactionIdLabel;
-    private java.awt.TextField propertyTransactionIdTextField;
     private javax.swing.JButton registerNewPropertyButton;
     private javax.swing.JLabel registerNewPropertyLabel;
     // End of variables declaration//GEN-END:variables

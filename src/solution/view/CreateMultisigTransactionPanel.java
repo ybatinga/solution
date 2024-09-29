@@ -37,6 +37,8 @@ public class CreateMultisigTransactionPanel extends javax.swing.JPanel {
         transactionIdOfContractSentToMultisigTextField = new java.awt.TextField();
         multisigRawTransactionHexTextField = new java.awt.TextField();
 
+        setBackground(new java.awt.Color(247, 247, 247));
+
         CreateMultisigTransactionLabel.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         CreateMultisigTransactionLabel.setText("Create Multisig Transaction");
 
@@ -51,7 +53,7 @@ public class CreateMultisigTransactionPanel extends javax.swing.JPanel {
 
         multisigRawTransactionHexLabel.setText("Multisig Raw Transaction Hex:");
 
-        multisigRawTransactionHexTextField.setBackground(new java.awt.Color(242, 242, 242));
+        multisigRawTransactionHexTextField.setBackground(new java.awt.Color(248, 248, 248));
         multisigRawTransactionHexTextField.setEditable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

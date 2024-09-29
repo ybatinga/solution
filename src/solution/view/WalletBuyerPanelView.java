@@ -4,14 +4,9 @@
  */
 package solution.view;
 
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.math.RoundingMode;
-import java.util.List;
 import solution.control.RegistryServiceControl;
 import solution.model.GetAddressInfoModel;
 import solution.model.GetRawTransactionModel;
-import solution.model.ListUnspentModel;
 import solution.service.StringsService;
 
 /**
@@ -43,9 +38,6 @@ public class WalletBuyerPanelView extends javax.swing.JPanel {
             walletPrivateKeyTextField.setText(privateKey);
         }
         
-        double paymentAmount = 1.485;
-        paymentAmountTextField.setText(Double.toString(paymentAmount));        
-        walletOwnerAddressTextField.setText(walletOwnerAddress);
     }
     
     /**
@@ -72,14 +64,8 @@ public class WalletBuyerPanelView extends javax.swing.JPanel {
         ownerBuyerSignatureHexLabel = new javax.swing.JLabel();
         ownerSignatureHexTextField = new java.awt.TextField();
         onwerBuyerSignatureHexTextField = new java.awt.TextField();
-        walletOwnerAddressLabel = new javax.swing.JLabel();
-        walletOwnerAddressTextField = new java.awt.TextField();
-        paymentAmountLabel = new javax.swing.JLabel();
-        paymentAmountTextField = new java.awt.TextField();
-        jSeparator1 = new javax.swing.JSeparator();
-        sendPaymentButton = new javax.swing.JButton();
-        transactionIdOfPaymentSentToOwnerAddressLabel = new javax.swing.JLabel();
-        transactionIdOfPaymentSentToOwnerAddressTextField = new java.awt.TextField();
+
+        setBackground(new java.awt.Color(247, 247, 247));
 
         buyerWalletLabel.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         buyerWalletLabel.setText("Buyer Wallet");
@@ -88,18 +74,20 @@ public class WalletBuyerPanelView extends javax.swing.JPanel {
 
         walletPublicKeyLabel.setText("Public Key:");
 
-        walletPublicKeyTextField.setBackground(new java.awt.Color(242, 242, 242));
+        walletPublicKeyTextField.setBackground(new java.awt.Color(248, 248, 248));
         walletPublicKeyTextField.setEditable(false);
 
         walletPrivateKeyLabel.setText("Private Key:");
 
-        walletPrivateKeyTextField.setBackground(new java.awt.Color(242, 242, 242));
+        walletPrivateKeyTextField.setBackground(new java.awt.Color(248, 248, 248));
         walletPrivateKeyTextField.setEditable(false);
 
-        walletAddressTextField.setBackground(new java.awt.Color(242, 242, 242));
+        walletAddressTextField.setBackground(new java.awt.Color(248, 248, 248));
         walletAddressTextField.setEditable(false);
 
         redeemScriptLabel.setText("Redeem Script:");
+
+        redeemScriptTextField.setBackground(new java.awt.Color(255, 255, 255));
 
         ownerSignatureHexLabel.setText("Owner Signature Hex:");
 
@@ -112,31 +100,11 @@ public class WalletBuyerPanelView extends javax.swing.JPanel {
 
         ownerBuyerSignatureHexLabel.setText("Owner and Buyer Signature Hex:");
 
-        onwerBuyerSignatureHexTextField.setBackground(new java.awt.Color(242, 242, 242));
+        ownerSignatureHexTextField.setBackground(new java.awt.Color(255, 255, 255));
+
+        onwerBuyerSignatureHexTextField.setBackground(new java.awt.Color(248, 248, 248));
         onwerBuyerSignatureHexTextField.setEditable(false);
         onwerBuyerSignatureHexTextField.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-
-        walletOwnerAddressLabel.setText("Owner Wallet Address:");
-
-        walletOwnerAddressTextField.setBackground(new java.awt.Color(242, 242, 242));
-        walletOwnerAddressTextField.setEditable(false);
-
-        paymentAmountLabel.setText("Payment Amount:");
-
-        paymentAmountTextField.setBackground(new java.awt.Color(242, 242, 242));
-        paymentAmountTextField.setEditable(false);
-
-        sendPaymentButton.setText("Send Payment");
-        sendPaymentButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sendPaymentButtonActionPerformed(evt);
-            }
-        });
-
-        transactionIdOfPaymentSentToOwnerAddressLabel.setText("Transaction ID of Payment Sent to Owner Address:");
-
-        transactionIdOfPaymentSentToOwnerAddressTextField.setBackground(new java.awt.Color(242, 242, 242));
-        transactionIdOfPaymentSentToOwnerAddressTextField.setEditable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -144,52 +112,34 @@ public class WalletBuyerPanelView extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(transactionIdOfPaymentSentToOwnerAddressLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(transactionIdOfPaymentSentToOwnerAddressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 516, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(ownerSignatureHexLabel)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(ownerSignatureHexTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addComponent(buyerWalletLabel)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(walletPrivateKeyLabel)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(walletPrivateKeyTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(walletPublicKeyLabel)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(walletPublicKeyTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(walletAddressLabel)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(walletAddressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(signContractButton)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(ownerBuyerSignatureHexLabel)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(onwerBuyerSignatureHexTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 702, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(redeemScriptLabel)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(redeemScriptTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 751, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(walletOwnerAddressLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(walletOwnerAddressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(paymentAmountLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(paymentAmountTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(sendPaymentButton))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(ownerSignatureHexLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ownerSignatureHexTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(buyerWalletLabel)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(walletPrivateKeyLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(walletPrivateKeyTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(walletPublicKeyLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(walletPublicKeyTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(walletAddressLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(walletAddressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(signContractButton)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(ownerBuyerSignatureHexLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(onwerBuyerSignatureHexTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 702, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(redeemScriptLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(redeemScriptTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 751, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -222,23 +172,7 @@ public class WalletBuyerPanelView extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ownerBuyerSignatureHexLabel)
                     .addComponent(onwerBuyerSignatureHexTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(walletOwnerAddressLabel)
-                    .addComponent(walletOwnerAddressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(paymentAmountLabel)
-                    .addComponent(paymentAmountTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(sendPaymentButton)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(transactionIdOfPaymentSentToOwnerAddressLabel)
-                    .addComponent(transactionIdOfPaymentSentToOwnerAddressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -271,71 +205,19 @@ public class WalletBuyerPanelView extends javax.swing.JPanel {
         onwerBuyerSignatureHexTextField.setText(buyerSignatureHex);
     }//GEN-LAST:event_signContractButtonActionPerformed
 
-    private void sendPaymentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendPaymentButtonActionPerformed
-        
-        String paymentRawTransactionHex = null;
-        
-        BigDecimal minimumAmount = new BigDecimal(paymentAmountTextField.getText()).setScale(5, RoundingMode.DOWN);
-        BigDecimal minimumAmountConsideringTxFee = minimumAmount.add(new BigDecimal(Double.toString(StringsService.transactionFee)).setScale(5, RoundingMode.DOWN));
-        
-        List<ListUnspentModel>  listUnspentModelList = RegistryServiceControl.listUnspent(
-                StringsService.PLATFORM.getWALLET_NAME_BUYER(), 
-                walletOwnerAddress,                 
-                minimumAmountConsideringTxFee.longValue());
-        
-        if (listUnspentModelList.isEmpty()) {
-            transactionIdOfPaymentSentToOwnerAddressTextField.setText("It cannot create paymento transaction because listUnspent list is empty");
-//            paymentRawTransactionHexTextField.setVisible(true);
-        } else {
-
-            String txId = listUnspentModelList.get(0).getTxid();
-            long vout = listUnspentModelList.get(0).getVout();
-            BigDecimal amount = BigDecimal.valueOf(listUnspentModelList.get(0).getAmount());
-            BigDecimal paymentAmount = BigDecimal.valueOf(Double.parseDouble(paymentAmountTextField.getText()));
-            BigDecimal change = amount.subtract(paymentAmount);
-            BigDecimal changeMinusTxFee = change.subtract(new BigDecimal(StringsService.transactionFee).setScale(5, RoundingMode.DOWN)); // sutract 0.00001 BTC so that this to 0.00001 BTC amount is used to pay for transaction fee
-
-            paymentRawTransactionHex = RegistryServiceControl.createRawTransactionWithChangeAddress(
-                    txId,
-                    vout,
-                    walletOwnerAddress,
-                    Double.parseDouble(paymentAmount.toString()),
-                    walletOwnerAddress,
-                    Double.parseDouble(changeMinusTxFee.toString()));
-
-        }
-        
-        String signedTx = RegistryServiceControl.signRawTransactionWithWallet(paymentRawTransactionHex, StringsService.PLATFORM.getWALLET_NAME_BUYER());
-
-
-        String txIdOfPaymentSentToOwnerAddress = RegistryServiceControl.sendRawTransaction(
-                signedTx, 
-                StringsService.PLATFORM.getWALLET_NAME_BUYER());
-        transactionIdOfPaymentSentToOwnerAddressTextField.setText(txIdOfPaymentSentToOwnerAddress);
-//        transactionIdOfPaymentSentToOwnerAddressTextField.setVisible(true);
-    }//GEN-LAST:event_sendPaymentButtonActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel buyerWalletLabel;
-    private javax.swing.JSeparator jSeparator1;
     private java.awt.TextField multisigTransactionHexTextField1;
     private java.awt.TextField onwerBuyerSignatureHexTextField;
     private javax.swing.JLabel ownerBuyerSignatureHexLabel;
     private javax.swing.JLabel ownerSignatureHexLabel;
     private java.awt.TextField ownerSignatureHexTextField;
-    private javax.swing.JLabel paymentAmountLabel;
-    private java.awt.TextField paymentAmountTextField;
     private javax.swing.JLabel redeemScriptLabel;
     private java.awt.TextField redeemScriptTextField;
-    private javax.swing.JButton sendPaymentButton;
     private javax.swing.JButton signContractButton;
-    private javax.swing.JLabel transactionIdOfPaymentSentToOwnerAddressLabel;
-    private java.awt.TextField transactionIdOfPaymentSentToOwnerAddressTextField;
     private javax.swing.JLabel walletAddressLabel;
     private java.awt.TextField walletAddressTextField;
-    private javax.swing.JLabel walletOwnerAddressLabel;
-    private java.awt.TextField walletOwnerAddressTextField;
     private javax.swing.JLabel walletPrivateKeyLabel;
     private java.awt.TextField walletPrivateKeyTextField;
     private javax.swing.JLabel walletPublicKeyLabel;

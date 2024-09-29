@@ -56,6 +56,8 @@ public class VerifyContractSignaturesPanel extends javax.swing.JPanel {
         buyerWalletPublicKeyTextField = new java.awt.TextField();
         onwerWalletPublicKeyTextField = new java.awt.TextField();
 
+        setBackground(new java.awt.Color(247, 247, 247));
+
         verifyContractSignaturesLabel.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         verifyContractSignaturesLabel.setText("Verify Contract Signatures");
 
@@ -63,35 +65,35 @@ public class VerifyContractSignaturesPanel extends javax.swing.JPanel {
 
         confirmationsLabel.setText("Confirmations:");
 
-        confirmationsTextField.setBackground(new java.awt.Color(242, 242, 242));
+        confirmationsTextField.setBackground(new java.awt.Color(248, 248, 248));
         confirmationsTextField.setEditable(false);
 
         confirmationBlockNumberLabel.setText("Confirmation Block Number:");
 
-        confirmationBlockNumberTextField.setBackground(new java.awt.Color(242, 242, 242));
+        confirmationBlockNumberTextField.setBackground(new java.awt.Color(248, 248, 248));
         confirmationBlockNumberTextField.setEditable(false);
 
         recipientAddressLabel.setText("Recipient Address:");
 
         blockHashLabel.setText("Block Hash:");
 
-        recipientAddressTextField.setBackground(new java.awt.Color(242, 242, 242));
+        recipientAddressTextField.setBackground(new java.awt.Color(248, 248, 248));
 
-        blockHashTextField.setBackground(new java.awt.Color(242, 242, 242));
+        blockHashTextField.setBackground(new java.awt.Color(248, 248, 248));
         blockHashTextField.setEditable(false);
 
         amountSentLabel.setText("Amount Sent:");
 
-        paymentConfirmationMessageTextField.setBackground(new java.awt.Color(242, 242, 242));
+        paymentConfirmationMessageTextField.setBackground(new java.awt.Color(248, 248, 248));
         paymentConfirmationMessageTextField.setFont(new java.awt.Font("Dialog", 1, 15)); // NOI18N
 
-        amountSentTextField.setBackground(new java.awt.Color(242, 242, 242));
+        amountSentTextField.setBackground(new java.awt.Color(248, 248, 248));
 
         txIdOfSignedContractSentToRegistryAddressLabel.setText("Transaction ID of Signed Contract Sent to Registry Office Address:");
 
         timeStampLabel.setText("Timestamp:");
 
-        timeStampTextField.setBackground(new java.awt.Color(242, 242, 242));
+        timeStampTextField.setBackground(new java.awt.Color(248, 248, 248));
         timeStampTextField.setEditable(false);
 
         verifyPaymentButton.setText("Verify");
@@ -107,7 +109,7 @@ public class VerifyContractSignaturesPanel extends javax.swing.JPanel {
 
         ownerBuyerSignatureHexLabel.setText("Owner and Buyer Signature Hex:");
 
-        ownerBuyerSignatureHexTextField.setBackground(new java.awt.Color(242, 242, 242));
+        ownerBuyerSignatureHexTextField.setBackground(new java.awt.Color(248, 248, 248));
         ownerBuyerSignatureHexTextField.setEditable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

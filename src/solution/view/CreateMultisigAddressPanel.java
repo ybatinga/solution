@@ -75,6 +75,8 @@ public class CreateMultisigAddressPanel extends javax.swing.JPanel {
         multisigAddressTextField = new java.awt.TextField();
         redeemScriptTextField = new java.awt.TextField();
 
+        setBackground(new java.awt.Color(247, 247, 247));
+
         createMultisigAddressLabel.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         createMultisigAddressLabel.setText("Create Multisig");
 
@@ -89,20 +91,20 @@ public class CreateMultisigAddressPanel extends javax.swing.JPanel {
             }
         });
 
-        buyerWalletPublicKeyTextField.setBackground(new java.awt.Color(242, 242, 242));
+        buyerWalletPublicKeyTextField.setBackground(new java.awt.Color(248, 248, 248));
         buyerWalletPublicKeyTextField.setEditable(false);
 
-        ownerWalletPublicKeyTextField.setBackground(new java.awt.Color(242, 242, 242));
+        ownerWalletPublicKeyTextField.setBackground(new java.awt.Color(248, 248, 248));
         ownerWalletPublicKeyTextField.setEditable(false);
 
         multisigAddressLabel.setText("Multisig Address:");
 
         redeemScriptLabel.setText("Redeem Script:");
 
-        multisigAddressTextField.setBackground(new java.awt.Color(242, 242, 242));
+        multisigAddressTextField.setBackground(new java.awt.Color(248, 248, 248));
         multisigAddressTextField.setEditable(false);
 
-        redeemScriptTextField.setBackground(new java.awt.Color(242, 242, 242));
+        redeemScriptTextField.setBackground(new java.awt.Color(248, 248, 248));
         redeemScriptTextField.setEditable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

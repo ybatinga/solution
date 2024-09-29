@@ -102,7 +102,7 @@
                   <Component id="ownerBuyerSignatureHexLabel" min="-2" max="-2" attributes="0"/>
                   <Component id="onwerBuyerSignatureHexTextField" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="36" max="32767" attributes="0"/>
+              <EmptySpace pref="38" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -163,8 +163,9 @@
     <Component class="java.awt.TextField" name="redeemScriptTextField">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+          <Color blue="f8" green="f8" red="f8" type="rgb"/>
         </Property>
+        <Property name="editable" type="boolean" value="false"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="ownerSignatureHexLabel">
@@ -198,9 +199,6 @@
           <Color blue="f8" green="f8" red="f8" type="rgb"/>
         </Property>
         <Property name="editable" type="boolean" value="false"/>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Dialog" size="14" style="0"/>
-        </Property>
       </Properties>
     </Component>
   </SubComponents>

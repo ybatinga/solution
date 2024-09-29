@@ -18,7 +18,7 @@ public class WalletOwnerPanelView extends javax.swing.JPanel {
     /**
      * Creates new form WalletBuyerPanelView
      */
-    public WalletOwnerPanelView() {
+    public WalletOwnerPanelView(String redeemScript) {
         initComponents();
                 
         getAddressInfoModel = RegistryServiceControl.getAddressInfo(StringsService.PLATFORM.getWALLET_NAME_OWNER(), StringsService.PLATFORM.getWALLET_ADDRESS_OWNER());
@@ -31,6 +31,8 @@ public class WalletOwnerPanelView extends javax.swing.JPanel {
         if(privateKey != null){
             walletPrivateKeyTextField.setText(privateKey);
         }
+        
+        redeemScriptTextField.setText(redeemScript);
     }
     
     /**
@@ -82,7 +84,7 @@ public class WalletOwnerPanelView extends javax.swing.JPanel {
 
         redeemScriptLabel.setText("Redeem Script:");
 
-        redeemScriptTextField.setBackground(new java.awt.Color(255, 255, 255));
+        redeemScriptTextField.setBackground(new java.awt.Color(248, 248, 248));
         redeemScriptTextField.setEditable(false);
 
         multisigRawTransactionHexLabel.setText("Multisig Raw Transaction Hex:");
@@ -97,7 +99,6 @@ public class WalletOwnerPanelView extends javax.swing.JPanel {
         ownerSignatureHexLabel.setText("Owner Signature Hex:");
 
         multisigRawTransactionHexTextField.setBackground(new java.awt.Color(255, 255, 255));
-        multisigRawTransactionHexTextField.setEditable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

@@ -5,6 +5,7 @@
 package solution.view;
 
 import solution.control.RegistryServiceControl;
+import solution.model.GetAddressInfoModel;
 import solution.model.GetBlockModel;
 import solution.model.GetRawTransactionModel;
 import solution.service.StringsService;
@@ -20,6 +21,12 @@ public class VerifyContractSignaturesPanel extends javax.swing.JPanel {
      */
     public VerifyContractSignaturesPanel() {
         initComponents();
+        GetAddressInfoModel getBuyerAddressInfoModel = RegistryServiceControl.getAddressInfo(StringsService.PLATFORM.getWALLET_NAME_BUYER(), StringsService.PLATFORM.getWALLET_ADDRESS_BUYER());
+        String buyerWalletPublicKey = getBuyerAddressInfoModel.getResult().getPubkey();
+        GetAddressInfoModel getOwnerAddressInfoModel = RegistryServiceControl.getAddressInfo(StringsService.PLATFORM.getWALLET_NAME_OWNER(), StringsService.PLATFORM.getWALLET_ADDRESS_OWNER());
+        String ownerWalletPublicKey = getOwnerAddressInfoModel.getResult().getPubkey();
+        buyerWalletPublicKeyTextField.setText(buyerWalletPublicKey);
+        onwerWalletPublicKeyTextField.setText(ownerWalletPublicKey);
     }
 
     /**
@@ -111,6 +118,12 @@ public class VerifyContractSignaturesPanel extends javax.swing.JPanel {
 
         ownerBuyerSignatureHexTextField.setBackground(new java.awt.Color(248, 248, 248));
         ownerBuyerSignatureHexTextField.setEditable(false);
+
+        buyerWalletPublicKeyTextField.setBackground(new java.awt.Color(248, 248, 248));
+        buyerWalletPublicKeyTextField.setEditable(false);
+
+        onwerWalletPublicKeyTextField.setBackground(new java.awt.Color(248, 248, 248));
+        onwerWalletPublicKeyTextField.setEditable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

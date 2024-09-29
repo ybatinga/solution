@@ -51,6 +51,7 @@ import solution.service.StringsService;
 public class TabbedPaneView extends JPanel {
 
     private String multisigAddress;
+    private String redeemScript;
     private RegisterNewPropertyPanelView registerNewPropertyPanelView;
     private RegisterContractPanelView registerContractPanelView;
 
@@ -203,6 +204,8 @@ public class TabbedPaneView extends JPanel {
 //        panel.setLayout(new GridLayout(1, 1));
         panel.add(filler);
         multisigAddress = panel.getCreateMultisigModel().getAddress();
+        redeemScript = panel.getCreateMultisigModel().getRedeemScript();
+        
         JScrollPane scroller = new JScrollPane(panel);
         return scroller;
     }
@@ -218,7 +221,7 @@ public class TabbedPaneView extends JPanel {
     }
 
     protected JComponent buyerWalletPanel(String text) {
-        WalletBuyerPanelView panel = new WalletBuyerPanelView();
+        WalletBuyerPanelView panel = new WalletBuyerPanelView(redeemScript);
         JLabel filler = new JLabel(text);
 //        filler.setHorizontalAlignment(JLabel.CENTER);
 //        panel.setLayout(new GridLayout(1, 1));
@@ -228,7 +231,7 @@ public class TabbedPaneView extends JPanel {
     }
 
     protected JComponent ownerWalletPanel(String text) {
-        WalletOwnerPanelView panel = new WalletOwnerPanelView();
+        WalletOwnerPanelView panel = new WalletOwnerPanelView(redeemScript);
         JLabel filler = new JLabel(text);
 //        filler.setHorizontalAlignment(JLabel.CENTER);
 //        panel.setLayout(new GridLayout(1, 1));

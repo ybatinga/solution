@@ -16,17 +16,13 @@ import solution.service.StringsService;
 public class WalletBuyerPanelView extends javax.swing.JPanel {
     
     private GetAddressInfoModel getAddressInfoModel;
-    private String walletOwnerAddress;
     
     /**
      * Creates new form WalletBuyerPanelView
      */
-    public WalletBuyerPanelView() {
+    public WalletBuyerPanelView(String redeemScript) {
         initComponents();
-        walletOwnerAddress = StringsService.PLATFORM.getWALLET_ADDRESS_OWNER();
-//        transactionIdOfPaymentSentToOwnerAddressTextField.setVisible(false);
-//        paymentRawTransactionHexTextField.setVisible(false);
-        
+
         getAddressInfoModel = RegistryServiceControl.getAddressInfo(StringsService.PLATFORM.getWALLET_NAME_BUYER(), StringsService.PLATFORM.getWALLET_ADDRESS_BUYER());
         if(getAddressInfoModel != null){
             walletAddressTextField.setText(getAddressInfoModel.getResult().getAddress());
@@ -38,6 +34,7 @@ public class WalletBuyerPanelView extends javax.swing.JPanel {
             walletPrivateKeyTextField.setText(privateKey);
         }
         
+        redeemScriptTextField.setText(redeemScript);
     }
     
     /**
@@ -87,7 +84,8 @@ public class WalletBuyerPanelView extends javax.swing.JPanel {
 
         redeemScriptLabel.setText("Redeem Script:");
 
-        redeemScriptTextField.setBackground(new java.awt.Color(255, 255, 255));
+        redeemScriptTextField.setBackground(new java.awt.Color(248, 248, 248));
+        redeemScriptTextField.setEditable(false);
 
         ownerSignatureHexLabel.setText("Owner Signature Hex:");
 
@@ -104,7 +102,6 @@ public class WalletBuyerPanelView extends javax.swing.JPanel {
 
         onwerBuyerSignatureHexTextField.setBackground(new java.awt.Color(248, 248, 248));
         onwerBuyerSignatureHexTextField.setEditable(false);
-        onwerBuyerSignatureHexTextField.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -172,7 +169,7 @@ public class WalletBuyerPanelView extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ownerBuyerSignatureHexLabel)
                     .addComponent(onwerBuyerSignatureHexTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -224,7 +221,4 @@ public class WalletBuyerPanelView extends javax.swing.JPanel {
     private java.awt.TextField walletPublicKeyTextField;
     // End of variables declaration//GEN-END:variables
 
-//    public GetAddressInfoModel getGetAddressInfoModel() {
-//        return getAddressInfoModel;
-//    }
 }

@@ -15,7 +15,7 @@ import solution.service.StringsService;
  */
 public class SendContractToMultisigPanelView extends javax.swing.JPanel {
     private String multisigAddress;
-    private OnSendContractToMultisigTextFieldInteraction onSendContractToMultisigTextFieldInteraction;
+//    private OnSendContractToMultisigTextFieldInteraction onSendContractToMultisigTextFieldInteraction;
     /**
      * Creates new form SendContractToMultisigPanelView
      */
@@ -135,11 +135,11 @@ public class SendContractToMultisigPanelView extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_sendContractToMultisigButtonActionPerformed
 
-    public interface OnSendContractToMultisigTextFieldInteraction {
-        // TODO: Update argument type and name
-        public String onSendContractToMultisigInteraction();
-
-    }
+//    public interface OnSendContractToMultisigTextFieldInteraction {
+//        // TODO: Update argument type and name
+//        public String onSendContractToMultisigInteraction();
+//
+//    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel contractTransactionIdLabel;

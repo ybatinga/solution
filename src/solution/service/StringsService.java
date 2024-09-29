@@ -129,23 +129,23 @@ public class StringsService {
     }
     
     public static class Desktop{
-        private static final String WALLET_ADDRESS_BUYER = "midFKFXtqdSN8pRTvdqyqRwx9DUnRgezR5";
-        private static final String WALLET_ADDRESS_OWNER = "mq2ujk9tzw2EVr111GMxb2uekHqhwG5LiF";   
-        private static final String WALLET_NAME_BUYER = "legacy_buyer";
-        private static final String WALLET_NAME_OWNER = "legacy_owner";
-        private static final String NATIONAL_ID_BUYER = "450.593.347-48";
-        private static final String NATIONAL_ID_OWNER = "345.564.675-69";
-        private static final String NAME_BUYER = "Joao Silva";
-        private static final String NAME_OWNER = "Maria Oliveira";
+//        private static final String WALLET_ADDRESS_BUYER = "midFKFXtqdSN8pRTvdqyqRwx9DUnRgezR5";
+//        private static final String WALLET_ADDRESS_OWNER = "mq2ujk9tzw2EVr111GMxb2uekHqhwG5LiF";   
+//        private static final String WALLET_NAME_BUYER = "legacy_buyer";
+//        private static final String WALLET_NAME_OWNER = "legacy_owner";
+//        private static final String NATIONAL_ID_BUYER = "450.593.347-48";
+//        private static final String NATIONAL_ID_OWNER = "345.564.675-69";
+//        private static final String NAME_BUYER = "Joao Silva";
+//        private static final String NAME_OWNER = "Maria Oliveira";
         
-//        private static final String WALLET_ADDRESS_OWNER = "midFKFXtqdSN8pRTvdqyqRwx9DUnRgezR5";
-//        private static final String WALLET_ADDRESS_BUYER = "mq2ujk9tzw2EVr111GMxb2uekHqhwG5LiF";   
-//        public static String WALLET_NAME_OWNER = "legacy_buyer";
-//        public static String WALLET_NAME_BUYER = "legacy_owner";
-//        private static final String NATIONAL_ID_OWNER = "450.593.347-48";
-//        private static final String NATIONAL_ID_BUYER = "345.564.675-69";
-//        private static final String NAME_OWNER = "Joao Silva";
-//        private static final String NAME_BUYER = "Maria Oliveira";
+        private static final String WALLET_ADDRESS_OWNER = "midFKFXtqdSN8pRTvdqyqRwx9DUnRgezR5";
+        private static final String WALLET_ADDRESS_BUYER = "mq2ujk9tzw2EVr111GMxb2uekHqhwG5LiF";   
+        public static String WALLET_NAME_OWNER = "legacy_buyer";
+        public static String WALLET_NAME_BUYER = "legacy_owner";
+        private static final String NATIONAL_ID_OWNER = "450.593.347-48";
+        private static final String NATIONAL_ID_BUYER = "345.564.675-69";
+        private static final String NAME_OWNER = "Joao Silva";
+        private static final String NAME_BUYER = "Maria Oliveira";
         
         
         private static final String ORD_REG_ADDRESS = "bcrt1p28pn5ahzz5tl802ymgq6mug84l5fjj2hplmuamfgwlgu6h2ah0ssrr4j9z";

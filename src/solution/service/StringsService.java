@@ -10,13 +10,13 @@ package solution.service;
  */
 public class StringsService {
     
-    public static Desktop PLATFORM;
+    public static Laptop PLATFORM;
     
     public static String real_estate_registry_system = "Real Estate Registry System";    
     
     // tab names
-    public static String buyer_wallet = "Buyer Wallet";
-    public static String owner_wallet = "Owner Wallet";
+    public static String buyer_signer_wallet = "Buyer Signer";
+    public static String owner_signer_wallet = "Owner Signer";
     public static String register_new_property = "Register New Property";
     public static String register_contract = "Register Contract";      
     public static String create_multisig_address = "Create Multisig";

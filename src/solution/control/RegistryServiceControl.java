@@ -46,7 +46,7 @@ import solution.service.StringsService;
  * @author ssd
  */
 public class RegistryServiceControl {
-    
+    // registers a new property or contract on Bitcoin Blockchain through Ordinals software
     public static OrdInscribedDataModel registerNewPropertyOrContract(String filePath) throws IOException, InterruptedException {
 
         Process process = Runtime.getRuntime().exec("/usr/local/apps/" + StringsService.ord_version + "/ord --chain regtest --bitcoin-rpc-password rpc --bitcoin-rpc-username rpc wallet inscribe --fee-rate 2 --file " + filePath); // for Linux
@@ -83,7 +83,7 @@ public class RegistryServiceControl {
             
         return ordInscribedDataModel;
     }
-    
+        // registers a property transfer on Bitcoin Blockchain through Ordinals software
     public static OrdInscribedDataModel registerPropertyTransfer(String filePath, String parentInscriptionID) throws IOException, InterruptedException {
 
         Process process = Runtime.getRuntime().exec("/usr/local/apps/" + StringsService.ord_version + "/ord --chain regtest --bitcoin-rpc-password rpc --bitcoin-rpc-username rpc wallet inscribe --fee-rate 2 --parent " + parentInscriptionID + " --file " + filePath); // for Linux

@@ -86,13 +86,13 @@ public class TabbedPaneView extends JPanel {
         tabbedPane.setMnemonicAt(4, KeyEvent.VK_E);
 
         JComponent panel6 = ownerWalletPanel("Panel #6");
-        tabbedPane.addTab("6. " + StringsService.owner_wallet, null, panel6,
-                StringsService.owner_wallet);
+        tabbedPane.addTab("6. " + StringsService.owner_signer_wallet, null, panel6,
+                StringsService.owner_signer_wallet);
         tabbedPane.setMnemonicAt(5, KeyEvent.VK_F);
 
         JComponent panel7 = buyerWalletPanel("Panel #7");
-        tabbedPane.addTab("7. " + StringsService.buyer_wallet, null, panel7,
-                StringsService.buyer_wallet);
+        tabbedPane.addTab("7. " + StringsService.buyer_signer_wallet, null, panel7,
+                StringsService.buyer_signer_wallet);
         tabbedPane.setMnemonicAt(6, KeyEvent.VK_G);
 
         JComponent panel8 = sendSignedContractToRegistryAddressPanel("Panel #8");

@@ -184,7 +184,7 @@ public class RegisterNewPropertyPanelView extends javax.swing.JPanel implements 
 //            if (returnVal == JFileChooser.APPROVE_OPTION) {
 //                File file = fc.getSelectedFile();
                 try {
-                    
+                    // create object RegistryModel with data to register a new property
                     RegistryModel registryModel = new RegistryModel();
                     registryModel.setDocumentType(StringsService.document_type_new_property_registry);
                     RegistryModel.PropertyInfo propertyInfo = registryModel.new PropertyInfo();
@@ -200,14 +200,16 @@ public class RegisterNewPropertyPanelView extends javax.swing.JPanel implements 
                     
                     // save registryModel object in JSON file format
                     RegistryServiceControl.writeInscriptionDataToDisk(registryModel, StringsService.file_name_new_property);
-                    
+                    // register object RegistryModel on Bitcoin Blockchain through Ordinals software
                     OrdInscribedDataModel ordInscribedDataModel  = RegistryServiceControl.registerNewPropertyOrContract(StringsService.file_path + StringsService.file_name_new_property);
 //                    propertyTransactionIdTextField.setText(ordInscribedDataModel.getReveal());
+                    
+                    // get Property Inscrition ID and inform inform it on the Application interface
                     if (!ordInscribedDataModel.getInscriptions().isEmpty()){
                         propertyInscriptionId = ordInscribedDataModel.getInscriptions().get(0).getID();
                         propertyInscriptionIdTextField.setText(propertyInscriptionId);
                         
-                        // generate 6 new blocks after creating new inscription
+                        // generate 6 new blocks after creating new inscription 
                     List<String> blockHashList = RegistryServiceControl.generateToAddress(6);
                     }
                     

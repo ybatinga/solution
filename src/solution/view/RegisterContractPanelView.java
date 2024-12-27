@@ -310,7 +310,8 @@ public class RegisterContractPanelView extends javax.swing.JPanel {
 //                    File file = fc.getSelectedFile();
 //                    Reader reader = new FileReader(file);
 //                    RegistryModel registryModel = new Gson().fromJson(reader, RegistryModel.class);
-
+            
+            // create object RegistryModel with data to register a contract
             RegistryModel.PropertyInfo propertyInfo = registryModel.new PropertyInfo();
             registryModel.setPropertyInfo(propertyInfo);
 
@@ -330,11 +331,14 @@ public class RegisterContractPanelView extends javax.swing.JPanel {
                         
             // save registryModel object in JSON file format
             RegistryServiceControl.writeInscriptionDataToDisk(registryModel, StringsService.file_name_property_sale_contract);
-            
+            // register object RegistryModel on Bitcoin Blockchain through Ordinals software
             OrdInscribedDataModel ordInscribedDataModel = RegistryServiceControl.registerNewPropertyOrContract(StringsService.file_path + StringsService.file_name_property_sale_contract); //This is where a real application would open the file.
 //                    log.append("Opening: " + file.getName() + "." + newline);
+
+            // get Contract TransactionID and inform inform it on the Application interface
             contractTransactionIdTextField.setText(ordInscribedDataModel.getReveal());
             if (!ordInscribedDataModel.getInscriptions().isEmpty()) {
+                // get Contract Incription ID and inform inform it on the Application interface
                 contractInscriptionIdTextField.setText(ordInscribedDataModel.getInscriptions().get(0).getID());
 
                 // generate 6 new blocks after creating new inscription

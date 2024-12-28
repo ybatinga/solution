@@ -173,7 +173,7 @@ public class RegistryServiceControl {
     
     public static CreateMultisigModel createMultisigAddress(String buyerPublicKey, String ownerPublicKey)  {
         try {
-            
+            // create Multisig address that requires two signatures out of 2 (public) keys
             Process process = Runtime.getRuntime().exec(new String[]{"/usr/local/apps/bitcoin-25.0/bin/bitcoin-cli", "createmultisig", "2", "[\""+ buyerPublicKey+ "\", \""+ ownerPublicKey+ "\"]"}); // for Linux
 
             process.waitFor();
@@ -197,6 +197,7 @@ public class RegistryServiceControl {
         }
     }
     
+    // get raw transaction info 
     public static GetRawTransactionModel getRawTransaction(String txId) {
         
         try {

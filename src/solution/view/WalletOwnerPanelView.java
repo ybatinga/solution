@@ -20,18 +20,21 @@ public class WalletOwnerPanelView extends javax.swing.JPanel {
      */
     public WalletOwnerPanelView(String redeemScript) {
         initComponents();
-                
+        // get address info
         getAddressInfoModel = RegistryServiceControl.getAddressInfo(StringsService.PLATFORM.getWALLET_NAME_OWNER(), StringsService.PLATFORM.getWALLET_ADDRESS_OWNER());
         if(getAddressInfoModel != null){
+            // get wallet address and inform on UI
             walletAddressTextField.setText(getAddressInfoModel.getResult().getAddress());
+            // get public key and inform on UI
             walletPublicKeyTextField.setText(getAddressInfoModel.getResult().getPubkey());
         }
-        
+        // get private key 
         String privateKey = RegistryServiceControl.dumpPrivKey(StringsService.PLATFORM.getWALLET_NAME_OWNER(), StringsService.PLATFORM.getWALLET_ADDRESS_OWNER());
         if(privateKey != null){
+            // inform private key on UI
             walletPrivateKeyTextField.setText(privateKey);
         }
-        
+        // inform redeem script on UI
         redeemScriptTextField.setText(redeemScript);
     }
     

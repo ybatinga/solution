@@ -23,29 +23,37 @@ public class CreateMultisigAddressPanel extends javax.swing.JPanel {
      */
     public CreateMultisigAddressPanel() {
         initComponents();
+        // get Buyer's address info
         GetAddressInfoModel getBuyerAddressInfoModel = RegistryServiceControl.getAddressInfo(StringsService.PLATFORM.getWALLET_NAME_BUYER(), StringsService.PLATFORM.getWALLET_ADDRESS_BUYER());
+        // get Buyer's Public Key
         walletBuyerPublicKey = getBuyerAddressInfoModel.getResult().getPubkey();
+        // get Owner's address info
         GetAddressInfoModel getOwnerAddressInfoModel = RegistryServiceControl.getAddressInfo(StringsService.PLATFORM.getWALLET_NAME_OWNER(), StringsService.PLATFORM.getWALLET_ADDRESS_OWNER());
+        // get Owner's Public Key
         walletOwnerPublicKey = getOwnerAddressInfoModel.getResult().getPubkey();
+        
+        // disable UI's field 
         buyerWalletPublicKeyTextField.setVisible(false);
         multisigAddressTextField.setVisible(false);   
         ownerWalletPublicKeyTextField.setVisible(false);
         redeemScriptTextField.setVisible(false);
         
+        // enable UI's fields if not null
         if(walletBuyerPublicKey != null){
             buyerWalletPublicKeyTextField.setVisible(true);
             buyerWalletPublicKeyTextField.setText(walletBuyerPublicKey);
-        }
-        
+        }        
         if(walletOwnerPublicKey != null){
             ownerWalletPublicKeyTextField.setVisible(true);
             ownerWalletPublicKeyTextField.setText(walletOwnerPublicKey);
         }
         
+        // create Multisig address
         createMultisigModel = RegistryServiceControl.createMultisigAddress(
                 walletBuyerPublicKey, 
                 walletOwnerPublicKey);
         
+        // if the Multisig address is created, enable UI's fields
         if(createMultisigModel != null){
             multisigAddressTextField.setVisible(true);   
             redeemScriptTextField.setVisible(true);
@@ -161,7 +169,7 @@ public class CreateMultisigAddressPanel extends javax.swing.JPanel {
                 .addContainerGap(96, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    // create Multisg address on Button pressed
     private void createMultisigAddressButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createMultisigAddressButtonActionPerformed
         createMultisigModel = RegistryServiceControl.createMultisigAddress(
                 walletBuyerPublicKey, 

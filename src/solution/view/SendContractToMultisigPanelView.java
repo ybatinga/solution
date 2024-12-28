@@ -21,7 +21,9 @@ public class SendContractToMultisigPanelView extends javax.swing.JPanel {
      */
     public SendContractToMultisigPanelView(String multisigAddress, RegisterContractPanelView registerContractPanelView) {
         initComponents();
+        // get Multisig address 
         this.multisigAddress = multisigAddress;
+        // set Multisig address on UI
         multisigAddressTextField.setText(multisigAddress);
 //        onSendContractToMultisigTextFieldInteraction = (OnSendContractToMultisigTextFieldInteraction) registerContractPanelView;
     }
@@ -113,20 +115,28 @@ public class SendContractToMultisigPanelView extends javax.swing.JPanel {
                 .addContainerGap(123, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    // on Butter pressed, send contract to Multisig
     private void sendContractToMultisigButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendContractToMultisigButtonActionPerformed
                     
         long vout = -1;
+        // get raw transaction info from Contract Transaction ID that the Registry Office created through Ordinals
         GetRawTransactionModel getRawTransactionModel = RegistryServiceControl.getRawTransaction(contractTransactionIdTextField.getText());
+        // get vout from Contract Transaction ID that the Registry Office created through Ordinals if there is no error
         if(getRawTransactionModel.getError() == null){
             vout = getRawTransactionModel.getResult().getVout().get(0).getN();
         }
+        // get rawTxHex from created raw transaction
         String rawTxHex = RegistryServiceControl.createRawTransaction(contractTransactionIdTextField.getText(), vout, multisigAddress, 0.00009000);
         String txIdOfSentContractToMultisig = RegistryServiceControl.decodeRawTransaction(rawTxHex);// not used; just for reference
+        // get signed transaction from Registry Office
         String signedTx = RegistryServiceControl.signRawTransactionWithWallet(rawTxHex, StringsService.wallet_name_ord);
+        // get transaction ID of contract sent to Multisig 
         String txIdOfSentContract = RegistryServiceControl.sendRawTransaction(signedTx, StringsService.wallet_name_ord);
+        
+        // show error message on UI if sending contract to Multisig failed
         if (vout == -1){
             txIdOfContractSentToMultisigTextField.setText(StringsService.invalid_contract_transaction_ID);
+        // show transaction ID of contract sent to Multisig on UI
         }else {
             txIdOfContractSentToMultisigTextField.setText(txIdOfSentContract);
             

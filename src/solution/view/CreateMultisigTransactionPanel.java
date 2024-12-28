@@ -95,15 +95,20 @@ public class CreateMultisigTransactionPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void createMultisigTransactionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createMultisigTransactionButtonActionPerformed
+        // get raw transaction info from Transaction Id of Contract Sent to Multisig that was sent by the Registry Office 
         GetRawTransactionModel getRawTransactionModel = RegistryServiceControl.getRawTransaction(transactionIdOfContractSentToMultisigTextField.getText());
         long vout = -1;
+        
+        // get vout from Transaction Id of Contract Sent to Multisig that was sent by the Registry Office if there is no error
         if(getRawTransactionModel.getError() == null){
             vout = getRawTransactionModel.getResult().getVout().get(0).getN();
         }
-        vout = getRawTransactionModel.getResult().getVout().get(0).getN();
+        // get rawTxHex from created raw transaction
         String rawTxHex = RegistryServiceControl.createRawTransaction(transactionIdOfContractSentToMultisigTextField.getText(), vout, StringsService.PLATFORM.getORD_REG_ADDRESS(), 0.00008000);
+        // show error message on UI if creating Multisig transaction failed
         if (vout == -1){
             multisigRawTransactionHexTextField.setText("Invalid raw transaction ID");
+        // show Multisig raw Transaction Hex on UI    
         }else{
 //            multisigTransactionHexTextArea.setWrapStyleWord(true);
             multisigRawTransactionHexTextField.setText(rawTxHex);

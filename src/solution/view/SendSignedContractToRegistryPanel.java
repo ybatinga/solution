@@ -95,8 +95,9 @@ public class SendSignedContractToRegistryPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void sendSignedContractButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendSignedContractButtonActionPerformed
-        
+        // inform Owner and Buyer Signature Hex on UI
         String ownerBuyerSignatureHex = ownerBuyerSignatureHexTextField.getText();
+        // send raw transaction 
         String txIdOfSignedContractSentToRegistryAddress = RegistryServiceControl.sendRawTransaction(ownerBuyerSignatureHex, StringsService.wallet_name_ord_notary);
         txIdOfSignedContractSentToRegistryAddressTextField.setText(txIdOfSignedContractSentToRegistryAddress);
         

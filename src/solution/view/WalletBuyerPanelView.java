@@ -22,18 +22,21 @@ public class WalletBuyerPanelView extends javax.swing.JPanel {
      */
     public WalletBuyerPanelView(String redeemScript) {
         initComponents();
-
+        // get address info
         getAddressInfoModel = RegistryServiceControl.getAddressInfo(StringsService.PLATFORM.getWALLET_NAME_BUYER(), StringsService.PLATFORM.getWALLET_ADDRESS_BUYER());
         if(getAddressInfoModel != null){
+            // get wallet address and inform on UI
             walletAddressTextField.setText(getAddressInfoModel.getResult().getAddress());
+            // get public key and inform on UI
             walletPublicKeyTextField.setText(getAddressInfoModel.getResult().getPubkey());
         }
         
         String privateKey = RegistryServiceControl.dumpPrivKey(StringsService.PLATFORM.getWALLET_NAME_BUYER(), StringsService.PLATFORM.getWALLET_ADDRESS_BUYER());
         if(privateKey != null){
+            // inform private key on UI
             walletPrivateKeyTextField.setText(privateKey);
         }
-        
+        // inform redeem script on UI
         redeemScriptTextField.setText(redeemScript);
     }
     
@@ -189,7 +192,7 @@ public class WalletBuyerPanelView extends javax.swing.JPanel {
         String walletBuyerPrivateKeyText = walletPrivateKeyTextField.getText();
         // Multisig Redeem Script 
         String redeemScript = redeemScriptTextField.getText();
-        
+        // sign raw transaction with Property Buyer's private key
         String buyerSignatureHex = RegistryServiceControl.signRawTransactionWithkKey(
                 multisigRawTransactionHex, // Multisig Raw Transaction Hex
                 walletBuyerPrivateKeyText, // Buyer wallet private key
@@ -199,6 +202,7 @@ public class WalletBuyerPanelView extends javax.swing.JPanel {
                 redeemScript // Multisig Redeem Script 
         ); 
         
+        // inform Owner and Buyer Signature Hex on UI
         onwerBuyerSignatureHexTextField.setText(buyerSignatureHex);
     }//GEN-LAST:event_signContractButtonActionPerformed
 

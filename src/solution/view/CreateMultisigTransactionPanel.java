@@ -103,7 +103,7 @@ public class CreateMultisigTransactionPanel extends javax.swing.JPanel {
         if(getRawTransactionModel.getError() == null){
             vout = getRawTransactionModel.getResult().getVout().get(0).getN();
         }
-        // get rawTxHex from created raw transaction
+        // create raw transaction and get rawTxHex from created raw transaction
         String rawTxHex = RegistryServiceControl.createRawTransaction(transactionIdOfContractSentToMultisigTextField.getText(), vout, StringsService.PLATFORM.getORD_REG_ADDRESS(), 0.00008000);
         // show error message on UI if creating Multisig transaction failed
         if (vout == -1){

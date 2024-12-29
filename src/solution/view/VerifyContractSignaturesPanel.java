@@ -21,11 +21,17 @@ public class VerifyContractSignaturesPanel extends javax.swing.JPanel {
      */
     public VerifyContractSignaturesPanel() {
         initComponents();
+        // get Buyer wallet address info
         GetAddressInfoModel getBuyerAddressInfoModel = RegistryServiceControl.getAddressInfo(StringsService.PLATFORM.getWALLET_NAME_BUYER(), StringsService.PLATFORM.getWALLET_ADDRESS_BUYER());
+        // get Buyer's wallet address public key 
         String buyerWalletPublicKey = getBuyerAddressInfoModel.getResult().getPubkey();
+        // get Owner wallet address info
         GetAddressInfoModel getOwnerAddressInfoModel = RegistryServiceControl.getAddressInfo(StringsService.PLATFORM.getWALLET_NAME_OWNER(), StringsService.PLATFORM.getWALLET_ADDRESS_OWNER());
+        // get Owner's wallet address public key 
         String ownerWalletPublicKey = getOwnerAddressInfoModel.getResult().getPubkey();
+        // show Buyer's wallet address public key on UI
         buyerWalletPublicKeyTextField.setText(buyerWalletPublicKey);
+        // show Owner's wallet address public key on UI
         onwerWalletPublicKeyTextField.setText(ownerWalletPublicKey);
     }
 
@@ -239,36 +245,52 @@ public class VerifyContractSignaturesPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void verifyPaymentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verifyPaymentButtonActionPerformed
-
-        String paymentTransactionId = txIdOfSignedContractSentToRegistryAddressTextField.getText();
+        // get Transaction ID of Signed Contract Sent to Registry Office Address from UI
+        String txIdOfSignedContractSentToRegistry = txIdOfSignedContractSentToRegistryAddressTextField.getText();
+        // get Buyer Wallet Public Key from UI
         String buyerWalletPublicKey = buyerWalletPublicKeyTextField.getText();
+        // get Owner Wallet Public Key from UI
         String ownerWalletPublicKey = onwerWalletPublicKeyTextField.getText();
-                
-        GetBlockModel getBlockModel = RegistryServiceControl.searchTransactionInBlocks(paymentTransactionId);
+        // block info where the Transaction ID of Signed Contract Sent to Registry Office Address is registered
+        GetBlockModel getBlockModel = RegistryServiceControl.searchTransactionInBlocks(txIdOfSignedContractSentToRegistry);
+        // check if the Transaction ID of Signed Contract Sent to Registry Office Address is registered on a block
         if (getBlockModel != null){
-            GetRawTransactionModel getRawTransactionModel = RegistryServiceControl.getRawTransaction(paymentTransactionId);
+            // get raw transaction info of the Transaction ID of Signed Contract Sent to Registry Office Address 
+            GetRawTransactionModel getRawTransactionModel = RegistryServiceControl.getRawTransaction(txIdOfSignedContractSentToRegistry);
+            // get signature hex of the Transaction ID of Signed Contract Sent to Registry Office Address 
             String ownerBuyerSignatureHex = getRawTransactionModel.getResult().getHex();
+            // show signature hex on UI
             ownerBuyerSignatureHexTextField.setText(ownerBuyerSignatureHex);
-            
+            // verify if Owner and Buyer have signed the contract by verifying if the Buyer Wallet Public Key and the Owner Wallet Public Key 
+            // are contained in the signature hex of the Transaction ID of Signed Contract Sent to Registry Office Address
             if (ownerBuyerSignatureHex.contains(ownerWalletPublicKey) && ownerBuyerSignatureHex.contains(buyerWalletPublicKey)){
-            
+                // show on UI current number of node confirmations the Bitcoin network
                 confirmationsTextField.setText(Long.toString(getBlockModel.getConfirmations()));
+                // show on UI the block numner that the Transaction ID of Signed Contract Sent to Registry Office Address is registered               
                 confirmationBlockNumberTextField.setText(Long.toString(getBlockModel.getHeight()));
+                // show on UI the block hash that the Transaction ID of Signed Contract Sent to Registry Office Address is registered               
                 blockHashTextField.setText(getBlockModel.getHash());
+                // get the timestamp of the Transaction ID of Signed Contract Sent to Registry Office Address
                 String time = RegistryServiceControl.convertUnixEpochToUtcTime(getBlockModel.getTime());
+                // show on UI the timestamp of the Transaction ID of Signed Contract Sent to Registry Office Address
                 timeStampTextField.setText(time);
-    
+                // get the recient address, which is the REGISTRY OFFICE'S address
                 String recipientAddress = getRawTransactionModel.getResult().getVout().get(0).getScriptPubKey().getAddress();
+                // show on UI the recient address, which is the REGISTRY OFFICE'S address
                 recipientAddressTextField.setText(recipientAddress);
+                // get the amount sent 
                 String amountSent = Double.toString(getRawTransactionModel.getResult().getVout().get(0).getValue());
+                // show on UI the amount sent
                 amountSentTextField.setText(amountSent);
-
+                // show on UI message "Contract Signing Confirmed"
                 paymentConfirmationMessageTextField.setText(StringsService.payment_contract_signing_confirmed);
 
             }else{
+                // show on UI message "Contract Signing NOT Confirmed"
                 paymentConfirmationMessageTextField.setText(StringsService.payment_contract_signing_not_confirmed);
             }
         }else{
+            // show on UI message "Contract Signing NOT Confirmed"
             paymentConfirmationMessageTextField.setText(StringsService.payment_contract_signing_not_confirmed);
         }
     }//GEN-LAST:event_verifyPaymentButtonActionPerformed

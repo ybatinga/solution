@@ -48,7 +48,7 @@ import solution.service.StringsService;
 public class RegistryServiceControl {
     // registers a new property or contract on Bitcoin Blockchain through Ordinals software
     public static OrdInscribedDataModel registerNewPropertyOrContract(String filePath) throws IOException, InterruptedException {
-
+        
         Process process = Runtime.getRuntime().exec("/usr/local/apps/" + StringsService.ord_version + "/ord --chain regtest --bitcoin-rpc-password rpc --bitcoin-rpc-username rpc wallet inscribe --fee-rate 2 --file " + filePath); // for Linux
             //Process process = Runtime.getRuntime().exec("cmd /c dir"); //for Windows
 
@@ -223,7 +223,7 @@ public class RegistryServiceControl {
         }
     }
 
-
+    // create a raw transaction that sends 
     public static String createRawTransaction(String txId, long vout, String recipientAddress, double amount) {
         try {
             //                        "[{\"txid\":\"" + txId + "\",\"vout\":0}]", "[{\"" + recipientAddress + "\":0.01}]"};

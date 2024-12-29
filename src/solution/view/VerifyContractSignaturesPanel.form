@@ -56,7 +56,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="confirmationBlockNumberLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="confirmationBlockNumberTextField" min="-2" pref="59" max="-2" attributes="0"/>
+                              <Component id="confirmationBlockNumberTextField" min="-2" pref="65" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="blockHashLabel" min="-2" max="-2" attributes="0"/>
@@ -71,7 +71,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="amountSentLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="amountSentTextField" min="-2" pref="39" max="-2" attributes="0"/>
+                              <Component id="amountSentTextField" min="-2" pref="65" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="ownerWalletPublicKeyLabel" min="-2" max="-2" attributes="0"/>
@@ -244,6 +244,9 @@
           <Color blue="f8" green="f8" red="f8" type="rgb"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="amountSentTextFieldActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="txIdOfSignedContractSentToRegistryAddressLabel">
       <Properties>

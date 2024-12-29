@@ -4,6 +4,10 @@
  */
 package solution.view;
 
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.util.Locale;
 import solution.control.RegistryServiceControl;
 import solution.model.GetAddressInfoModel;
 import solution.model.GetBlockModel;
@@ -101,6 +105,11 @@ public class VerifyContractSignaturesPanel extends javax.swing.JPanel {
         paymentConfirmationMessageTextField.setFont(new java.awt.Font("Dialog", 1, 15)); // NOI18N
 
         amountSentTextField.setBackground(new java.awt.Color(248, 248, 248));
+        amountSentTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                amountSentTextFieldActionPerformed(evt);
+            }
+        });
 
         txIdOfSignedContractSentToRegistryAddressLabel.setText("Transaction ID of Signed Contract Sent to Registry Office Address:");
 
@@ -165,7 +174,7 @@ public class VerifyContractSignaturesPanel extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(confirmationBlockNumberLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(confirmationBlockNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(confirmationBlockNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(blockHashLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -177,7 +186,7 @@ public class VerifyContractSignaturesPanel extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(amountSentLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(amountSentTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(amountSentTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(ownerWalletPublicKeyLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -280,8 +289,18 @@ public class VerifyContractSignaturesPanel extends javax.swing.JPanel {
                 recipientAddressTextField.setText(recipientAddress);
                 // get the amount sent 
                 String amountSent = Double.toString(getRawTransactionModel.getResult().getVout().get(0).getValue());
+                
+                // convert notation value to double with decimal ponctuation
+                double val = new BigDecimal(amountSent).doubleValue();
+                amountSent = String.valueOf(val);
+                double d = Double.parseDouble(amountSent);
+                NumberFormat formatter = NumberFormat.getInstance(Locale.US);
+                formatter = new DecimalFormat("###.#####");
+                String formated = formatter.format(d);
+                String amountSentDecimalValueWithPunkt = formated.replace(",", ".");
+                
                 // show on UI the amount sent
-                amountSentTextField.setText(amountSent);
+                amountSentTextField.setText(amountSentDecimalValueWithPunkt);
                 // show on UI message "Contract Signing Confirmed"
                 paymentConfirmationMessageTextField.setText(StringsService.payment_contract_signing_confirmed);
 
@@ -294,6 +313,10 @@ public class VerifyContractSignaturesPanel extends javax.swing.JPanel {
             paymentConfirmationMessageTextField.setText(StringsService.payment_contract_signing_not_confirmed);
         }
     }//GEN-LAST:event_verifyPaymentButtonActionPerformed
+
+    private void amountSentTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_amountSentTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_amountSentTextFieldActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

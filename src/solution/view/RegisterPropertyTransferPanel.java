@@ -170,54 +170,88 @@ public class RegisterPropertyTransferPanel extends javax.swing.JPanel {
 //            String contractInscriptionId = "727051d80563b94b597c1868161c5b92c7239df285d67453baf728c13eca477ei0";
 //            String txIdOfSignedContractSentToRegistryAddress = "f207abf115f076d73d0fb9146f83ca1aff960e2b1b95d922bed8921c972d4f20";
 //            String paymentTransactionId = "6619fd683cc2ddb186d356058657a1f786e795aaf97b58547a9490ddd4a1697a";
-
+            
+            // get property inscription id from UI
             String propertyInscriptionId = propertyInscriptionIdTextField.getText();
+            // get contract inscription id from UI
             String contractInscriptionId = contractInscriptionIdTextField.getText();
+            // get Transaction ID of Signed Contract Sent to Registry Office Address from UI
             String txIdOfSignedContractSentToRegistryAddress = txIdOfSignedContractSentToRegistryAddressTextField.getText();
+            // get Transaction ID of Payment Sent to Owner Address from UI
             String paymentTransactionId = transactionIdOfPaymentSentToOwnerAddressTextField.getText();
 
-//save data from contract inscription into property transfer inscription
+            //save data from contract inscription into property transfer inscription
+            // get inscription model from contract inscription id
             InscriptionModel inscriptionModel = RegistryServiceControl.getInscriptionData(contractInscriptionId);
-            RegistryModel registryModel = RegistryServiceControl.getInscriptionContent(contractInscriptionId);
+            // get registry model from contract inscription id
+            RegistryModel registryModel = RegistryServiceControl.getInscriptionContent(contractInscriptionId);            
+            // update registry status to "Property Transfer Registry"
             registryModel.setDocumentType(StringsService.document_type_property_transfer_registry);
+            // save contract inscription number into registryModel 
             registryModel.getSaleAgreementContractInfo().setInscriptionNumber(new BigDecimal(inscriptionModel.getNumber()));
+            // save contract inscription id into registryModel
             registryModel.getSaleAgreementContractInfo().setInscriptionID(inscriptionModel.getID());
+            // save registry office address 
             registryModel.getSaleAgreementContractInfo().setInscriptionAddress(inscriptionModel.getAddress());
+            // save block height genesis
             registryModel.getSaleAgreementContractInfo().setBlockHeightGenesis(new BigDecimal(inscriptionModel.getHeight()));
+            // save timestamp of public deed of sale and purchase registration
             String timestamp = RegistryServiceControl.convertUnixEpochToUtcTime(inscriptionModel.getTimestamp());
             registryModel.getSaleAgreementContractInfo().setTimestamp(timestamp);
 
-// get Signed Contract Sent to Registry Office info
+            // get Signed Contract Sent to Registry Office info
             GetBlockModel getBlockModel1 = RegistryServiceControl.searchTransactionInBlocks(txIdOfSignedContractSentToRegistryAddress);
+            // create an TransactionInfo object for signedContractSentToRegistryOfficeInfo
             RegistryModel.TransactionInfo signedContractSentToRegistryOfficeInfo = registryModel.new TransactionInfo();
+            // set TransactionInfo signedContractSentToRegistryOfficeInfo on getSaleAgreementContractInfo().setSignedContractSentToRegistryOfficeInfo
             registryModel.getSaleAgreementContractInfo().setSignedContractSentToRegistryOfficeInfo(signedContractSentToRegistryOfficeInfo);
+            // save transaction id of txIdOfSignedContractSentToRegistryAddress
             registryModel.getSaleAgreementContractInfo().getSignedContractSentToRegistryOfficeInfo().setTransactionID(txIdOfSignedContractSentToRegistryAddress);
+            // save block hash 
             registryModel.getSaleAgreementContractInfo().getSignedContractSentToRegistryOfficeInfo().setBlockHash(getBlockModel1.getHash());
+            // save block height
             registryModel.getSaleAgreementContractInfo().getSignedContractSentToRegistryOfficeInfo().setBlockHeight(getBlockModel1.getHeight());
+            // save timestamp
             String time1 = RegistryServiceControl.convertUnixEpochToUtcTime(getBlockModel1.getTime());
             registryModel.getSaleAgreementContractInfo().getSignedContractSentToRegistryOfficeInfo().setTimestamp(time1);
+            // get raw transaction model for txIdOfSignedContractSentToRegistryAddress
             GetRawTransactionModel getRawTransactionModel1 = RegistryServiceControl.getRawTransaction(txIdOfSignedContractSentToRegistryAddress);
+            // get registry office address 
             String recipientAddress1 = getRawTransactionModel1.getResult().getVout().get(0).getScriptPubKey().getAddress();
+            // save registry office address 
             registryModel.getSaleAgreementContractInfo().getSignedContractSentToRegistryOfficeInfo().setRecipientAddress(recipientAddress1);
 //            double amountSent1 = getRawTransactionModel1.getResult().getVout().get(0).getValue();
 //            registryModel.getSaleAgreementContractInfo().getSignedContractSentToRegistryOfficeInfo().setPaymentAmount(new BigDecimal(amountSent1));
 
-// get payment info
+            // get payment info
             GetBlockModel getBlockModel = RegistryServiceControl.searchTransactionInBlocks(paymentTransactionId);
+            // create an TransactionInfo object for paymentInfo
             RegistryModel.TransactionInfo paymentInfo = registryModel.new TransactionInfo();
+            // set TransactionInfo paymentInfo on getSaleAgreementContractInfo()
             registryModel.setPaymentInfo(paymentInfo);
+            // save transaction id of paymentTransactionId
             registryModel.getPaymentInfo().setTransactionID(paymentTransactionId);
+            // save block hash
             registryModel.getPaymentInfo().setBlockHash(getBlockModel.getHash());
+            // save block height
             registryModel.getPaymentInfo().setBlockHeight(getBlockModel.getHeight());
+            // save timestamp
             String time = RegistryServiceControl.convertUnixEpochToUtcTime(getBlockModel.getTime());
             registryModel.getPaymentInfo().setTimestamp(time);
+            // get raw transaction model for paymentTransactionId
             GetRawTransactionModel getRawTransactionModel = RegistryServiceControl.getRawTransaction(paymentTransactionId);
+            // get property owner address
             String recipientAddress = getRawTransactionModel.getResult().getVout().get(0).getScriptPubKey().getAddress();
+            // save property owner address
             registryModel.getPaymentInfo().setRecipientAddress(recipientAddress);
+            // get amount sent to property owner address
             double amountSent = getRawTransactionModel.getResult().getVout().get(0).getValue();
+            // save amount sent to property owner address
             registryModel.getPaymentInfo().setPaymentAmount(new BigDecimal(amountSent));
 
+            // save registryModel object in JSON file format
             RegistryServiceControl.writeInscriptionDataToDisk(registryModel, StringsService.file_name_property_transfer);
+            // register object RegistryModel on Bitcoin Blockchain through Ordinals software
             OrdInscribedDataModel ordInscribedDataModel = RegistryServiceControl.registerPropertyTransfer(StringsService.file_path + StringsService.file_name_property_transfer, propertyInscriptionId);
             
             //set transaction ID of Property Transfer
@@ -225,9 +259,7 @@ public class RegisterPropertyTransferPanel extends javax.swing.JPanel {
             //set inscription ID of Property Transfer
             transferPropertyInscriptionIdTextField.setText(ordInscribedDataModel.getInscriptions().get(0).getID());
             
-            String contractTransactionIdTextField = ordInscribedDataModel.getReveal();
             if (!ordInscribedDataModel.getInscriptions().isEmpty()) {
-                String contractInscriptionIdTextField = ordInscribedDataModel.getInscriptions().get(0).getID();
 
                 // generate 6 new blocks after creating new inscription
                 List<String> blockHashList = RegistryServiceControl.generateToAddress(6);

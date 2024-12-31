@@ -4,7 +4,6 @@
  */
 package solution.view;
 
-import java.util.List;
 import solution.control.RegistryServiceControl;
 import solution.model.GetBlockModel;
 import solution.model.GetRawTransactionModel;
@@ -185,24 +184,36 @@ public class VerifyPaymentPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void verifyPaymentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verifyPaymentButtonActionPerformed
-                
+        // get payment transaction id informed on UI        
         String paymentTransactionId = paymentTransactionIdTextField.getText();
+        // get block info that contains the payment transaction id 
         GetBlockModel getBlockModel = RegistryServiceControl.searchTransactionInBlocks(paymentTransactionId);
+        // verify if the payment transaction id is contained on any block 
         if (getBlockModel != null){
+            // show on UI message: "Payment Confirmed"
             paymentConfirmationMessageTextField.setText(StringsService.payment_confirmed);
+            // show on UI current number of node confirmations the Bitcoin network
             confirmationsTextField.setText(Long.toString(getBlockModel.getConfirmations()));
+            // show on UI the block numner that the Transaction ID of Signed Contract Sent to Registry Office Address is registered               
             confirmationBlockNumberTextField.setText(Long.toString(getBlockModel.getHeight()));
+            // show on UI the block hash that the Transaction ID of Signed Contract Sent to Registry Office Address is registered               
             blockHashTextField.setText(getBlockModel.getHash());
+            // show on UI the timestamp of the Transaction ID of Signed Contract Sent to Registry Office Address
             String time = RegistryServiceControl.convertUnixEpochToUtcTime(getBlockModel.getTime());
             timeStampTextField.setText(time);
-            
+            // get raw transaction info of the Payment Transaction ID 
             GetRawTransactionModel getRawTransactionModel = RegistryServiceControl.getRawTransaction(paymentTransactionId);
+            // get recipient address (Property Owner address)
             String recipientAddress = getRawTransactionModel.getResult().getVout().get(0).getScriptPubKey().getAddress();
+            // show on UI recipient address (Property Owner address)
             recipientAddressTextField.setText(recipientAddress);
+            
+            // show on UI the amount sent s
             String amountSent = Double.toString(getRawTransactionModel.getResult().getVout().get(0).getValue());
             amountSentTextField.setText(amountSent);
                         
         }else{
+            // show on UI message: "Payment has NOT been confirmed on the blockchain"
             paymentConfirmationMessageTextField.setText(StringsService.payment_has_not_been_confirmed_on_the_blockchain);
         }
     }//GEN-LAST:event_verifyPaymentButtonActionPerformed

@@ -23,9 +23,14 @@ public class SendPaymentFromBuyerToOwnerPanel extends javax.swing.JPanel {
      */
     public SendPaymentFromBuyerToOwnerPanel() {
         initComponents();
+        
+        // get payment amount that is already set/fixed as a public static double variable
         double paymentAmount = StringsService.paymentAmount;
+        // inform payment amount on UI
         paymentAmountTextField.setText(Double.toString(paymentAmount)); 
+        // get the Owner wallet address that is already set/fixed as a public static String variable
         walletOwnerAddress = StringsService.PLATFORM.getWALLET_ADDRESS_OWNER();
+        // inform the Owner wallet address on UI
         walletOwnerAddressTextField.setText(walletOwnerAddress);
     }
 
@@ -122,10 +127,11 @@ public class SendPaymentFromBuyerToOwnerPanel extends javax.swing.JPanel {
     private void sendPaymentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendPaymentButtonActionPerformed
         
         String paymentRawTransactionHex = null;
-        
+        // get Buyer wallet address that is already set/fixed as a public static String variable
         String walletBuyerAddress = StringsService.PLATFORM.getWALLET_ADDRESS_BUYER();
 
         BigDecimal minimumAmount = new BigDecimal(paymentAmountTextField.getText()).setScale(5, RoundingMode.DOWN);
+        // add transaction fee of 0.00001 or 1000 sats
         BigDecimal minimumAmountConsideringTxFee = minimumAmount.add(new BigDecimal(Double.toString(StringsService.transactionFee)).setScale(5, RoundingMode.DOWN));
         
         List<ListUnspentModel>  listUnspentModelList = RegistryServiceControl.listUnspent(
@@ -137,24 +143,34 @@ public class SendPaymentFromBuyerToOwnerPanel extends javax.swing.JPanel {
             transactionIdOfPaymentSentToOwnerAddressTextField.setText("It cannot create paymento transaction because listUnspent list is empty");
             //            paymentRawTransactionHexTextField.setVisible(true);
         } else {
-
+            // get the first unspent tx id 
+            // (it works for the solution concept because it assumes that the Buyer wallet always has enough funds,
+            // but it would have to be fixed for a business application)    
             String txId = listUnspentModelList.get(0).getTxid();
+            // get the first index number for a transaction output
             long vout = listUnspentModelList.get(0).getVout();
-            BigDecimal amount = BigDecimal.valueOf(listUnspentModelList.get(0).getAmount());
-            BigDecimal paymentAmount = BigDecimal.valueOf(Double.parseDouble(paymentAmountTextField.getText()));
-            BigDecimal change = amount.subtract(paymentAmount);
-            BigDecimal changeMinusTxFee = change.subtract(new BigDecimal(StringsService.transactionFee).setScale(5, RoundingMode.DOWN)); // sutract 0.00001 BTC so that this to 0.00001 BTC amount is used to pay for transaction fee
-
-            paymentRawTransactionHex = RegistryServiceControl.createRawTransactionWithChangeAddress(
-                txId,
-                vout,
-                walletOwnerAddress,
-                Double.parseDouble(paymentAmount.toString()),
-                walletBuyerAddress,
-                Double.parseDouble(changeMinusTxFee.toString()));
             
+            // get amount available on the first unspent tx id
+            BigDecimal amount = BigDecimal.valueOf(listUnspentModelList.get(0).getAmount());
+            
+            // set payment amount informed on UI
+            BigDecimal paymentAmount = BigDecimal.valueOf(Double.parseDouble(paymentAmountTextField.getText()));
+            
+            // get change value by subtracting amount available on the first unspent tx id from the payment amount
+            BigDecimal change = amount.subtract(paymentAmount);
+            // sutract 0.00001 BTC from the change value, so that the 0.00001 BTC amount is used to pay for transaction fee
+            BigDecimal changeMinusTxFee = change.subtract(new BigDecimal(StringsService.transactionFee).setScale(5, RoundingMode.DOWN)); 
+            // create raw transaction with a set change value of 0.00001 BTC 
+            paymentRawTransactionHex = RegistryServiceControl.createRawTransactionWithChangeAddress(
+                txId, // transaction id
+                vout, // positon of the transaction output 
+                walletOwnerAddress, // Owner wallet address
+                Double.parseDouble(paymentAmount.toString()), // payment amount
+                walletBuyerAddress, // Buyer wallet address
+                Double.parseDouble(changeMinusTxFee.toString())); // change minus transaction fee
+            // sign raw transaction with Buyer wallet
             String signedTx = RegistryServiceControl.signRawTransactionWithWallet(paymentRawTransactionHex, StringsService.PLATFORM.getWALLET_NAME_BUYER());
-
+            // get transaction id of payment sent from Buyer to Owner
             String txIdOfPaymentSentToOwnerAddress = RegistryServiceControl.sendRawTransaction(
                 signedTx,
                 StringsService.PLATFORM.getWALLET_NAME_BUYER());

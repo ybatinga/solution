@@ -68,11 +68,11 @@ public class WalletBuyerPanelView extends javax.swing.JPanel {
         setBackground(new java.awt.Color(247, 247, 247));
 
         buyerWalletLabel.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
-        buyerWalletLabel.setText("Buyer Wallet");
+        buyerWalletLabel.setText("Buyer Signer");
 
-        walletAddressLabel.setText("Address:");
+        walletAddressLabel.setText("Buyer Wallet Address:");
 
-        walletPublicKeyLabel.setText("Public Key:");
+        walletPublicKeyLabel.setText("Buyer Wallet Address Public Key:");
 
         walletPublicKeyTextField.setBackground(new java.awt.Color(248, 248, 248));
         walletPublicKeyTextField.setEditable(false);

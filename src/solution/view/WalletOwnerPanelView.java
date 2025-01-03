@@ -67,17 +67,17 @@ public class WalletOwnerPanelView extends javax.swing.JPanel {
         buyerWalletLabel.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         buyerWalletLabel.setText("Owner Wallet");
 
-        walletAddressLabel.setText("Address:");
+        walletAddressLabel.setText("Owner Wallet Address:");
 
         walletAddressTextField.setBackground(new java.awt.Color(248, 248, 248));
         walletAddressTextField.setEditable(false);
 
-        walletPublicKeyLabel.setText("Public Key:");
+        walletPublicKeyLabel.setText("Owner Wallet Address Public Key:");
 
         walletPublicKeyTextField.setBackground(new java.awt.Color(248, 248, 248));
         walletPublicKeyTextField.setEditable(false);
 
-        walletPrivateKeyLabel.setText("Private Key:");
+        walletPrivateKeyLabel.setText("Owner Wallet Address Private Key:");
 
         walletPrivateKeyTextField.setBackground(new java.awt.Color(248, 248, 248));
         walletPrivateKeyTextField.setEditable(false);
@@ -92,7 +92,7 @@ public class WalletOwnerPanelView extends javax.swing.JPanel {
 
         multisigRawTransactionHexLabel.setText("Multisig Raw Transaction Hex:");
 
-        signContractButton.setText("Sign");
+        signContractButton.setText("Sign Contract ");
         signContractButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 signContractButtonActionPerformed(evt);

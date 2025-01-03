@@ -113,17 +113,17 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Liberation Sans" size="18" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Buyer Wallet"/>
+        <Property name="text" type="java.lang.String" value="Buyer Signer"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="walletAddressLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Address:"/>
+        <Property name="text" type="java.lang.String" value="Buyer Wallet Address:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="walletPublicKeyLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Public Key:"/>
+        <Property name="text" type="java.lang.String" value="Buyer Wallet Address Public Key:"/>
       </Properties>
     </Component>
     <Component class="java.awt.TextField" name="walletPublicKeyTextField">

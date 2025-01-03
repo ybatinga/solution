@@ -278,12 +278,12 @@
     </Component>
     <Component class="javax.swing.JLabel" name="buyerWalletPublicKeyLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Buyer Wallet Public Key:"/>
+        <Property name="text" type="java.lang.String" value="Buyer Wallet Address Public Key:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="ownerWalletPublicKeyLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Owner Wallet Public Key:"/>
+        <Property name="text" type="java.lang.String" value="Owner Wallet Address Public Key:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="ownerBuyerSignatureHexLabel">

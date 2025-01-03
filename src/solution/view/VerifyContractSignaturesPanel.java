@@ -125,9 +125,9 @@ public class VerifyContractSignaturesPanel extends javax.swing.JPanel {
             }
         });
 
-        buyerWalletPublicKeyLabel.setText("Buyer Wallet Public Key:");
+        buyerWalletPublicKeyLabel.setText("Buyer Wallet Address Public Key:");
 
-        ownerWalletPublicKeyLabel.setText("Owner Wallet Public Key:");
+        ownerWalletPublicKeyLabel.setText("Owner Wallet Address Public Key:");
 
         ownerBuyerSignatureHexLabel.setText("Owner and Buyer Signature Hex:");
 

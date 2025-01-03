@@ -116,7 +116,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="walletAddressLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Address:"/>
+        <Property name="text" type="java.lang.String" value="Owner Wallet Address:"/>
       </Properties>
     </Component>
     <Component class="java.awt.TextField" name="walletAddressTextField">
@@ -129,7 +129,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="walletPublicKeyLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Public Key:"/>
+        <Property name="text" type="java.lang.String" value="Owner Wallet Address Public Key:"/>
       </Properties>
     </Component>
     <Component class="java.awt.TextField" name="walletPublicKeyTextField">
@@ -142,7 +142,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="walletPrivateKeyLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Private Key:"/>
+        <Property name="text" type="java.lang.String" value="Owner Wallet Address Private Key:"/>
       </Properties>
     </Component>
     <Component class="java.awt.TextField" name="walletPrivateKeyTextField">
@@ -181,7 +181,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="signContractButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Sign"/>
+        <Property name="text" type="java.lang.String" value="Sign Contract "/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="signContractButtonActionPerformed"/>

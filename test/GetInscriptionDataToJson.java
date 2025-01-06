@@ -6,8 +6,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import solution.model.InscriptionModel;
-import solution.model.RegModel;
 import solution.model.RegistryModel;
 
 /*

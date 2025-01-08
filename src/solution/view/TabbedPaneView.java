@@ -35,7 +35,6 @@ package solution.view;
  *   images/middle.gif.
  */
 import javax.swing.JTabbedPane;
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JFrame;
@@ -210,16 +209,6 @@ public class TabbedPaneView extends JPanel {
         return scroller;
     }
 
-    protected JComponent makeTextPanel(String text) {
-        JPanel panel = new JPanel(false);
-        JLabel filler = new JLabel(text);
-        filler.setHorizontalAlignment(JLabel.CENTER);
-        panel.setLayout(new GridLayout(1, 1));
-        panel.add(filler);
-        JScrollPane scroller = new JScrollPane(panel);
-        return scroller;
-    }
-
     protected JComponent buyerWalletPanel(String text) {
         WalletBuyerPanelView panel = new WalletBuyerPanelView(redeemScript);
         JLabel filler = new JLabel(text);
@@ -258,19 +247,6 @@ public class TabbedPaneView extends JPanel {
         registerContractPanelView.add(filler);
         JScrollPane scroller = new JScrollPane(registerContractPanelView);
         return scroller;
-    }
-
-    /**
-     * Returns an ImageIcon, or null if the path was invalid.
-     */
-    protected static ImageIcon createImageIcon(String path) {
-        java.net.URL imgURL = TabbedPaneView.class.getResource(path);
-        if (imgURL != null) {
-            return new ImageIcon(imgURL);
-        } else {
-            System.err.println("Couldn't find file: " + path);
-            return null;
-        }
     }
 
     /**

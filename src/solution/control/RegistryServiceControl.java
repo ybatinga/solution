@@ -385,7 +385,7 @@ public class RegistryServiceControl {
         }
     }
     
-        public static String printErrorInOutput(Process process) {
+    public static String printErrorInOutput(Process process) {
             String concatErrorMsg = new String();
             try {
                 //            print error as output

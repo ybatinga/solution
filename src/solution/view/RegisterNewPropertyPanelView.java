@@ -4,14 +4,10 @@
  */
 package solution.view;
 
-import java.awt.Insets;
-import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JFileChooser;
-import javax.swing.JTextArea;
 import solution.control.RegistryServiceControl;
 import solution.model.OrdInscribedDataModel;
 import solution.model.RegistryModel;
@@ -25,7 +21,7 @@ public class RegisterNewPropertyPanelView extends javax.swing.JPanel implements 
 //    static private final String newline = "\n";
 //    JFileChooser fc;
 //    JTextArea log;
-    String propertyInscriptionId;
+    private String propertyInscriptionId;
     
     /**
      * Creates new form RegisterProperty
@@ -78,25 +74,8 @@ public class RegisterNewPropertyPanelView extends javax.swing.JPanel implements 
 
         propertyInscriptionIdTextField.setBackground(new java.awt.Color(242, 242, 242));
         propertyInscriptionIdTextField.setEditable(false);
-        propertyInscriptionIdTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                propertyInscriptionIdTextFieldActionPerformed(evt);
-            }
-        });
 
         propertyAddressLabel.setText("Property Address:");
-
-        propertyAddressTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                propertyAddressTextFieldActionPerformed(evt);
-            }
-        });
-
-        propertyAreaSquareMetersTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                propertyAreaSquareMetersTextFieldActionPerformed(evt);
-            }
-        });
 
         propertyAreaSquareMetersLabel.setText("Property Area in Square Meters:");
 
@@ -228,18 +207,6 @@ public class RegisterNewPropertyPanelView extends javax.swing.JPanel implements 
         //Handle save button action.
 //        }
     }//GEN-LAST:event_registerNewPropertyButtonActionPerformed
-
-    private void propertyInscriptionIdTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_propertyInscriptionIdTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_propertyInscriptionIdTextFieldActionPerformed
-
-    private void propertyAddressTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_propertyAddressTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_propertyAddressTextFieldActionPerformed
-
-    private void propertyAreaSquareMetersTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_propertyAreaSquareMetersTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_propertyAreaSquareMetersTextFieldActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

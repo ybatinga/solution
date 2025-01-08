@@ -123,9 +123,6 @@
         </Property>
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="propertyInscriptionIdTextFieldActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="propertyAddressLabel">
       <Properties>
@@ -133,14 +130,8 @@
       </Properties>
     </Component>
     <Component class="java.awt.TextField" name="propertyAddressTextField">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="propertyAddressTextFieldActionPerformed"/>
-      </Events>
     </Component>
     <Component class="java.awt.TextField" name="propertyAreaSquareMetersTextField">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="propertyAreaSquareMetersTextFieldActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="propertyAreaSquareMetersLabel">
       <Properties>

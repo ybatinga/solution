@@ -13,12 +13,12 @@ import solution.service.StringsService;
  *
  * @author ssd
  */
-public class VerifyPaymentPanel extends javax.swing.JPanel {
+public class VerifyPaymentPanelView extends javax.swing.JPanel {
 
     /**
      * Creates new form VerifyTransactions
      */
-    public VerifyPaymentPanel() {
+    public VerifyPaymentPanelView() {
         initComponents();
     }
 

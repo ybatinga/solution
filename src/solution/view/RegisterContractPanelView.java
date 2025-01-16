@@ -29,7 +29,7 @@ public class RegisterContractPanelView extends javax.swing.JPanel {
 //    private JFileChooser fc;
 //    private JTextArea log;
     private OnRegisterContractTextFieldInteraction onRegisterContractTextFieldInteraction;
-    RegistryModel registryModel;
+    private RegistryModel registryModel;
 
     /**
      * Creates new form RegisterProperty
@@ -315,7 +315,7 @@ public class RegisterContractPanelView extends javax.swing.JPanel {
             RegistryModel.PropertyInfo propertyInfo = registryModel.new PropertyInfo();
             registryModel.setPropertyInfo(propertyInfo);
 
-            //save data from property inscription into the contract
+            //retrieve and save data from property inscription into the contract
             InscriptionModel inscriptionModel = RegistryServiceControl.getInscriptionData(propertyInscriptionIdTextField.getText());
             registryModel.getPropertyInfo().setInscriptionNumber(new BigDecimal(inscriptionModel.getNumber()));
             registryModel.getPropertyInfo().setInscriptionID(inscriptionModel.getID());

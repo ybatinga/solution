@@ -12,12 +12,12 @@ import solution.service.StringsService;
  *
  * @author ssd
  */
-public class CreateMultisigTransactionPanel extends javax.swing.JPanel {
+public class CreateMultisigTransactionPanelView extends javax.swing.JPanel {
 
     /**
      * Creates new form CreateMultisigTransactionPanel
      */
-    public CreateMultisigTransactionPanel() {
+    public CreateMultisigTransactionPanelView() {
         initComponents();
     }
 

@@ -4,15 +4,12 @@
  */
 package solution.view;
 
-import java.awt.Insets;
-import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
-import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import solution.control.RegistryServiceControl;
 import solution.model.GetBlockModel;
@@ -26,7 +23,7 @@ import solution.service.StringsService;
  *
  * @author ssd
  */
-public class RegisterPropertyTransferPanel extends javax.swing.JPanel {
+public class RegisterPropertyTransferPanelView extends javax.swing.JPanel {
 
     static private final String newline = "\n";
     private JFileChooser fc;
@@ -35,7 +32,7 @@ public class RegisterPropertyTransferPanel extends javax.swing.JPanel {
     /**
      * Creates new form TransferPropertyPanel
      */
-    public RegisterPropertyTransferPanel() {
+    public RegisterPropertyTransferPanelView() {
         initComponents();
     }
 
@@ -265,9 +262,9 @@ public class RegisterPropertyTransferPanel extends javax.swing.JPanel {
                 List<String> blockHashList = RegistryServiceControl.generateToAddress(6);
             }
         } catch (IOException ex) {
-            Logger.getLogger(RegisterPropertyTransferPanel.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RegisterPropertyTransferPanelView.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InterruptedException ex) {
-            Logger.getLogger(RegisterPropertyTransferPanel.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RegisterPropertyTransferPanelView.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_registerButtonActionPerformed
 

@@ -13,7 +13,7 @@ import solution.service.StringsService;
  *
  * @author ssd
  */
-public class CreateMultisigAddressPanel extends javax.swing.JPanel {
+public class CreateMultisigAddressPanelView extends javax.swing.JPanel {
 
     private String walletBuyerPublicKey;
     private String walletOwnerPublicKey;
@@ -21,7 +21,7 @@ public class CreateMultisigAddressPanel extends javax.swing.JPanel {
     /**
      * Creates new form CreateMultisigAddressPanel
      */
-    public CreateMultisigAddressPanel() {
+    public CreateMultisigAddressPanelView() {
         initComponents();
         // get Buyer's address info
         GetAddressInfoModel getBuyerAddressInfoModel = RegistryServiceControl.getAddressInfo(StringsService.PLATFORM.getWALLET_NAME_BUYER(), StringsService.PLATFORM.getWALLET_ADDRESS_BUYER());

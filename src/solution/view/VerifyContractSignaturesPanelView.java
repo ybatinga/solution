@@ -18,12 +18,12 @@ import solution.service.StringsService;
  *
  * @author ssd
  */
-public class VerifyContractSignaturesPanel extends javax.swing.JPanel {
+public class VerifyContractSignaturesPanelView extends javax.swing.JPanel {
 
     /**
      * Creates new form VerifyContractSignaturesPanel
      */
-    public VerifyContractSignaturesPanel() {
+    public VerifyContractSignaturesPanelView() {
         initComponents();
         // get Buyer wallet address info
         GetAddressInfoModel getBuyerAddressInfoModel = RegistryServiceControl.getAddressInfo(StringsService.PLATFORM.getWALLET_NAME_BUYER(), StringsService.PLATFORM.getWALLET_ADDRESS_BUYER());

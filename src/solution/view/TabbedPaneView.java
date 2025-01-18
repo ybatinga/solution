@@ -127,7 +127,7 @@ public class TabbedPaneView extends JPanel {
     }
 
     protected JComponent tranferPropertyToBuyerAddressPanel(String text) {
-        RegisterPropertyTransferPanel panel = new RegisterPropertyTransferPanel();
+        RegisterPropertyTransferPanelView panel = new RegisterPropertyTransferPanelView();
         JLabel filler = new JLabel(text);
 //        filler.setHorizontalAlignment(JLabel.CENTER);
 //        panel.setLayout(new GridLayout(1, 1));
@@ -137,7 +137,7 @@ public class TabbedPaneView extends JPanel {
     }
 
     protected JComponent verifyTransactionsPanel(String text) {
-        VerifyPaymentPanel panel = new VerifyPaymentPanel();
+        VerifyPaymentPanelView panel = new VerifyPaymentPanelView();
         JLabel filler = new JLabel(text);
 //        filler.setHorizontalAlignment(JLabel.CENTER);
 //        panel.setLayout(new GridLayout(1, 1));
@@ -147,7 +147,7 @@ public class TabbedPaneView extends JPanel {
     }
 
     protected JComponent sendPaymentFromBuyerToOwnerPanel(String text) {
-        SendPaymentFromBuyerToOwnerPanel panel = new SendPaymentFromBuyerToOwnerPanel();
+        SendPaymentFromBuyerToOwnerPanelView panel = new SendPaymentFromBuyerToOwnerPanelView();
         JLabel filler = new JLabel(text);
 //        filler.setHorizontalAlignment(JLabel.CENTER);
 //        panel.setLayout(new GridLayout(1, 1));
@@ -157,7 +157,7 @@ public class TabbedPaneView extends JPanel {
     }
 
     protected JComponent verifyContractSignaturesPanel(String text) {
-        VerifyContractSignaturesPanel panel = new VerifyContractSignaturesPanel();
+        VerifyContractSignaturesPanelView panel = new VerifyContractSignaturesPanelView();
         JLabel filler = new JLabel(text);
 //        filler.setHorizontalAlignment(JLabel.CENTER);
 //        panel.setLayout(new GridLayout(1, 1));
@@ -167,7 +167,7 @@ public class TabbedPaneView extends JPanel {
     }
 
     protected JComponent sendSignedContractToRegistryAddressPanel(String text) {
-        SendSignedContractToRegistryPanel panel = new SendSignedContractToRegistryPanel();
+        SendSignedContractToRegistryPanelView panel = new SendSignedContractToRegistryPanelView();
         JLabel filler = new JLabel(text);
 //        filler.setHorizontalAlignment(JLabel.CENTER);
 //        panel.setLayout(new GridLayout(1, 1));
@@ -177,7 +177,7 @@ public class TabbedPaneView extends JPanel {
     }
 
     protected JComponent createMultisigTransactionPanel(String text) {
-        CreateMultisigTransactionPanel panel = new CreateMultisigTransactionPanel();
+        CreateMultisigTransactionPanelView panel = new CreateMultisigTransactionPanelView();
         JLabel filler = new JLabel(text);
 //        filler.setHorizontalAlignment(JLabel.CENTER);
 //        panel.setLayout(new GridLayout(1, 1));
@@ -197,7 +197,7 @@ public class TabbedPaneView extends JPanel {
     }
 
     protected JComponent createMultisigAddressPanel(String text) {
-        CreateMultisigAddressPanel panel = new CreateMultisigAddressPanel();
+        CreateMultisigAddressPanelView panel = new CreateMultisigAddressPanelView();
         JLabel filler = new JLabel(text);
 //        filler.setHorizontalAlignment(JLabel.CENTER);
 //        panel.setLayout(new GridLayout(1, 1));

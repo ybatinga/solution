@@ -16,12 +16,12 @@ import solution.service.StringsService;
  *
  * @author ssd
  */
-public class SendPaymentFromBuyerToOwnerPanel extends javax.swing.JPanel {
+public class SendPaymentFromBuyerToOwnerPanelView extends javax.swing.JPanel {
     private String walletOwnerAddress;
     /**
      * Creates new form sendPaymentFromBuyerToOwnerPanel
      */
-    public SendPaymentFromBuyerToOwnerPanel() {
+    public SendPaymentFromBuyerToOwnerPanelView() {
         initComponents();
         
         // get payment amount that is already set/fixed as a public static double variable

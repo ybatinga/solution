@@ -12,12 +12,12 @@ import solution.service.StringsService;
  *
  * @author ssd
  */
-public class SendSignedContractToRegistryPanel extends javax.swing.JPanel {
+public class SendSignedContractToRegistryPanelView extends javax.swing.JPanel {
 
     /**
      * Creates new form SendContractToRegistryOfficePanel
      */
-    public SendSignedContractToRegistryPanel() {
+    public SendSignedContractToRegistryPanelView() {
         initComponents();
     }
 

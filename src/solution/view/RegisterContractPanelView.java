@@ -38,6 +38,7 @@ public class RegisterContractPanelView extends javax.swing.JPanel {
         initComponents();
         onRegisterContractTextFieldInteraction = (OnRegisterContractTextFieldInteraction) registerNewPropertyPanelView;
         
+        // create object RegistryModel with data to register a contract
         registryModel = new RegistryModel();
         registryModel.setDocumentType(StringsService.document_type_property_sale_agreement_contract);
 //        propertyAddressTextField.setText(registryModelInscriptionContent.getPropertyInfo().getPropertyAddress());
@@ -311,11 +312,11 @@ public class RegisterContractPanelView extends javax.swing.JPanel {
 //                    Reader reader = new FileReader(file);
 //                    RegistryModel registryModel = new Gson().fromJson(reader, RegistryModel.class);
             
-            // create object RegistryModel with data to register a contract
+            // create object RegistryModel.PropertyInfo with data of the Property to be added to RegistryModel object 
             RegistryModel.PropertyInfo propertyInfo = registryModel.new PropertyInfo();
             registryModel.setPropertyInfo(propertyInfo);
 
-            //save data from property inscription into the contract
+            //get and save data from property inscription into the contract
             InscriptionModel inscriptionModel = RegistryServiceControl.getInscriptionData(propertyInscriptionIdTextField.getText());
             registryModel.getPropertyInfo().setInscriptionNumber(new BigDecimal(inscriptionModel.getNumber()));
             registryModel.getPropertyInfo().setInscriptionID(inscriptionModel.getID());

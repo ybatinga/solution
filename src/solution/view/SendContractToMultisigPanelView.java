@@ -127,7 +127,7 @@ public class SendContractToMultisigPanelView extends javax.swing.JPanel {
         }
         // create raw transaction that sends 9000 sats or 0.00009 BTC (and the contract that is registered on the sat at position 0 among the 9000 sasts) to and get rawTxHex from created raw transaction
         String rawTxHex = RegistryServiceControl.createRawTransaction(contractTransactionIdTextField.getText(), vout, multisigAddress, 0.00009000);
-        String txIdOfSentContractToMultisig = RegistryServiceControl.decodeRawTransaction(rawTxHex);// not used; just for reference
+//        String txIdOfSentContractToMultisig = RegistryServiceControl.decodeRawTransaction(rawTxHex);// not used; just for reference
         // get signed transaction from Registry Office
         String signedTx = RegistryServiceControl.signRawTransactionWithWallet(rawTxHex, StringsService.wallet_name_ord);
         // get transaction ID of contract sent to Multisig 

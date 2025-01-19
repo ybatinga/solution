@@ -13,15 +13,14 @@ import solution.service.StringsService;
  *
  * @author ssd
  */
-public class WalletOwnerPanelView extends javax.swing.JPanel {
-    private GetAddressInfoModel getAddressInfoModel;
+public class OwnerSignerPanelView extends javax.swing.JPanel {
     /**
      * Creates new form WalletBuyerPanelView
      */
-    public WalletOwnerPanelView(String redeemScript) {
+    public OwnerSignerPanelView(String redeemScript) {
         initComponents();
         // get address info
-        getAddressInfoModel = RegistryServiceControl.getAddressInfo(StringsService.PLATFORM.getWALLET_NAME_OWNER(), StringsService.PLATFORM.getWALLET_ADDRESS_OWNER());
+        GetAddressInfoModel getAddressInfoModel = RegistryServiceControl.getAddressInfo(StringsService.PLATFORM.getWALLET_NAME_OWNER(), StringsService.PLATFORM.getWALLET_ADDRESS_OWNER());
         if(getAddressInfoModel != null){
             // get wallet address and inform on UI
             walletAddressTextField.setText(getAddressInfoModel.getResult().getAddress());
@@ -65,7 +64,7 @@ public class WalletOwnerPanelView extends javax.swing.JPanel {
         setBackground(new java.awt.Color(247, 247, 247));
 
         buyerWalletLabel.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
-        buyerWalletLabel.setText("Owner Wallet");
+        buyerWalletLabel.setText("Owner Signer");
 
         walletAddressLabel.setText("Owner Wallet Address:");
 

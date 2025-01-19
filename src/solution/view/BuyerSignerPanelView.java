@@ -13,17 +13,15 @@ import solution.service.StringsService;
  *
  * @author ssd
  */
-public class WalletBuyerPanelView extends javax.swing.JPanel {
-    
-    private GetAddressInfoModel getAddressInfoModel;
+public class BuyerSignerPanelView extends javax.swing.JPanel {
     
     /**
      * Creates new form WalletBuyerPanelView
      */
-    public WalletBuyerPanelView(String redeemScript) {
+    public BuyerSignerPanelView(String redeemScript) {
         initComponents();
         // get address info
-        getAddressInfoModel = RegistryServiceControl.getAddressInfo(StringsService.PLATFORM.getWALLET_NAME_BUYER(), StringsService.PLATFORM.getWALLET_ADDRESS_BUYER());
+        GetAddressInfoModel getAddressInfoModel = RegistryServiceControl.getAddressInfo(StringsService.PLATFORM.getWALLET_NAME_BUYER(), StringsService.PLATFORM.getWALLET_ADDRESS_BUYER());
         if(getAddressInfoModel != null){
             // get wallet address and inform on UI
             walletAddressTextField.setText(getAddressInfoModel.getResult().getAddress());

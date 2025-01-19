@@ -210,7 +210,7 @@ public class TabbedPaneView extends JPanel {
     }
 
     protected JComponent buyerWalletPanel(String text) {
-        WalletBuyerPanelView panel = new WalletBuyerPanelView(redeemScript);
+        BuyerSignerPanelView panel = new BuyerSignerPanelView(redeemScript);
         JLabel filler = new JLabel(text);
 //        filler.setHorizontalAlignment(JLabel.CENTER);
 //        panel.setLayout(new GridLayout(1, 1));
@@ -220,7 +220,7 @@ public class TabbedPaneView extends JPanel {
     }
 
     protected JComponent ownerWalletPanel(String text) {
-        WalletOwnerPanelView panel = new WalletOwnerPanelView(redeemScript);
+        OwnerSignerPanelView panel = new OwnerSignerPanelView(redeemScript);
         JLabel filler = new JLabel(text);
 //        filler.setHorizontalAlignment(JLabel.CENTER);
 //        panel.setLayout(new GridLayout(1, 1));

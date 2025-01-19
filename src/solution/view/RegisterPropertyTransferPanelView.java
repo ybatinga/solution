@@ -25,11 +25,7 @@ import solution.service.StringsService;
  */
 public class RegisterPropertyTransferPanelView extends javax.swing.JPanel {
 
-    static private final String newline = "\n";
-    private JFileChooser fc;
-    private JTextArea log;
-
-    /**
+     /**
      * Creates new form TransferPropertyPanel
      */
     public RegisterPropertyTransferPanelView() {

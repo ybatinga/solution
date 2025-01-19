@@ -10,7 +10,7 @@ package solution.service;
  */
 public class StringsService {
     
-    public static Laptop PLATFORM;
+    public static Desktop PLATFORM;
     
     public static String real_estate_registry_system = "Real Estate Registry System";    
     

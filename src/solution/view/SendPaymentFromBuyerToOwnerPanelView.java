@@ -8,7 +8,6 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;
 import solution.control.RegistryServiceControl;
-import solution.model.GetAddressInfoModel;
 import solution.model.ListUnspentModel;
 import solution.service.StringsService;
 

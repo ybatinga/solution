@@ -63,7 +63,7 @@ public class RegisterPropertyTransferPanelView extends javax.swing.JPanel {
         setBackground(new java.awt.Color(247, 247, 247));
 
         transferPropertyLabel.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
-        transferPropertyLabel.setText("Transfer Property");
+        transferPropertyLabel.setText("Register Property Transfer");
 
         transferPropertyInscriptionIdTextField.setBackground(new java.awt.Color(248, 248, 248));
         transferPropertyInscriptionIdTextField.setEditable(false);

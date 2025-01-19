@@ -105,11 +105,6 @@ public class VerifyContractSignaturesPanelView extends javax.swing.JPanel {
         paymentConfirmationMessageTextField.setFont(new java.awt.Font("Dialog", 1, 15)); // NOI18N
 
         amountSentTextField.setBackground(new java.awt.Color(248, 248, 248));
-        amountSentTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                amountSentTextFieldActionPerformed(evt);
-            }
-        });
 
         txIdOfSignedContractSentToRegistryAddressLabel.setText("Transaction ID of Signed Contract Sent to Registry Office Address:");
 
@@ -313,10 +308,6 @@ public class VerifyContractSignaturesPanelView extends javax.swing.JPanel {
             paymentConfirmationMessageTextField.setText(StringsService.payment_contract_signing_not_confirmed);
         }
     }//GEN-LAST:event_verifyPaymentButtonActionPerformed
-
-    private void amountSentTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_amountSentTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_amountSentTextFieldActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -176,7 +176,7 @@ public class OwnerSignerPanelView extends javax.swing.JPanel {
     private void signContractButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signContractButtonActionPerformed
         
         // GET ALL PARAMETERS TO signRawTransactionWithkKey
-        // multisigRawTransactionHex Hex:
+        // Multisig Raw Transaction Hex:
         String multisigRawTransactionHex = multisigRawTransactionHexTextField.getText();
         // Transaction ID of Contract Sent to Multisig:
         String transactionIdOfContractSentToMultisig = RegistryServiceControl.decodeRawTransaction(multisigRawTransactionHex);

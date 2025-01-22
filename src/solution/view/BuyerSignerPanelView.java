@@ -177,10 +177,10 @@ public class BuyerSignerPanelView extends javax.swing.JPanel {
     private void signContractButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signContractButtonActionPerformed
         
         // GET ALL PARAMETERS TO signRawTransactionWithkKey
-        // Multisig Raw Transaction Hex:
-        String multisigRawTransactionHex = ownerSignatureHexTextField.getText();
+        // Owner Signature Hex:
+        String ownerSignatureHex = ownerSignatureHexTextField.getText();
         // Transaction ID of Contract Sent to Multisig:
-        String transactionIdOfContractSentToMultisig = RegistryServiceControl.decodeRawTransaction(multisigRawTransactionHex);
+        String transactionIdOfContractSentToMultisig = RegistryServiceControl.decodeRawTransaction(ownerSignatureHex);
         GetRawTransactionModel getRawTransactionModel = RegistryServiceControl.getRawTransaction(transactionIdOfContractSentToMultisig);
         // Vout of Transaction ID of Contract Sent to Multisig:
         long vout = getRawTransactionModel.getResult().getVout().get(0).getN();
@@ -192,7 +192,7 @@ public class BuyerSignerPanelView extends javax.swing.JPanel {
         String redeemScript = redeemScriptTextField.getText();
         // sign raw transaction with Property Buyer's private key
         String buyerSignatureHex = RegistryServiceControl.signRawTransactionWithkKey(
-                multisigRawTransactionHex, // Multisig Raw Transaction Hex
+                ownerSignatureHex, // Multisig Raw Transaction Hex
                 walletBuyerPrivateKeyText, // Buyer wallet private key
                 transactionIdOfContractSentToMultisig, // Transaction ID of Contract Sent to Multisig
                 vout, // Vout of Transaction ID of Contract Sent to Multisig

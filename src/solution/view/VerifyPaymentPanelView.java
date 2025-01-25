@@ -55,7 +55,7 @@ public class VerifyPaymentPanelView extends javax.swing.JPanel {
         verifyPaymentTransactionLabel.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         verifyPaymentTransactionLabel.setText("Verify Payment Transaction");
 
-        paymentTransactionIdLabel.setText("Payment Transaction ID:");
+        paymentTransactionIdLabel.setText("Transaction ID of Payment Sent to Owner Address:");
 
         verifyPaymentButton.setText("Verify");
         verifyPaymentButton.addActionListener(new java.awt.event.ActionListener() {
@@ -138,7 +138,7 @@ public class VerifyPaymentPanelView extends javax.swing.JPanel {
                         .addComponent(amountSentLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(amountSentTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

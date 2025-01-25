@@ -304,7 +304,6 @@ public class RegistryModel {
         private String blockHashGenesis;
         private double salePrice;
         private String timestamp;
-        private TransactionInfo contractSentToMultisigInfo;
         private TransactionInfo signedContractSentToRegistryOfficeInfo;
 
         public BigDecimal getInscriptionNumber() {
@@ -369,14 +368,6 @@ public class RegistryModel {
 
         public void setTimestamp(String value) {
             this.timestamp = value;
-        }
-
-        public TransactionInfo getContractSentToMultisigInfo() {
-            return contractSentToMultisigInfo;
-        }
-
-        public void setContractSentToMultisigInfo(TransactionInfo value) {
-            this.contractSentToMultisigInfo = value;
         }
 
         public TransactionInfo getSignedContractSentToRegistryOfficeInfo() {

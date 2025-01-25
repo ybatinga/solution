@@ -83,6 +83,11 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="buyerWalletPublicKeyTextField" min="-2" pref="528" max="-2" attributes="0"/>
                           </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="redeemScriptLabel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="redeemScriptTextField" min="-2" pref="799" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
@@ -101,7 +106,12 @@
                   <Component id="txIdOfSignedContractSentToRegistryAddressLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="txIdOfSignedContractSentToRegistryAddressTextField" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="redeemScriptLabel" min="-2" max="-2" attributes="0"/>
+                  <Component id="redeemScriptTextField" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Component id="ownerWalletPublicKeyLabel" alignment="1" min="-2" pref="23" max="-2" attributes="0"/>
                   <Component id="onwerWalletPublicKeyTextField" min="-2" max="-2" attributes="0"/>
@@ -153,7 +163,7 @@
                   <Component id="ownerBuyerSignatureHexLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="ownerBuyerSignatureHexTextField" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="70" max="32767" attributes="0"/>
+              <EmptySpace pref="33" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -305,6 +315,19 @@
       </Properties>
     </Component>
     <Component class="java.awt.TextField" name="onwerWalletPublicKeyTextField">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="f8" green="f8" red="f8" type="rgb"/>
+        </Property>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="redeemScriptLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Redeem Script:"/>
+      </Properties>
+    </Component>
+    <Component class="java.awt.TextField" name="redeemScriptTextField">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="f8" green="f8" red="f8" type="rgb"/>

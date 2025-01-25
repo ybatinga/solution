@@ -23,7 +23,7 @@ public class VerifyContractSignaturesPanelView extends javax.swing.JPanel {
     /**
      * Creates new form VerifyContractSignaturesPanel
      */
-    public VerifyContractSignaturesPanelView() {
+    public VerifyContractSignaturesPanelView(String redeemScript) {
         initComponents();
         // get Buyer wallet address info
         GetAddressInfoModel getBuyerAddressInfoModel = RegistryServiceControl.getAddressInfo(StringsService.PLATFORM.getWALLET_NAME_BUYER(), StringsService.PLATFORM.getWALLET_ADDRESS_BUYER());
@@ -37,6 +37,8 @@ public class VerifyContractSignaturesPanelView extends javax.swing.JPanel {
         buyerWalletPublicKeyTextField.setText(buyerWalletPublicKey);
         // show Owner's wallet address public key on UI
         onwerWalletPublicKeyTextField.setText(ownerWalletPublicKey);
+        // show Redeem Script on UI
+        redeemScriptTextField.setText(redeemScript);
     }
 
     /**
@@ -72,6 +74,8 @@ public class VerifyContractSignaturesPanelView extends javax.swing.JPanel {
         ownerBuyerSignatureHexTextField = new java.awt.TextField();
         buyerWalletPublicKeyTextField = new java.awt.TextField();
         onwerWalletPublicKeyTextField = new java.awt.TextField();
+        redeemScriptLabel = new javax.swing.JLabel();
+        redeemScriptTextField = new java.awt.TextField();
 
         setBackground(new java.awt.Color(247, 247, 247));
 
@@ -135,6 +139,11 @@ public class VerifyContractSignaturesPanelView extends javax.swing.JPanel {
         onwerWalletPublicKeyTextField.setBackground(new java.awt.Color(248, 248, 248));
         onwerWalletPublicKeyTextField.setEditable(false);
 
+        redeemScriptLabel.setText("Redeem Script:");
+
+        redeemScriptTextField.setBackground(new java.awt.Color(248, 248, 248));
+        redeemScriptTextField.setEditable(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -189,7 +198,11 @@ public class VerifyContractSignaturesPanelView extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(buyerWalletPublicKeyLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(buyerWalletPublicKeyTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 528, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(buyerWalletPublicKeyTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 528, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(redeemScriptLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(redeemScriptTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 799, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -202,7 +215,11 @@ public class VerifyContractSignaturesPanelView extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txIdOfSignedContractSentToRegistryAddressLabel)
                     .addComponent(txIdOfSignedContractSentToRegistryAddressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(19, 19, 19)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(redeemScriptLabel)
+                    .addComponent(redeemScriptTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(ownerWalletPublicKeyLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(onwerWalletPublicKeyTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -244,7 +261,7 @@ public class VerifyContractSignaturesPanelView extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ownerBuyerSignatureHexLabel)
                     .addComponent(ownerBuyerSignatureHexTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -255,6 +272,8 @@ public class VerifyContractSignaturesPanelView extends javax.swing.JPanel {
         String buyerWalletPublicKey = buyerWalletPublicKeyTextField.getText();
         // get Owner Wallet Public Key from UI
         String ownerWalletPublicKey = onwerWalletPublicKeyTextField.getText();
+        // get Redeem Script from UI
+        String redeemScript = redeemScriptTextField.getText();
         // block info where the Transaction ID of Signed Contract Sent to Registry Office Address is registered
         GetBlockModel getBlockModel = RegistryServiceControl.searchTransactionInBlocks(txIdOfSignedContractSentToRegistry);
         // check if the Transaction ID of Signed Contract Sent to Registry Office Address is registered on a block
@@ -265,9 +284,11 @@ public class VerifyContractSignaturesPanelView extends javax.swing.JPanel {
             String ownerBuyerSignatureHex = getRawTransactionModel.getResult().getHex();
             // show signature hex on UI
             ownerBuyerSignatureHexTextField.setText(ownerBuyerSignatureHex);
-            // verify if Owner and Buyer have signed the contract by verifying if the Buyer Wallet Public Key and the Owner Wallet Public Key 
-            // are contained in the signature hex of the Transaction ID of Signed Contract Sent to Registry Office Address
-            if (ownerBuyerSignatureHex.contains(ownerWalletPublicKey) && ownerBuyerSignatureHex.contains(buyerWalletPublicKey)){
+            // verify if Owner and Buyer have signed the contract by verifying if the Buyer Wallet Public Key, the Owner Wallet Public Key, 
+            // and the Redeem Script are contained in the signature hex of the Transaction ID of Signed Contract Sent to Registry Office Address
+            if (ownerBuyerSignatureHex.contains(ownerWalletPublicKey) 
+                    && ownerBuyerSignatureHex.contains(buyerWalletPublicKey)
+                    && ownerBuyerSignatureHex.contains(redeemScript)){
                 // show on UI current number of node confirmations the Bitcoin network
                 confirmationsTextField.setText(Long.toString(getBlockModel.getConfirmations()));
                 // show on UI the block numner that the Transaction ID of Signed Contract Sent to Registry Office Address is registered               
@@ -328,6 +349,8 @@ public class VerifyContractSignaturesPanelView extends javax.swing.JPanel {
     private java.awt.TextField paymentConfirmationMessageTextField;
     private javax.swing.JLabel recipientAddressLabel;
     private java.awt.TextField recipientAddressTextField;
+    private javax.swing.JLabel redeemScriptLabel;
+    private java.awt.TextField redeemScriptTextField;
     private javax.swing.JLabel signaturesConfirmationMessageLabel;
     private javax.swing.JLabel timeStampLabel;
     private java.awt.TextField timeStampTextField;

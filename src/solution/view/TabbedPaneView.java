@@ -157,7 +157,7 @@ public class TabbedPaneView extends JPanel {
     }
 
     protected JComponent verifyContractSignaturesPanel(String text) {
-        VerifyContractSignaturesPanelView panel = new VerifyContractSignaturesPanelView();
+        VerifyContractSignaturesPanelView panel = new VerifyContractSignaturesPanelView(redeemScript);
         JLabel filler = new JLabel(text);
 //        filler.setHorizontalAlignment(JLabel.CENTER);
 //        panel.setLayout(new GridLayout(1, 1));

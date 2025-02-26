@@ -30,7 +30,6 @@ public class StringsService {
 
     // wallet names
     public static String wallet_name_ord = "ord";
-    public static String wallet_name_ord_notary = "ord_notary";
         
     // error messages
     public static String invalid_contract_transaction_ID = "Invalid contract transaction ID";
@@ -38,8 +37,8 @@ public class StringsService {
     // veritication messages
     public static String payment_contract_signing_confirmed = "Contract Signing Confirmed";
     public static String payment_contract_signing_not_confirmed = "Contract Signing NOT Confirmed";
-    public static String payment_confirmed = "Payment Confirmed";
-    public static String payment_has_not_been_confirmed_on_the_blockchain = "Payment has NOT been confirmed on the blockchain";
+    public static String payment_confirmed = "Transaction Confirmed";
+    public static String payment_has_not_been_confirmed_on_the_blockchain = "Transaction has NOT been confirmed on the blockchain";
     public static String payment_confirmation_message = "Payment Confirmation Message: ";
     
     // https://github.com/BlockchainCommons/Learning-Bitcoin-from-the-Command-Line/blob/master/06_1_Sending_a_Transaction_to_a_Multisig.md#collect-public-keys
@@ -54,7 +53,7 @@ public class StringsService {
     
     public static String file_path = "/home/ssd/Dropbox/thesis/ordinals_metadata_contract_signning/";
     
-    public static String document_type_new_property_registry = "New Property Registry";
+    public static String document_type_new_property_registry = "Property Registry";
     public static String document_type_property_sale_agreement_contract = "Property Sale Agreement Contract";
     public static String document_type_property_transfer_registry = "Property Transfer Registry";
     

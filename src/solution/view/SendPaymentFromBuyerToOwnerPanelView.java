@@ -171,8 +171,7 @@ public class SendPaymentFromBuyerToOwnerPanelView extends javax.swing.JPanel {
             String signedTx = RegistryServiceControl.signRawTransactionWithWallet(paymentRawTransactionHex, StringsService.PLATFORM.getWALLET_NAME_BUYER());
             // get transaction id of payment sent from Buyer to Owner
             String txIdOfPaymentSentToOwnerAddress = RegistryServiceControl.sendRawTransaction(
-                signedTx,
-                StringsService.PLATFORM.getWALLET_NAME_BUYER());
+                signedTx);
             transactionIdOfPaymentSentToOwnerAddressTextField.setText(txIdOfPaymentSentToOwnerAddress);
 
             // generate 6 new blocks after sending payment

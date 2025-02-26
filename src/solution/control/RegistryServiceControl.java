@@ -48,7 +48,7 @@ import solution.service.StringsService;
 public class RegistryServiceControl {
     // registers a new property or contract on Bitcoin Blockchain through Ordinals software
     public static OrdInscribedDataModel registerNewPropertyOrContract(String filePath) throws IOException, InterruptedException {
-        
+        String command = "/usr/local/apps/" + StringsService.ord_version + "/ord --chain regtest --bitcoin-rpc-password rpc --bitcoin-rpc-username rpc wallet inscribe --fee-rate 2 --file " + filePath;
         Process process = Runtime.getRuntime().exec("/usr/local/apps/" + StringsService.ord_version + "/ord --chain regtest --bitcoin-rpc-password rpc --bitcoin-rpc-username rpc wallet inscribe --fee-rate 2 --file " + filePath); // for Linux
             //Process process = Runtime.getRuntime().exec("cmd /c dir"); //for Windows
 
@@ -346,9 +346,9 @@ public class RegistryServiceControl {
         }
     }
     
-    public static String sendRawTransaction(String signedTx, String walletName) {
+    public static String sendRawTransaction(String signedTx) {
         try {
-            String[] command = new String[]{"/usr/local/apps/bitcoin-25.0/bin/bitcoin-cli", "-rpcwallet=" + walletName, 
+            String[] command = new String[]{"/usr/local/apps/bitcoin-25.0/bin/bitcoin-cli", 
                 "sendrawtransaction", signedTx};
 
             Process process = Runtime.getRuntime().exec(command); // for Linux
@@ -530,6 +530,7 @@ public class RegistryServiceControl {
         }
     }
     
+    // search specific transaction id in Blocks
     public static GetBlockModel searchTransactionInBlocks(String txId){
         // gets the last (current) block
         String getBestblockhash = RegistryServiceControl.getBlockchainInfo();

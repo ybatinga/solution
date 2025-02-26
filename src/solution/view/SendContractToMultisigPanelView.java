@@ -131,7 +131,7 @@ public class SendContractToMultisigPanelView extends javax.swing.JPanel {
         // get signed transaction from Registry Office
         String signedTx = RegistryServiceControl.signRawTransactionWithWallet(rawTxHex, StringsService.wallet_name_ord);
         // get transaction ID of contract sent to Multisig 
-        String txIdOfSentContract = RegistryServiceControl.sendRawTransaction(signedTx, StringsService.wallet_name_ord);
+        String txIdOfSentContract = RegistryServiceControl.sendRawTransaction(signedTx);
         
         // show error message on UI if sending contract to Multisig failed
         if (vout == -1){

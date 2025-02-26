@@ -98,7 +98,7 @@ public class SendSignedContractToRegistryPanelView extends javax.swing.JPanel {
         // inform Owner and Buyer Signature Hex on UI
         String ownerBuyerSignatureHex = ownerBuyerSignatureHexTextField.getText();
         // send raw transaction 
-        String txIdOfSignedContractSentToRegistryAddress = RegistryServiceControl.sendRawTransaction(ownerBuyerSignatureHex, StringsService.wallet_name_ord_notary);
+        String txIdOfSignedContractSentToRegistryAddress = RegistryServiceControl.sendRawTransaction(ownerBuyerSignatureHex);
         txIdOfSignedContractSentToRegistryAddressTextField.setText(txIdOfSignedContractSentToRegistryAddress);
         
         // generate 6 new blocks after sending signed contract inscription to registry office's address

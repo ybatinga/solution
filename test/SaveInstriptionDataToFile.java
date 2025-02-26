@@ -25,7 +25,7 @@ public class SaveInstriptionDataToFile {
     public static void main(String[] args) {
         Writer writer = null;
         try {
-            InscriptionModel inscriptionModel = RegistryServiceControl.getInscriptionData("e39367db30ee904399ec233d89653ace065219f4ed44b99d1ec1136cc4754a28i0");
+            InscriptionModel inscriptionModel = RegistryServiceControl.getInscriptionData("e141a3bfdd0aecbbd3bd94b99f3866bf5dc46763724949238652bb84779b83e8i0");
             writer = new FileWriter("/home/ssd/Dropbox/thesis/ordinals_metadata_contract_signning/inscription.json");
             Gson gson = new Gson();
             gson.toJson(inscriptionModel, writer);

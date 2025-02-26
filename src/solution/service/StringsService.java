@@ -46,6 +46,10 @@ public class StringsService {
     
 //    public static String ord_version = "ord-0.19.1";
     public static String ord_version = "ord-0.20.0";
+//    public static String ord_version = "ord-0.22.2";
+    
+    public static String bitcoin_core_version = "bitcoin-25.0";
+//    public static String bitcoin_core_version = "bitcoin-28.1";
     
     public static String file_name_new_property = "new_property.json";
     public static String file_name_property_sale_contract = "property_sale_contract_.json";

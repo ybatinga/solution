@@ -48,7 +48,7 @@ import solution.service.StringsService;
 public class RegistryServiceControl {
     // registers a new property or contract on Bitcoin Blockchain through Ordinals software
     public static OrdInscribedDataModel registerNewPropertyOrContract(String filePath) throws IOException, InterruptedException {
-        String command = "/usr/local/apps/" + StringsService.ord_version + "/ord --chain regtest --bitcoin-rpc-password rpc --bitcoin-rpc-username rpc wallet inscribe --fee-rate 2 --file " + filePath;
+
         Process process = Runtime.getRuntime().exec("/usr/local/apps/" + StringsService.ord_version + "/ord --chain regtest --bitcoin-rpc-password rpc --bitcoin-rpc-username rpc wallet inscribe --fee-rate 2 --file " + filePath); // for Linux
             //Process process = Runtime.getRuntime().exec("cmd /c dir"); //for Windows
 
@@ -174,7 +174,7 @@ public class RegistryServiceControl {
     public static CreateMultisigModel createMultisigAddress(String buyerPublicKey, String ownerPublicKey)  {
         try {
             // create Multisig address that requires two signatures out of 2 (public) keys
-            Process process = Runtime.getRuntime().exec(new String[]{"/usr/local/apps/bitcoin-25.0/bin/bitcoin-cli", "createmultisig", "2", "[\""+ buyerPublicKey+ "\", \""+ ownerPublicKey+ "\"]"}); // for Linux
+            Process process = Runtime.getRuntime().exec(new String[]{"/usr/local/apps/" + StringsService.bitcoin_core_version + "/bin/bitcoin-cli", "createmultisig", "2", "[\""+ buyerPublicKey+ "\", \""+ ownerPublicKey+ "\"]"}); // for Linux
 
             process.waitFor();
 
@@ -228,7 +228,7 @@ public class RegistryServiceControl {
         try {
             //                        "[{\"txid\":\"" + txId + "\",\"vout\":0}]", "[{\"" + recipientAddress + "\":0.01}]"};
             String[] command = new String[]{
-                "/usr/local/apps/bitcoin-25.0/bin/bitcoin-cli",
+                "/usr/local/apps/" + StringsService.bitcoin_core_version + "/bin/bitcoin-cli",
                 "createrawtransaction",
                 "[{\"txid\":\"" + txId + "\",\"vout\":" + vout + "}]",
                 "[{\"" + recipientAddress + "\":" + amount + "}]"
@@ -265,7 +265,7 @@ public class RegistryServiceControl {
         try {
 //                        "[{\"txid\":\"" + txId + "\",\"vout\":0}]", "[{\"" + recipientAddress + "\":0.01}]"};
              String[] command = new String[]{
-                 "/usr/local/apps/bitcoin-25.0/bin/bitcoin-cli", 
+                 "/usr/local/apps/" + StringsService.bitcoin_core_version + "/bin/bitcoin-cli", 
                  "createrawtransaction",
                  "[{\"txid\":\"" + txId + "\",\"vout\":" + vout + "}]", 
                  "{\"" + recipientAddress + "\":" + amount + ",\"" + changeAddress + "\":" + changeAmount + "}"};            
@@ -293,7 +293,7 @@ public class RegistryServiceControl {
     
     public static String decodeRawTransaction(String rawTxHex) {
         try {
-            String[] command = new String[]{"/usr/local/apps/bitcoin-25.0/bin/bitcoin-cli", "decoderawtransaction",
+            String[] command = new String[]{"/usr/local/apps/" + StringsService.bitcoin_core_version + "/bin/bitcoin-cli", "decoderawtransaction",
                 rawTxHex};
 
             Process process = Runtime.getRuntime().exec(command); // for Linux
@@ -320,7 +320,7 @@ public class RegistryServiceControl {
     
     public static String signRawTransactionWithWallet(String rawTxHex, String walletName) {
         try {
-            String[] command = new String[]{"/usr/local/apps/bitcoin-25.0/bin/bitcoin-cli", "-rpcwallet=" + walletName, 
+            String[] command = new String[]{"/usr/local/apps/" + StringsService.bitcoin_core_version + "/bin/bitcoin-cli", "-rpcwallet=" + walletName, 
                 "signrawtransactionwithwallet", rawTxHex};
 
             Process process = Runtime.getRuntime().exec(command); // for Linux
@@ -348,7 +348,7 @@ public class RegistryServiceControl {
     
     public static String sendRawTransaction(String signedTx) {
         try {
-            String[] command = new String[]{"/usr/local/apps/bitcoin-25.0/bin/bitcoin-cli", 
+            String[] command = new String[]{"/usr/local/apps/" + StringsService.bitcoin_core_version + "/bin/bitcoin-cli", 
                 "sendrawtransaction", signedTx};
 
             Process process = Runtime.getRuntime().exec(command); // for Linux
@@ -416,7 +416,7 @@ public class RegistryServiceControl {
 //            $ ./bitcoin-cli -named signrawtransactionwithkey hexstring=$rawtxhex 
 //              prevtxs='''[ { "txid": "'$utxo_txid'", "vout": '$utxo_vout', "scriptPubKey": "'$utxo_spk'", "redeemScript": "'$redeem_script'" } ]''' 
             
-            String[] command = new String[]{"/usr/local/apps/bitcoin-25.0/bin/bitcoin-cli",
+            String[] command = new String[]{"/usr/local/apps/" + StringsService.bitcoin_core_version + "/bin/bitcoin-cli",
                 "signrawtransactionwithkey", rawTxHex, "[\"" + walletPrivateKeyLabel + "\"]", 
                 "[{\"txid\":\"" + transactionId + "\",\"vout\":" + vout + ",\"scriptPubKey\":\"" + scriptPubKey + "\",\"redeemScript\":\"" + redeemScript + "\"}]"};
             
@@ -457,7 +457,7 @@ public class RegistryServiceControl {
            
 //          source of command comments: https://developer.bitcoin.org/reference/rpc/listunspent.html
             String[] command = new String[]{
-                "/usr/local/apps/bitcoin-25.0/bin/bitcoin-cli", 
+                "/usr/local/apps/" + StringsService.bitcoin_core_version + "/bin/bitcoin-cli", 
                 "-rpcwallet=" + walletName, //wallet name being used
                 "listunspent", // command name
                 "6", // The minimum confirmations to filter
@@ -491,7 +491,7 @@ public class RegistryServiceControl {
     
     public static GetBlockModel getBlock(String blockHash) {
         try {
-            String[] command = new String[]{"/usr/local/apps/bitcoin-25.0/bin/bitcoin-cli", "getblock", blockHash};
+            String[] command = new String[]{"/usr/local/apps/" + StringsService.bitcoin_core_version + "/bin/bitcoin-cli", "getblock", blockHash};
 
             Process process = Runtime.getRuntime().exec(command); // for Linux
 
@@ -511,7 +511,7 @@ public class RegistryServiceControl {
         
     public static String getBlockchainInfo() {
         try {
-            String[] command = new String[]{"/usr/local/apps/bitcoin-25.0/bin/bitcoin-cli", "getblockchaininfo"};
+            String[] command = new String[]{"/usr/local/apps/" + StringsService.bitcoin_core_version + "/bin/bitcoin-cli", "getblockchaininfo"};
 
             Process process = Runtime.getRuntime().exec(command); // for Linux
 
@@ -566,7 +566,7 @@ public class RegistryServiceControl {
     public static List<String> generateToAddress(long numberOfBlocks) {
         try {
             String[] command = new String[]{
-                "/usr/local/apps/bitcoin-25.0/bin/bitcoin-cli", 
+                "/usr/local/apps/" + StringsService.bitcoin_core_version + "/bin/bitcoin-cli", 
                 "-rpcwallet=" + StringsService.PLATFORM.getWALLET_ADDRESS_BUYER(), 
                 "generatetoaddress", Long.toString(numberOfBlocks), 
                 StringsService.PLATFORM.getGENERATE_TO_ADDRESS_WALLET_BUYER()};

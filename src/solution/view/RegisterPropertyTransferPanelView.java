@@ -179,38 +179,38 @@ public class RegisterPropertyTransferPanelView extends javax.swing.JPanel {
             // update registry status to "Property Transfer Registry"
             registryModel.setDocumentType(StringsService.document_type_property_transfer_registry);
             // save contract inscription number into registryModel 
-            registryModel.getSaleAgreementContractInfo().setInscriptionNumber(new BigDecimal(inscriptionModel.getNumber()));
+            registryModel.getPublicDeedOfSaleAndPurchaseInfo().setInscriptionNumber(new BigDecimal(inscriptionModel.getNumber()));
             // save contract inscription id into registryModel
-            registryModel.getSaleAgreementContractInfo().setInscriptionID(inscriptionModel.getID());
+            registryModel.getPublicDeedOfSaleAndPurchaseInfo().setInscriptionID(inscriptionModel.getID());
             // save registry office address 
-            registryModel.getSaleAgreementContractInfo().setInscriptionAddress(inscriptionModel.getAddress());
+            registryModel.getPublicDeedOfSaleAndPurchaseInfo().setInscriptionAddress(inscriptionModel.getAddress());
             // save block height genesis
-            registryModel.getSaleAgreementContractInfo().setBlockHeightGenesis(new BigDecimal(inscriptionModel.getHeight()));
+            registryModel.getPublicDeedOfSaleAndPurchaseInfo().setBlockHeightGenesis(new BigDecimal(inscriptionModel.getHeight()));
             // save timestamp of public deed of sale and purchase registration
             String timestamp = RegistryServiceControl.convertUnixEpochToUtcTime(inscriptionModel.getTimestamp());
-            registryModel.getSaleAgreementContractInfo().setTimestamp(timestamp);
+            registryModel.getPublicDeedOfSaleAndPurchaseInfo().setTimestamp(timestamp);
 
             // get Signed Contract Sent to Registry Office info
             GetBlockModel getBlockModel1 = RegistryServiceControl.searchTransactionInBlocks(txIdOfSignedContractSentToRegistryAddress);
             // create an TransactionInfo object for signedContractSentToRegistryOfficeInfo
             RegistryModel.TransactionInfo signedContractSentToRegistryOfficeInfo = registryModel.new TransactionInfo();
             // set TransactionInfo signedContractSentToRegistryOfficeInfo on getSaleAgreementContractInfo().setSignedContractSentToRegistryOfficeInfo
-            registryModel.getSaleAgreementContractInfo().setSignedContractSentToRegistryOfficeInfo(signedContractSentToRegistryOfficeInfo);
+            registryModel.getPublicDeedOfSaleAndPurchaseInfo().setSignedContractSentToRegistryOfficeInfo(signedContractSentToRegistryOfficeInfo);
             // save transaction id of txIdOfSignedContractSentToRegistryAddress
-            registryModel.getSaleAgreementContractInfo().getSignedContractSentToRegistryOfficeInfo().setTransactionID(txIdOfSignedContractSentToRegistryAddress);
+            registryModel.getPublicDeedOfSaleAndPurchaseInfo().getSignedContractSentToRegistryOfficeInfo().setTransactionID(txIdOfSignedContractSentToRegistryAddress);
             // save block hash 
-            registryModel.getSaleAgreementContractInfo().getSignedContractSentToRegistryOfficeInfo().setBlockHash(getBlockModel1.getHash());
+            registryModel.getPublicDeedOfSaleAndPurchaseInfo().getSignedContractSentToRegistryOfficeInfo().setBlockHash(getBlockModel1.getHash());
             // save block height
-            registryModel.getSaleAgreementContractInfo().getSignedContractSentToRegistryOfficeInfo().setBlockHeight(getBlockModel1.getHeight());
+            registryModel.getPublicDeedOfSaleAndPurchaseInfo().getSignedContractSentToRegistryOfficeInfo().setBlockHeight(getBlockModel1.getHeight());
             // save timestamp
             String time1 = RegistryServiceControl.convertUnixEpochToUtcTime(getBlockModel1.getTime());
-            registryModel.getSaleAgreementContractInfo().getSignedContractSentToRegistryOfficeInfo().setTimestamp(time1);
+            registryModel.getPublicDeedOfSaleAndPurchaseInfo().getSignedContractSentToRegistryOfficeInfo().setTimestamp(time1);
             // get raw transaction model for txIdOfSignedContractSentToRegistryAddress
             GetRawTransactionModel getRawTransactionModel1 = RegistryServiceControl.getRawTransaction(txIdOfSignedContractSentToRegistryAddress);
             // get registry office address 
             String recipientAddress1 = getRawTransactionModel1.getResult().getVout().get(0).getScriptPubKey().getAddress();
             // save registry office address 
-            registryModel.getSaleAgreementContractInfo().getSignedContractSentToRegistryOfficeInfo().setRecipientAddress(recipientAddress1);
+            registryModel.getPublicDeedOfSaleAndPurchaseInfo().getSignedContractSentToRegistryOfficeInfo().setRecipientAddress(recipientAddress1);
 //            double amountSent1 = getRawTransactionModel1.getResult().getVout().get(0).getValue();
 //            registryModel.getSaleAgreementContractInfo().getSignedContractSentToRegistryOfficeInfo().setPaymentAmount(new BigDecimal(amountSent1));
 

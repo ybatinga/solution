@@ -14,7 +14,7 @@ import solution.model.GetAddressInfoModel;
 import solution.model.InscriptionModel;
 import solution.model.OrdInscribedDataModel;
 import solution.model.RegistryModel;
-import solution.model.RegistryModel.SaleAgreementContractInfo;
+import solution.model.RegistryModel.PublicDeedOfSaleAndPurchaseInfo;
 import solution.service.StringsService;
 
 /**
@@ -40,7 +40,7 @@ public class RegisterContractPanelView extends javax.swing.JPanel {
         
         // create object RegistryModel with data to register a contract
         registryModel = new RegistryModel();
-        registryModel.setDocumentType(StringsService.document_type_property_sale_agreement_contract);
+        registryModel.setDocumentType(StringsService.document_type_public_deed_of_sale_and_purchase);
 //        propertyAddressTextField.setText(registryModelInscriptionContent.getPropertyInfo().getPropertyAddress());
 //        propertyAreaSquareMetersTextField.setText(Long.toString(registryModelInscriptionContent.getPropertyInfo().getPropertyAreaSquareMeters()));
         ownerNationalIdTextField.setText(StringsService.PLATFORM.getNATIONAL_ID_OWNER());
@@ -69,9 +69,9 @@ public class RegisterContractPanelView extends javax.swing.JPanel {
         buyerInfo.setBuyerWalletPublicKeyAddress(getAddressInfoModelBuyer.getResult().getPubkey());
         registryModel.setBuyerInfo(buyerInfo);
         
-        RegistryModel.SaleAgreementContractInfo saleAgreementContractInfo = registryModel.new SaleAgreementContractInfo();
-        registryModel.setSaleAgreementContractInfo(saleAgreementContractInfo);
-        registryModel.getSaleAgreementContractInfo().setSalePrice(StringsService.paymentAmount);
+        RegistryModel.PublicDeedOfSaleAndPurchaseInfo publicDeedOfSaleAndPurchaseInfo = registryModel.new PublicDeedOfSaleAndPurchaseInfo();
+        registryModel.setPublicDeedOfSaleAndPurchaseInfo(publicDeedOfSaleAndPurchaseInfo);
+        registryModel.getPublicDeedOfSaleAndPurchaseInfo().setSalePrice(StringsService.paymentAmount);
         
         // save registryModel object in JSON file format
         RegistryServiceControl.writeInscriptionDataToDisk(registryModel, StringsService.file_name_property_sale_contract);

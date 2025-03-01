@@ -12,7 +12,7 @@ public class RegistryModel {
     private PropertyInfo propertyInfo;
     private OwnerInfo ownerInfo;
     private BuyerInfo buyerInfo;
-    private SaleAgreementContractInfo saleAgreementContractInfo;
+    private PublicDeedOfSaleAndPurchaseInfo publicDeedOfSaleAndPurchaseInfo;
     private TransactionInfo paymentInfo;
 
     public String getDocumentType() {
@@ -47,12 +47,12 @@ public class RegistryModel {
         this.buyerInfo = value;
     }
 
-    public SaleAgreementContractInfo getSaleAgreementContractInfo() {
-        return saleAgreementContractInfo;
+    public PublicDeedOfSaleAndPurchaseInfo getPublicDeedOfSaleAndPurchaseInfo() {
+        return publicDeedOfSaleAndPurchaseInfo;
     }
 
-    public void setSaleAgreementContractInfo(SaleAgreementContractInfo value) {
-        this.saleAgreementContractInfo = value;
+    public void setPublicDeedOfSaleAndPurchaseInfo(PublicDeedOfSaleAndPurchaseInfo value) {
+        this.publicDeedOfSaleAndPurchaseInfo = value;
     }
 
     public TransactionInfo getPaymentInfo() {
@@ -294,7 +294,7 @@ public class RegistryModel {
     }
 
 // SaleAgreementContractInfo.java
-    public class SaleAgreementContractInfo {
+    public class PublicDeedOfSaleAndPurchaseInfo {
 
         private BigDecimal inscriptionNumber;
         private String inscriptionID;

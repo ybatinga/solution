@@ -58,7 +58,7 @@ public class StringsService {
     public static String file_path = "/home/ssd/Dropbox/thesis/ordinals_metadata_contract_signning/";
     
     public static String document_type_new_property_registry = "Property Registry";
-    public static String document_type_property_sale_agreement_contract = "Property Sale Agreement Contract";
+    public static String document_type_public_deed_of_sale_and_purchase = "Public Deed of Sale and Purchase";
     public static String document_type_property_transfer_registry = "Property Transfer";
     
     public static String propertyAddress = "Rua Rio Grande do Sul - Nova Ubiratã, MT, 78888-000, Brasil";

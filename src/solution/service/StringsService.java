@@ -65,7 +65,7 @@ public class StringsService {
     public static long propertyAreaSquareMeters = 32;
     public static double paymentAmount = 0.195;
     
-    public static double transactionFee = 0.00001;
+    public static double transactionFee = 0.000015;
     
     public static class Laptop{
 //        private static final String WALLET_ADDRESS_BUYER = "mgBg38pkq8ULumNQgHugiKMi5uUzVEg35G";
@@ -77,10 +77,10 @@ public class StringsService {
 //        private static final String NAME_BUYER = "Joao Silva";
 //        private static final String NAME_OWNER = "Maria Oliveira";
         
-        private static final String WALLET_ADDRESS_OWNER = "mgBg38pkq8ULumNQgHugiKMi5uUzVEg35G";
-        private static final String WALLET_ADDRESS_BUYER = "mu6TidaphD9PbALi7KR4bJvPukjSziCWZR";   
-        public static String WALLET_NAME_OWNER = "legacy_buyer";
-        public static String WALLET_NAME_BUYER = "legacy_owner";
+        private static final String WALLET_ADDRESS_OWNER = "mu6TidaphD9PbALi7KR4bJvPukjSziCWZR";
+        private static final String WALLET_ADDRESS_BUYER = "mgBg38pkq8ULumNQgHugiKMi5uUzVEg35G";   
+        public static String WALLET_NAME_OWNER = "legacy_owner";
+        public static String WALLET_NAME_BUYER = "legacy_buyer";
         private static final String NATIONAL_ID_OWNER = "450.593.347-48";
         private static final String NATIONAL_ID_BUYER = "345.564.675-69";
         private static final String NAME_OWNER = "Joao Silva";
